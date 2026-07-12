@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sewa Motor Sukabumi - Jasa Transportasi 24 Jam</title>
+  <meta name="description" content="Jasa rental motor resmi Sukabumi buka 24 jam. Termasuk 2 helm, 2 jas hujan, gembok, dan holder HP.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { brand: '#111215', accent: '#DC2626' } // Tema Hitam-Merah berani sesuai logo SMS
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+    
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.9) translateY(20px);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-enter-active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .modal-backdrop-enter {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal-backdrop-enter-active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-brand font-sans antialiased selection:bg-accent selection:text-white">
+
+  <!-- Top Banner Info Kontak singkat -->
+  <div class="bg-brand text-white text-xs py-2 px-4 text-center border-b border-gray-800">
+    <span data-i18n="top_bar">📍 Hubungi Kami 24 Jam: <b>+62 856-9276-0155</b> | Pasir Salamet No.12</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-accent rounded-xl flex items-center justify-center text-white font-black text-lg shadow-sm">S</div>
+        <span class="font-bold text-xl tracking-tight text-brand">SewaMotor<span class="text-accent">Sukabumi</span></span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#bikes" data-i18n="nav_bikes" class="text-sm font-medium hover:text-accent transition-colors active:scale-95 tactile-btn hidden sm:block">Katalog Unit</a>
+        <button id="lang-toggle" onclick="toggleLanguage()" class="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-brand font-bold text-xs py-1.5 px-3 rounded-full transition-colors tactile-btn active:scale-95">
+          EN
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <span data-i18n="hero_badge" class="px-4 py-1.5 bg-red-50 text-accent text-xs font-semibold uppercase tracking-wider rounded-full inline-block mb-6 border border-red-100">✨ Free Include: 2 Helm, 2 Jas Hujan, Gembok & Holder</span>
+    <h1 data-i18n="hero_title" class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-brand">Eksplor Sukabumi <br class="hidden sm:block"/> <span class="text-accent">Tanpa Ribet.</span></h1>
+    <p data-i18n="hero_desc" class="text-lg text-gray-500 max-w-2xl mx-auto mb-4">Penyedia jasa transportasi roda dua terbaik di Kota Sukabumi. Melayani sewa harian untuk operasional kerja, wisata, atau hobi.</p>
+    <p data-i18n="hero_notice" class="text-sm font-semibold text-accent mb-10">⚠️ Weekend (Sabtu - Minggu) minimal sewa adalah 1 Hari penuh.</p>
+  </header>
+
+  <!-- Filter Kategori -->
+  <section id="bikes" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+    <div class="flex flex-wrap items-center justify-center gap-3" id="filter-container">
+      <button data-filter="all" data-i18n="filter_all" class="filter-btn active bg-brand text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-gray-850 active:scale-95 tactile-btn shadow-sm">Semua</button>
+      <button data-filter="110cc-125cc" class="filter-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all hover:border-gray-300 hover:bg-gray-50 active:scale-95 tactile-btn shadow-sm">110cc - 125cc</button>
+      <button data-filter="150cc-155cc" class="filter-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all hover:border-gray-300 hover:bg-gray-50 active:scale-95 tactile-btn shadow-sm">150cc - 155cc</button>
+    </div>
+  </section>
+
+  <!-- Bike Grid -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div id="bike-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Di-inject oleh JS -->
+    </div>
+  </main>
+
+  <!-- Fake Reviews Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="border-t border-gray-200 pt-16">
+      <h2 data-i18n="review_title" class="text-3xl font-bold tracking-tight text-center mb-10">Ulasan Pengguna Berpuas</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          <div class="flex text-yellow-400 mb-3">★★★★★</div>
+          <p data-i18n="review_1" class="text-gray-600 text-sm mb-4">"Sewa Beat Street buat keliling Geopark Ciletuh, mesinnya sehat banget kuat nanjak. Kelengkapan gembok dan jas hujannya ngebantu banget pas tiba-tiba hujan."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-xs font-bold">Andika Pratama</p>
+              <p class="text-xs text-gray-400">Wisatawan</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          <div class="flex text-yellow-400 mb-3">★★★★★</div>
+          <p data-i18n="review_2" class="text-gray-600 text-sm mb-4">"Fast response even though I contacted them past midnight. Unit Nmax was very clean, brakes were tight, and perfect for exploring Sukabumi's beautiful spots."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-xs font-bold">James Watson</p>
+              <p class="text-xs text-gray-400">Foreign Traveler</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          <div class="flex text-yellow-400 mb-3">★★★★★</div>
+          <p data-i18n="review_3" class="text-gray-600 text-sm mb-4">"Langganan tetap kalau ada dinas kerja ke Citamiang. Unit selalu siap 24 jam dan kondisinya ga pernah mengecewakan. Sukses terus SMS!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-xs font-bold">Hendra S.</p>
+              <p class="text-xs text-gray-400">Dinas Lapangan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer dengan Media Partner & Beuna Digital -->
+  <footer class="bg-white border-t border-gray-200 py-12 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-6">
+        <p data-i18n="media_partner" class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Media Partner Kami</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold text-gray-600">
+          <a href="https://www.instagram.com/rental.motor_mobil_sukabumi" class="hover:text-accent">@sewamotorsukabumi</a>
+          <span>•</span>
+          <a href="#" class="hover:text-accent">@exploresukabumi</a>
+          <span>•</span>
+          <a href="#" class="hover:text-accent">@sukabumioutdoor</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-100 pt-6 text-xs text-gray-400">
+        <p class="mb-2">📍 Jl. Pasir Salamet No.12, Nanggeleng, Kec. Citamiang, Kota Sukabumi, Jawa Barat 43145</p>
+        <p class="mb-4">📧 sewamotorsukabumi@gmail.com | 🌐 linktr.ee/sewamotorsukabumi</p>
+        <p>
+          &copy; 2026 Sewa Motor Sukabumi (SMS). <br class="sm:hidden" />
+          <span data-i18n="footer_dev">Desain & Pengembangan Web oleh</span> 
+          <a href="#" class="font-bold text-brand hover:text-accent transition-colors">Beuna Digital</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Booking -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center pointer-events-none">
+    <div id="modal-backdrop" class="absolute inset-0 bg-brand/40 backdrop-blur-sm modal-backdrop-enter pointer-events-auto" onclick="closeModal()"></div>
+    
+    <div id="modal-content" class="bg-white w-full sm:w-[480px] rounded-t-3xl sm:rounded-2xl shadow-2xl relative z-10 modal-enter pointer-events-auto flex flex-col max-h-[90vh]">
+      <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200 transition-colors tactile-btn active:scale-90 z-20">✕</button>
+      
+      <div class="p-6 sm:p-8 overflow-y-auto">
+        <div class="aspect-[4/3] bg-gray-50 rounded-xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
+          <img id="modal-img" src="" alt="Bike" class="object-contain w-full h-full drop-shadow-xl">
+        </div>
+        
+        <div class="flex justify-between items-start mb-2">
+          <h2 id="modal-title" class="text-2xl font-bold tracking-tight"></h2>
+          <span id="modal-cc" class="bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md text-xs font-semibold"></span>
+        </div>
+        <p class="text-gray-500 text-sm mb-6 pb-4 border-b border-gray-100" id="modal-features"></p>
+        
+        <h3 data-i18n="calc_title" class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-4">Kalkulator Sewa</h3>
+        
+        <!-- Pilihan Durasi -->
+        <div class="mb-4">
+          <label data-i18n="choose_duration" class="block text-xs font-medium text-gray-500 mb-1">Pilih Paket Sewa</label>
+          <select id="rent-duration-type" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all cursor-pointer">
+            <option value="half" data-i18n="opt_half">Setengah Hari (1/2 Day)</option>
+            <option value="full" data-i18n="opt_full" selected>Satu Hari Penuh (1 Day)</option>
+          </select>
+        </div>
+
+        <!-- Pemilihan Tanggal & Deteksi Weekend -->
+        <div class="mb-4">
+          <label data-i18n="rent_date" class="block text-xs font-medium text-gray-500 mb-1">Pilih Tanggal Rental</label>
+          <input type="date" id="rent-date" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all cursor-pointer">
+          <!-- Weekend Alert Message -->
+          <p id="weekend-warning" class="hidden text-xs text-accent font-bold mt-1.5">⚠️ Weekend minimal sewa 1 hari penuh!</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-xl mb-8 flex justify-between items-center border border-gray-100">
+          <div>
+            <p class="text-xs text-gray-500 font-medium mb-0.5"><span data-i18n="total_cost">Total Biaya</span></p>
+            <p class="text-2xl font-bold tracking-tight text-brand" id="total-price">Rp 0</p>
+          </div>
+          <div class="text-right text-xs text-gray-400">
+            <span id="rate-display" class="block font-semibold text-brand"></span>
+            <span data-i18n="inc_facilities_sms">Inc: 2 Helm + 2 Jas Hujan + Gembok</span>
+          </div>
+        </div>
+        
+        <button id="btn-whatsapp" onclick="checkoutWA()" class="w-full bg-accent text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-red-700 transition-all active:scale-[0.98] tactile-btn shadow-lg shadow-accent/20">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <span data-i18n="btn_wa">Pesan via WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- DICTIONARY BILINGUAL ---
+    const i18n = {
+      id: {
+        nav_bikes: "Katalog Unit",
+        hero_badge: "✨ Free Include: 2 Helm, 2 Jas Hujan, Gembok & Holder",
+        hero_title: "Eksplor Sukabumi <br class='hidden sm:block'/> <span class='text-accent'>Tanpa Ribet.</span>",
+        hero_desc: "Penyedia jasa transportasi roda dua terbaik di Kota Sukabumi. Melayani sewa harian untuk operasional kerja, wisata, atau hobi.",
+        filter_all: "Semua",
+        review_title: "Ulasan Pengguna Berpuas",
+        review_1: '"Sewa Beat Street buat keliling Geopark Ciletuh, mesinnya sehat banget kuat nanjak. Kelengkapan gembok dan jas hujannya ngebantu banget pas tiba-tiba hujan."',
+        review_2: '"Fast response even though I contacted them past midnight. Unit Nmax was very clean, brakes were tight, and perfect for exploring Sukabumi\'s beautiful spots."',
+        review_3: '"Langganan tetap kalau ada dinas kerja ke Citamiang. Unit selalu siap 24 jam dan kondisinya ga pernah mengecewakan. Sukses terus SMS!"',
+        media_partner: "Media Partner Kami",
+        footer_dev: "Desain & Pengembangan Web oleh",
+        calc_title: "Kalkulator Sewa",
+        choose_duration: "Pilih Paket Sewa",
+        opt_half: "Setengah Hari (1/2 Day)",
+        opt_full: "Satu Hari Penuh (1 Day)",
+        rent_date: "Pilih Tanggal Rental",
+        total_cost: "Total Biaya",
+        inc_facilities_sms: "Inc: 2 Helm + 2 Jas Hujan + Gembok + Holder",
+        btn_wa: "Pesan via WhatsApp"
+      },
+      en: {
+        nav_bikes: "Catalog Units",
+        hero_badge: "✨ Free Include: 2 Helmets, 2 Raincoats, Padlock & Holder",
+        hero_title: "Explore Sukabumi <br class='hidden sm:block'/> <span class='text-accent'>Without Hassle.</span>",
+        hero_desc: "The best two-wheel transportation service provider in Sukabumi City. Serving daily rentals for work operations, tourism, or hobbies.",
+        filter_all: "All",
+        review_title: "Satisfied Customer Reviews",
+        review_1: '"Rented a Beat Street to go around Geopark Ciletuh, the engine was really healthy and strong on climbs. The padlock and raincoats were very helpful when it suddenly rained."',
+        review_2: '"Fast response even though I contacted them past midnight. Unit Nmax was very clean, brakes were tight, and perfect for exploring Sukabumi\'s beautiful spots."',
+        review_3: '"Regular choice whenever there is an official field duty to Citamiang. The unit is always ready 24 hours and the condition never disappoints. Success always SMS!"',
+        media_partner: "Our Media Partners",
+        footer_dev: "Web Design & Development by",
+        calc_title: "Rental Calculator",
+        choose_duration: "Select Rental Package",
+        opt_half: "Half Day (1/2 Day)",
+        opt_full: "Full Day (1 Day)",
+        rent_date: "Select Rental Date",
+        total_cost: "Total Cost",
+        inc_facilities_sms: "Inc: 2 Helmets + 2 Raincoats + Padlock + Holder",
+        btn_wa: "Book via WhatsApp"
+      }
+    };
+
+    let currentLang = 'id';
+
+    // Data Motor Sewa Motor Sukabumi (SMS)
+    const bikes = [
+      { id: 'mio125', name: 'Yamaha Mio 125', filter: '110cc-125cc', rateHalf: 80000, rateFull: 110000, img: 'assets-sewamotor/bike_mioM3.webp' },
+      { id: 'beatdeluxe', name: 'Honda Beat Deluxe', filter: '110cc-125cc', rateHalf: 90000, rateFull: 120000, img: 'assets-sewamotor/bike_beatdeluxe.png' },
+      { id: 'beatstreet', name: 'Honda Beat Street', filter: '110cc-125cc', rateHalf: 90000, rateFull: 120000, img: 'assets-sewamotor/bike_beatstreet.png' },
+      { id: 'vario125', name: 'Honda Vario 125', filter: '110cc-125cc', rateHalf: 90000, rateFull: 120000, img: 'assets-sewamotor/bike_vario.webp' },
+      { id: 'vario150', name: 'Honda Vario 150', filter: '150cc-155cc', rateHalf: 100000, rateFull: 130000, img: 'assets-sewamotor/bike_vario160.png' },
+      { id: 'nmax', name: 'Yamaha Nmax', filter: '150cc-155cc', rateHalf: 120000, rateFull: 160000, img: 'assets-sewamotor/bike_nmax.webp' },
+      { id: 'pcx', name: 'Honda PCX', filter: '150cc-155cc', rateHalf: 120000, rateFull: 160000, img: 'assets-sewamotor/bike_pcx.webp' }
+    ];
+
+    let currentBike = null;
+
+    const toggleLanguage = () => {
+      vibrate();
+      currentLang = currentLang === 'id' ? 'en' : 'id';
+      document.getElementById('lang-toggle').innerText = currentLang === 'id' ? 'EN' : 'ID';
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) {
+          el.innerHTML = i18n[currentLang][key];
+        }
+      });
+      
+      const activeFilter = document.querySelector('.filter-btn.bg-brand').dataset.filter;
+      renderBikes(activeFilter);
+      if (currentBike && !document.getElementById('booking-modal').classList.contains('hidden')) {
+        openModal(currentBike);
+      }
+    };
+
+    const vibrate = () => {
+      if (navigator.vibrate) navigator.vibrate(40);
+    };
+
+    document.querySelectorAll('.tactile-btn').forEach(btn => {
+      btn.addEventListener('pointerdown', vibrate);
+    });
+
+    const renderBikes = (filter = 'all') => {
+      const grid = document.getElementById('bike-grid');
+      grid.innerHTML = '';
+      
+      const filtered = filter === 'all' ? bikes : bikes.filter(b => b.filter === filter);
+      
+      filtered.forEach((bike, i) => {
+        const delay = i * 50; 
+        const card = document.createElement('div');
+        
+        card.setAttribute('data-tilt', '');
+        card.setAttribute('data-tilt-max', '5');
+        card.setAttribute('data-tilt-speed', '400');
+        card.setAttribute('data-tilt-glare', 'true');
+        card.setAttribute('data-tilt-max-glare', '0.1');
+        
+        card.className = `group bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between`;
+        card.style.animation = `fade-in 0.5s ease forwards`;
+        card.style.animationDelay = `${delay}ms`;
+        card.style.opacity = '0';
+        card.style.transformStyle = 'preserve-3d';
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start mb-6" style="transform: translateZ(20px)">
+              <span class="bg-red-50 text-accent px-3 py-1 rounded-full text-xs font-semibold tracking-wide border border-red-100">SMS Resmi</span>
+              <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+            <div class="relative w-full h-48 mb-6 flex justify-center items-center" style="transform: translateZ(40px)">
+              <img src="${bike.img}" alt="${bike.name}" class="object-contain w-[90%] h-[90%] drop-shadow-lg group-hover:scale-110 transition-transform duration-500 ease-out">
+            </div>
+          </div>
+          <div style="transform: translateZ(20px)">
+            <h3 class="text-xl font-bold mb-3">${bike.name}</h3>
+            <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+              <span class="text-xs text-gray-400 font-medium">1/2 Day: Rp ${bike.rateHalf.toLocaleString('id-ID')}</span>
+              <span class="text-sm font-bold text-accent">Rp ${bike.rateFull.toLocaleString('id-ID')} <span class="text-xs text-gray-400 font-normal">/1 Day</span></span>
+            </div>
+          </div>
+        `;
+        
+        card.addEventListener('click', () => {
+          vibrate();
+          openModal(bike);
+        });
+        grid.appendChild(card);
+      });
+      
+      VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+    };
+
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderBikes();
+    });
+
+    const modal = document.getElementById('booking-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    
+    const durationType = document.getElementById('rent-duration-type');
+    const rentDate = document.getElementById('rent-date');
+    const warningMsg = document.getElementById('weekend-warning');
+    const priceDisplay = document.getElementById('total-price');
+    const rateDisplay = document.getElementById('rate-display');
+
+    const todayStr = new Date().toISOString().split('T')[0];
+    rentDate.min = todayStr;
+
+    const openModal = (bike) => {
+      currentBike = bike;
+      
+      document.getElementById('modal-img').src = bike.img;
+      document.getElementById('modal-title').textContent = bike.name;
+      document.getElementById('modal-cc').textContent = "SMS Verified";
+      document.getElementById('modal-features').textContent = "Fasilitas: 2 Helm + 2 Jas Hujan + Gembok + Holder HP";
+      
+      calculatePrice();
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      
+      requestAnimationFrame(() => {
+        modalContent.classList.add('modal-enter-active');
+        modalBackdrop.classList.add('modal-backdrop-enter-active');
+      });
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      vibrate();
+      modalContent.classList.remove('modal-enter-active');
+      modalBackdrop.classList.remove('modal-backdrop-enter-active');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }, 400);
+    };
+
+    const calculatePrice = () => {
+      if (!currentBike) return;
+
+      let isFullDay = durationType.value === "full";
+      
+      // Deteksi Hari Weekend (Sabtu = 6, Minggu = 0)
+      if (rentDate.value) {
+        const day = new Date(rentDate.value).getDay();
+        if (day === 6 || day === 0) {
+          warningMsg.classList.remove('hidden');
+          // Paksa ubah pilihan ke full day jika weekend
+          durationType.value = "full";
+          isFullDay = true;
+        } else {
+          warningMsg.classList.add('hidden');
+        }
+      } else {
+        warningMsg.classList.add('hidden');
+      }
+
+      const rate = isFullDay ? currentBike.rateFull : currentBike.rateHalf;
+      priceDisplay.textContent = `Rp ${rate.toLocaleString('id-ID')}`;
+      rateDisplay.textContent = `Rp ${rate.toLocaleString('id-ID')} / ${isFullDay ? '1 Day' : '1/2 Day'}`;
+    };
+
+    durationType.addEventListener('change', calculatePrice);
+    rentDate.addEventListener('change', calculatePrice);
+
+    const checkoutWA = () => {
+      if(!currentBike || !rentDate.value) {
+        alert(currentLang === 'id' ? "Silakan pilih tanggal rental terlebih dahulu!" : "Please select a rental date first!");
+        return;
+      }
+      vibrate();
+      
+      const pjgSewa = durationType.value === "full" ? "1 Hari Penuh (1 Day)" : "Setengah Hari (1/2 Day)";
+      const tgl = rentDate.value;
+      const total = priceDisplay.textContent;
+      
+      let message = "";
+      if(currentLang === 'id') {
+        message = `Halo Sewa Motor Sukabumi, saya ingin memesan unit rental:\n\n*Motor:* ${currentBike.name}\n*Paket:* ${pjgSewa}\n*Tanggal:* ${tgl}\n*Total Biaya:* ${total}\n\nFasilitas include 2 helm + 2 jas hujan + gembok + holder. Apakah unit tersedia?`;
+      } else {
+        message = `Hello Sewa Motor Sukabumi, I would like to book a motorcycle rental:\n\n*Motorcycle:* ${currentBike.name}\n*Package:* ${pjgSewa}\n*Date:* ${tgl}\n*Total Cost:* ${total}\n\nIncludes 2 helmets + 2 raincoats + padlock + holder. Is this unit available?`;
+      }
+      
+      const waNumber = '6285692760155'; 
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    };
+  </script>
+</body>
+</html>
