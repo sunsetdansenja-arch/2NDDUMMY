@@ -170,7 +170,7 @@
     to{ opacity:1; transform:translateY(0); }
   }
 
-  /* hero visual: car silhouette with sheen sweep */
+  /* hero visual: car image with sheen sweep */
   .hero-visual{
     position:relative; height:420px;
     opacity:0; animation:riseIn 1s ease 0.4s forwards;
@@ -179,10 +179,11 @@
     position:relative; width:100%; height:100%;
     display:flex; align-items:center; justify-content:center;
   }
-  .car-stage svg{ width:100%; max-width:560px; overflow:visible; }
+  .car-stage img.car-asset{ width:100%; max-width:560px; height:auto; object-fit:contain; position:relative; z-index:2; }
   .car-shadow{
-    position:absolute; bottom:38px; width:70%; height:26px; left:50%; transform:translateX(-50%);
-    background:radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 72%);
+    position:absolute; bottom:68px; width:80%; height:26px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(ellipse, rgba(0,0,0,0.85), transparent 72%);
+    z-index:1;
   }
   .sheen{
     position:absolute; inset:0;
@@ -191,6 +192,7 @@
     transform:translateX(-120%);
     animation:sweep 4.5s ease-in-out 1.2s infinite;
     pointer-events:none;
+    z-index:3;
   }
   @keyframes sweep{
     0%{ transform:translateX(-120%); }
@@ -201,6 +203,7 @@
     position:absolute; background:var(--panel); border:1px solid var(--line);
     border-radius:14px; padding:14px 18px; backdrop-filter:blur(6px);
     box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
+    z-index:4;
   }
   .floater.f1{ top:6%; right:2%; animation:float1 6s ease-in-out infinite; }
   .floater.f2{ bottom:2%; left:0%; animation:float2 7s ease-in-out infinite; }
@@ -255,15 +258,17 @@
     cursor:ew-resize; touch-action:none; user-select:none;
   }
   .slide-layer{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
-  .slide-layer svg{ width:62%; max-width:520px; }
-  .layer-before{ filter:grayscale(0.55) contrast(0.82) brightness(0.68) saturate(0.7); }
-  .layer-before .body{ fill:#2b2d30; }
-  .layer-after{ }
-  .layer-after .body{ fill:#c9903a; }
+  .slide-layer img.car-asset{ width:62%; max-width:520px; height:auto; object-fit:contain; }
+  
+  /* Kusam / Before effect using filters */
+  .layer-before img.car-asset{ filter: grayscale(0.6) contrast(0.8) brightness(0.6) saturate(0.5); }
   .dust{
     position:absolute; inset:0; opacity:0.5; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  
+  /* Glossy / After effect */
+  .layer-after img.car-asset{ filter: brightness(1.1) contrast(1.05) saturate(1.1); }
   .layer-after::after{
     content:''; position:absolute; inset:0;
     background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.35) 48%, transparent 62%);
@@ -274,6 +279,7 @@
     position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--gold-bright);
     box-shadow:0 0 18px rgba(212,166,58,0.7);
     transform:translateX(-1px);
+    z-index:5;
   }
   .handle .grip{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
@@ -285,6 +291,7 @@
     position:absolute; top:18px; font-family:'Space Mono', monospace; font-size:11px;
     letter-spacing:0.12em; text-transform:uppercase; padding:6px 12px; border-radius:100px;
     background:rgba(10,11,12,0.6); backdrop-filter:blur(4px);
+    z-index:4;
   }
   .side-label.left{ left:18px; color:var(--ink-dim); }
   .side-label.right{ right:18px; color:var(--gold-bright); }
@@ -456,17 +463,7 @@
     <div class="hero-visual">
       <div class="car-stage">
         <div class="car-shadow"></div>
-        <svg viewBox="0 0 400 180" fill="none">
-          <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z" fill="#c9903a"/>
-          <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
-          <line x1="205" y1="60" x2="205" y2="80" stroke="#3a3d40" stroke-width="1.5"/>
-          <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-          <circle cx="95" cy="128" r="9" fill="#5a5d60"/>
-          <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-          <circle cx="305" cy="128" r="9" fill="#5a5d60"/>
-          <rect x="55" y="98" width="16" height="7" rx="3" fill="#f0c866"/>
-          <rect x="330" y="98" width="14" height="7" rx="3" fill="#e2604f"/>
-        </svg>
+        <img class="car-asset" src="assets-car/ceramic.png" alt="Scuto Ceramic Coating">
         <div class="sheen"></div>
       </div>
       <div class="floater f1"><div class="fnum">9H+</div><div class="flabel">Kekerasan Lapisan</div></div>
@@ -489,27 +486,12 @@
 
     <div class="slider-shell reveal" id="sliderShell">
       <div class="slide-layer layer-before">
-        <svg viewBox="0 0 400 180" fill="none">
-          <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z"/>
-          <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
-          <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-          <circle cx="95" cy="128" r="9" fill="#4a4d50"/>
-          <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-          <circle cx="305" cy="128" r="9" fill="#4a4d50"/>
-        </svg>
+        <img class="car-asset" src="assets-car/ceramic.png" alt="Sebelum Coating">
         <div class="dust"></div>
       </div>
       <div class="clip-after" id="clipAfter">
         <div class="slide-layer layer-after">
-          <svg viewBox="0 0 400 180" fill="none">
-            <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z"/>
-            <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
-            <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-            <circle cx="95" cy="128" r="9" fill="#5a5d60"/>
-            <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
-            <circle cx="305" cy="128" r="9" fill="#5a5d60"/>
-            <rect x="55" y="98" width="16" height="7" rx="3" fill="#f0c866"/>
-          </svg>
+          <img class="car-asset" src="assets-car/ceramic.png" alt="Sesudah Coating">
         </div>
       </div>
       <div class="side-label left">Sebelum</div>
