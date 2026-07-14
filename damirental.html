@@ -6,12 +6,11 @@
   <title>Dami Rental Bali | #TemanPerjalananKamu</title>
   <meta name="description" content="Sewa Motor Bali TERMURAH dan TERPERCAYA. Free antar jemput, unit baru.">
   
-  <!-- Google Fonts: Poppins (Tropis, Kasual, Modern) -->
+  <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -20,261 +19,420 @@
         extend: {
           fontFamily: { sans: ['Poppins', 'sans-serif'] },
           colors: { 
-            brand: '#4DE1E6', // Cyan Tropis dari Linktree
-            dark: '#121316',
-            accent: '#FF8C00' // Oranye Senja Bali
+            brand: '#14b8a6', // Teal/Cyan Travel
+            dark: '#111827',
+            accent: '#f97316' // Orange Sunset
           },
           boxShadow: {
-            'soft': '0 20px 50px -12px rgba(77, 225, 230, 0.15)',
-            'hover': '0 30px 60px -15px rgba(77, 225, 230, 0.25)'
+            'soft': '0 20px 40px -15px rgba(20, 184, 166, 0.1)',
+            'hover': '0 30px 60px -15px rgba(20, 184, 166, 0.2)'
           }
         }
       }
     }
   </script>
   <style>
-    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #ffffff; }
-    ::-webkit-scrollbar-thumb { background: #4DE1E6; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
     
-    /* Side Drawer Animation */
-    .drawer-hidden {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    .drawer-visible {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    .backdrop-hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .backdrop-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Soft float animation untuk motor di Hero */
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-    .animate-float {
-      animation: float 5s ease-in-out infinite;
-    }
+    /* Animations */
+    .fade-enter { opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+    .fade-enter-active { opacity: 1; pointer-events: auto; }
+    
+    .modal-enter { opacity: 0; transform: scale(0.95) translateY(10px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .modal-enter-active { opacity: 1; transform: scale(1) translateY(0); }
+    
+    .drawer-hidden { transform: translateX(100%); opacity: 0; }
+    .drawer-visible { transform: translateX(0); opacity: 1; }
+    
+    input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; transition: 0.2s; }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
   </style>
 </head>
-<body class="bg-white text-dark font-sans antialiased overflow-x-hidden selection:bg-brand selection:text-dark">
+<body class="bg-white text-dark font-sans antialiased overflow-x-hidden selection:bg-brand selection:text-white overflow-hidden">
 
-  <!-- Minimalist Header / Navbar -->
-  <nav class="fixed w-full top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+  <!-- ============================================== -->
+  <!-- 1. POP-UP BAHASA (AWAL) & PROMO DISKON       -->
+  <!-- ============================================== -->
+  <div id="lang-modal" class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center fade-enter fade-enter-active">
+    <div class="w-20 h-20 bg-gradient-to-tr from-brand to-blue-400 rounded-full flex items-center justify-center mb-6 shadow-soft">
+      <span class="text-white font-bold text-2xl">DRB</span>
+    </div>
+    <h2 class="text-3xl font-bold tracking-tight mb-2 text-center">Dami Rental Bali</h2>
+    <p class="text-gray-500 mb-8 text-center px-4">Pilih bahasa Anda / Select your language</p>
+    <div class="flex flex-col sm:flex-row gap-4 w-full max-w-sm px-4">
+      <button onclick="initApp('id')" class="w-full px-6 py-4 bg-brand text-white rounded-2xl font-semibold hover:bg-teal-600 transition-all active:scale-95 shadow-lg">🇮🇩 Indonesia</button>
+      <button onclick="initApp('en')" class="w-full px-6 py-4 bg-gray-50 text-dark border border-gray-200 rounded-2xl font-semibold hover:bg-gray-100 transition-all active:scale-95">🇬🇧 English</button>
+    </div>
+  </div>
+
+  <div id="promo-modal" class="fixed inset-0 z-[90] hidden items-center justify-center fade-enter">
+    <div class="absolute inset-0 bg-dark/60 backdrop-blur-sm" onclick="closePromo()"></div>
+    <div class="bg-white w-[90%] max-w-md p-8 rounded-[2rem] shadow-2xl relative z-10 text-center modal-enter" id="promo-content">
+      <button onclick="closePromo()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500">✕</button>
+      <div class="w-16 h-16 bg-orange-50 text-accent rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🎁</div>
+      <h3 data-i18n="promo_title" class="text-2xl font-bold tracking-tight mb-2">Special Offer!</h3>
+      <p data-i18n="promo_desc" class="text-gray-500 mb-6 text-sm">Klaim sekarang dan dapatkan diskon 10% untuk semua tipe motor hari ini.</p>
+      <button onclick="claimPromo()" data-i18n="promo_btn" class="w-full py-4 bg-accent text-white rounded-xl font-bold hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/30 mb-3">Klaim Diskon 10%</button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- 2. PROMO BANNER & HEADER NAV                   -->
+  <!-- ============================================== -->
+  <div id="top-banner" class="bg-accent text-white text-xs font-semibold py-2 px-4 text-center hidden">
+    <span data-i18n="top_banner">🔥 Save 10% on your booking today! Limited-time offer.</span>
+  </div>
+
+  <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-accent to-brand flex items-center justify-center p-0.5 shadow-sm">
-          <div class="w-full h-full bg-white rounded-full flex items-center justify-center">
-            <span class="font-bold text-xs text-dark tracking-wider">DRB</span>
-          </div>
-        </div>
-        <span class="font-bold text-lg tracking-tight hidden sm:block">Dami Rental Bali</span>
+        <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-bold text-xs">DRB</div>
+        <span class="font-bold text-xl tracking-tight">Dami Rental Bali</span>
       </div>
-      
       <div class="flex items-center gap-6">
-        <a href="#katalog" data-i18n="nav_katalog" class="text-sm font-medium text-gray-500 hover:text-brand transition-colors hidden md:block">Katalog Unit</a>
-        <a href="#addons" data-i18n="nav_addons" class="text-sm font-medium text-gray-500 hover:text-brand transition-colors hidden md:block">Fasilitas Tambahan</a>
-        <button id="lang-toggle" onclick="toggleLanguage()" class="bg-gray-100 hover:bg-gray-200 text-dark font-bold text-xs py-2 px-4 rounded-full transition-transform active:scale-95">
-          EN
-        </button>
+        <a href="#how" data-i18n="nav_how" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors hidden md:block">Cara Pesan</a>
+        <a href="#katalog" data-i18n="nav_katalog" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors hidden md:block">Katalog</a>
+        <button id="lang-toggle" onclick="toggleLang()" class="flex items-center justify-center bg-gray-50 border border-gray-200 text-dark font-bold text-xs py-1.5 px-4 rounded-full transition-colors active:scale-95">EN</button>
       </div>
     </div>
   </nav>
 
-  <!-- Split Screen Hero Section -->
-  <header class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 lg:pt-44 lg:pb-24 flex flex-col lg:flex-row items-center gap-12">
-    <!-- Blur Aura behind Hero -->
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-3xl -z-10 translate-x-1/4 -translate-y-1/4"></div>
-    
-    <div class="lg:w-1/2 text-center lg:text-left z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-accent text-xs font-bold uppercase tracking-widest mb-6">
-        <span>🏝️ #TemanPerjalananKamu</span>
-      </div>
-      <h1 data-i18n="hero_title" class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-        Liburan di Bali <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500">Lebih Nyaman.</span>
+  <!-- ============================================== -->
+  <!-- 3. HERO SECTION & WEATHER WIDGET               -->
+  <!-- ============================================== -->
+  <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 flex flex-col lg:flex-row items-center gap-12">
+    <div class="lg:w-1/2 text-center lg:text-left">
+      <span data-i18n="hero_badge" class="px-4 py-1.5 bg-teal-50 text-brand text-xs font-bold uppercase tracking-widest rounded-full inline-block mb-6 border border-teal-100">#TemanPerjalananKamu</span>
+      <h1 data-i18n="hero_title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15]">
+        Eksplor Bali <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500">Lebih Menyenangkan.</span>
       </h1>
-      <p data-i18n="hero_desc" class="text-gray-400 text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0">
-        Sewa motor termurah dan terpercaya dengan unit baru. Nikmati fasilitas FREE antar jemput, cukup santai menunggu di hotel.
+      <p data-i18n="hero_desc" class="text-gray-500 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+        Pesan motormu secara online. Harga mulai 50 ribuan, unit baru, dan fasilitas FREE antar jemput ke hotel atau bandara.
       </p>
       <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-        <a href="#katalog" data-i18n="btn_explore" class="px-8 py-4 bg-dark text-white rounded-full font-semibold hover:bg-gray-800 transition-all active:scale-95 w-full sm:w-auto text-center shadow-md">
-          Lihat Motor
-        </a>
-        <a href="#addons" data-i18n="btn_addons" class="px-8 py-4 bg-gray-50 text-gray-600 rounded-full font-semibold hover:bg-gray-100 transition-all active:scale-95 w-full sm:w-auto text-center">
-          Kamera & Gadget
-        </a>
+        <a href="#katalog" data-i18n="btn_book" class="px-8 py-4 bg-brand text-white rounded-full font-semibold hover:bg-teal-600 transition-all active:scale-95 w-full sm:w-auto text-center shadow-lg shadow-teal-500/30">Pesan Sekarang</a>
       </div>
     </div>
-
-    <!-- Seamless Image Integration -->
-    <div class="lg:w-1/2 relative z-10 flex justify-center mt-6 lg:mt-0">
-      <div class="relative w-full max-w-sm animate-float">
-        <img src="assets-sewamotor/bike_vespa.png" alt="Sewa Vespa Bali" class="w-full h-auto object-contain z-20 relative">
-        <!-- Floating badge -->
-        <div class="absolute bottom-6 -left-6 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-soft border border-gray-100 z-30 flex items-center gap-3">
-          <div class="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
-          <div>
-            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Harga Mulai</p>
-            <p class="text-lg font-bold text-accent">50 Ribuan</p>
-          </div>
-        </div>
-      </div>
+    
+    <!-- Cuaca Bali Embed (Windy) -->
+    <div class="lg:w-1/2 w-full flex flex-col relative">
+      <div class="absolute -top-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10"></div>
+      <h3 data-i18n="weather_title" class="text-lg font-bold mb-3">Cuaca Bali Saat Ini</h3>
+      <p data-i18n="weather_desc" class="text-xs text-gray-500 mb-4">Cek kondisi angin dan cuaca sebelum merencanakan rute perjalananmu.</p>
+      <iframe width="100%" height="300" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=%C2%B0C&metricWind=km/h&zoom=10&overlay=wind&product=ecmwf&level=surface&lat=-8.723&lon=115.175&detail=true" frameborder="0" class="rounded-3xl shadow-soft border border-gray-100 bg-gray-50"></iframe>
     </div>
   </header>
 
-  <!-- Katalog Motor Tanpa Border (Seamless) -->
-  <section id="katalog" class="py-24 bg-gray-50/40">
+  <!-- ============================================== -->
+  <!-- 4. DAMI IN NUMBERS (INFOGRAFIS)                -->
+  <!-- ============================================== -->
+  <section class="bg-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 data-i18n="catalog_title" class="text-3xl font-bold tracking-tight mb-3">Pilih Kendaraan Anda</h2>
-        <p data-i18n="catalog_desc" class="text-gray-400 text-sm">Unit gres keluaran terbaru yang siap menemani petualangan Anda di Bali.</p>
+      <div class="text-center mb-10">
+        <h2 data-i18n="stat_title" class="text-3xl font-bold mb-2">Dami Rental in Numbers</h2>
+        <p data-i18n="stat_desc" class="text-gray-400 text-sm">Tumbuh bersama setiap perjalanan pelanggan kami.</p>
       </div>
-
-      <div id="bike-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <!-- Di-inject oleh JS -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🌍</div>
+          <h4 class="text-4xl font-extrabold text-brand mb-1">38+</h4>
+          <p data-i18n="stat_1" class="text-sm text-gray-400">Negara Asal Pelanggan</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">🛣️</div>
+          <h4 class="text-4xl font-extrabold text-brand mb-1">756.259</h4>
+          <p data-i18n="stat_2" class="text-sm text-gray-400">Total KM Perjalanan</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+          <div class="text-4xl mb-4">⭐</div>
+          <h4 class="text-4xl font-extrabold text-brand mb-1">98%</h4>
+          <p data-i18n="stat_3" class="text-sm text-gray-400">Pelanggan Sewa Kembali</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Add-ons Section (Brosur Tambahan Produk) -->
-  <section id="addons" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-gradient-to-br from-dark to-gray-900 rounded-[2.5rem] p-8 lg:p-14 relative overflow-hidden shadow-soft">
-      <div class="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- ============================================== -->
+  <!-- 5. HOW IT WORKS                                -->
+  <!-- ============================================== -->
+  <section id="how" class="py-20 bg-gray-50/50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 data-i18n="how_title" class="text-3xl font-bold mb-4">Cara Kerja Super Simpel</h2>
+      <p data-i18n="how_desc" class="text-gray-500 mb-12 max-w-2xl mx-auto">Pesan motormu bersama Dami Rental hanya dalam 3 langkah mudah. Sisanya biar kami yang urus.</p>
       
-      <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-        <div class="lg:w-1/3 text-white text-center lg:text-left">
-          <span class="text-xs font-bold text-brand uppercase tracking-widest block mb-3">ADD-ON PRODUCTS</span>
-          <h2 data-i18n="addons_title" class="text-3xl lg:text-4xl font-bold mb-4 leading-tight">Liburan Lebih Lengkap</h2>
-          <p data-i18n="addons_desc" class="text-gray-400 text-sm leading-relaxed">Abadikan momen serumu dengan action cam atau pastikan baterai hp tetap aman selama perjalanan keliling pantai.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100">
+          <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 mx-auto">1</div>
+          <h3 data-i18n="how_1_title" class="font-bold text-lg mb-2">Pesan Online</h3>
+          <p data-i18n="how_1_desc" class="text-sm text-gray-500">Pilih motor di website, tentukan tanggal, lalu konfirmasi pesanan via WhatsApp.</p>
         </div>
+        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100">
+          <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 mx-auto">2</div>
+          <h3 data-i18n="how_2_title" class="font-bold text-lg mb-2">Siapkan Dokumen</h3>
+          <p data-i18n="how_2_desc" class="text-sm text-gray-500">Kirimkan foto KTP atau Paspor sebagai jaminan sewa secara aman.</p>
+        </div>
+        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100">
+          <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 mx-auto">3</div>
+          <h3 data-i18n="how_3_title" class="font-bold text-lg mb-2">Motor Diantar</h3>
+          <p data-i18n="how_3_desc" class="text-sm text-gray-500">Unit akan diantar ke bandara, hotel, atau villa kamu tanpa biaya tambahan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 6. KATALOG MOTOR (SEAMLESS WHITE CANVAS)       -->
+  <!-- ============================================== -->
+  <section id="katalog" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 data-i18n="catalog_title" class="text-3xl font-bold mb-4">Pilih Gaya Liburanmu</h2>
+        <p data-i18n="catalog_desc" class="text-gray-500 text-sm mb-8">Kategori motor disesuaikan dengan kebutuhan eksplorasi kamu di Bali.</p>
         
-        <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-          <!-- Item 1 -->
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-white hover:border-brand/40 transition-colors">
-            <span class="text-2xl mb-4 block">📸</span>
-            <h4 class="font-bold text-base mb-1">Insta360 GO 3</h4>
-            <p class="text-xs text-gray-500 mb-4">Action Camera Premium</p>
-            <p class="font-bold text-brand text-lg">39k <span class="text-xs font-normal text-gray-500">/ hari</span></p>
+        <!-- Filter Kategori -->
+        <div class="flex flex-wrap items-center justify-center gap-3" id="filter-container">
+          <button data-filter="all" data-i18n="filter_all" class="filter-btn active bg-dark text-white px-6 py-2 rounded-full text-sm font-medium transition-all hover:bg-gray-800">Semua</button>
+          <button data-filter="Compact" class="filter-btn bg-gray-50 text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium transition-all hover:border-brand">Compact</button>
+          <button data-filter="Style" class="filter-btn bg-gray-50 text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium transition-all hover:border-brand">Style</button>
+          <button data-filter="Comfort" class="filter-btn bg-gray-50 text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium transition-all hover:border-brand">Comfort</button>
+        </div>
+      </div>
+
+      <div id="bike-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Di-inject JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 7. BADGES GARANSI & FASILITAS                  -->
+  <!-- ============================================== -->
+  <section class="bg-gray-50/50 py-12 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p data-i18n="inc_title" class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Gratis Termasuk di Semua Penyewaan</p>
+      <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> Free Cancelation</span>
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> 2 Clean Helmets</span>
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> Free Phone Holder</span>
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> Free 2 Raincoats</span>
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> New Hairnet</span>
+        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-xs font-semibold text-gray-700 flex items-center gap-2 shadow-sm"><span class="text-green-500">✓</span> Padlock</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 8. PRODUK TAMBAHAN / ADD-ONS                   -->
+  <!-- ============================================== -->
+  <section id="addons" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-blue-50 to-teal-50 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden">
+        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/3 text-center lg:text-left">
+            <h2 data-i18n="addons_title" class="text-3xl font-bold mb-4 text-dark">Sewa Ekstra</h2>
+            <p data-i18n="addons_desc" class="text-gray-600 mb-8 text-sm">Lengkapi liburanmu dengan perlengkapan dokumentasi dan gadget pendukung jalan-jalan.</p>
           </div>
-          <!-- Item 2 -->
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-white hover:border-brand/40 transition-colors">
-            <span class="text-2xl mb-4 block">🔋</span>
-            <h4 class="font-bold text-base mb-1">Power Bank</h4>
-            <p class="text-xs text-gray-500 mb-4">Xiaomi 30000 mAh</p>
-            <p class="font-bold text-brand text-lg">10k <span class="text-xs font-normal text-gray-500">/ hari</span></p>
-          </div>
-          <!-- Item 3 -->
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-white hover:border-brand/40 transition-colors">
-            <span class="text-2xl mb-4 block">📱</span>
-            <h4 class="font-bold text-base mb-1">Phone Holder</h4>
-            <p class="text-xs text-gray-500 mb-4">Kokoh & Stabil</p>
-            <p class="font-bold text-brand text-lg">5k <span class="text-xs font-normal text-gray-500">/ hari</span></p>
+          <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-white hover:border-brand transition-colors">
+              <div class="text-3xl mb-3">📷</div>
+              <h3 class="font-bold text-dark mb-1">Insta360 GO3</h3>
+              <p class="text-xs text-gray-500 mb-4">Action Cam + Pod</p>
+              <p class="font-bold text-brand">39k <span class="text-xs font-normal text-gray-400">/ hari</span></p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-white hover:border-brand transition-colors">
+              <div class="text-3xl mb-3">🔋</div>
+              <h3 class="font-bold text-dark mb-1">Power Bank</h3>
+              <p class="text-xs text-gray-500 mb-4">Xiaomi 30000 mAh</p>
+              <p class="font-bold text-brand">10k <span class="text-xs font-normal text-gray-400">/ hari</span></p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-white hover:border-brand transition-colors">
+              <div class="text-3xl mb-3">📱</div>
+              <h3 class="font-bold text-dark mb-1">Phone Holder</h3>
+              <p class="text-xs text-gray-500 mb-4">Ekstra Kokoh</p>
+              <p class="font-bold text-brand">5k <span class="text-xs font-normal text-gray-400">/ hari</span></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#111215] text-white pt-16 pb-8 border-t border-gray-900">
+  <!-- ============================================== -->
+  <!-- 9. PEMANDU RUTE (POPULAR AREAS)                -->
+  <!-- ============================================== -->
+  <section class="py-20 bg-gray-50/50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 data-i18n="area_title" class="text-3xl font-bold mb-4">Area Paling Populer di Bali</h2>
+        <p data-i18n="area_desc" class="text-gray-500 text-sm max-w-2xl mx-auto">Kami siap mengantarkan motormu langsung ke titik-titik ini agar petualanganmu bisa segera dimulai.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="relative h-48 rounded-2xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="Seminyak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+            <h3 class="text-white font-bold text-lg">Seminyak</h3>
+          </div>
+        </div>
+        <div class="relative h-48 rounded-2xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=600&q=80" alt="Canggu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+            <h3 class="text-white font-bold text-lg">Canggu</h3>
+          </div>
+        </div>
+        <div class="relative h-48 rounded-2xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=600&q=80" alt="Ubud" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+            <h3 class="text-white font-bold text-lg">Ubud</h3>
+          </div>
+        </div>
+        <div class="relative h-48 rounded-2xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1623945532585-783fb79c93ab?auto=format&fit=crop&w=600&q=80" alt="Airport" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+            <h3 class="text-white font-bold text-lg">Ngurah Rai Airport</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 10. TESTIMONI PELANGGAN                        -->
+  <!-- ============================================== -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 data-i18n="review_title" class="text-3xl font-bold mb-4">Review Pelanggan</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+          <div class="flex text-yellow-400 mb-4 text-lg">★★★★★</div>
+          <p data-i18n="review_1" class="text-gray-600 text-sm mb-6 leading-relaxed">"Sewa Scoopy selama seminggu di Bali. Motor diantar langsung ke villa di Seminyak, prosesnya super cepat cuma lewat WA. Helmnya wangi!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-sm font-bold text-dark">Dimas Anggara</p>
+              <p class="text-xs text-gray-400">Jakarta, ID</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+          <div class="flex text-yellow-400 mb-4 text-lg">★★★★★</div>
+          <p data-i18n="review_2" class="text-gray-600 text-sm mb-6 leading-relaxed">"Great service! Rented an Nmax for a trip to Ubud. The scooter was powerful and in brand new condition. Best rental in Bali so far."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-sm font-bold text-dark">Sarah Jenkins</p>
+              <p class="text-xs text-gray-400">Sydney, AU</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+          <div class="flex text-yellow-400 mb-4 text-lg">★★★★★</div>
+          <p data-i18n="review_3" class="text-gray-600 text-sm mb-6 leading-relaxed">"Murah banget dapet Vespa Primavera. CS-nya ramah, gembok dan jas hujan sudah include tanpa biaya tambahan. Highly recommended."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+            <div>
+              <p class="text-sm font-bold text-dark">Jessica W.</p>
+              <p class="text-xs text-gray-400">Surabaya, ID</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 11. FOOTER                                     -->
+  <!-- ============================================== -->
+  <footer class="bg-dark text-white pt-16 pb-8 border-t-4 border-brand">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-        <div>
-          <h2 class="text-2xl font-bold tracking-tight mb-1">Dami Rental Bali</h2>
-          <p class="text-xs text-gray-500">Sewa Motor Bali Termurah & Terpercaya</p>
+        <div class="text-center md:text-left">
+          <h2 class="text-2xl font-bold mb-2">Dami Rental Bali</h2>
+          <p class="text-gray-400 text-sm mb-2">#TemanPerjalananKamu</p>
+          <p class="text-gray-500 text-xs">📞 +62 812-6245-0019</p>
         </div>
-        <div class="flex flex-wrap justify-center gap-4 text-xs font-medium">
-          <a href="https://www.instagram.com/bali.sewamotor" target="_blank" class="px-5 py-2.5 bg-white/5 rounded-full hover:bg-accent transition-colors">Instagram</a>
-          <a href="https://linktr.ee/damirentalbalii" target="_blank" class="px-5 py-2.5 bg-white/5 rounded-full hover:bg-brand hover:text-dark transition-colors">Linktree</a>
-          <a href="https://wa.me/6281262450019" target="_blank" class="px-5 py-2.5 bg-white/5 rounded-full hover:bg-green-500 transition-colors">WhatsApp</a>
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+          <a href="https://www.instagram.com/bali.sewamotor" target="_blank" class="px-5 py-2.5 bg-gray-800 rounded-full hover:bg-accent transition-colors">Instagram</a>
+          <a href="https://linktr.ee/damirentalbalii" target="_blank" class="px-5 py-2.5 bg-gray-800 rounded-full hover:bg-brand hover:text-dark transition-colors">Linktree</a>
         </div>
       </div>
-      <div class="border-t border-gray-900 pt-8 text-center text-xs text-gray-500">
+      <div class="border-t border-gray-800 pt-8 text-center text-xs text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
         <p>&copy; 2026 Dami Rental Bali. All rights reserved.</p>
-        <p class="mt-2"><span data-i18n="footer_dev">Engineered by</span> <a href="#" class="text-brand font-bold hover:underline">Beuna Digital</a>.</p>
+        <p><span data-i18n="footer_dev">Engineered by</span> <a href="#" class="text-brand font-bold hover:underline">Beuna Digital</a>.</p>
       </div>
     </div>
   </footer>
 
   <!-- ============================================== -->
-  <!-- SIDE DRAWER PANEL (MODERN RIGHT DRAWER)       -->
+  <!-- SIDE DRAWER BOOKING                            -->
   <!-- ============================================== -->
-  <div id="drawer-backdrop" class="fixed inset-0 bg-dark/40 backdrop-blur-sm z-50 backdrop-hidden transition-opacity duration-300" onclick="closeDrawer()"></div>
+  <div id="drawer-backdrop" class="fixed inset-0 bg-dark/30 backdrop-blur-sm z-50 backdrop-hidden transition-opacity duration-300" onclick="closeDrawer()"></div>
   
   <div id="booking-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-white z-50 shadow-2xl drawer-hidden transition-transform duration-300 ease-out overflow-y-auto flex flex-col">
     
-    <!-- Drawer Header -->
-    <div class="sticky top-0 z-10 bg-white/80 backdrop-blur-md px-6 py-5 border-b border-gray-100 flex justify-between items-center">
+    <div class="sticky top-0 z-10 bg-white/90 backdrop-blur-md px-6 py-4 border-b border-gray-100 flex justify-between items-center">
       <h3 data-i18n="drawer_title" class="font-bold text-lg tracking-tight">Detail Pemesanan</h3>
       <button onclick="closeDrawer()" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors">✕</button>
     </div>
 
-    <!-- Drawer Body -->
     <div class="p-6 flex-1">
-      <!-- Unit Banner -->
+      <!-- Promo Info di Laci -->
+      <div id="drawer-promo-badge" class="mb-4 bg-red-50 border border-red-100 text-accent text-xs font-bold px-3 py-2 rounded-lg hidden">
+        🎉 Promo 10% Aktif
+      </div>
+
       <div class="bg-gray-50 rounded-2xl p-4 flex gap-4 items-center mb-8 border border-gray-100">
-        <div class="w-20 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center">
+        <div class="w-24 h-24 bg-white rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-50">
           <img id="drawer-img" src="" alt="Bike" class="w-full h-full object-contain">
         </div>
         <div>
-          <span class="text-[10px] font-bold text-brand uppercase tracking-wider block mb-0.5">PREMIUM UNIT</span>
+          <span class="text-[10px] font-bold text-brand uppercase tracking-wider block mb-0.5" id="drawer-cat">Kategori</span>
           <h4 class="font-bold text-lg leading-tight" id="drawer-title">Nama Motor</h4>
-          <p class="text-sm font-bold text-gray-500 mt-1" id="drawer-price">Rp 0</p>
+          <p class="text-sm font-bold text-gray-400 mt-1" id="drawer-price">Rp 0<span class="text-xs font-normal">/hari</span></p>
         </div>
       </div>
 
-      <!-- Form Tanggal -->
       <div class="mb-8">
         <h4 data-i18n="label_date" class="font-bold text-sm tracking-wide mb-3">Tentukan Tanggal</h4>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label data-i18n="date_start" class="block text-xs text-gray-400 mb-1">Mulai</label>
-            <input type="date" id="date-start" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-brand transition-colors cursor-pointer">
+            <label data-i18n="date_start" class="block text-xs text-gray-500 mb-1">Mulai</label>
+            <input type="date" id="date-start" class="w-full bg-white border border-gray-200 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-brand shadow-sm transition-colors cursor-pointer">
           </div>
           <div>
-            <label data-i18n="date_end" class="block text-xs text-gray-400 mb-1">Selesai</label>
-            <input type="date" id="date-end" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-brand transition-colors cursor-pointer">
+            <label data-i18n="date_end" class="block text-xs text-gray-500 mb-1">Selesai</label>
+            <input type="date" id="date-end" class="w-full bg-white border border-gray-200 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-brand shadow-sm transition-colors cursor-pointer">
           </div>
         </div>
       </div>
 
-      <!-- Add-ons Selection -->
       <div class="mb-8">
         <h4 data-i18n="label_addons" class="font-bold text-sm tracking-wide mb-3">Sewa Tambahan (Opsional)</h4>
-        
-        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl mb-2.5 cursor-pointer hover:bg-gray-50/50 transition-colors select-none">
+        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl mb-2.5 cursor-pointer hover:bg-gray-50 transition-colors select-none">
           <div class="flex items-center gap-3">
-            <input type="checkbox" id="addon-cam" value="39000" class="addon-check w-4 h-4 text-brand bg-gray-100 border-gray-300 rounded focus:ring-brand focus:ring-2">
+            <input type="checkbox" id="addon-cam" value="39000" class="addon-check w-4 h-4 text-brand bg-white border-gray-300 rounded focus:ring-brand focus:ring-2">
             <div>
               <p class="text-sm font-semibold">Insta360 GO 3</p>
               <p class="text-xs text-gray-400">+Rp 39.000 / hari</p>
             </div>
           </div>
         </label>
-        
-        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl mb-2.5 cursor-pointer hover:bg-gray-50/50 transition-colors select-none">
+        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl mb-2.5 cursor-pointer hover:bg-gray-50 transition-colors select-none">
           <div class="flex items-center gap-3">
-            <input type="checkbox" id="addon-pb" value="10000" class="addon-check w-4 h-4 text-brand bg-gray-100 border-gray-300 rounded focus:ring-brand focus:ring-2">
+            <input type="checkbox" id="addon-pb" value="10000" class="addon-check w-4 h-4 text-brand bg-white border-gray-300 rounded focus:ring-brand focus:ring-2">
             <div>
               <p class="text-sm font-semibold">Power Bank Xiaomi</p>
               <p class="text-xs text-gray-400">+Rp 10.000 / hari</p>
             </div>
           </div>
         </label>
-        
-        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50/50 transition-colors select-none">
+        <label class="flex items-center justify-between p-4 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors select-none">
           <div class="flex items-center gap-3">
-            <input type="checkbox" id="addon-holder" value="5000" class="addon-check w-4 h-4 text-brand bg-gray-100 border-gray-300 rounded focus:ring-brand focus:ring-2">
+            <input type="checkbox" id="addon-holder" value="5000" class="addon-check w-4 h-4 text-brand bg-white border-gray-300 rounded focus:ring-brand focus:ring-2">
             <div>
               <p class="text-sm font-semibold">Phone Holder Ekstra</p>
               <p class="text-xs text-gray-400">+Rp 5.000 / hari</p>
@@ -284,18 +442,18 @@
       </div>
     </div>
 
-    <!-- Drawer Summary Footer -->
+    <!-- Drawer Footer -->
     <div class="bg-gray-50 p-6 border-t border-gray-200 mt-auto">
       <div class="flex justify-between items-end mb-4">
         <div>
-          <p class="text-xs text-gray-400 font-medium mb-0.5"><span data-i18n="total_cost">Total Biaya</span> (<span id="rent-duration">0</span> <span data-i18n="days">hari</span>)</p>
+          <p class="text-xs text-gray-500 font-medium mb-1"><span data-i18n="total_cost">Total Biaya</span> (<span id="rent-duration">0</span> <span data-i18n="days">hari</span>)</p>
           <p class="text-2xl font-bold text-dark tracking-tight" id="total-price">Rp 0</p>
         </div>
       </div>
       
-      <button id="btn-whatsapp" onclick="checkoutWA()" class="w-full bg-dark text-white font-semibold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-brand hover:text-dark transition-all disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+      <button id="btn-whatsapp" onclick="checkoutWA()" class="w-full bg-dark text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-brand hover:text-dark transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg" disabled>
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        <span data-i18n="btn_wa">Kirim Pesanan WhatsApp</span>
+        <span data-i18n="btn_wa">Pesan via WhatsApp</span>
       </button>
     </div>
   </div>
@@ -304,16 +462,42 @@
     // --- KAMUS BILINGUAL ---
     const i18n = {
       id: {
-        nav_katalog: "Katalog Unit",
-        nav_addons: "Fasilitas Tambahan",
-        hero_title: "Liburan di Bali <br> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500'>Lebih Nyaman.</span>",
-        hero_desc: "Sewa motor termurah dan terpercaya dengan unit baru. Nikmati fasilitas FREE antar jemput, cukup santai menunggu di hotel.",
-        btn_explore: "Lihat Motor",
-        btn_addons: "Kamera & Gadget",
-        catalog_title: "Pilih Kendaraan Anda",
-        catalog_desc: "Unit keluaran terbaru yang dirawat secara berkala demi keamanan Anda.",
-        addons_title: "Lengkapi Liburanmu",
+        top_banner: "🔥 Save 10% on your booking today! Limited-time offer.",
+        nav_how: "Cara Pesan",
+        nav_katalog: "Katalog",
+        nav_addons: "Produk Tambahan",
+        hero_badge: "#TemanPerjalananKamu",
+        hero_title: "Eksplor Bali <br> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500'>Lebih Menyenangkan.</span>",
+        hero_desc: "Pesan motormu secara online. Harga mulai 50 ribuan, unit baru, dan fasilitas FREE antar jemput ke hotel atau bandara.",
+        btn_book: "Pesan Sekarang",
+        weather_title: "Cuaca Bali Saat Ini",
+        weather_desc: "Cek kondisi cuaca sebelum merencanakan rute perjalananmu.",
+        stat_title: "Dami Rental in Numbers",
+        stat_desc: "Tumbuh bersama setiap perjalanan pelanggan kami.",
+        stat_1: "Negara Asal Pelanggan",
+        stat_2: "Total KM Perjalanan",
+        stat_3: "Pelanggan Sewa Kembali",
+        how_title: "Cara Kerja Super Simpel",
+        how_desc: "Pesan motormu bersama Dami Rental hanya dalam 3 langkah mudah. Sisanya biar kami yang urus.",
+        how_1_title: "Pesan Online",
+        how_1_desc: "Pilih motor di website, tentukan tanggal, lalu konfirmasi pesanan via WhatsApp.",
+        how_2_title: "Siapkan Dokumen",
+        how_2_desc: "Kirimkan foto KTP atau Paspor sebagai jaminan sewa secara aman.",
+        how_3_title: "Motor Diantar",
+        how_3_desc: "Unit akan diantar ke bandara, hotel, atau villa kamu tanpa biaya tambahan.",
+        catalog_title: "Pilih Gaya Liburanmu",
+        catalog_desc: "Kategori motor disesuaikan dengan kebutuhan eksplorasi kamu di Bali.",
+        filter_all: "Semua",
+        inc_title: "Gratis Termasuk di Semua Penyewaan",
+        addons_title: "Liburan Lebih Lengkap",
         addons_desc: "Abadikan momen serumu dengan action cam atau pastikan baterai hp tetap aman selama perjalanan keliling pantai.",
+        area_title: "Area Paling Populer di Bali",
+        area_desc: "Kami siap mengantarkan motormu langsung ke titik-titik ini agar petualanganmu bisa segera dimulai.",
+        review_title: "Review Pelanggan",
+        review_1: '"Sewa Scoopy selama seminggu di Bali. Motor diantar langsung ke villa di Seminyak, prosesnya super cepat cuma lewat WA. Helmnya wangi!"',
+        review_2: '"Great service! Rented an Nmax for a trip to Ubud. The scooter was powerful and in brand new condition. Best rental in Bali so far."',
+        review_3: '"Murah banget dapet Vespa. CS-nya ramah, gembok dan jas hujan sudah include tanpa biaya tambahan. Highly recommended."',
+        media_partner: "Media Partner",
         footer_dev: "Desain & Pengembangan oleh",
         drawer_title: "Detail Pemesanan",
         label_date: "Tentukan Tanggal",
@@ -322,19 +506,49 @@
         label_addons: "Sewa Tambahan (Opsional)",
         total_cost: "Total Biaya",
         days: "hari",
-        btn_wa: "Kirim Pesanan WhatsApp"
+        btn_wa: "Pesan via WhatsApp",
+        promo_title: "Special Offer!",
+        promo_desc: "Klaim sekarang dan dapatkan diskon 10% untuk semua tipe motor hari ini.",
+        promo_btn: "Klaim Diskon 10%",
+        promo_reject: "Lain kali saja"
       },
       en: {
+        top_banner: "🔥 Save 10% on your booking today! Limited-time offer.",
+        nav_how: "How it Works",
         nav_katalog: "Catalog",
         nav_addons: "Add-ons",
-        hero_title: "Holiday in Bali <br> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500'>More Comfortable.</span>",
-        hero_desc: "Cheapest and most trusted bike rental with brand new units. Enjoy FREE delivery right to your hotel.",
-        btn_explore: "View Bikes",
-        btn_addons: "Cameras & Gadgets",
-        catalog_title: "Choose Your Ride",
-        catalog_desc: "Latest models regularly maintained for your safety and comfort.",
+        hero_badge: "#YourTravelBuddy",
+        hero_title: "Explore Bali <br> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500'>Joyfully.</span>",
+        hero_desc: "Book your scooter online. Prices start from 50k, brand new units, and FREE delivery to your hotel or airport.",
+        btn_book: "Book Now",
+        weather_title: "Current Bali Weather",
+        weather_desc: "Check the weather condition before planning your route.",
+        stat_title: "Dami Rental in Numbers",
+        stat_desc: "Growing with every journey of our customers.",
+        stat_1: "Countries Trusted Us",
+        stat_2: "Total KM Ridden",
+        stat_3: "Returning Customers",
+        how_title: "Super Simple Process",
+        how_desc: "Book your bike with Dami Rental in just 3 easy steps. We handle the rest.",
+        how_1_title: "Book Online",
+        how_1_desc: "Choose a bike, set the dates, and confirm via WhatsApp.",
+        how_2_title: "Prepare Documents",
+        how_2_desc: "Send a photo of your ID or Passport securely as a rental guarantee.",
+        how_3_title: "Scooter Delivered",
+        how_3_desc: "The unit will be delivered to your airport, hotel, or villa for free.",
+        catalog_title: "Choose Your Style",
+        catalog_desc: "Bike categories tailored to your exploration needs in Bali.",
+        filter_all: "All",
+        inc_title: "Free Inclusions with Every Rental",
         addons_title: "Complete Your Trip",
-        addons_desc: "Capture every moment without running out of battery. Add extra gear while booking your bike.",
+        addons_desc: "Capture your fun moments with an action cam or keep your phone charged while beach hopping.",
+        area_title: "Most Popular Areas in Bali",
+        area_desc: "We are ready to deliver your scooter directly to these spots so your adventure can begin immediately.",
+        review_title: "Customer Reviews",
+        review_1: '"Rented a Scoopy for a week in Bali. The bike was delivered directly to my villa in Seminyak, super fast process via WA. The helmets smelled great!"',
+        review_2: '"Great service! Rented an Nmax for a trip to Ubud. The scooter was powerful and in brand new condition. Best rental in Bali so far."',
+        review_3: '"Very cheap for a Vespa. The CS is friendly, padlock and raincoats are included with no extra fees. Highly recommended."',
+        media_partner: "Media Partners",
         footer_dev: "Web Design & Development by",
         drawer_title: "Booking Details",
         label_date: "Select Dates",
@@ -343,58 +557,115 @@
         label_addons: "Add-ons (Optional)",
         total_cost: "Total Cost",
         days: "days",
-        btn_wa: "Send via WhatsApp"
+        btn_wa: "Send via WhatsApp",
+        promo_title: "Special Offer!",
+        promo_desc: "Claim now and get a 10% discount for any bike type today.",
+        promo_btn: "Claim 10% Discount",
+        promo_reject: "Maybe later"
       }
     };
 
     let currentLang = 'id';
+    let isPromoClaimed = false;
 
-    // Database armada Dami Rental Bali (dengan basis minimal 50k)
+    // Data Motor Dami Rental (Segmentasi Compact, Comfort, Style)
     const bikes = [
-      { id: 'scoopy', name: 'Honda Scoopy', priceDay: 50000, img: 'assets-sewamotor/bike_scoopy.webp' },
-      { id: 'fazzio', name: 'Yamaha Fazzio', priceDay: 65000, img: 'assets-sewamotor/bike_fazzio.webp' },
-      { id: 'vespa', name: 'Vespa Sprint Matic', priceDay: 95000, img: 'assets-sewamotor/bike_vespa.png' },
-      { id: 'pcx', name: 'Honda PCX Premium', priceDay: 120000, img: 'assets-sewamotor/bike_pcx.webp' }
+      { id: 'scoopy', name: 'Honda Scoopy', filter: 'Compact', priceDay: 50000, img: 'assets-sewamotor/bike_scoopy.webp' },
+      { id: 'fazzio', name: 'Yamaha Fazzio', filter: 'Compact', priceDay: 60000, img: 'assets-sewamotor/bike_fazzio.webp' },
+      { id: 'vespa', name: 'Vespa Matic', filter: 'Style', priceDay: 95000, img: 'assets-sewamotor/bike_vespa.png' },
+      { id: 'pcx', name: 'Honda PCX', filter: 'Comfort', priceDay: 120000, img: 'assets-sewamotor/bike_pcx.webp' }
     ];
 
     let currentBike = null;
 
-    const toggleLanguage = () => {
-      currentLang = currentLang === 'id' ? 'en' : 'id';
-      document.getElementById('lang-toggle').innerText = currentLang === 'id' ? 'EN' : 'ID';
+    // --- POP-UP INITIAL & PROMO LOGIC ---
+    const initApp = (lang) => {
+      currentLang = lang;
+      updateTexts();
       
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (i18n[currentLang][key]) {
-          el.innerHTML = i18n[currentLang][key];
-        }
-      });
-      renderBikes();
+      const initModal = document.getElementById('lang-modal');
+      initModal.classList.remove('fade-enter-active');
+      setTimeout(() => {
+        initModal.style.display = 'none';
+        document.body.classList.remove('overflow-hidden');
+        renderBikes();
+        
+        // Show Promo after 3 seconds
+        setTimeout(() => {
+          if(!isPromoClaimed) showPromo();
+        }, 3000);
+      }, 400);
     };
 
-    // Render Katalog Seamless (Tanpa Border, Bermain di Soft Shadows)
-    const renderBikes = () => {
+    const toggleLang = () => {
+      currentLang = currentLang === 'id' ? 'en' : 'id';
+      updateTexts();
+      const activeFilter = document.querySelector('.filter-btn.bg-dark').dataset.filter;
+      renderBikes(activeFilter);
+    };
+
+    const updateTexts = () => {
+      document.getElementById('lang-toggle').innerText = currentLang === 'id' ? 'EN' : 'ID';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) el.innerHTML = i18n[currentLang][key];
+      });
+    };
+
+    const showPromo = () => {
+      const pm = document.getElementById('promo-modal');
+      pm.classList.remove('hidden');
+      pm.classList.add('flex');
+      requestAnimationFrame(() => {
+        pm.classList.add('fade-enter-active');
+        document.getElementById('promo-content').classList.add('modal-enter-active');
+      });
+    };
+
+    const closePromo = () => {
+      const pm = document.getElementById('promo-modal');
+      pm.classList.remove('fade-enter-active');
+      document.getElementById('promo-content').classList.remove('modal-enter-active');
+      setTimeout(() => {
+        pm.classList.add('hidden');
+        pm.classList.remove('flex');
+      }, 400);
+    };
+
+    const claimPromo = () => {
+      isPromoClaimed = true;
+      document.getElementById('top-banner').classList.remove('hidden');
+      closePromo();
+      if(currentBike) calculatePrice();
+    };
+
+    // --- RENDER KATALOG SEAMLESS ---
+    const renderBikes = (filter = 'all') => {
       const grid = document.getElementById('bike-grid');
       grid.innerHTML = '';
       
-      bikes.forEach((bike, i) => {
+      const filtered = filter === 'all' ? bikes : bikes.filter(b => b.filter === filter);
+      
+      filtered.forEach((bike, i) => {
         const delay = i * 40;
         const card = document.createElement('div');
-        card.className = `bg-white rounded-[2rem] p-6 hover:shadow-hover transition-all duration-300 cursor-pointer flex flex-col items-center relative z-10`;
+        // Seamless White Card with Soft Hover
+        card.className = `bg-white rounded-[2rem] p-6 hover:shadow-hover transition-shadow duration-300 cursor-pointer flex flex-col items-center relative z-10`;
         card.style.animation = `fade-in 0.4s ease forwards`;
         card.style.animationDelay = `${delay}ms`;
         card.style.opacity = '0';
         
         card.innerHTML = `
-          <div class="w-full flex justify-end mb-2">
-            <span class="bg-blue-50 text-brand px-3 py-1 rounded-full text-[10px] font-bold tracking-widest">DRB VERIFIED</span>
+          <div class="w-full flex justify-between items-center mb-4">
+            <span class="bg-gray-50 text-gray-500 border border-gray-100 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">${bike.filter}</span>
+            <div class="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-brand">→</div>
           </div>
           <div class="w-full h-44 mb-6 flex justify-center items-center">
             <img src="${bike.img}" alt="${bike.name}" class="object-contain w-[90%] h-[90%] hover:scale-105 transition-transform duration-500 ease-out">
           </div>
           <div class="text-center w-full">
-            <h3 class="text-lg font-bold mb-1">${bike.name}</h3>
-            <p class="text-sm font-semibold text-gray-400">Rp ${bike.priceDay.toLocaleString('id-ID')} <span class="text-xs font-normal">/ hari</span></p>
+            <h3 class="text-xl font-bold mb-1">${bike.name}</h3>
+            <p class="text-sm font-bold text-gray-400">Rp ${bike.priceDay.toLocaleString('id-ID')} <span class="text-xs font-normal">/ day</span></p>
           </div>
         `;
         
@@ -403,16 +674,24 @@
       });
     };
 
-    // Fade-in animation helper
+    // Filter Listeners
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-dark', 'text-white');
+          b.classList.add('bg-gray-50', 'text-gray-600');
+        });
+        e.target.classList.remove('bg-gray-50', 'text-gray-600');
+        e.target.classList.add('bg-dark', 'text-white');
+        renderBikes(e.target.dataset.filter);
+      });
+    });
+
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `@keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`;
     document.head.appendChild(styleSheet);
 
-    document.addEventListener("DOMContentLoaded", () => {
-      renderBikes();
-    });
-
-    // Side Drawer Logic
+    // --- DRAWER & CALCULATOR LOGIC ---
     const drawer = document.getElementById('booking-drawer');
     const backdrop = document.getElementById('drawer-backdrop');
     
@@ -425,13 +704,19 @@
       
       document.getElementById('drawer-img').src = bike.img;
       document.getElementById('drawer-title').textContent = bike.name;
+      document.getElementById('drawer-cat').textContent = bike.filter;
       document.getElementById('drawer-price').innerHTML = `Rp ${bike.priceDay.toLocaleString('id-ID')}<span class="text-xs text-gray-400 font-normal">/hari</span>`;
       
+      if(isPromoClaimed) {
+        document.getElementById('drawer-promo-badge').classList.remove('hidden');
+      }
+
       if(!document.getElementById('date-start').value) {
         document.getElementById('date-start').value = '';
         document.getElementById('date-end').value = '';
       }
       document.querySelectorAll('.addon-check').forEach(cb => cb.checked = false);
+      
       calculatePrice();
       
       backdrop.classList.remove('backdrop-hidden');
@@ -449,7 +734,6 @@
       document.body.style.overflow = 'auto';
     };
 
-    // Kalkulator (Durasi Hari + Paket Add-ons)
     const startInput = document.getElementById('date-start');
     const endInput = document.getElementById('date-end');
     const durationDisplay = document.getElementById('rent-duration');
@@ -459,7 +743,6 @@
 
     const calculatePrice = () => {
       if (!currentBike) return;
-
       const start = new Date(startInput.value);
       const end = new Date(endInput.value);
       
@@ -475,11 +758,17 @@
         addonChecks.forEach(cb => {
           if(cb.checked) totalAddons += parseInt(cb.value);
         });
-        
         total += (totalAddons * diffDays);
         
+        // Terapkan Diskon 10%
+        if(isPromoClaimed) {
+          const discountedTotal = total * 0.9;
+          priceDisplay.innerHTML = `<span class="line-through text-gray-400 text-lg mr-1 font-medium">Rp ${total.toLocaleString('id-ID')}</span> Rp ${discountedTotal.toLocaleString('id-ID')}`;
+        } else {
+          priceDisplay.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+        
         durationDisplay.textContent = diffDays;
-        priceDisplay.textContent = `Rp ${total.toLocaleString('id-ID')}`;
         waBtn.disabled = false;
       } else {
         durationDisplay.textContent = '0';
@@ -505,13 +794,14 @@
       if(document.getElementById('addon-pb').checked) selectedAddons.push("Powerbank 30k mAh");
       if(document.getElementById('addon-holder').checked) selectedAddons.push("Phone Holder");
       
-      let addonText = selectedAddons.length > 0 ? selectedAddons.join(", ") : "Tidak ada";
+      let addonText = selectedAddons.length > 0 ? selectedAddons.join(", ") : "None";
+      let discountText = isPromoClaimed ? "\n*Promo:* 10% Discount Applied! 🎉" : "";
       
       let message = "";
       if(currentLang === 'id') {
-        message = `Halo Dami Rental Bali,\nSaya ingin melakukan reservasi motor:\n\n*Unit:* ${currentBike.name}\n*Tanggal Mulai:* ${startDate}\n*Tanggal Selesai:* ${endDate}\n*Durasi:* ${days} Hari\n*Perlengkapan Ekstra:* ${addonText}\n*Total Estimasi:* ${total}\n\nApakah unit tersedia? (Saya ingin opsi FREE antar jemput hotel ya)`;
+        message = `Halo Dami Rental Bali,\nSaya ingin pesan motor:\n\n*Unit:* ${currentBike.name} (${currentBike.filter})\n*Tgl Mulai:* ${startDate}\n*Tgl Selesai:* ${endDate}\n*Durasi:* ${days} Hari\n*Add-ons:* ${addonText}${discountText}\n*Total Estimasi:* ${total}\n\nApakah unit tersedia? (FREE antar jemput)`;
       } else {
-        message = `Hello Dami Rental Bali,\nI would like to book a motorcycle:\n\n*Unit:* ${currentBike.name}\n*Start Date:* ${startDate}\n*End Date:* ${endDate}\n*Duration:* ${days} Days\n*Add-ons:* ${addonText}\n*Total Est:* ${total}\n\nIs this unit available? (Including free hotel delivery/pickup option)`;
+        message = `Hello Dami Rental Bali,\nI would like to book a bike:\n\n*Unit:* ${currentBike.name} (${currentBike.filter})\n*Start Date:* ${startDate}\n*End Date:* ${endDate}\n*Duration:* ${days} Days\n*Add-ons:* ${addonText}${discountText}\n*Total Est:* ${total}\n\nIs it available? (With free delivery)`;
       }
       
       const waNumber = '6281262450019'; 
