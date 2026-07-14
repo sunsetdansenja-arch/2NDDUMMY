@@ -46,11 +46,24 @@
     .drawer-hidden { transform: translateX(100%); opacity: 0; }
     .drawer-visible { transform: translateX(0); opacity: 1; }
     
+    /* FIX #2: Add missing backdrop CSS classes */
+    .backdrop-hidden { 
+      pointer-events: none !important; 
+      opacity: 0; 
+      transition: opacity 0.3s ease;
+    }
+    .backdrop-visible { 
+      pointer-events: auto; 
+      opacity: 1; 
+    }
+    
     input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; transition: 0.2s; }
     input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
   </style>
 </head>
-<body class="bg-white text-dark font-sans antialiased overflow-x-hidden selection:bg-brand selection:text-white overflow-hidden">
+
+<!-- FIX #1: Remove overflow-hidden from body tag -->
+<body class="bg-white text-dark font-sans antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
   <!-- ============================================== -->
   <!-- 1. POP-UP BAHASA (AWAL) & PROMO DISKON       -->
@@ -94,6 +107,8 @@
       <div class="flex items-center gap-6">
         <a href="#how" data-i18n="nav_how" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors hidden md:block">Cara Pesan</a>
         <a href="#katalog" data-i18n="nav_katalog" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors hidden md:block">Katalog</a>
+        <!-- FIX #8: Add missing navigation link for add-ons -->
+        <a href="#addons" data-i18n="nav_addons" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors hidden md:block">Produk Tambahan</a>
         <button id="lang-toggle" onclick="toggleLang()" class="flex items-center justify-center bg-gray-50 border border-gray-200 text-dark font-bold text-xs py-1.5 px-4 rounded-full transition-colors active:scale-95">EN</button>
       </div>
     </div>
@@ -122,7 +137,8 @@
       <div class="absolute -top-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10"></div>
       <h3 data-i18n="weather_title" class="text-lg font-bold mb-3">Cuaca Bali Saat Ini</h3>
       <p data-i18n="weather_desc" class="text-xs text-gray-500 mb-4">Cek kondisi angin dan cuaca sebelum merencanakan rute perjalananmu.</p>
-      <iframe width="100%" height="300" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=%C2%B0C&metricWind=km/h&zoom=10&overlay=wind&product=ecmwf&level=surface&lat=-8.723&lon=115.175&detail=true" frameborder="0" class="rounded-3xl shadow-soft border border-gray-100 bg-gray-50"></iframe>
+      <!-- FIX #10: Add allow attribute for iframe permissions -->
+      <iframe width="100%" height="300" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=%C2%B0C&metricWind=km/h&zoom=10&overlay=wind&product=ecmwf&level=surface&lat=-8.723&lon=115.175&detail=true" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" class="rounded-3xl shadow-soft border border-gray-100 bg-gray-50"></iframe>
     </div>
   </header>
 
@@ -353,7 +369,7 @@
         <div class="text-center md:text-left">
           <h2 class="text-2xl font-bold mb-2">Dami Rental Bali</h2>
           <p class="text-gray-400 text-sm mb-2">#TemanPerjalananKamu</p>
-          <p class="text-gray-500 text-xs">📞 +62 812-6245-0019</p>
+          <p class="text-gray-500 text-xs">📞 +62 (812) 6245-0019</p>
         </div>
         <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
           <a href="https://www.instagram.com/bali.sewamotor" target="_blank" class="px-5 py-2.5 bg-gray-800 rounded-full hover:bg-accent transition-colors">Instagram</a>
@@ -587,7 +603,6 @@
       initModal.classList.remove('fade-enter-active');
       setTimeout(() => {
         initModal.style.display = 'none';
-        document.body.classList.remove('overflow-hidden');
         renderBikes();
         
         // Show Promo after 3 seconds
@@ -599,6 +614,8 @@
 
     const toggleLang = () => {
       currentLang = currentLang === 'id' ? 'en' : 'id';
+      // FIX #4: Update button text when language changes
+      document.getElementById('lang-toggle').innerText = currentLang === 'id' ? 'EN' : 'ID';
       updateTexts();
       const activeFilter = document.querySelector('.filter-btn.bg-dark').dataset.filter;
       renderBikes(activeFilter);
@@ -614,10 +631,12 @@
 
     const showPromo = () => {
       const pm = document.getElementById('promo-modal');
+      // FIX #3: Remove 'hidden' class FIRST, then add 'flex'
       pm.classList.remove('hidden');
       pm.classList.add('flex');
+      pm.classList.add('fade-enter-active');
+      
       requestAnimationFrame(() => {
-        pm.classList.add('fade-enter-active');
         document.getElementById('promo-content').classList.add('modal-enter-active');
       });
     };
@@ -719,6 +738,8 @@
       
       calculatePrice();
       
+      // FIX #5: Simplified backdrop show/hide
+      backdrop.style.display = 'block';
       backdrop.classList.remove('backdrop-hidden');
       backdrop.classList.add('backdrop-visible');
       drawer.classList.remove('drawer-hidden');
@@ -727,6 +748,8 @@
     };
 
     const closeDrawer = () => {
+      // FIX #5: Simplified backdrop show/hide
+      backdrop.style.display = 'none';
       backdrop.classList.remove('backdrop-visible');
       backdrop.classList.add('backdrop-hidden');
       drawer.classList.remove('drawer-visible');
@@ -750,7 +773,9 @@
       
       if (startInput.value && endInput.value && end >= start) {
         const diffTime = Math.abs(end - start);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1; 
+        
+        // FIX #1: Correct date calculation (include both start and end days)
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
         
         let total = diffDays * currentBike.priceDay;
         
@@ -804,6 +829,7 @@
         message = `Hello Dami Rental Bali,\nI would like to book a bike:\n\n*Unit:* ${currentBike.name} (${currentBike.filter})\n*Start Date:* ${startDate}\n*End Date:* ${endDate}\n*Duration:* ${days} Days\n*Add-ons:* ${addonText}${discountText}\n*Total Est:* ${total}\n\nIs it available? (With free delivery)`;
       }
       
+      // FIX #6: Verified WhatsApp number format (no dashes, 62 prefix)
       const waNumber = '6281262450019'; 
       const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
       window.open(waUrl, '_blank');
