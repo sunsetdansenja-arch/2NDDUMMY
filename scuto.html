@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scuto Aceh Signature — Nano Ceramic Coating</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --void:#0a0b0c;
+    --panel:#141618;
+    --panel-2:#1b1e21;
+    --line:rgba(237,234,226,0.09);
+    --ink:#edeae2;
+    --ink-dim:#8d9195;
+    --ink-faint:#5a5d60;
+    --gold:#d4a63a;
+    --gold-bright:#f0c866;
+    --cyan:#5fd8d1;
+    --shadow-gold: 0 0 0 rgba(212,166,58,0);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:#0a0b0c;}
+
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .mono{ font-family:'Space Mono', monospace; }
+
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* grain texture */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:999;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,11,12,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex; flex-direction:column; line-height:1;
+  }
+  .brand .b1{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:24px; letter-spacing:0.04em;
+  }
+  .brand .b2{
+    font-family:'Space Mono', monospace;
+    font-size:9px; letter-spacing:0.28em; color:var(--gold);
+    margin-top:2px;
+  }
+  nav.links{
+    display:flex; gap:36px;
+  }
+  nav.links a{
+    font-size:13px; letter-spacing:0.03em; color:var(--ink-dim);
+    position:relative; padding:6px 0;
+    transition:color 0.25s ease;
+  }
+  nav.links a:hover{ color:var(--ink); }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--gold); transition:width 0.25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .rating-chip{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Space Mono', monospace; font-size:12px;
+    color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:100px;
+    padding:6px 12px;
+  }
+  .rating-chip .star{ color:var(--gold); }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold); color:#0a0b0c;
+    font-weight:700; font-size:13px; letter-spacing:0.02em;
+    padding:11px 20px; border-radius:100px; border:none;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .cta:hover{ transform:translateY(-2px); box-shadow:0 10px 28px -8px rgba(212,166,58,0.55); background:var(--gold-bright); }
+  .cta.ghost{
+    background:transparent; color:var(--ink); border:1px solid var(--line);
+  }
+  .cta.ghost:hover{ border-color:var(--gold); box-shadow:none; background:rgba(212,166,58,0.06); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 90px;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute; top:-200px; right:-160px; width:640px; height:640px;
+    background:radial-gradient(circle, rgba(212,166,58,0.16), transparent 65%);
+    filter:blur(10px); pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--cyan); margin-bottom:22px; text-transform:uppercase;
+    opacity:0; animation:riseIn 0.8s ease 0.15s forwards;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); }
+
+  .hero h1{
+    font-size:clamp(46px, 6.2vw, 84px);
+    line-height:0.96;
+    color:var(--ink);
+    opacity:0; animation:riseIn 0.9s ease 0.28s forwards;
+  }
+  .hero h1 .accent{ color:var(--gold); }
+
+  .hero p.lede{
+    margin-top:26px; max-width:460px;
+    font-size:16.5px; line-height:1.7; color:var(--ink-dim);
+    opacity:0; animation:riseIn 0.9s ease 0.42s forwards;
+  }
+  .hero-actions{
+    display:flex; align-items:center; gap:16px; margin-top:38px;
+    opacity:0; animation:riseIn 0.9s ease 0.56s forwards;
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* hero visual: car silhouette with sheen sweep */
+  .hero-visual{
+    position:relative; height:420px;
+    opacity:0; animation:riseIn 1s ease 0.4s forwards;
+  }
+  .car-stage{
+    position:relative; width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .car-stage svg{ width:100%; max-width:560px; overflow:visible; }
+  .car-shadow{
+    position:absolute; bottom:38px; width:70%; height:26px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 72%);
+  }
+  .sheen{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
+    mix-blend-mode:overlay;
+    transform:translateX(-120%);
+    animation:sweep 4.5s ease-in-out 1.2s infinite;
+    pointer-events:none;
+  }
+  @keyframes sweep{
+    0%{ transform:translateX(-120%); }
+    28%{ transform:translateX(120%); }
+    100%{ transform:translateX(120%); }
+  }
+  .floater{
+    position:absolute; background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:14px 18px; backdrop-filter:blur(6px);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
+  }
+  .floater.f1{ top:6%; right:2%; animation:float1 6s ease-in-out infinite; }
+  .floater.f2{ bottom:2%; left:0%; animation:float2 7s ease-in-out infinite; }
+  @keyframes float1{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  @keyframes float2{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+
+  .floater .fnum{ font-family:'Space Mono', monospace; font-size:22px; color:var(--gold); font-weight:700; }
+  .floater .flabel{ font-size:10.5px; color:var(--ink-dim); letter-spacing:0.04em; margin-top:2px; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-band{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--panel);
+    padding:16px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex; gap:0; animation:scroll 32s linear infinite;
+  }
+  .marquee-band:hover .marquee-track{ animation-play-state:paused; }
+  .marquee-track span{
+    font-family:'Space Mono', monospace; font-size:13px; color:var(--ink-dim);
+    padding:0 28px; display:inline-flex; align-items:center; gap:28px;
+  }
+  .marquee-track span::after{ content:'◆'; color:var(--gold); font-size:8px; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .tag{
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--gold); text-transform:uppercase; display:block; margin-bottom:16px;
+  }
+  .section-head h2{ font-size:clamp(32px, 4vw, 50px); line-height:1; }
+  .section-head p{ margin-top:18px; color:var(--ink-dim); font-size:15.5px; line-height:1.7; max-width:520px; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- SIGNATURE SLIDER ---------- */
+  .signature{
+    background:var(--panel);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .slider-shell{
+    position:relative; width:100%; aspect-ratio:16/8; border-radius:18px; overflow:hidden;
+    background:#0d0e10; border:1px solid var(--line);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.7);
+    cursor:ew-resize; touch-action:none; user-select:none;
+  }
+  .slide-layer{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .slide-layer svg{ width:62%; max-width:520px; }
+  .layer-before{ filter:grayscale(0.55) contrast(0.82) brightness(0.68) saturate(0.7); }
+  .layer-before .body{ fill:#2b2d30; }
+  .layer-after{ }
+  .layer-after .body{ fill:#c9903a; }
+  .dust{
+    position:absolute; inset:0; opacity:0.5; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .layer-after::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.35) 48%, transparent 62%);
+    mix-blend-mode:overlay;
+  }
+  .clip-after{ position:absolute; inset:0; clip-path:inset(0 50% 0 0); transition:clip-path 0.05s linear; }
+  .handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--gold-bright);
+    box-shadow:0 0 18px rgba(212,166,58,0.7);
+    transform:translateX(-1px);
+  }
+  .handle .grip{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:44px; height:44px; border-radius:50%;
+    background:var(--gold-bright); display:flex; align-items:center; justify-content:center;
+    color:#0a0b0c; box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  }
+  .side-label{
+    position:absolute; top:18px; font-family:'Space Mono', monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase; padding:6px 12px; border-radius:100px;
+    background:rgba(10,11,12,0.6); backdrop-filter:blur(4px);
+  }
+  .side-label.left{ left:18px; color:var(--ink-dim); }
+  .side-label.right{ right:18px; color:var(--gold-bright); }
+  .slider-hint{
+    text-align:center; font-size:12.5px; color:var(--ink-faint); margin-top:18px;
+    font-family:'Space Mono', monospace; letter-spacing:0.04em;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .svc-card{
+    background:var(--void); padding:32px 26px;
+    transition:background 0.25s ease;
+  }
+  .svc-card:hover{ background:var(--panel); }
+  .svc-card .icon{ width:34px; height:34px; color:var(--cyan); margin-bottom:20px; }
+  .svc-card h3{ font-size:16px; text-transform:none; letter-spacing:0.01em; font-weight:700; color:var(--ink); }
+  .svc-card p{ font-size:13px; color:var(--ink-dim); margin-top:8px; line-height:1.6; }
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .pkg-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:36px 28px; position:relative; overflow:hidden;
+    transition:transform 0.3s ease, border-color 0.3s ease;
+  }
+  .pkg-card:hover{ transform:translateY(-8px); }
+  .pkg-card .tier{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.18em; color:var(--ink-faint); text-transform:uppercase; }
+  .pkg-card h3{ margin-top:10px; font-size:28px; }
+  .pkg-card .desc{ margin-top:14px; font-size:14px; color:var(--ink-dim); line-height:1.65; min-height:64px; }
+  .pkg-card ul{ list-style:none; padding:0; margin:22px 0 0; display:flex; flex-direction:column; gap:10px; }
+  .pkg-card li{ font-size:13.5px; color:var(--ink); display:flex; gap:10px; align-items:flex-start; }
+  .pkg-card li .m{ color:var(--gold); flex-shrink:0; }
+  .pkg-card .cta{ width:100%; justify-content:center; margin-top:28px; }
+
+  .pkg-card.signature{ border-color:rgba(212,166,58,0.22); }
+  .pkg-card.luxor{ border-color:rgba(212,166,58,0.4); box-shadow:0 30px 60px -30px rgba(212,166,58,0.18); }
+  .pkg-card.platinum{
+    border-color:var(--gold);
+    background:linear-gradient(165deg, #1c1a12, var(--panel) 55%);
+  }
+  .pkg-card.platinum::before{
+    content:'PALING DIREKOMENDASIKAN';
+    position:absolute; top:18px; right:-38px; transform:rotate(38deg);
+    background:var(--gold); color:#0a0b0c; font-family:'Space Mono',monospace;
+    font-size:9.5px; letter-spacing:0.1em; font-weight:700; padding:5px 44px;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .stat{ background:var(--void); padding:44px 30px; text-align:left; }
+  .stat .num{ font-family:'Space Mono', monospace; font-size:38px; font-weight:700; color:var(--gold); }
+  .stat .lbl{ font-size:12.5px; color:var(--ink-dim); margin-top:8px; letter-spacing:0.02em; }
+
+  /* ---------- LOCATION ---------- */
+  .loc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .loc-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:36px;
+  }
+  .loc-row{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .loc-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .loc-row:first-child{ padding-top:0; }
+  .loc-row .ic{ width:20px; height:20px; color:var(--cyan); flex-shrink:0; margin-top:2px; }
+  .loc-row .lbl{ font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+  .loc-row .val{ font-size:15px; margin-top:4px; line-height:1.55; }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px; margin-top:6px;
+    font-family:'Space Mono', monospace; font-size:12.5px;
+  }
+  .status-pill .d{ width:8px; height:8px; border-radius:50%; background:#e2604f; box-shadow:0 0 10px #e2604f; }
+  .status-pill.open .d{ background:var(--cyan); box-shadow:0 0 10px var(--cyan); }
+
+  .map-panel{
+    position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--line);
+    aspect-ratio:4/3.4; background:
+      radial-gradient(circle at 30% 30%, rgba(212,166,58,0.10), transparent 55%),
+      linear-gradient(160deg, #1a1c1f, #0d0e10);
+  }
+  .map-panel svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .map-pin{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-100%);
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .map-pin .pin{
+    width:46px; height:46px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+    background:var(--gold-bright); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,0.6);
+    animation:pinPulse 2.4s ease-in-out infinite;
+  }
+  .map-pin .pin span{ transform:rotate(45deg); font-size:16px; }
+  @keyframes pinPulse{ 0%,100%{ transform:translate(0,0) rotate(-45deg) scale(1);} 50%{ transform:translate(0,-6px) rotate(-45deg) scale(1.06);} }
+  .map-ring{
+    position:absolute; top:50%; left:50%; width:16px; height:16px; border-radius:50%;
+    transform:translate(-50%,-50%); background:rgba(212,166,58,0.35);
+    animation:ring 2.4s ease-out infinite;
+  }
+  @keyframes ring{
+    0%{ transform:translate(-50%,-50%) scale(0.4); opacity:0.9; }
+    100%{ transform:translate(-50%,-50%) scale(6.5); opacity:0; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:56px 0 40px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; }
+  .foot-copy{ font-size:12.5px; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ height:300px; order:-1; }
+    .loc-grid{ grid-template-columns:1fr; }
+    .svc-grid{ grid-template-columns:repeat(2,1fr); }
+    .pkg-grid{ grid-template-columns:1fr; }
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    nav.links{ display:none; }
+    .wrap{ padding:0 20px; }
+  }
+  @media (max-width:560px){
+    .svc-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:130px; }
+    .floater{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="b1">SCUTO</span>
+      <span class="b2">ACEH SIGNATURE</span>
+    </div>
+    <nav class="links">
+      <a href="#layanan">Layanan</a>
+      <a href="#signature">Signature</a>
+      <a href="#paket">Paket</a>
+      <a href="#lokasi">Lokasi</a>
+    </nav>
+    <div class="nav-right">
+      <div class="rating-chip"><span class="star">★</span> 5.0 <span style="opacity:0.6">· 166 ulasan</span></div>
+      <a class="cta" id="navCta" href="#lokasi">Kunjungi Bengkel</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Bengkel Perawatan Bodi Mobil · Aceh Besar</div>
+      <h1>Dari kusam,<br>jadi <span class="accent">kaca.</span></h1>
+      <p class="lede">Nano Ceramic Coating 9H+ dan detailing signature yang menjaga kilau mobil Anda tetap tajam menghadapi debu, hujan, dan panas jalanan Aceh.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#paket">Lihat Paket Coating</a>
+        <a class="cta ghost" href="#signature">Lihat Efeknya ↓</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="car-stage">
+        <div class="car-shadow"></div>
+        <svg viewBox="0 0 400 180" fill="none">
+          <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z" fill="#c9903a"/>
+          <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
+          <line x1="205" y1="60" x2="205" y2="80" stroke="#3a3d40" stroke-width="1.5"/>
+          <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+          <circle cx="95" cy="128" r="9" fill="#5a5d60"/>
+          <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+          <circle cx="305" cy="128" r="9" fill="#5a5d60"/>
+          <rect x="55" y="98" width="16" height="7" rx="3" fill="#f0c866"/>
+          <rect x="330" y="98" width="14" height="7" rx="3" fill="#e2604f"/>
+        </svg>
+        <div class="sheen"></div>
+      </div>
+      <div class="floater f1"><div class="fnum">9H+</div><div class="flabel">Kekerasan Lapisan</div></div>
+      <div class="floater f2"><div class="fnum">166★</div><div class="flabel">Ulasan Pelanggan 5.0</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Efek Signature</span>
+      <h2>Geser untuk<br>lihat bedanya.</h2>
+      <p>Satu lapisan nano ceramic mengubah cat kusam menjadi permukaan kaca yang menolak air dan debu. Tarik pembatas untuk membandingkan sebelum dan sesudah coating.</p>
+    </div>
+
+    <div class="slider-shell reveal" id="sliderShell">
+      <div class="slide-layer layer-before">
+        <svg viewBox="0 0 400 180" fill="none">
+          <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z"/>
+          <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
+          <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+          <circle cx="95" cy="128" r="9" fill="#4a4d50"/>
+          <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+          <circle cx="305" cy="128" r="9" fill="#4a4d50"/>
+        </svg>
+        <div class="dust"></div>
+      </div>
+      <div class="clip-after" id="clipAfter">
+        <div class="slide-layer layer-after">
+          <svg viewBox="0 0 400 180" fill="none">
+            <path class="body" d="M40 120 C40 95 60 90 85 88 L120 60 C130 52 145 46 165 46 L245 46 C265 46 278 54 288 65 L312 88 C338 90 358 96 360 120 L360 128 L40 128 Z"/>
+            <path d="M150 60 L172 52 L242 52 L268 62 L268 82 L150 82 Z" fill="#0f1112" opacity="0.85"/>
+            <circle cx="95" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+            <circle cx="95" cy="128" r="9" fill="#5a5d60"/>
+            <circle cx="305" cy="128" r="22" fill="#0d0e10" stroke="#3a3d40" stroke-width="2"/>
+            <circle cx="305" cy="128" r="9" fill="#5a5d60"/>
+            <rect x="55" y="98" width="16" height="7" rx="3" fill="#f0c866"/>
+          </svg>
+        </div>
+      </div>
+      <div class="side-label left">Sebelum</div>
+      <div class="side-label right">Sesudah Coating</div>
+      <div class="handle" id="handle"><div class="grip">⇔</div></div>
+    </div>
+    <div class="slider-hint">TARIK GARIS UNTUK MEMBANDINGKAN</div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Layanan</span>
+      <h2>Perawatan menyeluruh,<br>bukan cuma coating.</h2>
+      <p>Dari poles ringan hingga proteksi nano ceramic penuh — semua dikerjakan dengan standar signature di satu atap.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<div class="stats reveal" id="statsRow"></div>
+
+<section id="paket">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Paket</span>
+      <h2>Pilih tingkat<br>proteksi Anda.</h2>
+      <p>Tiga paket nano ceramic coating, dari harian hingga signature penuh, disesuaikan dengan karakter mobil dan intensitas pemakaian.</p>
+    </div>
+    <div class="pkg-grid" id="pkgGrid"></div>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Lokasi</span>
+      <h2>Temukan kami<br>di Darul Imarah.</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>
+          <div>
+            <div class="lbl">Alamat</div>
+            <div class="val">Jl. Dr. Mr. Mohd Hasan, Lamcot, Kec. Darul Imarah,<br>Kabupaten Aceh Besar, Aceh 23242</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div>
+            <div class="lbl">Jam Operasional</div>
+            <div class="status-pill"><span class="d"></span> Tutup sekarang · Buka Rabu pukul 09.00</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.6 5.9L21 9l-4.5 4.4L17.6 20 12 16.9 6.4 20l1.1-6.6L3 9l6.4-1.1L12 2Z"/></svg>
+          <div>
+            <div class="lbl">Reputasi</div>
+            <div class="val">5.0 dari 166 ulasan pelanggan</div>
+          </div>
+        </div>
+        <a class="cta" style="margin-top:26px; width:100%; justify-content:center;" id="routeCta" target="_blank" rel="noopener">Buka Rute di Google Maps</a>
+      </div>
+      <div class="map-panel reveal">
+        <svg viewBox="0 0 400 340">
+          <path d="M0 60 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 140 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 220 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M80 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M320 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 90 C120 40 260 160 400 100" stroke="rgba(95,216,209,0.25)" stroke-width="3" fill="none"/>
+        </svg>
+        <div class="map-ring"></div>
+        <div class="map-pin"><div class="pin"><span>🛡</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="brand">
+      <span class="b1">SCUTO</span>
+      <span class="b2">ACEH SIGNATURE</span>
+    </div>
+    <div class="foot-copy">JL. DR. MR. MOHD HASAN, LAMCOT · ACEH BESAR 23242</div>
+    <div class="foot-copy">© 2026 SCUTO ACEH SIGNATURE</div>
+  </div>
+</footer>
+
+<script>
+  // ---- data ----
+  const services = [
+    { t:"Coating Nano Ceramic 9H+", d:"Proteksi utama, permukaan sekeras kuarsa.", icon:'<path d="M12 2l7 4v6c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-4Z"/>' },
+    { t:"Full Detailing", d:"Pembersihan menyeluruh interior & eksterior.", icon:'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>' },
+    { t:"Poles Mobil", d:"Menghilangkan baret halus, kembalikan kilau cat.", icon:'<path d="M4 12a8 8 0 1 1 8 8"/><path d="M4 12l3-3M4 12l3 3"/>' },
+    { t:"Laminating Mobil", d:"Lapisan pelindung tambahan untuk cat & krom.", icon:'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/>' },
+    { t:"Rabin Body Mobil", d:"Perataan permukaan sebelum proses coating.", icon:'<path d="M3 17l6-6 4 4 8-8"/>' },
+    { t:"Coating Kaca Mobil", d:"Kaca anti air hujan, visibilitas lebih jernih.", icon:'<path d="M4 4h16v10H4z"/><path d="M4 14l4 6M20 14l-4 6"/>' },
+    { t:"Detail Interior & Eksterior", d:"Penyedotan debu tuntas di setiap sudut kabin.", icon:'<path d="M6 20V10a6 6 0 0 1 12 0v10"/><path d="M2 20h20"/>' },
+    { t:"Pengilapan Lampu Mobil", d:"Lampu depan kembali bening & terang.", icon:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>' },
+    { t:"Pengilapan Body Mobil", d:"Sentuhan akhir untuk hasil kilau maksimal.", icon:'<path d="M12 2l2.6 5.9L21 9l-4.5 4.4L17.6 20 12 16.9 6.4 20l1.1-6.6L3 9l6.4-1.1L12 2Z"/>' }
+  ];
+
+  const svcGrid = document.getElementById('svcGrid');
+  services.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'svc-card';
+    el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${s.icon}</svg><h3>${s.t}</h3><p>${s.d}</p>`;
+    svcGrid.appendChild(el);
+  });
+
+  const marqueeItems = services.map(s=>s.t).concat(["Signature Package","Luxor Package","Platinum Package"]);
+  const track = document.getElementById('marqueeTrack');
+  for(let i=0;i<2;i++){
+    marqueeItems.forEach(t=>{
+      const span = document.createElement('span');
+      span.textContent = t;
+      track.appendChild(span);
+    });
+  }
+
+  const packages = [
+    { tier:"Paket 01", name:"Signature", cls:"signature", desc:"Titik awal proteksi ceramic — kilau bersih dan perlindungan harian untuk mobil yang sering dipakai.", items:["Nano Ceramic Coating dasar","Poles ringan sebelum coating","Coating kaca depan"] },
+    { tier:"Paket 02", name:"Luxor", cls:"luxor", desc:"Lapisan ceramic lebih tebal dengan hasil gloss yang lebih dalam dan daya tahan lebih lama.", items:["Nano Ceramic Coating 9H+","Rabin body sebelum coating","Coating kaca full","Pengilapan lampu mobil"] },
+    { tier:"Paket 03", name:"Platinum", cls:"platinum", desc:"Paket signature tertinggi — proteksi maksimal, hasil paling glossy, ditangani penuh dari awal sampai akhir.", items:["Nano Ceramic Coating 9H+ full body","Full detailing interior & eksterior","Laminating tambahan","Coating kaca & pengilapan lampu"] },
+  ];
+  const pkgGrid = document.getElementById('pkgGrid');
+  packages.forEach(p=>{
+    const el = document.createElement('div');
+    el.className = `pkg-card ${p.cls}`;
+    el.innerHTML = `<div class="tier">${p.tier}</div><h3>${p.name}</h3><div class="desc">${p.desc}</div>
+      <ul>${p.items.map(i=>`<li><span class="m">▲</span>${i}</li>`).join('')}</ul>
+      <a class="cta" href="#lokasi">Tanya Paket Ini</a>`;
+    pkgGrid.appendChild(el);
+  });
+
+  const stats = [
+    { num:"5.0", lbl:"Rating Google" },
+    { num:"166", lbl:"Ulasan Pelanggan" },
+    { num:"9H+", lbl:"Kekerasan Lapisan" },
+    { num:"03", lbl:"Tingkatan Paket" },
+  ];
+  const statsRow = document.getElementById('statsRow');
+  stats.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'stat';
+    el.innerHTML = `<div class="num">${s.num}</div><div class="lbl">${s.lbl}</div>`;
+    statsRow.appendChild(el);
+  });
+
+  // ---- maps route link ----
+  const address = "SCUTO ACEH SIGNATURE, Jl. Dr. Mr. Mohd Hasan, Lamcot, Kec. Darul Imarah, Kabupaten Aceh Besar, Aceh 23242";
+  const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address);
+  document.getElementById('routeCta').href = mapsUrl;
+  document.getElementById('navCta').href = mapsUrl;
+  document.getElementById('navCta').target = "_blank";
+
+  // ---- before/after slider ----
+  const shell = document.getElementById('sliderShell');
+  const clip = document.getElementById('clipAfter');
+  const handle = document.getElementById('handle');
+  let dragging = false;
+
+  function setPct(pct){
+    pct = Math.max(4, Math.min(96, pct));
+    clip.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  }
+  function pctFromEvent(e){
+    const rect = shell.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+  setPct(50);
+  shell.addEventListener('pointerdown', e=>{ dragging = true; setPct(pctFromEvent(e)); });
+  window.addEventListener('pointermove', e=>{ if(dragging) setPct(pctFromEvent(e)); });
+  window.addEventListener('pointerup', ()=> dragging = false);
+
+  // subtle auto demo sweep once, then stop, so users discover it's draggable
+  let autoPos = 50, dir = 1, autoTicks = 0;
+  const autoInterval = setInterval(()=>{
+    if(dragging){ clearInterval(autoInterval); return; }
+    autoPos += dir * 0.6;
+    if(autoPos > 68 || autoPos < 32) dir *= -1;
+    setPct(autoPos);
+    autoTicks++;
+    if(autoTicks > 160){ clearInterval(autoInterval); setPct(50); }
+  }, 16);
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+</body>
+</html>
