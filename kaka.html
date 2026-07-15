@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaka Autocare — Premium Nano Ceramic Coating</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --void:#0a0b0c;
+    --panel:#141618;
+    --panel-2:#1b1e21;
+    --line:rgba(237,234,226,0.09);
+    --ink:#edeae2;
+    --ink-dim:#8d9195;
+    --ink-faint:#5a5d60;
+    
+    /* New Theme: Crimson Red & Steel Blue */
+    --primary:#d92525;
+    --primary-bright:#ff4747;
+    --secondary:#4a90e2;
+    --shadow-primary: 0 0 0 rgba(217,37,37,0);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--primary); color:#0a0b0c;}
+
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .mono{ font-family:'Space Mono', monospace; }
+
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  :focus-visible{
+    outline:2px solid var(--secondary);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* grain texture */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:999;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  @media (pointer: fine) {
+    body, a, button, .slider-shell, .pkg-card { cursor: none !important; }
+    .cursor-dot {
+      position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+      background: var(--primary-bright); border-radius: 50%;
+      pointer-events: none; z-index: 10000;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px var(--primary);
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; width: 34px; height: 34px;
+      border: 1px solid rgba(217,37,37,0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .cursor-ring.hovering {
+      width: 60px; height: 60px;
+      background: rgba(217,37,37,0.12);
+      border-color: var(--primary-bright);
+    }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,11,12,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex; flex-direction:column; line-height:1;
+  }
+  .brand .b1{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:26px; letter-spacing:0.04em;
+  }
+  .brand .b2{
+    font-family:'Space Mono', monospace;
+    font-size:9px; letter-spacing:0.28em; color:var(--primary);
+    margin-top:2px;
+  }
+  nav.links{
+    display:flex; gap:36px;
+  }
+  nav.links a{
+    font-size:13px; letter-spacing:0.03em; color:var(--ink-dim);
+    position:relative; padding:6px 0;
+    transition:color 0.25s ease;
+  }
+  nav.links a:hover{ color:var(--ink); }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--primary); transition:width 0.25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .rating-chip{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Space Mono', monospace; font-size:12px;
+    color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:100px;
+    padding:6px 12px;
+  }
+  .rating-chip .star{ color:var(--primary); }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--primary); color:#0a0b0c;
+    font-weight:700; font-size:13px; letter-spacing:0.02em;
+    padding:11px 20px; border-radius:100px; border:none;
+    white-space:nowrap;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .cta:hover{ transform:translateY(-2px); box-shadow:0 10px 28px -8px rgba(217,37,37,0.6); background:var(--primary-bright); }
+  .cta.ghost{
+    background:transparent; color:var(--ink); border:1px solid var(--line);
+  }
+  .cta.ghost:hover{ border-color:var(--primary); box-shadow:none; background:rgba(217,37,37,0.08); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 90px;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute; top:-200px; right:-160px; width:640px; height:640px;
+    background:radial-gradient(circle, rgba(217,37,37,0.18), transparent 65%);
+    filter:blur(10px); pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--secondary); margin-bottom:22px; text-transform:uppercase;
+    opacity:0; animation:riseIn 0.8s ease 0.15s forwards;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--secondary); box-shadow:0 0 12px var(--secondary); }
+
+  .hero h1{
+    font-size:clamp(46px, 6.2vw, 84px);
+    line-height:0.96;
+    color:var(--ink);
+    opacity:0; animation:riseIn 0.9s ease 0.28s forwards;
+  }
+  .hero h1 .accent{ color:var(--primary); }
+
+  .hero p.lede{
+    margin-top:26px; max-width:480px;
+    font-size:16.5px; line-height:1.7; color:var(--ink-dim);
+    opacity:0; animation:riseIn 0.9s ease 0.42s forwards;
+  }
+  .hero-actions{
+    display:flex; align-items:center; gap:16px; margin-top:38px;
+    opacity:0; animation:riseIn 0.9s ease 0.56s forwards;
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* hero visual: car image with sheen sweep */
+  .hero-visual{
+    position:relative; height:420px;
+    opacity:0; animation:riseIn 1s ease 0.4s forwards;
+  }
+  .car-stage{
+    position:relative; width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .car-stage img.car-asset{ width:100%; max-width:560px; height:auto; object-fit:contain; position:relative; z-index:2; }
+  .car-shadow{
+    position:absolute; bottom:68px; width:80%; height:26px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(ellipse, rgba(0,0,0,0.85), transparent 72%);
+    z-index:1;
+  }
+  .sheen{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
+    mix-blend-mode:overlay;
+    transform:translateX(-120%);
+    animation:sweep 4.5s ease-in-out 1.2s infinite;
+    pointer-events:none;
+    z-index:3;
+  }
+  @keyframes sweep{
+    0%{ transform:translateX(-120%); }
+    28%{ transform:translateX(120%); }
+    100%{ transform:translateX(120%); }
+  }
+  .floater{
+    position:absolute; background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:14px 18px; backdrop-filter:blur(6px);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
+    z-index:4;
+  }
+  .floater.f1{ top:6%; right:2%; animation:float1 6s ease-in-out infinite; }
+  .floater.f2{ bottom:2%; left:0%; animation:float2 7s ease-in-out infinite; }
+  @keyframes float1{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  @keyframes float2{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+
+  .floater .fnum{ font-family:'Space Mono', monospace; font-size:22px; color:var(--primary); font-weight:700; }
+  .floater .flabel{ font-size:10.5px; color:var(--ink-dim); letter-spacing:0.04em; margin-top:2px; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-band{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--panel);
+    padding:16px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex; gap:0; animation:scroll 32s linear infinite;
+  }
+  .marquee-band:hover .marquee-track{ animation-play-state:paused; }
+  .marquee-track span{
+    font-family:'Space Mono', monospace; font-size:13px; color:var(--ink-dim);
+    padding:0 28px; display:inline-flex; align-items:center; gap:28px;
+  }
+  .marquee-track span::after{ content:'◆'; color:var(--primary); font-size:8px; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .tag{
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--primary); text-transform:uppercase; display:block; margin-bottom:16px;
+  }
+  .section-head h2{ font-size:clamp(32px, 4vw, 50px); line-height:1; }
+  .section-head p{ margin-top:18px; color:var(--ink-dim); font-size:15.5px; line-height:1.7; max-width:520px; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- SIGNATURE SLIDER ---------- */
+  .signature{
+    background:var(--panel);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .slider-shell{
+    position:relative; width:100%; aspect-ratio:16/8; border-radius:18px; overflow:hidden;
+    background:#0d0e10; border:1px solid var(--line);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.7);
+    cursor:ew-resize !important; touch-action:none; user-select:none;
+  }
+  .slide-layer{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .slide-layer img.car-asset{ width:62%; max-width:520px; height:auto; object-fit:contain; }
+  
+  /* Kusam / Before effect using filters */
+  .layer-before img.car-asset{ filter: grayscale(0.6) contrast(0.8) brightness(0.6) saturate(0.5); }
+  .dust{
+    position:absolute; inset:0; opacity:0.5; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  
+  /* Glossy / After effect */
+  .layer-after img.car-asset{ filter: brightness(1.1) contrast(1.05) saturate(1.1); }
+  .layer-after::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.35) 48%, transparent 62%);
+    mix-blend-mode:overlay;
+  }
+  .clip-after{ position:absolute; inset:0; clip-path:inset(0 50% 0 0); transition:clip-path 0.05s linear; }
+  .handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--primary-bright);
+    box-shadow:0 0 18px rgba(217,37,37,0.7);
+    transform:translateX(-1px);
+    z-index:5;
+  }
+  .handle .grip{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:44px; height:44px; border-radius:50%;
+    background:var(--primary-bright); display:flex; align-items:center; justify-content:center;
+    color:#0a0b0c; box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  }
+  .side-label{
+    position:absolute; top:18px; font-family:'Space Mono', monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase; padding:6px 12px; border-radius:100px;
+    background:rgba(10,11,12,0.6); backdrop-filter:blur(4px);
+    z-index:4;
+  }
+  .side-label.left{ left:18px; color:var(--ink-dim); }
+  .side-label.right{ right:18px; color:var(--primary-bright); }
+  .slider-hint{
+    text-align:center; font-size:12.5px; color:var(--ink-faint); margin-top:18px;
+    font-family:'Space Mono', monospace; letter-spacing:0.04em;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .svc-card{
+    background:var(--void); padding:32px 26px;
+    transition:background 0.25s ease;
+  }
+  .svc-card:hover{ background:var(--panel); }
+  .svc-card .icon{ width:34px; height:34px; color:var(--secondary); margin-bottom:20px; }
+  .svc-card h3{ font-size:16px; text-transform:none; letter-spacing:0.01em; font-weight:700; color:var(--ink); }
+  .svc-card p{ font-size:13px; color:var(--ink-dim); margin-top:8px; line-height:1.6; }
+
+  /* ---------- PACKAGES / REASONS ---------- */
+  .pkg-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .pkg-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:36px 28px; position:relative; overflow:hidden;
+    transition:transform 0.3s ease, border-color 0.3s ease;
+  }
+  .pkg-card:hover{ transform:translateY(-8px); }
+  .pkg-card .tier{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.18em; color:var(--ink-faint); text-transform:uppercase; }
+  .pkg-card h3{ margin-top:10px; font-size:28px; }
+  .pkg-card .desc{ margin-top:14px; font-size:14px; color:var(--ink-dim); line-height:1.65; min-height:64px; }
+  .pkg-card ul{ list-style:none; padding:0; margin:22px 0 0; display:flex; flex-direction:column; gap:10px; }
+  .pkg-card li{ font-size:13.5px; color:var(--ink); display:flex; gap:10px; align-items:flex-start; }
+  .pkg-card li .m{ color:var(--primary); flex-shrink:0; }
+  .pkg-card .cta{ width:100%; justify-content:center; margin-top:28px; }
+
+  .pkg-card.signature{ border-color:rgba(217,37,37,0.22); }
+  .pkg-card.luxor{ border-color:rgba(217,37,37,0.4); box-shadow:0 30px 60px -30px rgba(217,37,37,0.18); }
+  .pkg-card.platinum{
+    border-color:var(--primary);
+    background:linear-gradient(165deg, #1f1414, var(--panel) 55%);
+  }
+  .pkg-card.platinum::before{
+    content:'HIGHLY RATED';
+    position:absolute; top:18px; right:-38px; transform:rotate(38deg);
+    background:var(--primary); color:#0a0b0c; font-family:'Space Mono',monospace;
+    font-size:9.5px; letter-spacing:0.1em; font-weight:700; padding:5px 44px;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .stat{ background:var(--void); padding:44px 30px; text-align:left; }
+  .stat .num{ font-family:'Space Mono', monospace; font-size:38px; font-weight:700; color:var(--primary); }
+  .stat .lbl{ font-size:12.5px; color:var(--ink-dim); margin-top:8px; letter-spacing:0.02em; }
+
+  /* ---------- LOCATION ---------- */
+  .loc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .loc-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:36px;
+  }
+  .loc-row{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .loc-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .loc-row:first-child{ padding-top:0; }
+  .loc-row .ic{ width:20px; height:20px; color:var(--secondary); flex-shrink:0; margin-top:2px; }
+  .loc-row .lbl{ font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+  .loc-row .val{ font-size:15px; margin-top:4px; line-height:1.55; }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px; margin-top:6px;
+    font-family:'Space Mono', monospace; font-size:12.5px;
+  }
+  .status-pill .d{ width:8px; height:8px; border-radius:50%; background:#e2604f; box-shadow:0 0 10px #e2604f; }
+  .status-pill.open .d{ background:var(--secondary); box-shadow:0 0 10px var(--secondary); }
+
+  .map-panel{
+    position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--line);
+    aspect-ratio:4/3.4; background:
+      radial-gradient(circle at 30% 30%, rgba(217,37,37,0.12), transparent 55%),
+      linear-gradient(160deg, #1a1c1f, #0d0e10);
+  }
+  .map-panel svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .map-pin{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-100%);
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .map-pin .pin{
+    width:46px; height:46px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+    background:var(--primary-bright); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,0.6);
+    animation:pinPulse 2.4s ease-in-out infinite;
+  }
+  .map-pin .pin span{ transform:rotate(45deg); font-size:16px; }
+  @keyframes pinPulse{ 0%,100%{ transform:translate(0,0) rotate(-45deg) scale(1);} 50%{ transform:translate(0,-6px) rotate(-45deg) scale(1.06);} }
+  .map-ring{
+    position:absolute; top:50%; left:50%; width:16px; height:16px; border-radius:50%;
+    transform:translate(-50%,-50%); background:rgba(217,37,37,0.35);
+    animation:ring 2.4s ease-out infinite;
+  }
+  @keyframes ring{
+    0%{ transform:translate(-50%,-50%) scale(0.4); opacity:0.9; }
+    100%{ transform:translate(-50%,-50%) scale(6.5); opacity:0; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:56px 0 40px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; }
+  .foot-copy{ font-size:12.5px; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    section { padding: 80px 0; }
+    .hero { padding: 130px 0 60px; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .hero-grid > div:first-child { display: flex; flex-direction: column; align-items: center; }
+    .eyebrow { justify-content: center; }
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
+    .hero-visual { height: auto; min-height: 280px; order: -1; margin-bottom: 10px; }
+    .car-shadow { bottom: 30px; }
+    
+    .slider-shell { aspect-ratio: 4/3; }
+    .slide-layer img.car-asset { width: 85%; }
+    
+    .loc-grid { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    nav.links { display: none; }
+    .wrap { padding: 0 24px; }
+    
+    .section-head { margin: 0 auto 46px; text-align: center; }
+    .section-head p { margin: 18px auto 0; }
+    .foot-grid { flex-direction: column; align-items: center; text-align: center; }
+  }
+
+  @media (max-width:560px){
+    section { padding: 60px 0; }
+    .hero { padding-top: 110px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    
+    .slider-shell { aspect-ratio: 1/1; }
+    .slide-layer img.car-asset { width: 95%; }
+    
+    .floater { display: none; }
+    .stats { grid-template-columns: 1fr; } 
+    .nav-right .rating-chip { display: none; }
+    .loc-card { padding: 26px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="b1">KAKA</span>
+      <span class="b2">AUTOCARE</span>
+    </div>
+    <nav class="links">
+      <a href="#layanan">Layanan</a>
+      <a href="#signature">Spesialisasi</a>
+      <a href="#mengapa">Mengapa Kami</a>
+      <a href="#lokasi">Lokasi Kami</a>
+    </nav>
+    <div class="nav-right">
+      <div class="rating-chip"><span class="star">★</span> 4.8 <span style="opacity:0.6">· Rating Tinggi</span></div>
+      <a class="cta" id="navCta" href="https://wa.me/6282298638323" target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Premium Nano Ceramic Coating · Jakarta Selatan</div>
+      <h1>Perlindungan maksimal,<br>kilau <span class="accent">sempurna.</span></h1>
+      <p class="lede">Kaka Autocare hadir sebagai solusi tepercaya untuk perlindungan dan perawatan bodi mobil Anda. Mengusung produk kelas dunia dan teknisi tersertifikasi.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#layanan">Lihat Layanan Kami</a>
+        <a class="cta ghost" href="#mengapa">Mengapa Kaka Autocare? ↓</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="car-stage">
+        <div class="car-shadow"></div>
+        <img class="car-asset" src="assets-car/car%201.png" alt="Kaka Autocare Detailing">
+        <div class="sheen"></div>
+      </div>
+      <div class="floater f1"><div class="fnum">4.8★</div><div class="flabel">Rating Kepuasan Google</div></div>
+      <div class="floater f2"><div class="fnum">Pro</div><div class="flabel">Certified Workshop</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Hasil Detail</span>
+      <h2>Kualitas tanpa<br>kompromi.</h2>
+      <p>Perbandingan hasil sebelum dan sesudah pengaplikasian Nano Ceramic Coating Kaka Autocare. Tarik garis pembatas untuk melihat efek restorasi gloss pada cat mobil.</p>
+    </div>
+
+    <div class="slider-shell reveal" id="sliderShell">
+      <div class="slide-layer layer-before">
+        <img class="car-asset" src="assets-car/car%202.png" alt="Sebelum Perawatan">
+        <div class="dust"></div>
+      </div>
+      <div class="clip-after" id="clipAfter">
+        <div class="slide-layer layer-after">
+          <img class="car-asset" src="assets-car/car%202.png" alt="Sesudah Perawatan">
+        </div>
+      </div>
+      <div class="side-label left">Kusam & Pudar</div>
+      <div class="side-label right">Sesudah Coating</div>
+      <div class="handle" id="handle"><div class="grip">⇔</div></div>
+    </div>
+    <div class="slider-hint">TARIK GARIS UNTUK MEMBANDINGKAN</div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Spesialisasi Kami</span>
+      <h2>Layanan lengkap<br>perawatan bodi.</h2>
+      <p>Kami berfokus pada estetika dan perlindungan jangka panjang otomotif melalui berbagai layanan unggulan yang ditangani profesional.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<div class="stats reveal" id="statsRow"></div>
+
+<section id="mengapa">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Value Proposition</span>
+      <h2>Mengapa memilih<br>Kaka Autocare?</h2>
+      <p>Kami memadukan produk berkualitas global dengan standar pengerjaan yang ketat demi memberikan hasil yang maksimal untuk kendaraan Anda.</p>
+    </div>
+    <div class="pkg-grid" id="pkgGrid"></div>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Kunjungi Workshop</span>
+      <h2>Temukan kami<br>di Ragunan.</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>
+          <div>
+            <div class="lbl">Alamat Workshop</div>
+            <div class="val">Jl. Ampera Raya No.99a, RT.1/RW.2, Ragunan, Ps. Minggu,<br>Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12560</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div>
+            <div class="lbl">Jam Operasional</div>
+            <div class="status-pill open"><span class="d"></span> Buka Setiap Hari | 09.00 - 18.00 WIB</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="lbl">Kontak Kami</div>
+            <div class="val">0822-9863-8323 <br>kaka.autocare@gmail.com</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:26px;">
+          <a class="cta" style="flex:1; justify-content:center;" href="https://wa.me/6282298638323" target="_blank" rel="noopener">Chat WhatsApp</a>
+          <a class="cta ghost" style="flex:1; justify-content:center;" id="routeCta" href="https://maps.app.goo.gl/cZdtHYdMNwBJ2grY7" target="_blank" rel="noopener">Buka Maps</a>
+        </div>
+      </div>
+      <div class="map-panel reveal">
+        <svg viewBox="0 0 400 340">
+          <path d="M0 60 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 140 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 220 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M80 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M320 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 90 C120 40 260 160 400 100" stroke="rgba(74,144,226,0.25)" stroke-width="3" fill="none"/>
+        </svg>
+        <div class="map-ring"></div>
+        <div class="map-pin"><div class="pin"><span>📍</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="brand">
+      <span class="b1">KAKA</span>
+      <span class="b2">AUTOCARE</span>
+    </div>
+    <div class="foot-copy">JL. AMPERA RAYA NO.99A, RAGUNAN · JAKARTA SELATAN 12560</div>
+    <div class="foot-copy">© 2026 KAKA AUTOCARE</div>
+  </div>
+</footer>
+
+<script>
+  // ---- Custom Cursor ----
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const dot = document.createElement('div'); dot.className = 'cursor-dot';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring';
+    document.body.appendChild(dot); document.body.appendChild(ring);
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    });
+
+    function renderCursor(){
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    document.querySelectorAll('a, button, .slider-shell, .pkg-card').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+  }
+
+  // ---- data ----
+  const services = [
+    { t:"Nano Ceramic Coating", d:"Proteksi cat tingkat tinggi dengan cairan keramik nano untuk menahan goresan halus dan sinar UV.", icon:'<path d="M12 2l7 4v6c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-4Z"/>' },
+    { t:"Auto Detailing Profesional", d:"Pembersihan menyeluruh mulai dari eksterior, ruang mesin, hingga sela-sela interior kabin mobil.", icon:'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>' },
+    { t:"Perawatan Bodi / Toko Bodi", d:"Perawatan khusus untuk menjaga orisinalitas dan meremajakan tampilan fisik bodi kendaraan.", icon:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-7.1 7.1a1 1 0 0 1-1.4 0l-2.8-2.8a1 1 0 0 1 0-1.4l7.1-7.1a6 6 0 0 1 9.36-7.94l-3.77 3.77z"/>' },
+    { t:"Paint Correction", d:"Mengembalikan warna cat kusam dan menghilangkan noda gores jaring laba-laba (swirl marks).", icon:'<path d="M4 12a8 8 0 1 1 8 8"/><path d="M4 12l3-3M4 12l3 3"/>' },
+    { t:"Efek Hydrophobic", d:"Menghasilkan efek daun talas yang maksimal, membuat air hujan dan kotoran mudah tergelincir.", icon:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>' },
+    { t:"Interior Cleaning", d:"Penyedotan debu, pembersihan noda jok, plafon, dan dasbor agar higienis dan harum kembali.", icon:'<path d="M6 20V10a6 6 0 0 1 12 0v10"/><path d="M2 20h20"/>' }
+  ];
+
+  const svcGrid = document.getElementById('svcGrid');
+  services.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'svc-card';
+    el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${s.icon}</svg><h3>${s.t}</h3><p>${s.d}</p>`;
+    svcGrid.appendChild(el);
+  });
+
+  const marqueeItems = [
+    "Nano Ceramic Coating", "Auto Detailing", "Certified Workshop", 
+    "Premium Wash", "Paint Correction", "Hydrophobic Effect", "Worldclass Product"
+  ];
+  
+  const track = document.getElementById('marqueeTrack');
+  for(let i=0;i<2;i++){
+    marqueeItems.forEach(t=>{
+      const span = document.createElement('span');
+      span.textContent = t;
+      track.appendChild(span);
+    });
+  }
+
+  const packages = [
+    { tier:"Alasan 1", name:"Reputasi Terjamin", cls:"signature", desc:"Kaka Autocare telah dipercaya oleh banyak pemilik kendaraan di Jakarta dengan rekam jejak yang solid.", items:["Rating tinggi 4.8/5 di Google","Ulasan positif dari pelanggan","Pelayanan ramah dan transparan"] },
+    { tier:"Alasan 2", name:"Workshop Bersertifikat", cls:"luxor", desc:"Proses pengerjaan mobil mengikuti Standard Operating Procedure (SOP) yang ketat dan terstruktur.", items:["Penggunaan produk kelas dunia","Keamanan komponen terjamin","Lingkungan kerja yang steril"] },
+    { tier:"Alasan 3", name:"Tim Profesional", cls:"platinum", desc:"Mobil Anda ditangani langsung oleh para teknisi spesialis yang sudah berpengalaman bertahun-tahun.", items:["Detailer bersertifikat ahli","Pengerjaan presisi dan teliti","Berdedikasi pada kesempurnaan"] },
+  ];
+  const pkgGrid = document.getElementById('pkgGrid');
+  packages.forEach(p=>{
+    const el = document.createElement('div');
+    el.className = `pkg-card ${p.cls}`;
+    el.innerHTML = `<div class="tier">${p.tier}</div><h3>${p.name}</h3><div class="desc">${p.desc}</div>
+      <ul>${p.items.map(i=>`<li><span class="m">▲</span>${i}</li>`).join('')}</ul>
+      <a class="cta" href="https://wa.me/6282298638323" target="_blank">Booking Sekarang</a>`;
+    pkgGrid.appendChild(el);
+  });
+
+  const stats = [
+    { num:"4.8", lbl:"Rating Pelanggan" },
+    { num:"100%", lbl:"Certified Workshop" },
+    { num:"09:00", lbl:"Buka Setiap Hari" },
+    { num:"9H", lbl:"Nano Ceramic" },
+  ];
+  const statsRow = document.getElementById('statsRow');
+  stats.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'stat';
+    el.innerHTML = `<div class="num">${s.num}</div><div class="lbl">${s.lbl}</div>`;
+    statsRow.appendChild(el);
+  });
+
+  // ---- before/after slider ----
+  const shell = document.getElementById('sliderShell');
+  const clip = document.getElementById('clipAfter');
+  const handle = document.getElementById('handle');
+  let dragging = false;
+
+  function setPct(pct){
+    pct = Math.max(4, Math.min(96, pct));
+    clip.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  }
+  function pctFromEvent(e){
+    const rect = shell.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+  setPct(50);
+  shell.addEventListener('pointerdown', e=>{ dragging = true; setPct(pctFromEvent(e)); });
+  window.addEventListener('pointermove', e=>{ if(dragging) setPct(pctFromEvent(e)); });
+  window.addEventListener('pointerup', ()=> dragging = false);
+
+  // subtle auto demo sweep once, then stop, so users discover it's draggable
+  let autoPos = 50, dir = 1, autoTicks = 0;
+  const autoInterval = setInterval(()=>{
+    if(dragging){ clearInterval(autoInterval); return; }
+    autoPos += dir * 0.6;
+    if(autoPos > 68 || autoPos < 32) dir *= -1;
+    setPct(autoPos);
+    autoTicks++;
+    if(autoTicks > 160){ clearInterval(autoInterval); setPct(50); }
+  }, 16);
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+</body>
+</html>
