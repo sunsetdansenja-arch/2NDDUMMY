@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dcoating Sealant Jakarta — Premium Supplier & Workshop</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --void:#0a0b0c;
+    --panel:#141618;
+    --panel-2:#1b1e21;
+    --line:rgba(237,234,226,0.09);
+    --ink:#edeae2;
+    --ink-dim:#8d9195;
+    --ink-faint:#5a5d60;
+    --gold:#d4a63a;
+    --gold-bright:#f0c866;
+    --cyan:#5fd8d1;
+    --shadow-gold: 0 0 0 rgba(212,166,58,0);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:#0a0b0c;}
+
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .mono{ font-family:'Space Mono', monospace; }
+
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* grain texture */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:999;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  @media (pointer: fine) {
+    body, a, button, .slider-shell, .pkg-card { cursor: none !important; }
+    .cursor-dot {
+      position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+      background: var(--gold-bright); border-radius: 50%;
+      pointer-events: none; z-index: 10000;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px var(--gold);
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; width: 34px; height: 34px;
+      border: 1px solid rgba(212,166,58,0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .cursor-ring.hovering {
+      width: 60px; height: 60px;
+      background: rgba(212,166,58,0.12);
+      border-color: var(--gold-bright);
+    }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,11,12,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex; flex-direction:column; line-height:1;
+  }
+  .brand .b1{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:26px; letter-spacing:0.04em;
+  }
+  .brand .b2{
+    font-family:'Space Mono', monospace;
+    font-size:9px; letter-spacing:0.28em; color:var(--gold);
+    margin-top:2px;
+  }
+  nav.links{
+    display:flex; gap:36px;
+  }
+  nav.links a{
+    font-size:13px; letter-spacing:0.03em; color:var(--ink-dim);
+    position:relative; padding:6px 0;
+    transition:color 0.25s ease;
+  }
+  nav.links a:hover{ color:var(--ink); }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--gold); transition:width 0.25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .rating-chip{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Space Mono', monospace; font-size:12px;
+    color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:100px;
+    padding:6px 12px;
+  }
+  .rating-chip .star{ color:var(--gold); }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold); color:#0a0b0c;
+    font-weight:700; font-size:13px; letter-spacing:0.02em;
+    padding:11px 20px; border-radius:100px; border:none;
+    white-space:nowrap;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .cta:hover{ transform:translateY(-2px); box-shadow:0 10px 28px -8px rgba(212,166,58,0.55); background:var(--gold-bright); }
+  .cta.ghost{
+    background:transparent; color:var(--ink); border:1px solid var(--line);
+  }
+  .cta.ghost:hover{ border-color:var(--gold); box-shadow:none; background:rgba(212,166,58,0.06); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 90px;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute; top:-200px; right:-160px; width:640px; height:640px;
+    background:radial-gradient(circle, rgba(212,166,58,0.16), transparent 65%);
+    filter:blur(10px); pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--cyan); margin-bottom:22px; text-transform:uppercase;
+    opacity:0; animation:riseIn 0.8s ease 0.15s forwards;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); }
+
+  .hero h1{
+    font-size:clamp(46px, 6.2vw, 84px);
+    line-height:0.96;
+    color:var(--ink);
+    opacity:0; animation:riseIn 0.9s ease 0.28s forwards;
+  }
+  .hero h1 .accent{ color:var(--gold); }
+
+  .hero p.lede{
+    margin-top:26px; max-width:480px;
+    font-size:16.5px; line-height:1.7; color:var(--ink-dim);
+    opacity:0; animation:riseIn 0.9s ease 0.42s forwards;
+  }
+  .hero-actions{
+    display:flex; align-items:center; gap:16px; margin-top:38px;
+    opacity:0; animation:riseIn 0.9s ease 0.56s forwards;
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* hero visual: car image with sheen sweep */
+  .hero-visual{
+    position:relative; height:420px;
+    opacity:0; animation:riseIn 1s ease 0.4s forwards;
+  }
+  .car-stage{
+    position:relative; width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .car-stage img.car-asset{ width:100%; max-width:560px; height:auto; object-fit:contain; position:relative; z-index:2; }
+  .car-shadow{
+    position:absolute; bottom:68px; width:80%; height:26px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(ellipse, rgba(0,0,0,0.85), transparent 72%);
+    z-index:1;
+  }
+  .sheen{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
+    mix-blend-mode:overlay;
+    transform:translateX(-120%);
+    animation:sweep 4.5s ease-in-out 1.2s infinite;
+    pointer-events:none;
+    z-index:3;
+  }
+  @keyframes sweep{
+    0%{ transform:translateX(-120%); }
+    28%{ transform:translateX(120%); }
+    100%{ transform:translateX(120%); }
+  }
+  .floater{
+    position:absolute; background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:14px 18px; backdrop-filter:blur(6px);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
+    z-index:4;
+  }
+  .floater.f1{ top:6%; right:2%; animation:float1 6s ease-in-out infinite; }
+  .floater.f2{ bottom:2%; left:0%; animation:float2 7s ease-in-out infinite; }
+  @keyframes float1{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  @keyframes float2{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+
+  .floater .fnum{ font-family:'Space Mono', monospace; font-size:22px; color:var(--gold); font-weight:700; }
+  .floater .flabel{ font-size:10.5px; color:var(--ink-dim); letter-spacing:0.04em; margin-top:2px; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-band{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--panel);
+    padding:16px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex; gap:0; animation:scroll 32s linear infinite;
+  }
+  .marquee-band:hover .marquee-track{ animation-play-state:paused; }
+  .marquee-track span{
+    font-family:'Space Mono', monospace; font-size:13px; color:var(--ink-dim);
+    padding:0 28px; display:inline-flex; align-items:center; gap:28px;
+  }
+  .marquee-track span::after{ content:'◆'; color:var(--gold); font-size:8px; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .tag{
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.22em;
+    color:var(--gold); text-transform:uppercase; display:block; margin-bottom:16px;
+  }
+  .section-head h2{ font-size:clamp(32px, 4vw, 50px); line-height:1; }
+  .section-head p{ margin-top:18px; color:var(--ink-dim); font-size:15.5px; line-height:1.7; max-width:520px; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- SIGNATURE SLIDER ---------- */
+  .signature{
+    background:var(--panel);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .slider-shell{
+    position:relative; width:100%; aspect-ratio:16/8; border-radius:18px; overflow:hidden;
+    background:#0d0e10; border:1px solid var(--line);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.7);
+    cursor:ew-resize !important; touch-action:none; user-select:none;
+  }
+  .slide-layer{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .slide-layer img.car-asset{ width:62%; max-width:520px; height:auto; object-fit:contain; }
+  
+  /* Kusam / Before effect using filters */
+  .layer-before img.car-asset{ filter: grayscale(0.6) contrast(0.8) brightness(0.6) saturate(0.5); }
+  .dust{
+    position:absolute; inset:0; opacity:0.5; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  
+  /* Glossy / After effect */
+  .layer-after img.car-asset{ filter: brightness(1.1) contrast(1.05) saturate(1.1); }
+  .layer-after::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.35) 48%, transparent 62%);
+    mix-blend-mode:overlay;
+  }
+  .clip-after{ position:absolute; inset:0; clip-path:inset(0 50% 0 0); transition:clip-path 0.05s linear; }
+  .handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--gold-bright);
+    box-shadow:0 0 18px rgba(212,166,58,0.7);
+    transform:translateX(-1px);
+    z-index:5;
+  }
+  .handle .grip{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:44px; height:44px; border-radius:50%;
+    background:var(--gold-bright); display:flex; align-items:center; justify-content:center;
+    color:#0a0b0c; box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  }
+  .side-label{
+    position:absolute; top:18px; font-family:'Space Mono', monospace; font-size:11px;
+    letter-spacing:0.12em; text-transform:uppercase; padding:6px 12px; border-radius:100px;
+    background:rgba(10,11,12,0.6); backdrop-filter:blur(4px);
+    z-index:4;
+  }
+  .side-label.left{ left:18px; color:var(--ink-dim); }
+  .side-label.right{ right:18px; color:var(--gold-bright); }
+  .slider-hint{
+    text-align:center; font-size:12.5px; color:var(--ink-faint); margin-top:18px;
+    font-family:'Space Mono', monospace; letter-spacing:0.04em;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  }
+  .svc-card{
+    background:var(--void); padding:32px 26px;
+    transition:background 0.25s ease;
+  }
+  .svc-card:hover{ background:var(--panel); }
+  .svc-card .icon{ width:34px; height:34px; color:var(--cyan); margin-bottom:20px; }
+  .svc-card h3{ font-size:16px; text-transform:none; letter-spacing:0.01em; font-weight:700; color:var(--ink); }
+  .svc-card p{ font-size:13px; color:var(--ink-dim); margin-top:8px; line-height:1.6; }
+
+  /* ---------- PACKAGES / KEMITRAAN ---------- */
+  .pkg-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .pkg-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:36px 28px; position:relative; overflow:hidden;
+    transition:transform 0.3s ease, border-color 0.3s ease;
+  }
+  .pkg-card:hover{ transform:translateY(-8px); }
+  .pkg-card .tier{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.18em; color:var(--ink-faint); text-transform:uppercase; }
+  .pkg-card h3{ margin-top:10px; font-size:28px; }
+  .pkg-card .desc{ margin-top:14px; font-size:14px; color:var(--ink-dim); line-height:1.65; min-height:64px; }
+  .pkg-card ul{ list-style:none; padding:0; margin:22px 0 0; display:flex; flex-direction:column; gap:10px; }
+  .pkg-card li{ font-size:13.5px; color:var(--ink); display:flex; gap:10px; align-items:flex-start; }
+  .pkg-card li .m{ color:var(--gold); flex-shrink:0; }
+  .pkg-card .cta{ width:100%; justify-content:center; margin-top:28px; }
+
+  .pkg-card.signature{ border-color:rgba(212,166,58,0.22); }
+  .pkg-card.luxor{ border-color:rgba(212,166,58,0.4); box-shadow:0 30px 60px -30px rgba(212,166,58,0.18); }
+  .pkg-card.platinum{
+    border-color:var(--gold);
+    background:linear-gradient(165deg, #1c1a12, var(--panel) 55%);
+  }
+  .pkg-card.platinum::before{
+    content:'DUKUNGAN PENUH';
+    position:absolute; top:18px; right:-38px; transform:rotate(38deg);
+    background:var(--gold); color:#0a0b0c; font-family:'Space Mono',monospace;
+    font-size:9.5px; letter-spacing:0.1em; font-weight:700; padding:5px 44px;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .stat{ background:var(--void); padding:44px 30px; text-align:left; }
+  .stat .num{ font-family:'Space Mono', monospace; font-size:38px; font-weight:700; color:var(--gold); }
+  .stat .lbl{ font-size:12.5px; color:var(--ink-dim); margin-top:8px; letter-spacing:0.02em; }
+
+  /* ---------- LOCATION ---------- */
+  .loc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .loc-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:36px;
+  }
+  .loc-row{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .loc-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .loc-row:first-child{ padding-top:0; }
+  .loc-row .ic{ width:20px; height:20px; color:var(--cyan); flex-shrink:0; margin-top:2px; }
+  .loc-row .lbl{ font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+  .loc-row .val{ font-size:15px; margin-top:4px; line-height:1.55; }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px; margin-top:6px;
+    font-family:'Space Mono', monospace; font-size:12.5px;
+  }
+  .status-pill .d{ width:8px; height:8px; border-radius:50%; background:#e2604f; box-shadow:0 0 10px #e2604f; }
+  .status-pill.open .d{ background:var(--cyan); box-shadow:0 0 10px var(--cyan); }
+
+  .map-panel{
+    position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--line);
+    aspect-ratio:4/3.4; background:
+      radial-gradient(circle at 30% 30%, rgba(212,166,58,0.10), transparent 55%),
+      linear-gradient(160deg, #1a1c1f, #0d0e10);
+  }
+  .map-panel svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .map-pin{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-100%);
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .map-pin .pin{
+    width:46px; height:46px; border-radius:50% 50% 50% 0; transform:rotate(-45deg);
+    background:var(--gold-bright); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,0.6);
+    animation:pinPulse 2.4s ease-in-out infinite;
+  }
+  .map-pin .pin span{ transform:rotate(45deg); font-size:16px; }
+  @keyframes pinPulse{ 0%,100%{ transform:translate(0,0) rotate(-45deg) scale(1);} 50%{ transform:translate(0,-6px) rotate(-45deg) scale(1.06);} }
+  .map-ring{
+    position:absolute; top:50%; left:50%; width:16px; height:16px; border-radius:50%;
+    transform:translate(-50%,-50%); background:rgba(212,166,58,0.35);
+    animation:ring 2.4s ease-out infinite;
+  }
+  @keyframes ring{
+    0%{ transform:translate(-50%,-50%) scale(0.4); opacity:0.9; }
+    100%{ transform:translate(-50%,-50%) scale(6.5); opacity:0; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:56px 0 40px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; }
+  .foot-copy{ font-size:12.5px; color:var(--ink-faint); font-family:'Space Mono',monospace; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    section { padding: 80px 0; }
+    .hero { padding: 130px 0 60px; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .hero-grid > div:first-child { display: flex; flex-direction: column; align-items: center; }
+    .eyebrow { justify-content: center; }
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
+    .hero-visual { height: auto; min-height: 280px; order: -1; margin-bottom: 10px; }
+    .car-shadow { bottom: 30px; }
+    
+    .slider-shell { aspect-ratio: 4/3; }
+    .slide-layer img.car-asset { width: 85%; }
+    
+    .loc-grid { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    nav.links { display: none; }
+    .wrap { padding: 0 24px; }
+    
+    .section-head { margin: 0 auto 46px; text-align: center; }
+    .section-head p { margin: 18px auto 0; }
+    .foot-grid { flex-direction: column; align-items: center; text-align: center; }
+  }
+
+  @media (max-width:560px){
+    section { padding: 60px 0; }
+    .hero { padding-top: 110px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    
+    .slider-shell { aspect-ratio: 1/1; }
+    .slide-layer img.car-asset { width: 95%; }
+    
+    .floater { display: none; }
+    .stats { grid-template-columns: 1fr; } 
+    .nav-right .rating-chip { display: none; }
+    .loc-card { padding: 26px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="b1">DCOATING</span>
+      <span class="b2">SEALANT JAKARTA</span>
+    </div>
+    <nav class="links">
+      <a href="#layanan">Layanan Bengkel</a>
+      <a href="#signature">Proteksi</a>
+      <a href="#kemitraan">Kemitraan</a>
+      <a href="#lokasi">Lokasi Kami</a>
+    </nav>
+    <div class="nav-right">
+      <div class="rating-chip"><span class="star">★</span> 5.0 <span style="opacity:0.6">· Premium Auto Care</span></div>
+      <a class="cta" id="navCta" href="https://wa.me/628998881970" target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Premium Supplier & Workshop · Jakarta Selatan</div>
+      <h1>Perlindungan maksimal,<br>kilau <span class="accent">sempurna.</span></h1>
+      <p class="lede">Dcoating Jakarta adalah Supplier sekaligus Workshop Premium yang menyediakan berbagai produk dan layanan perawatan bodi mobil kelas dunia.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#layanan">Lihat Layanan Kami</a>
+        <a class="cta ghost" href="#kemitraan">Program Kemitraan ↓</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="car-stage">
+        <div class="car-shadow"></div>
+        <img class="car-asset" src="assets-car/car%201.png" alt="Dcoating Auto Detailing">
+        <div class="sheen"></div>
+      </div>
+      <div class="floater f1"><div class="fnum">9H++</div><div class="flabel">Titanium Nano Shield</div></div>
+      <div class="floater f2"><div class="fnum">Pro</div><div class="flabel">Workshop & Supplier</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Teknologi Proteksi</span>
+      <h2>Buktikan kilau<br>di setiap sudut.</h2>
+      <p>Bandingkan hasil sebelum dan sesudah pengaplikasian Titanium 9H+ Nano Shield dan Adams Anti UV. Tarik garis pembatas untuk melihat efek restorasi warna dan gloss pada cat mobil.</p>
+    </div>
+
+    <div class="slider-shell reveal" id="sliderShell">
+      <div class="slide-layer layer-before">
+        <img class="car-asset" src="assets-car/car%202.png" alt="Sebelum Perawatan">
+        <div class="dust"></div>
+      </div>
+      <div class="clip-after" id="clipAfter">
+        <div class="slide-layer layer-after">
+          <img class="car-asset" src="assets-car/car%202.png" alt="Sesudah Perawatan">
+        </div>
+      </div>
+      <div class="side-label left">Kusam & Pudar</div>
+      <div class="side-label right">Sesudah Coating</div>
+      <div class="handle" id="handle"><div class="grip">⇔</div></div>
+    </div>
+    <div class="slider-hint">TARIK GARIS UNTUK MEMBANDINGKAN</div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Workshop & Bengkel</span>
+      <h2>Solusi perawatan<br>bodi kelas dunia.</h2>
+      <p>Layanan premium yang ditangani oleh teknisi profesional untuk mengembalikan dan menjaga estetika kendaraan Anda.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<div class="stats reveal" id="statsRow"></div>
+
+<section id="kemitraan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Peluang Bisnis</span>
+      <h2>Program Kemitraan<br>& Pelatihan.</h2>
+      <p>Ingin memulai bisnis di industri perawatan otomotif? Kami siap membantu Anda berkembang melalui dukungan alat, produk premium, dan pengetahuan ahli.</p>
+    </div>
+    <div class="pkg-grid" id="pkgGrid"></div>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Kunjungi Workshop</span>
+      <h2>Temukan kami<br>di Jakarta Selatan.</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>
+          <div>
+            <div class="lbl">Alamat</div>
+            <div class="val">15D, Jl. Tebet Timur Dalam V i No.15 D, RT.1/RW.6,<br>East Tebet, Tebet, South Jakarta City, Jakarta 13350</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div>
+            <div class="lbl">Jam Operasional</div>
+            <div class="status-pill open"><span class="d"></span> Buka Setiap Hari (Tutup pukul 18.00 WIB)</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="lbl">Telepon & WhatsApp</div>
+            <div class="val">0899-8881-970</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:26px;">
+          <a class="cta" style="flex:1; justify-content:center;" href="https://wa.me/628998881970" target="_blank" rel="noopener">Chat WhatsApp</a>
+          <a class="cta ghost" style="flex:1; justify-content:center;" id="routeCta" href="https://maps.app.goo.gl/VknC9vLNTaZc1SNv7" target="_blank" rel="noopener">Buka Maps</a>
+        </div>
+      </div>
+      <div class="map-panel reveal">
+        <svg viewBox="0 0 400 340">
+          <path d="M0 60 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 140 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 220 H400" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M80 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M320 0 V340" stroke="rgba(237,234,226,0.06)"/>
+          <path d="M0 90 C120 40 260 160 400 100" stroke="rgba(95,216,209,0.25)" stroke-width="3" fill="none"/>
+        </svg>
+        <div class="map-ring"></div>
+        <div class="map-pin"><div class="pin"><span>📍</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="brand">
+      <span class="b1">DCOATING</span>
+      <span class="b2">SEALANT JAKARTA</span>
+    </div>
+    <div class="foot-copy">JL. TEBET TIMUR DALAM V i NO.15 D · JAKARTA 13350</div>
+    <div class="foot-copy">© 2026 DCOATING SEALANT JAKARTA</div>
+  </div>
+</footer>
+
+<script>
+  // ---- Custom Cursor ----
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const dot = document.createElement('div'); dot.className = 'cursor-dot';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring';
+    document.body.appendChild(dot); document.body.appendChild(ring);
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    });
+
+    function renderCursor(){
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    document.querySelectorAll('a, button, .slider-shell, .pkg-card').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+  }
+
+  // ---- data ----
+  const services = [
+    { t:"Poles Detailing", d:"Mengormalisasi kilau orisinal cat mobil Anda dengan teknik poles multi-step.", icon:'<path d="M12 2l7 4v6c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-4Z"/>' },
+    { t:"Coating & Paint Protection", d:"Proteksi cat jangka panjang dari kontaminasi lingkungan, jamur, dan oksidasi.", icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' },
+    { t:"Kaca Film & Karpet Mobil", d:"Meningkatkan kenyamanan dan estetika kabin interior mobil Anda secara maksimal.", icon:'<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>' },
+    { t:"Anti Karat", d:"Perlindungan sasis bawah kendaraan dari korosi akibat kelembapan tinggi dan air hujan.", icon:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>' },
+    { t:"Body Repair & PDR", d:"Perbaikan penyok bodi mobil (Paintless Dent Removal) tanpa merusak cat asli dalam waktu singkat.", icon:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-7.1 7.1a1 1 0 0 1-1.4 0l-2.8-2.8a1 1 0 0 1 0-1.4l7.1-7.1a6 6 0 0 1 9.36-7.94l-3.77 3.77z"/>' },
+    { t:"Premium Car Wash", d:"Pembersihan eksterior mendetail menggunakan Shampo berkualitas dari Chemical Guys.", icon:'<path d="M6 20V10a6 6 0 0 1 12 0v10"/><path d="M2 20h20"/>' }
+  ];
+
+  const svcGrid = document.getElementById('svcGrid');
+  services.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'svc-card';
+    el.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${s.icon}</svg><h3>${s.t}</h3><p>${s.d}</p>`;
+    svcGrid.appendChild(el);
+  });
+
+  const marqueeItems = [
+    "Titanium 9H+ Nano Shield", "Adams Anti UV", "Graphene 9H++", 
+    "Chemical Guys Shampo", "Mesin & Foam Pad Northwolf", "Paintless Dent Removal (PDR)", "Auto Detailing"
+  ];
+  
+  const track = document.getElementById('marqueeTrack');
+  for(let i=0;i<2;i++){
+    marqueeItems.forEach(t=>{
+      const span = document.createElement('span');
+      span.textContent = t;
+      track.appendChild(span);
+    });
+  }
+
+  const packages = [
+    { tier:"Edukasi", name:"Training Center", cls:"signature", desc:"Pelatihan profesional bersertifikat untuk menguasai teknik auto-detailing dan aplikasi coating dari dasar hingga mahir.", items:["Sertifikat Resmi Kompetensi","Praktek langsung di workshop","Modul pembelajaran komprehensif"] },
+    { tier:"Distribusi", name:"Reseller Program", cls:"luxor", desc:"Peluang usaha distribusi produk-produk perawatan premium kami seperti Titanium 9H+ dan Adams Anti UV di kota Anda.", items:["Harga grosir khusus agen","Suplai produk terjamin","Materi promosi digital (Marketing kit)"] },
+    { tier:"Waralaba", name:"Partnership", cls:"platinum", desc:"Sistem kemitraan bengkel auto-detailing & perlindungan cat dengan pendampingan manajemen dan dukungan operasional penuh.", items:["Pendampingan setup bengkel","Sistem manajemen tersertifikasi","Support marketing berkelanjutan"] },
+  ];
+  const pkgGrid = document.getElementById('pkgGrid');
+  packages.forEach(p=>{
+    const el = document.createElement('div');
+    el.className = `pkg-card ${p.cls}`;
+    el.innerHTML = `<div class="tier">${p.tier}</div><h3>${p.name}</h3><div class="desc">${p.desc}</div>
+      <ul>${p.items.map(i=>`<li><span class="m">▲</span>${i}</li>`).join('')}</ul>
+      <a class="cta" href="https://wa.me/628998881970" target="_blank">Tanya Program Ini</a>`;
+    pkgGrid.appendChild(el);
+  });
+
+  const stats = [
+    { num:"9H+", lbl:"Titanium Nano Shield" },
+    { num:"100%", lbl:"Produk Internasional" },
+    { num:"PDR", lbl:"Perbaikan Tanpa Cat" },
+    { num:"7/7", lbl:"Buka Setiap Hari" },
+  ];
+  const statsRow = document.getElementById('statsRow');
+  stats.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'stat';
+    el.innerHTML = `<div class="num">${s.num}</div><div class="lbl">${s.lbl}</div>`;
+    statsRow.appendChild(el);
+  });
+
+  // ---- before/after slider ----
+  const shell = document.getElementById('sliderShell');
+  const clip = document.getElementById('clipAfter');
+  const handle = document.getElementById('handle');
+  let dragging = false;
+
+  function setPct(pct){
+    pct = Math.max(4, Math.min(96, pct));
+    clip.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  }
+  function pctFromEvent(e){
+    const rect = shell.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+  setPct(50);
+  shell.addEventListener('pointerdown', e=>{ dragging = true; setPct(pctFromEvent(e)); });
+  window.addEventListener('pointermove', e=>{ if(dragging) setPct(pctFromEvent(e)); });
+  window.addEventListener('pointerup', ()=> dragging = false);
+
+  // subtle auto demo sweep once, then stop, so users discover it's draggable
+  let autoPos = 50, dir = 1, autoTicks = 0;
+  const autoInterval = setInterval(()=>{
+    if(dragging){ clearInterval(autoInterval); return; }
+    autoPos += dir * 0.6;
+    if(autoPos > 68 || autoPos < 32) dir *= -1;
+    setPct(autoPos);
+    autoTicks++;
+    if(autoTicks > 160){ clearInterval(autoInterval); setPct(50); }
+  }, 16);
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+</body>
+</html>
