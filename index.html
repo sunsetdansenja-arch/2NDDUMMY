@@ -1,1 +1,180 @@
-test
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimas Santosa | Beuna Digital</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10 top-0">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-700 tracking-tighter">Beuna<span class="text-gray-800">Digital</span></a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition">Tentang</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600 font-medium transition">Keahlian</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-blue-600 font-medium transition">Portofolio</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition">Kontak</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Mulai Projek</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 to-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-blue-600 font-semibold mb-2 uppercase tracking-wide">Full-Stack Developer & Founder Beuna Digital</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Membangun Web-App Realistis Berbasis Pengalaman Lapangan untuk <span class="text-blue-600">Efisiensi Bisnis Anda.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10">
+                Halo, saya <span class="font-bold text-gray-800">Dimas Santosa</span>. Saya membantu pemilik bisnis mengubah tantangan operasional menjadi sistem digital yang terotomatisasi dan meningkatkan penjualan.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#portfolio" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition">Lihat Hasil Kerja</a>
+                <a href="#contact" class="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-bold shadow hover:bg-gray-50 transition">Hubungi Saya</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diskusi Bisnis" class="rounded-xl shadow-2xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-l-4 border-blue-600 pl-4">Lebih dari Sekadar Menulis Kode</h2>
+                <p class="text-gray-700 leading-relaxed mb-4 text-lg">
+                    Saya bukan sekadar menulis kode, saya membangun solusi bisnis. Berangkat dari latar belakang IT dan pengalaman mengelola usaha sendiri, saya memahami betul celah antara kode di layar komputer dengan realitas operasional di lapangan.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Pendekatan saya sangat realistis dan berbasis praktik langsung—fokus pada <strong>efisiensi, otomatisasi sistem</strong>, dan pembuatan web-app yang benar-benar menyelesaikan masalah nyata serta berdampak langsung pada pertumbuhan bisnis Anda.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="skills" class="py-16 px-4 bg-gray-900 text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10">Keahlian & Teknologi (Tech Stack)</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fab fa-react mr-2 text-blue-400"></i>Next.js</span>
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fab fa-js mr-2 text-yellow-400"></i>TypeScript</span>
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fas fa-database mr-2 text-green-400"></i>SQL</span>
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fas fa-robot mr-2 text-purple-400"></i>n8n (Automation)</span>
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fab fa-github mr-2"></i>GitHub</span>
+                <span class="bg-gray-800 border border-gray-700 px-6 py-3 rounded-full font-semibold"><i class="fas fa-cloud mr-2 text-gray-300"></i>Vercel & Sumopod</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Portofolio Projek</h2>
+                <p class="text-gray-600 text-lg">Bukti nyata bagaimana sistem yang saya bangun menyelesaikan masalah bisnis.</p>
+            </div>
+
+            <!-- A. Enterprise Apps -->
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b-2 border-gray-200 pb-2">Aplikasi Skala Enterprise & Sistem Bisnis</h3>
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Project 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition">
+                    <div class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">SQL • n8n</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Aplikasi Kasir Multi-Cabang (Bugar Refleksi)</h4>
+                    <p class="text-gray-600 mb-4 text-sm font-medium">Sistem POS terpusat untuk mengelola 13 cabang secara real-time.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-4 text-sm">
+                        <strong class="text-gray-800 block mb-1">Tantangan:</strong> Mengelola sinkronisasi data transaksi dan absensi massal tanpa membuat server down.
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-sm text-gray-700">
+                        <strong class="text-blue-800 block mb-1">Solusi Beuna Digital:</strong> Diselesaikan dengan arsitektur database SQL terpusat dan otomatisasi workflow via <strong>n8n</strong> untuk laporan harian otomatis ke manajemen.
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition">
+                    <div class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">Next.js • TypeScript • SQL</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Aplikasi Buffer Stocking (PT Family Food)</h4>
+                    <p class="text-gray-600 mb-4 text-sm font-medium">Aplikasi manajemen stok internal untuk industri makanan.</p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-4 text-sm">
+                        <strong class="text-gray-800 block mb-1">Tantangan:</strong> Menghindari overstock atau stockout bahan baku yang merugikan.
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-sm text-gray-700">
+                        <strong class="text-blue-800 block mb-1">Solusi Beuna Digital:</strong> Pembuatan dasbor analitik efisien melacak perputaran barang secara akurat, mencegah kerugian perusahaan.
+                    </div>
+                </div>
+            </div>
+
+            <!-- B. Web Business Solutions -->
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 border-b-2 border-gray-200 pb-2">Solusi Web Bisnis & Komunitas (Live Links)</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Niche Surfing -->
+                <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4"><i class="fas fa-water text-blue-500 mr-2"></i>Niche Surfing (Komunitas)</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://surfgank.beuna.xyz/mangbule.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Mang Bule Surf</a></li>
+                        <li><a href="https://surfgank.beuna.xyz/mankdede.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Mank Dede Surf</a></li>
+                        <li><a href="https://jungle-slide-bk.beuna.xyz" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Jungle Slide BK</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sewa Motor -->
+                <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4"><i class="fas fa-motorcycle text-blue-500 mr-2"></i>Rental & Transportasi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://portfolio.beuna.xyz/sms.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>SMS Rental</a></li>
+                        <li><a href="https://portfolio.beuna.xyz/sewamotor.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Sewa Motor Bali</a></li>
+                        <li><a href="https://portfolio.beuna.xyz/raytransport.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Ray Transport</a></li>
+                        <li><a href="https://portfolio.beuna.xyz/damirental.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Dami Rental</a></li>
+                    </ul>
+                </div>
+
+                <!-- Otomotif -->
+                <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4"><i class="fas fa-car text-blue-500 mr-2"></i>Otomotif & Jasa</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://portfolio.beuna.xyz/scuto.html" target="_blank" class="text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt text-xs mr-2"></i>Scuto Indonesia</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact" class="py-20 px-4 bg-blue-700 text-white text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Meningkatkan Efisiensi Bisnis Anda?</h2>
+            <p class="text-blue-100 text-lg mb-10">Tertarik mendigitalisasi bisnis Anda atau butuh sistem kustom yang efisien dan berdampak nyata? Mari diskusikan kebutuhan Anda.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <!-- WA Link format: https://wa.me/62... -->
+                <a href="https://wa.me/6285359033973" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg flex items-center justify-center transition">
+                    <i class="fab fa-whatsapp text-2xl mr-3"></i> Chat WhatsApp
+                </a>
+                <a href="mailto:beunadigital@gmail.com" class="bg-white hover:bg-gray-100 text-blue-700 px-8 py-4 rounded-xl font-bold text-lg shadow-lg flex items-center justify-center transition">
+                    <i class="fas fa-envelope text-2xl mr-3"></i> Kirim Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+        <p>&copy; 2026 Dimas Santosa - Beuna Digital. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
