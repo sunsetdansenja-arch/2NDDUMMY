@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elud Cake & Bakery - Lebih Lengkap, Lebih Nikmat, Lebih Hemat!</title>
+    
+    <!-- -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fraunces (Retro Editorial) & Plus Jakarta Sans (Body Text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <!-- -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            maroon: '#8C1D18',
+                            maroonDark: '#5C100D',
+                            cream: '#F9F4E3',
+                            creamDark: '#EFEAE0',
+                            clay: '#C86A5A',
+                            textDark: '#3A0B09',
+                        }
+                    },
+                    fontFamily: {
+                        editorial: ['Fraunces', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    transitionTimingFunction: {
+                        'retro-bounce': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        'premium-ease': 'cubic-bezier(0.4, 0, 0.2, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- -->
+    <style>
+        /* Smooth Rotate Animation for Sticker Badge */
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        
+        /* Shimmer loading effect for skeletal states */
+        @keyframes skeleton-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton-pulse {
+            background: linear-gradient(90deg, #EFEAE0 25%, #F4EFE6 50%, #EFEAE0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.5s infinite linear;
+        }
+        
+        /* Custom dynamic custom scrollbar to match retro palette */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F4E3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8C1D18;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C86A5A;
+        }
+        
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Staggered card animation definitions */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream font-sans text-brand-textDark antialiased selection:bg-brand-maroon selection:text-brand-cream overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- -->
+    <!-- TOP TICKER MARQUEE -->
+    <div class="bg-brand-maroon text-brand-cream py-2.5 border-b border-brand-maroon font-editorial text-xs uppercase tracking-widest marquee-container select-none">
+        <div class="marquee-content">
+            ELUD CAKE & BAKERY &bull; LEBIH LENGKAP, LEBIH NIKMAT, LEBIH HEMAT! &bull; OPERASIONAL 06.00 - 22.00 WIB &bull; ELUD CAKE & BAKERY &bull; LEBIH LENGKAP, LEBIH NIKMAT, LEBIH HEMAT! &bull; OPERASIONAL 06.00 - 22.00 WIB &bull;
+        </div>
+    </div>
+
+    <!-- -->
+    <!-- STICKY NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-brand-maroon text-brand-cream px-6 py-4 md:px-12 flex justify-between items-center transition-all duration-300 shadow-md border-b border-brand-maroonDark/40">
+        <a href="#" class="font-editorial text-2xl md:text-3xl font-black tracking-tight flex items-center gap-2 group transition-transform active:scale-95 duration-300">
+            <span class="group-hover:text-brand-clay transition-colors duration-300">ELUD BAKERY</span>
+        </a>
+        
+        <!-- Navigation links mapped from core product categorisations -->
+        <div class="hidden md:flex gap-8 font-editorial text-sm uppercase tracking-wider font-semibold">
+            <a href="#product-section" class="relative py-1 group overflow-hidden">
+                <span class="relative z-10 hover:text-brand-cream transition-colors duration-300">Product</span>
+                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-clay translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </a>
+            <a href="#product-section" class="relative py-1 group overflow-hidden">
+                <span class="relative z-10 hover:text-brand-cream transition-colors duration-300">Cake</span>
+                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-clay translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </a>
+            <a href="#product-section" class="relative py-1 group overflow-hidden">
+                <span class="relative z-10 hover:text-brand-cream transition-colors duration-300">Special Promo</span>
+                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-clay translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </a>
+            <a href="#outlet-section" class="relative py-1 group overflow-hidden">
+                <span class="relative z-10 hover:text-brand-cream transition-colors duration-300">Outlet</span>
+                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-clay translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </a>
+            <a href="#lovers-section" class="relative py-1 group overflow-hidden">
+                <span class="relative z-10 hover:text-brand-cream transition-colors duration-300">Elud Lovers</span>
+                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-clay translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </a>
+        </div>
+
+        <div>
+            <button onclick="toggleCartModal()" class="border-2 border-brand-cream rounded-full px-5 py-2 font-editorial text-sm uppercase font-semibold flex items-center gap-2 bg-transparent hover:bg-brand-cream hover:text-brand-maroon hover:border-transparent transition-all duration-300 ease-retro-bounce active:scale-90">
+                <i class="fa-solid fa-basket-shopping transition-transform group-hover:rotate-12"></i> 
+                <span>Cart</span>
+                <span class="bg-brand-clay text-brand-cream px-2 py-0.5 rounded-full text-xs font-mono transition-all duration-300" id="cart-counter">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- -->
+    <!-- HERO SECTION (Asymmetric Single Product Block) -->
+    <section class="bg-brand-maroon text-brand-cream px-6 pt-12 pb-20 md:px-12 lg:px-24 border-b-2 border-brand-maroon relative overflow-hidden">
+        <!-- Abstract Background Glow (10% Ambient Vector Motion) -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-clay/10 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <!-- Left Grid Content -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="inline-flex items-center gap-2 bg-brand-clay text-brand-cream text-xs uppercase tracking-widest font-bold px-4 py-1.5 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-star animate-pulse"></i> Kategori Utama: Product & Cake
+                </span>
+                <h1 class="font-editorial text-4xl sm:text-5xl lg:text-6xl font-black leading-none drop-shadow-sm">
+                    LEBIH LENGKAP<br><span class="text-brand-clay tracking-wide">LEBIH NIKMAT</span><br>LEBIH HEMAT!
+                </h1>
+                
+                <div class="flex items-center gap-1.5 text-yellow-400">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-brand-cream/80 text-xs font-sans ml-2">(1,280+ Reviews Pilihan Elud Lovers)</span>
+                </div>
+
+                <p class="text-sm text-brand-cream/90 leading-relaxed font-normal max-w-md font-sans">
+                    Menghadirkan kehangatan cita rasa roti & kue premium setiap hari dari pukul <span class="font-bold underline text-brand-cream decoration-brand-clay decoration-2">06.00 hingga 22.00 WIB</span>. Dibuat dengan bahan pilihan terbaik tanpa merobek kantong Anda.
+                </p>
+
+                <!-- Pricing Estimation & Takeaway Notice Container -->
+                <div class="bg-brand-cream/10 border border-brand-cream/20 rounded-2xl p-4 flex gap-4 text-xs font-sans shadow-md">
+                    <div class="flex-1">
+                        <span class="block text-brand-cream/60 uppercase tracking-wider text-[10px] font-bold">Estimasi Harga</span>
+                        <p class="font-editorial text-lg font-bold text-brand-cream">Rp 1k – 100k <span class="text-xs font-sans font-normal text-brand-cream/70">/ orang</span></p>
+                    </div>
+                    <div class="w-[1px] bg-brand-cream/20"></div>
+                    <div class="flex-1">
+                        <span class="block text-brand-cream/60 uppercase tracking-wider text-[10px] font-bold">Sistem Pelayanan</span>
+                        <p class="font-editorial text-lg font-bold flex items-center gap-1.5 text-brand-cream"><i class="fa-solid fa-bag-shopping text-sm text-brand-clay animate-bounce"></i> Bawa Pulang</p>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <a href="#product-section" class="bg-brand-cream text-brand-maroon hover:bg-brand-clay hover:text-brand-cream px-8 py-3.5 rounded-full font-editorial uppercase font-bold text-sm tracking-wider transition-all duration-500 ease-retro-bounce shadow-xl inline-block transform hover:-translate-y-1 active:translate-y-0">
+                        Lihat Menu Kami <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- -->
+            <!-- Right Grid Content: Floating Package Mockup & Rotating Sticker Badge -->
+            <div class="lg:col-span-7 flex justify-center items-center relative">
+                <!-- Rotating Sticker Badge Component from Reference Visual -->
+                <div class="absolute -top-6 -right-2 md:right-10 z-20 animate-spin-slow cursor-pointer select-none">
+                    <svg class="w-24 h-24 md:w-32 md:h-32" viewBox="0 0 100 100">
+                        <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+                        <text fill="#C86A5A" class="font-editorial text-[8.5px] font-bold uppercase tracking-widest">
+                            <textPath href="#circlePath" startOffset="0%">• PREMIUM QUALITY • TASTE OF ELUD BAKERY </textPath>
+                        </text>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-brand-cream font-editorial font-bold text-xs bg-brand-clay w-10 h-10 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"><i class="fa-solid fa-cake-candles animate-pulse"></i></span>
+                    </div>
+                </div>
+
+                <!-- Main High-Contrast Product Banner Image -->
+                <div class="w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden border-4 border-brand-cream shadow-2xl relative group bg-brand-creamDark transition-transform duration-500 ease-retro-bounce hover:scale-[1.02]">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1000" 
+                         alt="Fresh Bakery Background" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] brightness-90 contrast-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-maroon via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                        <div>
+                            <p class="font-editorial text-xs text-brand-cream/80 uppercase tracking-widest">Fresh Every Morning</p>
+                            <h3 class="font-editorial text-2xl font-black text-brand-cream">100% Oven Baked</h3>
+                        </div>
+                        <span class="bg-brand-maroon/80 text-brand-cream border border-brand-cream/30 text-xs rounded-full px-3 py-1 font-mono">Est. 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- STATEMENT BLOCK (Centered Large Typography Section) -->
+    <section class="bg-brand-cream text-brand-maroon px-6 py-16 text-center border-b-2 border-brand-maroon relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <span class="font-editorial text-xs uppercase tracking-widest font-bold text-brand-clay block">— BAKE WITH PASSION —</span>
+            <h2 class="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight max-w-3xl mx-auto">
+                "Kelezatan premium yang utuh tak harus membuat kantong Anda terengah-engah. Kami menyajikan kebahagiaan sejati."
+            </h2>
+            <div class="flex justify-center items-center gap-2 pt-2 text-brand-clay font-editorial font-bold text-sm">
+                <span>TAKEAWAY ONLY</span>
+                <span>&bull;</span>
+                <span>PANCORAN BRANCH</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- INTERACTIVE MENU CATEGORIES & BENTO GRID SECTION -->
+    <section id="product-section" class="py-16 px-6 md:px-12 lg:px-24 bg-brand-creamDark border-b-2 border-brand-maroon relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section Title & Filter Nav System -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+                <div>
+                    <span class="text-brand-clay font-editorial text-sm uppercase tracking-widest font-bold block mb-1">Katalog Produk</span>
+                    <h2 class="font-editorial text-3xl md:text-5xl font-black text-brand-maroon">Varian Cita Rasa Elud</h2>
+                </div>
+                <!-- Filter Tabs derived from service fields -->
+                <div class="flex flex-wrap gap-2.5 font-editorial text-xs uppercase font-bold tracking-wider">
+                    <button onclick="filterMenu('all')" id="tab-all" class="px-5 py-2.5 rounded-full border border-brand-maroon bg-brand-maroon text-brand-cream transition-all duration-300 active:scale-95 shadow-sm">All Menu</button>
+                    <button onclick="filterMenu('cake')" id="tab-cake" class="px-5 py-2.5 rounded-full border border-brand-maroon bg-transparent text-brand-maroon hover:bg-brand-maroon hover:text-brand-cream transition-all duration-300 active:scale-95 shadow-sm">Cake</button>
+                    <button onclick="filterMenu('product')" id="tab-product" class="px-5 py-2.5 rounded-full border border-brand-maroon bg-transparent text-brand-maroon hover:bg-brand-maroon hover:text-brand-cream transition-all duration-300 active:scale-95 shadow-sm">Product/Bread</button>
+                    <button onclick="filterMenu('promo')" id="tab-promo" class="px-5 py-2.5 rounded-full border border-brand-maroon bg-transparent text-brand-maroon hover:bg-brand-maroon hover:text-brand-cream transition-all duration-300 active:scale-95 shadow-sm">Special Promo!</button>
+                </div>
+            </div>
+
+            <!-- Bento-Style Product Presentation Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-container">
+                
+                <!-- Card Item 1 (Cake Category) -->
+                <div class="menu-item bg-brand-cream rounded-3xl border-2 border-brand-maroon p-5 flex flex-col justify-between group transition-all duration-500 ease-retro-bounce hover:-translate-y-2 hover:shadow-2xl" data-category="cake">
+                    <div>
+                        <div class="w-full aspect-square rounded-2xl overflow-hidden border border-brand-maroon/20 mb-4 bg-brand-creamDark relative">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=800" alt="Premium Choco Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.2s]">
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-editorial text-xl font-bold text-brand-maroon tracking-tight leading-snug">Signature Chocolate Fudge Cake</h4>
+                            <span class="bg-brand-maroon text-brand-cream text-[10px] font-editorial uppercase font-bold px-2.5 py-1 rounded-full shrink-0">Cake</span>
+                        </div>
+                        <p class="text-xs text-brand-textDark/80 leading-relaxed mb-4 font-sans">Lapisan kue bolu cokelat pekat dilapisi krim ganache premium yang lumer di mulut.</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-brand-maroon/10">
+                        <span class="font-editorial text-lg font-bold text-brand-maroon">Rp 85,000</span>
+                        <button onclick="addToCart('Signature Chocolate Fudge Cake', 85000)" class="bg-brand-maroon text-brand-cream hover:bg-brand-clay px-5 py-2.5 rounded-full font-editorial text-xs uppercase font-bold flex items-center gap-2 transition-all duration-300 active:scale-90 shadow-md">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Add To Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- -->
+                <!-- Card Item 2 (Product/Bread Category) -->
+                <div class="menu-item bg-brand-cream rounded-3xl border-2 border-brand-maroon p-5 flex flex-col justify-between group transition-all duration-500 ease-retro-bounce hover:-translate-y-2 hover:shadow-2xl" data-category="product">
+                    <div>
+                        <div class="w-full aspect-square rounded-2xl overflow-hidden border border-brand-maroon/20 mb-4 bg-brand-creamDark">
+                            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&q=80&w=800" alt="Almond Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.2s]">
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-editorial text-xl font-bold text-brand-maroon tracking-tight leading-snug">Buttery Almond Croissant</h4>
+                            <span class="bg-brand-clay text-brand-cream text-[10px] font-editorial uppercase font-bold px-2.5 py-1 rounded-full shrink-0">Product</span>
+                        </div>
+                        <p class="text-xs text-brand-textDark/80 leading-relaxed mb-4 font-sans">Pastry berlapis renyah dengan isian pasta almond melimpah dan taburan irisan kacang almond gurih.</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-brand-maroon/10">
+                        <span class="font-editorial text-lg font-bold text-brand-maroon">Rp 22,000</span>
+                        <button onclick="addToCart('Buttery Almond Croissant', 22000)" class="bg-brand-maroon text-brand-cream hover:bg-brand-clay px-5 py-2.5 rounded-full font-editorial text-xs uppercase font-bold flex items-center gap-2 transition-all duration-300 active:scale-90 shadow-md">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Add To Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card Item 3 (Promo Category) -->
+                <div class="menu-item bg-brand-cream rounded-3xl border-2 border-brand-maroon p-5 flex flex-col justify-between group transition-all duration-500 ease-retro-bounce hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden" data-category="promo">
+                    <div class="absolute top-4 right-4 bg-red-600 text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-md rotate-12 z-10 shadow-md animate-pulse">PROMO!</div>
+                    <div>
+                        <div class="w-full aspect-square rounded-2xl overflow-hidden border border-brand-maroon/20 mb-4 bg-brand-creamDark">
+                            <img src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&q=80&w=800" alt="Roti Bundel Family" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.2s]">
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-editorial text-xl font-bold text-brand-maroon tracking-tight leading-snug">Paket Hemat 3 Roti Manis</h4>
+                            <span class="bg-red-700 text-brand-cream text-[10px] font-editorial uppercase font-bold px-2.5 py-1 rounded-full shrink-0">Promo!</span>
+                        </div>
+                        <p class="text-xs text-brand-textDark/80 leading-relaxed mb-4 font-sans">Pilihan 3 rasa kombinasi roti manis andalan (Cokelat, Keju, Susu) hemat luar biasa sesuai tagline.</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-brand-maroon/10">
+                        <div>
+                            <span class="block text-[10px] text-red-600 line-through">Rp 36,000</span>
+                            <span class="font-editorial text-lg font-bold text-brand-maroon">Rp 28,000</span>
+                        </div>
+                        <button onclick="addToCart('Paket Hemat 3 Roti Manis', 28000)" class="bg-brand-maroon text-brand-cream hover:bg-brand-clay px-5 py-2.5 rounded-full font-editorial text-xs uppercase font-bold flex items-center gap-2 transition-all duration-300 active:scale-90 shadow-md">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Add To Cart
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- STEP BY STEP PROCESS VISUAL SECTION (From Reference Screen Structure) -->
+    <section class="py-16 px-6 md:px-12 lg:px-24 bg-brand-cream border-b-2 border-brand-maroon">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="text-brand-clay font-editorial text-sm uppercase tracking-widest font-bold block mb-1">Cara Menikmati</span>
+                <h2 class="font-editorial text-3xl md:text-4xl font-black text-brand-maroon">3 Langkah Mudah Takeaway</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="space-y-4 group">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-maroon bg-brand-creamDark relative shadow-md">
+                        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&q=80&w=800" alt="Step 1 Choose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-editorial font-bold text-xs bg-brand-maroon text-brand-cream px-3 py-1.5 rounded-full uppercase tracking-wider">STEP 1</span>
+                        <h4 class="font-editorial text-lg font-bold text-brand-maroon">Pilih Menu Favorit</h4>
+                    </div>
+                    <p class="text-xs text-brand-textDark/80 leading-relaxed font-sans">Pilih daftar kue, roti, atau paket promo spesial melalui katalog digital menu interaktif di atas.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="space-y-4 group">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-maroon bg-brand-creamDark relative shadow-md">
+                        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800" alt="Step 2 Order" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-editorial font-bold text-xs bg-brand-maroon text-brand-cream px-3 py-1.5 rounded-full uppercase tracking-wider">STEP 2</span>
+                        <h4 class="font-editorial text-lg font-bold text-brand-maroon">Konfirmasi & Ambil</h4>
+                    </div>
+                    <p class="text-xs text-brand-textDark/80 leading-relaxed font-sans">Kirim detail pesanan Anda ke WhatsApp untuk dikemas dengan cepat, lalu kunjungi outlet fisik kami langsung.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="space-y-4 group">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-maroon bg-brand-creamDark relative shadow-md">
+                        <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&q=80&w=800" alt="Step 3 Enjoy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-editorial font-bold text-xs bg-brand-maroon text-brand-cream px-3 py-1.5 rounded-full uppercase tracking-wider">STEP 3</span>
+                        <h4 class="font-editorial text-lg font-bold text-brand-maroon">Nikmati Bersama Keluarga</h4>
+                    </div>
+                    <p class="text-xs text-brand-textDark/80 leading-relaxed font-sans">Sajikan kehangatan roti & cake Elud yang lebih lengkap, nikmat, dan terbukti hemat bersama orang tersayang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- CONTACT, MAPS & OUTLET SECTION -->
+    <section id="outlet-section" class="py-16 px-6 md:px-12 lg:px-24 bg-brand-creamDark border-b-2 border-brand-maroon">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Address details -->
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <span class="text-brand-clay font-editorial text-sm uppercase tracking-widest font-bold block mb-1">Lokasi Cabang</span>
+                    <h2 class="font-editorial text-3xl md:text-5xl font-black text-brand-maroon">Kunjungi Outlet Pancoran</h2>
+                </div>
+
+                <div class="space-y-4 text-sm font-sans">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-brand-maroon text-brand-cream w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-md">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-maroon font-editorial text-base">Alamat Resmi:</p>
+                            <p class="text-xs text-brand-textDark/90 leading-relaxed mt-0.5">Jl. Pancoran Bar. Raya No.VII, RT.10/RW.6, Pancoran, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12790</p>
+                            <span class="inline-block mt-2 bg-brand-cream border border-brand-maroon/30 rounded px-2.5 py-1 text-[11px] font-mono font-bold text-brand-maroon">Plus Code: QR2P+GH Pancoran</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-maroon text-brand-cream w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-md">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-maroon font-editorial text-base">Nomor Hotline Telepon:</p>
+                            <p class="text-xs text-brand-textDark/95 font-mono">0821-1405-1183</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-maroon text-brand-cream w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-md">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-maroon font-editorial text-base">Jam Operasional Pelayanan:</p>
+                            <p class="text-xs text-brand-textDark/95">Setiap Hari: 06.00 - 22.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-brand-maroon/20">
+
+                <!-- Social Media Catalogs -->
+                <div class="space-y-3">
+                    <p class="font-editorial text-sm font-bold text-brand-maroon">Ikuti Komunitas Media Sosial Kami:</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://instagram.com/eludbakery.id" target="_blank" class="flex items-center gap-2 bg-brand-cream border border-brand-maroon rounded-xl px-4 py-2.5 text-xs font-bold text-brand-maroon hover:bg-brand-maroon hover:text-brand-cream transition-all duration-300 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-instagram text-base"></i> @eludbakery.id <span class="text-[10px] font-normal opacity-70">(Utama)</span>
+                        </a>
+                        <a href="https://instagram.com/eludbakeryid.katalog" target="_blank" class="flex items-center gap-2 bg-brand-cream border border-brand-maroon rounded-xl px-4 py-2.5 text-xs font-bold text-brand-maroon hover:bg-brand-maroon hover:text-brand-cream transition-all duration-300 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-instagram text-base"></i> @eludbakeryid.katalog <span class="text-[10px] font-normal opacity-70">(Katalog)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Embedded Styled Map Container -->
+            <div class="lg:col-span-7 h-80 lg:h-auto min-h-[350px] rounded-3xl overflow-hidden border-2 border-brand-maroon shadow-lg relative bg-brand-cream">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1824147771746!2d106.84000000000002!3d-6.2396944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3c258d927c7%3A0x6bd70db2b292c30!2sJl.%20Pancoran%20Barat%20Raya%20No.7%2C%20RT.10%2BRW.6%2C%20Pancoran%2C%20Kec.%20Pancoran%2C%20Kota%20Jakarta%20Selatan!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid" 
+                    class="w-full h-full border-0 filter grayscale brightness-95 contrast-105" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- ELUD LOVERS CLUB / NEWSLETTER -->
+    <section id="lovers-section" class="py-16 px-6 md:px-12 bg-brand-maroon text-brand-cream text-center relative overflow-hidden">
+        <!-- Pulse Wave Vectors -->
+        <div class="absolute -top-12 left-1/4 w-80 h-80 bg-brand-clay/10 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+        
+        <div class="max-w-2xl mx-auto space-y-6 relative z-10">
+            <h3 class="font-editorial text-3xl md:text-5xl font-black">Bergabung Jadi Elud Lovers</h3>
+            <p class="text-xs text-brand-cream/80 max-w-md mx-auto leading-relaxed font-sans">
+                Dapatkan informasi eksklusif mengenai diskon musiman, perilisan produk kue ulang tahun terbaru, dan promo menarik mingguan lainnya langsung!
+            </p>
+            
+            <div id="newsletter-form" class="pt-2 flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto transition-all duration-500">
+                <input type="email" id="lovers-email" placeholder="Masukkan alamat email Anda" class="px-5 py-3 rounded-full text-brand-textDark font-sans text-xs focus:outline-none w-full border-2 border-transparent focus:border-brand-clay bg-brand-cream transition-all duration-300">
+                <button onclick="registerLovers()" class="bg-brand-clay text-brand-cream hover:bg-brand-cream hover:text-brand-maroon px-6 py-3 rounded-full font-editorial font-bold text-xs uppercase tracking-wider transition-colors shrink-0 active:scale-95 duration-300 shadow-lg">
+                    Gabung Sekarang
+                </button>
+            </div>
+            
+            <!-- Custom Success Message Box (Replacing alert()) -->
+            <div id="newsletter-success" class="hidden max-w-md mx-auto bg-brand-cream/10 border border-brand-clay/40 rounded-2xl p-4 text-xs font-sans text-brand-cream transition-all duration-500">
+                <i class="fa-solid fa-circle-check text-brand-clay text-lg mb-1.5 block"></i>
+                <p class="font-bold">Selamat bergabung, Elud Lover!</p>
+                <p class="opacity-80 mt-1">Kami telah mengaktifkan keanggotaan Anda. Nantikan kejutan resep klasik di kotak masuk Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- -->
+    <!-- FOOTER WITH EXTRA LARGE LOGO DISPLAY (Replicating reference visual) -->
+    <footer class="bg-brand-cream text-brand-maroon pt-16 pb-8 px-6 md:px-12 border-t-2 border-brand-maroon overflow-hidden mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full text-xs font-sans border-b border-brand-maroon/20 pb-12">
+                <div class="space-y-3">
+                    <p class="font-editorial font-bold text-sm uppercase text-brand-clay">Layanan</p>
+                    <a href="#product-section" class="block hover:underline opacity-80">Product Catalog</a>
+                    <a href="#product-section" class="block hover:underline opacity-80">Custom Celebration Cake</a>
+                    <a href="#product-section" class="block hover:underline opacity-80">Takeaway Protocol</a>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-editorial font-bold text-sm uppercase text-brand-clay">Tentang Kami</p>
+                    <a href="#" class="block hover:underline opacity-80">Kisah Elud Bakery</a>
+                    <a href="#" class="block hover:underline opacity-80">Keunggulan Varian Rasa</a>
+                    <a href="#" class="block hover:underline opacity-80">Harga Hemat Bersahabat</a>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-editorial font-bold text-sm uppercase text-brand-clay">Bantuan</p>
+                    <a href="#" class="block hover:underline opacity-80">Hubungi WhatsApp</a>
+                    <a href="#outlet-section" class="block hover:underline opacity-80">Panduan Rute Maps</a>
+                    <a href="#" class="block hover:underline opacity-80">FAQ Pembelian</a>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-editorial font-bold text-sm uppercase text-brand-clay">Kebijakan</p>
+                    <p class="opacity-75 leading-relaxed">Menu sewaktu-waktu dapat berubah sesuai dengan ketersediaan bahan baku premium harian kami di dapur produksi.</p>
+                </div>
+            </div>
+
+            <!-- Extra Massive Retro Brand Name Display from Reference Bottom Section -->
+            <div class="w-full text-center py-6 select-none pointer-events-none">
+                <h1 class="font-editorial text-[14vw] font-black tracking-tighter leading-none text-brand-maroon uppercase">
+                    ELUD BAKERY
+                </h1>
+            </div>
+
+            <p class="text-[10px] font-mono opacity-60 mt-4">&copy; 2026 Elud Cake & Bakery Pancoran. All Rights Reserved. Built with Precision Visual System.</p>
+        </div>
+    </footer>
+
+    <!-- -->
+    <!-- INTERACTIVE CART MODAL COMPONENT (Slide-in Drawer) -->
+    <div id="cart-modal" class="fixed inset-0 bg-brand-maroon/60 z-50 flex justify-end items-stretch opacity-0 pointer-events-none transition-all duration-300">
+        <!-- Backdrop closer -->
+        <div class="absolute inset-0" onclick="toggleCartModal()"></div>
+        
+        <div class="bg-brand-cream w-full max-w-md border-l-2 border-brand-maroon p-6 flex flex-col justify-between shadow-2xl translate-x-full transition-transform duration-500 ease-retro-bounce relative z-10" id="cart-sidebar">
+            
+            <div>
+                <div class="flex justify-between items-center border-b border-brand-maroon/20 pb-4 mb-6">
+                    <h3 class="font-editorial text-2xl font-black text-brand-maroon flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping"></i> Keranjang Anda
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-brand-maroon hover:text-brand-clay text-xl w-8 h-8 rounded-full flex items-center justify-center hover:bg-brand-maroon/5 transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Dynamic Cart Items Wrapper -->
+                <div id="cart-items-list" class="space-y-4 max-h-[58vh] overflow-y-auto pr-2">
+                    <!-- Dynamic Elements Injected Here by JS -->
+                    <p class="text-xs opacity-60 text-center py-8 font-sans">Keranjang belanja Anda masih kosong.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-brand-maroon/20 pt-4 space-y-4">
+                <div class="flex justify-between items-end font-editorial">
+                    <span class="text-sm font-bold uppercase tracking-wider text-brand-clay">Total Estimasi:</span>
+                    <span class="text-2xl font-black text-brand-maroon" id="cart-total-price">Rp 0</span>
+                </div>
+                
+                <p class="text-[10px] text-brand-textDark/70 leading-relaxed bg-brand-creamDark p-2.5 rounded-xl border border-brand-maroon/10 flex gap-2">
+                    <i class="fa-solid fa-circle-info text-brand-maroon shrink-0 mt-0.5"></i> 
+                    <span><strong>Sistem Pelayanan:</strong> Pengambilan dilakukan secara <strong>Bawa Pulang (Takeaway)</strong> di Cabang Pancoran.</span>
+                </p>
+
+                <button onclick="checkoutToWhatsApp()" class="w-full bg-brand-maroon text-brand-cream hover:bg-brand-clay py-3.5 rounded-full font-editorial font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Pesanan ke WhatsApp
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- -->
+    <!-- CUSTOM CUSTOM TOAST POPUP (To completely eliminate alert()) -->
+    <div id="toast-notification" class="fixed bottom-6 left-6 z-50 transform translate-y-24 opacity-0 transition-all duration-500 ease-retro-bounce bg-brand-maroon border border-brand-cream/30 text-brand-cream rounded-2xl shadow-2xl px-6 py-4 flex items-center gap-3 max-w-sm">
+        <div class="w-8 h-8 rounded-full bg-brand-clay flex items-center justify-center text-sm">
+            <i class="fa-solid fa-bell animate-bounce"></i>
+        </div>
+        <div>
+            <p class="text-xs font-editorial font-bold" id="toast-title">Notifikasi</p>
+            <p class="text-[11px] font-sans opacity-90" id="toast-body">Deskripsi aksi...</p>
+        </div>
+    </div>
+
+    <!-- -->
+    <!-- FUNCTIONAL CLIENT JAVASCRIPT LOGIC -->
+    <script>
+        // Internal State Storage
+        let cart = [];
+        const whatsappNumber = "6282114051183"; 
+
+        // Helper: Custom Toast Generator
+        function showNotification(title, message) {
+            const toast = document.getElementById('toast-notification');
+            const toastTitle = document.getElementById('toast-title');
+            const toastBody = document.getElementById('toast-body');
+
+            toastTitle.innerText = title;
+            toastBody.innerText = message;
+
+            // Slide up & fade in
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        // Add Item Logic
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            
+            // Elegant micro-interactive badge bounce
+            const counter = document.getElementById('cart-counter');
+            counter.classList.add('scale-125', 'bg-brand-maroon', 'text-brand-cream');
+            setTimeout(() => counter.classList.remove('scale-125', 'bg-brand-maroon', 'text-brand-cream'), 450);
+
+            // Trigger notification
+            showNotification("Pesanan Ditambahkan", `"${name}" berhasil dimasukkan ke keranjang belanja Anda.`);
+        }
+
+        // Adjust quantities inside standard cart components
+        function updateQuantity(name, amt) {
+            const idx = cart.findIndex(item => item.name === name);
+            if (idx > -1) {
+                cart[idx].quantity += amt;
+                if (cart[idx].quantity <= 0) {
+                    cart.splice(idx, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Render UI Elements
+        function updateCartUI() {
+            const listWrapper = document.getElementById('cart-items-list');
+            const totalWrapper = document.getElementById('cart-total-price');
+            const countWrapper = document.getElementById('cart-counter');
+
+            if (cart.length === 0) {
+                listWrapper.innerHTML = `<p class="text-xs opacity-60 text-center py-12 font-sans flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-cookie text-2xl text-brand-maroon opacity-30"></i>
+                    <span>Keranjang belanja Anda masih kosong.</span>
+                </p>`;
+                totalWrapper.innerText = "Rp 0";
+                countWrapper.innerText = "0";
+                return;
+            }
+
+            let total = 0;
+            let totalCount = 0;
+            listWrapper.innerHTML = "";
+
+            cart.forEach(item => {
+                total += (item.price * item.quantity);
+                totalCount += item.quantity;
+
+                const itemHTML = `
+                    <div class="bg-brand-creamDark border border-brand-maroon/20 rounded-2xl p-3.5 flex justify-between items-center gap-2 transform hover:-translate-y-0.5 transition-transform">
+                        <div>
+                            <h5 class="font-editorial font-bold text-sm text-brand-maroon">${item.name}</h5>
+                            <p class="text-[11px] font-mono mt-0.5 text-brand-textDark/70">Rp ${item.price.toLocaleString('id-ID')} &times; ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center gap-2 border border-brand-maroon/30 bg-brand-cream rounded-full px-2.5 py-1.5 shrink-0 shadow-sm">
+                            <button onclick="updateQuantity('${item.name}', -1)" class="w-5 h-5 flex items-center justify-center font-bold text-xs text-brand-maroon hover:bg-brand-maroon/10 rounded-full transition-colors active:scale-75">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.name}', 1)" class="w-5 h-5 flex items-center justify-center font-bold text-xs text-brand-maroon hover:bg-brand-maroon/10 rounded-full transition-colors active:scale-75">+</button>
+                        </div>
+                    </div>
+                `;
+                listWrapper.insertAdjacentHTML('beforeend', itemHTML);
+            });
+
+            totalWrapper.innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            countWrapper.innerText = totalCount;
+        }
+
+        // Modal triggers
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const sidebar = document.getElementById('cart-sidebar');
+            
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                sidebar.classList.remove('translate-x-full');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                sidebar.classList.add('translate-x-full');
+            }
+        }
+
+        // WhatsApp Integration Handler
+        function checkoutToWhatsApp() {
+            if (cart.length === 0) {
+                showNotification("Keranjang Kosong", "Silakan pilih hidangan menu terlebih dahulu sebelum memesan.");
+                return;
+            }
+
+            let message = `Halo Elud Cake & Bakery Pancoran, saya ingin memesan menu Bawa Pulang (Takeaway):\n\n`;
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `${index + 1}. ${item.name} (${item.quantity}x) - Rp ${subtotal.toLocaleString('id-ID')}\n`;
+            });
+
+            message += `\n*Total Estimasi:* Rp ${total.toLocaleString('id-ID')}\n`;
+            message += `*Sistem Layanan:* Takeaway (Bawa Pulang)\n`;
+            message += `Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`, '_blank');
+        }
+
+        // Newsletter submission Handler (No Alert)
+        function registerLovers() {
+            const emailInput = document.getElementById('lovers-email');
+            const email = emailInput.value.trim();
+
+            if (!email || !email.includes('@')) {
+                showNotification("Format Salah", "Silakan masukkan alamat email yang valid.");
+                return;
+            }
+
+            // Hide form and show beautiful success state with fade effect
+            const formContainer = document.getElementById('newsletter-form');
+            const successContainer = document.getElementById('newsletter-success');
+
+            formContainer.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                formContainer.classList.add('hidden');
+                successContainer.classList.remove('hidden');
+                successContainer.classList.add('animate-fade-in-up');
+            }, 300);
+        }
+
+        // Menu category rendering engine with stagger effect
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = ['all', 'cake', 'product', 'promo'];
+
+            // Update button tab highlights
+            tabs.forEach(tab => {
+                const btn = document.getElementById(`tab-${tab}`);
+                if (tab === category) {
+                    btn.classList.replace('bg-transparent', 'bg-brand-maroon');
+                    btn.classList.replace('text-brand-maroon', 'text-brand-cream');
+                } else {
+                    btn.classList.replace('bg-brand-maroon', 'bg-transparent');
+                    btn.classList.replace('text-brand-cream', 'text-brand-maroon');
+                }
+            });
+
+            // Toggle item block rendering visibility with staggered animation
+            items.forEach((item, index) => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                    // Retrigger staggered fadeInUp
+                    item.classList.remove('animate-fade-in-up');
+                    void item.offsetWidth; // trigger reflow
+                    item.style.animationDelay = `${index * 100}ms`;
+                    item.classList.add('animate-fade-in-up');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('animate-fade-in-up');
+                }
+            });
+        }
+
+        // Window load simulation
+        window.onload = function() {
+            // Trigger beautiful initial menu entry stagger loading
+            filterMenu('all');
+        }
+    </script>
+</body>
+</html>
