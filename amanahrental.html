@@ -19,10 +19,10 @@
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: { 
-            brand: '#18181B',   // Hitam netral elegan (Zinc 900)
-            cream: '#FBF9F1',   // Krem utama (Background)
-            creamCard: '#F3EFE0', // Krem aksen / Kartu (Warm Beige)
-            accent: '#C5A880'   // Emas Krem lembut untuk aksen
+            brand: '#18181B',   // Hitam netral elegan
+            cream: '#FBF9F1',   // Krem utama
+            creamCard: '#F3EFE0', // Krem aksen / Kartu
+            accent: '#C5A880'
           }
         }
       }
@@ -64,7 +64,7 @@
         <span class="font-bold text-xl tracking-tight text-brand">AmanahRental</span>
       </div>
       <div class="flex items-center gap-6">
-        <a href="#bikes" data-i18n="nav_bikes" class="text-sm font-medium hover:text-stone-600 transition-colors active:scale-95 tactile-btn hidden sm:block">Daftar Motor</a>
+        <a href="#bikes" data-i18n="nav_bikes" class="text-sm font-medium hover:text-stone-600 transition-colors active:scale-95 tactile-btn hidden sm:block">Daftar Unit</a>
         <button id="lang-toggle" onclick="toggleLanguage()" class="flex items-center justify-center bg-creamCard hover:bg-stone-200 text-brand font-bold text-xs py-1.5 px-3 rounded-full transition-colors tactile-btn active:scale-95 border border-stone-300/40">
           EN
         </button>
@@ -86,17 +86,8 @@
     </div>
   </header>
 
-  <!-- Filter Kategori -->
-  <section id="bikes" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-    <div class="flex flex-wrap items-center justify-center gap-3" id="filter-container">
-      <button data-filter="all" data-i18n="filter_all" class="filter-btn active bg-brand text-cream px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-stone-800 active:scale-95 tactile-btn shadow-sm">Semua Unit</button>
-      <button data-filter="Matic Standard" class="filter-btn bg-creamCard text-stone-700 border border-stone-300/40 px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-stone-200 active:scale-95 tactile-btn shadow-sm">Matic Standard</button>
-      <button data-filter="Matic Maxi" class="filter-btn bg-creamCard text-stone-700 border border-stone-300/40 px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-stone-200 active:scale-95 tactile-btn shadow-sm">Matic Maxi</button>
-    </div>
-  </section>
-
   <!-- Bike Grid -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 flex-grow">
+  <main id="bikes" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 flex-grow">
     <div id="bike-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Di-inject oleh JS -->
     </div>
@@ -164,13 +155,13 @@
       <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-creamCard rounded-full text-stone-600 hover:bg-stone-300/50 transition-colors tactile-btn active:scale-90 z-20">✕</button>
       
       <div class="p-6 sm:p-8 overflow-y-auto">
-        <div class="aspect-[4/3] bg-creamCard rounded-xl mb-6 relative overflow-hidden flex items-center justify-center p-4 border border-stone-300/30">
-          <img id="modal-img" src="" alt="Motor" class="object-contain w-full h-full drop-shadow-xl">
+        <div class="bg-creamCard rounded-xl mb-6 relative overflow-hidden flex items-center justify-center border border-stone-300/30">
+          <img id="modal-img" src="" alt="Detail Unit" class="object-cover w-full h-auto rounded-xl">
         </div>
         
         <div class="flex justify-between items-start mb-2">
           <h2 id="modal-title" class="text-2xl font-bold tracking-tight text-brand"></h2>
-          <span id="modal-type" class="bg-creamCard text-stone-700 border border-stone-300/40 px-2.5 py-1 rounded-md text-xs font-semibold"></span>
+          <span id="modal-type" class="bg-creamCard text-stone-700 border border-stone-300/40 px-2.5 py-1 rounded-md text-xs font-semibold">Ready Unit</span>
         </div>
         <p class="text-stone-600 text-sm mb-6 pb-4 border-b border-stone-300/40" id="modal-features"></p>
         
@@ -219,14 +210,42 @@
   </div>
 
   <script>
+    // --- RAW IMAGES ARRAY ---
+    const rawImages = [
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.48.jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.52%20(1).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.52%20(2).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.52.jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.53%20(1).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.53%20(2).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.53.jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.54%20(1).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.54%20(2).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.54%20(3).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.54.jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.55%20(1).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.55%20(2).jpeg",
+      "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.55.jpeg"
+    ];
+
+    // Mapping unit berbasis aset gambar langsung
+    const bikes = rawImages.map((imgUrl, index) => ({
+      id: `unit-${index + 1}`,
+      name: `Unit Motor Armada #${index + 1}`,
+      type: 'Ready Unit',
+      rate12: 80000,
+      rate24: 100000,
+      outTownRate: 30000,
+      img: imgUrl
+    }));
+
     // --- DICTIONARY BILINGUAL ---
     const i18n = {
       id: {
-        nav_bikes: "Daftar Motor",
+        nav_bikes: "Daftar Unit",
         hero_badge: "🎓 Free Antar Jemput Area Stasiun & Kota Banjar",
         hero_title: "Amanah Rental Motor Banjar <br class='hidden sm:block'/> <span class='text-stone-400'>Mudah & Terpercaya.</span>",
         hero_desc: "Solusi transportasi terbaik di Kota Banjar. Unit selalu prima, fasilitas lengkap termasuk 2 Helm, Jas Hujan, dan Holder HP.",
-        filter_all: "Semua Unit",
         review_title: "Apa Kata Pelanggan Kami",
         review_1: '"Sangat terbantu dengan layanan free antar jemput. Pelayanan ramah, motor mulus, dan irit bensin!"',
         review_2: '"Very recommended rental in Banjar. Perfect service, fast response via WhatsApp, and raincoats were included."',
@@ -240,14 +259,13 @@
         total_cost: "Total Biaya",
         inc_facilities: "Termasuk 2 Helm + Jas Hujan + Holder HP",
         btn_wa: "Kirim Pemesanan WhatsApp",
-        prefix_rate: "Mulai Rp "
+        prefix_rate: "Sewa per 12j: Rp "
       },
       en: {
         nav_bikes: "Bike List",
         hero_badge: "🎓 Free Station & City Pickup in Banjar",
         hero_title: "Amanah Rental Motor Banjar <br class='hidden sm:block'/> <span class='text-stone-400'>Easy & Reliable.</span>",
         hero_desc: "The best transport solution in Banjar City. Prime condition units, full facilities including 2 Helmets, Raincoat, and Phone Holder.",
-        filter_all: "All Units",
         review_title: "What Our Customers Say",
         review_1: '"Very helpful with free pick-up service. Friendly service, smooth bike condition, and fuel efficient!"',
         review_2: '"Very recommended rental in Banjar. Perfect service, fast response via WhatsApp, and raincoats were included."',
@@ -261,28 +279,11 @@
         total_cost: "Total Cost",
         inc_facilities: "Includes 2 Helmets + Raincoat + Phone Holder",
         btn_wa: "Send Order to WhatsApp",
-        prefix_rate: "Starts from Rp "
+        prefix_rate: "12h Rate: Rp "
       }
     };
 
     let currentLang = 'id';
-
-    // Data Motor
-    const bikes = [
-      { id: 'beat', name: 'Honda Beat', type: 'Matic Standard', rate12: 80000, rate24: 100000, outTownRate: 30000, img: 'assets-sewamotor/bike_beatFI.png' },
-      { id: 'fino', name: 'Yamaha Fino', type: 'Matic Standard', rate12: 80000, rate24: 100000, outTownRate: 30000, img: 'assets-sewamotor/bike_fazzio.webp' },
-      { id: 'scoopy', name: 'Honda Scoopy', type: 'Matic Standard', rate12: 90000, rate24: 110000, outTownRate: 30000, img: 'assets-sewamotor/bike_beatdeluxe.png' },
-      { id: 'soulgt', name: 'Yamaha Mio Soul GT 2013', type: 'Matic Standard', rate12: 75000, rate24: 90000, outTownRate: 25000, img: 'assets-sewamotor/bike_mioJ.png' },
-      { id: 'beatdeluxe', name: 'Honda Beat Deluxe', type: 'Matic Standard', rate12: 90000, rate24: 110000, outTownRate: 30000, img: 'assets-sewamotor/bike_beatdeluxe.png' },
-      { id: 'vario', name: 'Honda Vario', type: 'Matic Standard', rate12: 100000, rate24: 120000, outTownRate: 35000, img: 'assets-sewamotor/bike_vario160.png' },
-      { id: 'xride', name: 'Yamaha X-Ride', type: 'Matic Standard', rate12: 90000, rate24: 110000, outTownRate: 30000, img: 'assets-sewamotor/bike_beatstreet.png' },
-      { id: 'adv', name: 'Honda ADV', type: 'Matic Maxi', rate12: 150000, rate24: 180000, outTownRate: 50000, img: 'assets-sewamotor/bike_pcx.webp' },
-      { id: 'scoopyprestige', name: 'Honda Scoopy Prestige', type: 'Matic Standard', rate12: 100000, rate24: 120000, outTownRate: 35000, img: 'assets-sewamotor/bike_fazzio.webp' },
-      { id: 'aerox', name: 'Yamaha Aerox', type: 'Matic Maxi', rate12: 140000, rate24: 160000, outTownRate: 45000, img: 'assets-sewamotor/bike_nmax.webp' },
-      { id: 'mioj', name: 'Yamaha Mio J', type: 'Matic Standard', rate12: 75000, rate24: 90000, outTownRate: 25000, img: 'assets-sewamotor/bike_mioJ.png' },
-      { id: 'mioz', name: 'Yamaha Mio Z', type: 'Matic Standard', rate12: 80000, rate24: 100000, outTownRate: 30000, img: 'assets-sewamotor/bike_mioM3.png' }
-    ];
-
     let currentBike = null;
 
     const toggleLanguage = () => {
@@ -297,8 +298,7 @@
         }
       });
       
-      const activeFilter = document.querySelector('.filter-btn.bg-brand').dataset.filter;
-      renderBikes(activeFilter);
+      renderBikes();
       if (currentBike && !document.getElementById('booking-modal').classList.contains('hidden')) {
         openModal(currentBike);
       }
@@ -312,13 +312,11 @@
       btn.addEventListener('pointerdown', vibrate);
     });
 
-    const renderBikes = (filter = 'all') => {
+    const renderBikes = () => {
       const grid = document.getElementById('bike-grid');
       grid.innerHTML = '';
       
-      const filtered = filter === 'all' ? bikes : bikes.filter(b => b.type === filter);
-      
-      filtered.forEach((bike, i) => {
+      bikes.forEach((bike, i) => {
         const delay = i * 40; 
         const card = document.createElement('div');
         
@@ -328,31 +326,28 @@
         card.setAttribute('data-tilt-glare', 'true');
         card.setAttribute('data-tilt-max-glare', '0.08');
         
-        card.className = `group bg-creamCard rounded-3xl p-6 border border-stone-300/40 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between`;
+        card.className = `group bg-creamCard rounded-3xl p-4 sm:p-5 border border-stone-300/40 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden`;
         card.style.animation = `fade-in 0.4s ease forwards`;
         card.style.animationDelay = `${delay}ms`;
         card.style.opacity = '0';
         card.style.transformStyle = 'preserve-3d';
         
-        const ratePrefix = i18n[currentLang].prefix_rate;
-        
         card.innerHTML = `
           <div>
-            <div class="flex justify-between items-start mb-6" style="transform: translateZ(20px)">
-              <span class="bg-cream text-stone-600 px-3 py-1 rounded-full text-xs font-semibold tracking-wide border border-stone-300/40">${bike.type}</span>
-              <div class="w-8 h-8 rounded-full bg-cream flex items-center justify-center group-hover:bg-brand group-hover:text-cream transition-colors border border-stone-300/30">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </div>
-            </div>
-            <div class="relative w-full h-44 mb-6 flex justify-center items-center" style="transform: translateZ(40px)">
-              <img src="${bike.img}" alt="${bike.name}" class="object-contain w-[85%] h-[85%] drop-shadow-lg group-hover:scale-105 transition-transform duration-500 ease-out">
+            <div class="relative w-full aspect-[4/3] mb-4 overflow-hidden rounded-2xl bg-stone-200 border border-stone-300/30" style="transform: translateZ(30px)">
+              <img src="${bike.img}" alt="${bike.name}" loading="lazy" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out">
             </div>
           </div>
           <div style="transform: translateZ(20px)">
-            <h3 class="text-xl font-bold mb-3 text-brand">${bike.name}</h3>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-brand">${bike.name}</h3>
+              <span class="bg-cream text-stone-700 px-2.5 py-0.5 rounded-full text-[10px] font-semibold border border-stone-300/40">Ready</span>
+            </div>
             <div class="flex items-center justify-between border-t border-stone-300/40 pt-3">
-              <span class="text-xs text-stone-500 font-medium">${ratePrefix}${bike.rate12.toLocaleString('id-ID')}/12h</span>
-              <span class="text-sm font-bold text-brand">Rp ${bike.rate24.toLocaleString('id-ID')} <span class="text-xs text-stone-500 font-normal">/24h</span></span>
+              <span class="text-xs text-stone-500 font-medium">Detail Lengkap Ada di Gambar</span>
+              <div class="w-7 h-7 rounded-full bg-brand text-cream flex items-center justify-center group-hover:bg-stone-800 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
             </div>
           </div>
         `;
@@ -368,21 +363,6 @@
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
       }
     };
-
-    // Filter Logic
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        vibrate();
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('bg-brand', 'text-cream');
-          b.classList.add('bg-creamCard', 'text-stone-700');
-        });
-        e.target.classList.remove('bg-creamCard', 'text-stone-700');
-        e.target.classList.add('bg-brand', 'text-cream');
-        
-        renderBikes(e.target.dataset.filter);
-      });
-    });
 
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `
@@ -413,9 +393,8 @@
       
       document.getElementById('modal-img').src = bike.img;
       document.getElementById('modal-title').textContent = bike.name;
-      document.getElementById('modal-type').textContent = bike.type;
       
-      const featuresText = currentLang === 'id' ? 'Include: 2 Helm + Jas Hujan + Holder HP' : 'Includes: 2 Helmets + Raincoat + Phone Holder';
+      const featuresText = currentLang === 'id' ? 'Include: 2 Helm + Jas Hujan + Holder HP (Detail unit sesuai gambar)' : 'Includes: 2 Helmets + Raincoat + Phone Holder (Unit detail on image)';
       document.getElementById('modal-features').textContent = featuresText;
       
       calculatePrice();
@@ -471,9 +450,9 @@
       
       let message = "";
       if(currentLang === 'id') {
-        message = `Halo Amanah Rental Motor Banjar, saya ingin memesan sewa motor:\n\n*Unit Motor:* ${currentBike.name}\n*Paket Durasi:* ${packageType}\n*Jumlah Sewa:* ${qty}x Paket\n*Luar Kota:* ${isLuarKota}\n*Total Estimasi:* ${total}\n\nApakah unit ini tersedia untuk dipesan?`;
+        message = `Halo Amanah Rental Motor Banjar, saya ingin memesan sewa motor:\n\n*Pilihan Unit:* ${currentBike.name}\n*Link/Gambar Unit:* ${currentBike.img}\n*Paket Durasi:* ${packageType}\n*Jumlah Sewa:* ${qty}x Paket\n*Luar Kota:* ${isLuarKota}\n*Total Estimasi:* ${total}\n\nApakah unit ini tersedia untuk dipesan?`;
       } else {
-        message = `Hello Amanah Rental Motor Banjar, I would like to book a bike rental:\n\n*Motorcycle:* ${currentBike.name}\n*Duration Package:* ${packageType === "24 Jam" ? "24 Hours" : "12 Hours"}\n*Quantity:* ${qty}x Package(s)\n*Out of Town:* ${isLuarKota === "Ya" ? "Yes" : "No"}\n*Total Estimate:* ${total}\n\nIs this unit available for booking?`;
+        message = `Hello Amanah Rental Motor Banjar, I would like to book a bike rental:\n\n*Unit:* ${currentBike.name}\n*Unit Image:* ${currentBike.img}\n*Duration Package:* ${packageType === "24 Jam" ? "24 Hours" : "12 Hours"}\n*Quantity:* ${qty}x Package(s)\n*Out of Town:* ${isLuarKota === "Ya" ? "Yes" : "No"}\n*Total Estimate:* ${total}\n\nIs this unit available for booking?`;
       }
       
       const waNumber = '6285703805591'; 
