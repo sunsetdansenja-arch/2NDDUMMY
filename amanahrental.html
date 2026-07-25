@@ -73,16 +73,29 @@
   </nav>
 
   <!-- Hero -->
-  <header class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+  <header class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
     <span data-i18n="hero_badge" class="px-4 py-1.5 bg-creamCard text-stone-800 text-xs font-semibold uppercase tracking-wider rounded-full inline-block mb-6 border border-stone-300/50">🎓 Free Antar Jemput Area Stasiun & Kota Banjar</span>
     <h1 data-i18n="hero_title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Amanah Rental Motor Banjar <br class="hidden sm:block"/> <span class="text-stone-400">Mudah & Terpercaya.</span></h1>
     <p data-i18n="hero_desc" class="text-lg text-stone-600 max-w-2xl mx-auto mb-6">Solusi transportasi terbaik di Kota Banjar. Unit selalu prima, fasilitas lengkap termasuk 2 Helm, Jas Hujan, dan Holder HP.</p>
-    <div class="flex justify-center gap-4 text-xs font-medium text-stone-500">
+    <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-stone-500 mb-8">
       <span>⭐ 5.0 Rating Google</span>
       <span>•</span>
       <span>⚡ Buka Sampai 21.00</span>
       <span>•</span>
       <span>📍 Mekarsari, Banjar</span>
+    </div>
+
+    <!-- Persyaratan Ringkas -->
+    <div class="max-w-3xl mx-auto bg-creamCard/60 border border-stone-300/50 rounded-2xl p-4 text-left text-xs text-stone-700">
+      <p class="font-bold text-brand mb-1.5 flex items-center gap-1.5 text-sm">
+        <span>📌</span> Persyaratan Sewa Motor:
+      </p>
+      <ol class="list-decimal list-inside space-y-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+        <li>Menitipkan <b>KTP asli</b> selama menyewa</li>
+        <li>Memiliki <b>SIM C</b> aktif bagi pengendara</li>
+        <li>Bukti tiket Bus/Kereta & booking Hotel</li>
+        <li>Menandatangani surat perjanjian sewa</li>
+      </ol>
     </div>
   </header>
 
@@ -138,7 +151,7 @@
   <!-- Footer -->
   <footer class="bg-creamCard border-t border-stone-300/40 py-12 mt-auto">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-      <p class="text-base font-bold text-brand text-center mb-1">AMANAH RENTAL MOTOR</p>
+      <p class="text-base font-bold text-brand text-center mb-1">AMANAH RENTAL MOTOR BANJAR</p>
       <p class="text-xs text-stone-600 text-center mb-2">Mekarsari, Kec. Banjar, Kota Banjar, Jawa Barat 46321 (Plus Code: JGHQ+3P)</p>
       <p class="text-xs text-stone-500 text-center mb-6">📱 085703805591 | 🕒 Buka s/d Pukul 21.00 WIB</p>
       <p class="text-xs text-stone-500 text-center">
@@ -210,7 +223,7 @@
   </div>
 
   <script>
-    // --- RAW IMAGES ARRAY ---
+    // Raw Image Assets (14 unit)
     const rawImages = [
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.48.jpeg",
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.52%20(1).jpeg",
@@ -228,16 +241,42 @@
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.55.jpeg"
     ];
 
-    // Mapping unit berbasis aset gambar langsung
-    const bikes = rawImages.map((imgUrl, index) => ({
-      id: `unit-${index + 1}`,
-      name: `Unit Motor Armada #${index + 1}`,
-      type: 'Ready Unit',
-      rate12: 80000,
-      rate24: 100000,
-      outTownRate: 30000,
-      img: imgUrl
-    }));
+    // Data Armada & Pricelist Tahun 2026
+    const bikeDetails = [
+      { name: "Mio J 2013", rate24: 80000 },
+      { name: "Mio Soul GT 2013", rate24: 80000 },
+      { name: "Mio Soul GT 2014", rate24: 80000 },
+      { name: "Mio Fino 2014", rate24: 100000 },
+      { name: "Xride 2016", rate24: 100000 },
+      { name: "Vario Agnes 2014", rate24: 100000 },
+      { name: "Vario Agnes 2015", rate24: 100000 },
+      { name: "Mio Z 2017", rate24: 120000 },
+      { name: "Beat Deluxe 2021", rate24: 120000 },
+      { name: "Beat Deluxe 2022", rate24: 120000 },
+      { name: "Scoopy Sporty 2016", rate24: 120000 },
+      { name: "Scoopy Prestige 2024", rate24: 140000 },
+      { name: "Aerox 2019", rate24: 150000 },
+      { name: "ADV 2019", rate24: 170000 }
+    ];
+
+    // Menggabungkan armada 1-14 dengan aset gambar
+    const bikes = bikeDetails.map((detail, index) => {
+      const rate24 = detail.rate24;
+      const rate12 = Math.round((rate24 * 0.8) / 5000) * 5000; // Pembulatan kalkulasi 12 jam
+      const outTownRate = Math.round((rate24 * 0.3) / 5000) * 5000; // Surcharge luar kota
+      
+      return {
+        id: `armada-${index + 1}`,
+        no: index + 1,
+        name: `Armada ${index + 1}: ${detail.name}`,
+        rawName: detail.name,
+        type: 'Ready Unit',
+        rate12: rate12,
+        rate24: rate24,
+        outTownRate: outTownRate,
+        img: rawImages[index]
+      };
+    });
 
     // --- DICTIONARY BILINGUAL ---
     const i18n = {
@@ -259,7 +298,7 @@
         total_cost: "Total Biaya",
         inc_facilities: "Termasuk 2 Helm + Jas Hujan + Holder HP",
         btn_wa: "Kirim Pemesanan WhatsApp",
-        prefix_rate: "Sewa per 12j: Rp "
+        prefix_rate: "Rp "
       },
       en: {
         nav_bikes: "Bike List",
@@ -279,7 +318,7 @@
         total_cost: "Total Cost",
         inc_facilities: "Includes 2 Helmets + Raincoat + Phone Holder",
         btn_wa: "Send Order to WhatsApp",
-        prefix_rate: "12h Rate: Rp "
+        prefix_rate: "Rp "
       }
     };
 
@@ -317,7 +356,7 @@
       grid.innerHTML = '';
       
       bikes.forEach((bike, i) => {
-        const delay = i * 40; 
+        const delay = i * 35; 
         const card = document.createElement('div');
         
         card.setAttribute('data-tilt', '');
@@ -336,18 +375,17 @@
           <div>
             <div class="relative w-full aspect-[4/3] mb-4 overflow-hidden rounded-2xl bg-stone-200 border border-stone-300/30" style="transform: translateZ(30px)">
               <img src="${bike.img}" alt="${bike.name}" loading="lazy" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out">
+              <span class="absolute top-2 left-2 bg-brand/80 backdrop-blur-md text-cream text-[10px] font-semibold px-2 py-0.5 rounded-full">#${bike.no}</span>
             </div>
           </div>
           <div style="transform: translateZ(20px)">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-base font-bold text-brand">${bike.name}</h3>
-              <span class="bg-cream text-stone-700 px-2.5 py-0.5 rounded-full text-[10px] font-semibold border border-stone-300/40">Ready</span>
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="text-base font-bold text-brand truncate">${bike.rawName}</h3>
+              <span class="bg-cream text-stone-700 px-2 py-0.5 rounded-full text-[10px] font-semibold border border-stone-300/40 shrink-0">Ready</span>
             </div>
-            <div class="flex items-center justify-between border-t border-stone-300/40 pt-3">
-              <span class="text-xs text-stone-500 font-medium">Detail Lengkap Ada di Gambar</span>
-              <div class="w-7 h-7 rounded-full bg-brand text-cream flex items-center justify-center group-hover:bg-stone-800 transition-colors">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </div>
+            <div class="flex items-center justify-between border-t border-stone-300/40 pt-3 mt-2">
+              <span class="text-xs text-stone-500 font-medium">Tarif 24 Jam</span>
+              <span class="text-sm font-bold text-brand">Rp ${bike.rate24.toLocaleString('id-ID')}</span>
             </div>
           </div>
         `;
@@ -394,7 +432,7 @@
       document.getElementById('modal-img').src = bike.img;
       document.getElementById('modal-title').textContent = bike.name;
       
-      const featuresText = currentLang === 'id' ? 'Include: 2 Helm + Jas Hujan + Holder HP (Detail unit sesuai gambar)' : 'Includes: 2 Helmets + Raincoat + Phone Holder (Unit detail on image)';
+      const featuresText = currentLang === 'id' ? 'Fasilitas: 2 Helm + Jas Hujan + Holder HP (Unit sesuai gambar katalog)' : 'Facilities: 2 Helmets + Raincoat + Phone Holder (Catalog unit image)';
       document.getElementById('modal-features').textContent = featuresText;
       
       calculatePrice();
@@ -450,9 +488,23 @@
       
       let message = "";
       if(currentLang === 'id') {
-        message = `Halo Amanah Rental Motor Banjar, saya ingin memesan sewa motor:\n\n*Pilihan Unit:* ${currentBike.name}\n*Link/Gambar Unit:* ${currentBike.img}\n*Paket Durasi:* ${packageType}\n*Jumlah Sewa:* ${qty}x Paket\n*Luar Kota:* ${isLuarKota}\n*Total Estimasi:* ${total}\n\nApakah unit ini tersedia untuk dipesan?`;
+        message = `Halo Amanah Rental Motor Banjar, saya ingin memesan sewa motor:\n\n` +
+                  `*Pilihan Unit:* Armada #${currentBike.no} (${currentBike.rawName})\n` +
+                  `*Paket Durasi:* ${packageType}\n` +
+                  `*Jumlah Sewa:* ${qty}x Paket\n` +
+                  `*Luar Kota:* ${isLuarKota}\n` +
+                  `*Total Estimasi:* ${total}\n\n` +
+                  `*Persyaratan:* Siap menitipkan KTP Asli, ada SIM C, dan melampirkan tiket/booking hotel.\n\n` +
+                  `Apakah unit ini ready untuk di-keep tanggalnya?`;
       } else {
-        message = `Hello Amanah Rental Motor Banjar, I would like to book a bike rental:\n\n*Unit:* ${currentBike.name}\n*Unit Image:* ${currentBike.img}\n*Duration Package:* ${packageType === "24 Jam" ? "24 Hours" : "12 Hours"}\n*Quantity:* ${qty}x Package(s)\n*Out of Town:* ${isLuarKota === "Ya" ? "Yes" : "No"}\n*Total Estimate:* ${total}\n\nIs this unit available for booking?`;
+        message = `Hello Amanah Rental Motor Banjar, I would like to book a bike rental:\n\n` +
+                  `*Unit:* Fleet #${currentBike.no} (${currentBike.rawName})\n` +
+                  `*Duration Package:* ${packageType === "24 Jam" ? "24 Hours" : "12 Hours"}\n` +
+                  `*Quantity:* ${qty}x Package(s)\n` +
+                  `*Out of Town:* ${isLuarKota === "Ya" ? "Yes" : "No"}\n` +
+                  `*Total Estimate:* ${total}\n\n` +
+                  `*Requirements:* Ready to leave ID card, hold C license, and provide ticket/hotel booking.\n\n` +
+                  `Is this unit available for booking?`;
       }
       
       const waNumber = '6285703805591'; 
