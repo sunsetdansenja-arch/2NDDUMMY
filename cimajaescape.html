@@ -80,7 +80,7 @@
 
             <div class="md:col-span-3 flex flex-col justify-end gap-4">
                 <p class="text-sm text-voyenDark leading-relaxed">
-                    Butuh *short escape* akhir pekan? Pilih layanan *ala carte* (travel, sewa motor, kelas surf) atau ambil paket komplit biar terima beres dari Jakarta.
+                    Butuh short escape akhir pekan? Pilih layanan ala carte (travel, sewa motor, kelas surf) atau ambil paket komplit biar terima beres dari Jakarta.
                 </p>
                 <a href="#storefront" class="px-8 py-4 bg-voyenOrange text-white font-bold text-center uppercase tracking-wider text-xs rounded-full hover:bg-black transition-all">
                     Book Your Trip
@@ -122,7 +122,7 @@
                                     <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/INTERIOR%20CAR%20TRACEL.png" alt="Travel Reguler" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-serif-premium text-xl font-bold mb-2">Weekend Travel (One-Way)</h3>
-                                <p class="text-xs text-voyenMuted leading-relaxed">Tiket sekali jalan (Antar ke Cimaja ATAU Jemput dari Cimaja balik ke Jakarta/Bandung). Sangat *surfboard-friendly* tanpa biaya bagasi tambahan.</p>
+                                <p class="text-xs text-voyenMuted leading-relaxed">Tiket sekali jalan (Antar ke Cimaja ATAU Jemput dari Cimaja balik ke Jakarta/Bandung). Sangat surfboard-friendly tanpa biaya bagasi tambahan.</p>
                             </div>
                             <button onclick="addToCart('travel', 'Weekend Travel (One-Way)', 300000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
                                 + Tambah Keranjang
@@ -141,7 +141,7 @@
                                     <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/SURF%20LESSONS.png" alt="Surf Coaching" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-serif-premium text-xl font-bold mb-2">Surf Lesson + Drone Doc</h3>
-                                <p class="text-xs text-voyenMuted leading-relaxed">Durasi ±2 jam bersama *Certified Local Coach*. Cocok untuk pemula. Paket sudah termasuk papan selancar, pelindung, dan video aksi kamu via Drone.</p>
+                                <p class="text-xs text-voyenMuted leading-relaxed">Durasi ±2 jam bersama Certified Local Coach. Cocok untuk pemula. Paket sudah termasuk papan selancar, pelindung, dan video aksi kamu via Drone.</p>
                             </div>
                             <button onclick="addToCart('lesson', 'Surf Lesson + Drone Doc', 475000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
                                 + Tambah Keranjang
@@ -322,20 +322,20 @@
             let message = "";
             
             if(isBundled) {
-                message = `Halo Surfing Escape, saya mau booking paket komplit *Cimaja Surf & Ride Weekend Pass*.\n`;
+                message = `Halo Surfing Escape, saya mau booking paket komplit Cimaja Surf & Ride Weekend Pass.\n`;
                 message += `• Travel Antar/Jemput (One-Way)\n`;
                 message += `• Surf Coaching + Dokumentasi Drone\n`;
                 message += `• Sewa Motor Matic 24 Jam\n\n`;
-                message += `Total setelah potongan bundling: *Rp 795.000*. Mohon cek ketersediaan kuota jadwalnya!`;
+                message += `Total setelah potongan bundling: Rp 795.000. Mohon cek ketersediaan kuota jadwalnya!`;
             } else {
                 message = `Halo Surfing Escape, saya mau buat kustom trip dengan pilihan berikut:\n\n`;
                 let subtotal = 0;
                 keys.forEach((key, index) => {
                     const item = cart[key];
-                    message += `${index + 1}. *${item.name}* — (Rp ${item.price.toLocaleString('id-ID')})\n`;
+                    message += `${index + 1}. ${item.name} — (Rp ${item.price.toLocaleString('id-ID')})\n`;
                     subtotal += item.price;
                 });
-                message += `\nTotal: *Rp ${subtotal.toLocaleString('id-ID')}*.\nMohon info ketersediaan slotnya.`;
+                message += `\nTotal: Rp ${subtotal.toLocaleString('id-ID')}.\nMohon info ketersediaan slotnya.`;
             }
 
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
