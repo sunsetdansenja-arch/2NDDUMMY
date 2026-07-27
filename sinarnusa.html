@@ -44,10 +44,6 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
         }
-        .hero-text-overlay {
-            line-height: 0.82;
-            letter-spacing: -0.04em;
-        }
         .hairline-border {
             border-width: 1px;
             border-color: rgba(13, 13, 13, 0.08);
@@ -109,35 +105,37 @@
             </div>
         </div>
 
-        <!-- Massive Hero Title Background -->
-        <div class="relative w-full text-center my-2 sm:my-4 select-none">
-            <h1 class="text-[17vw] xl:text-[200px] font-extrabold uppercase tracking-tighter text-brand-dark hero-text-overlay block leading-none">
-                Sinar Nusa
-            </h1>
-        </div>
-
-        <!-- Overlapping Hero Image Card -->
-        <div class="relative -mt-12 sm:-mt-24 md:-mt-32 rounded-3xl overflow-hidden shadow-2xl border border-brand-border bg-brand-dark group">
-            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png" alt="Penginapan Sinar Nusa Ambience" class="w-full h-[380px] sm:h-[500px] lg:h-[600px] object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out">
+        <!-- Hero Image Card with In-front Text Overlay -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-brand-border bg-brand-dark group">
+            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png" alt="Penginapan Sinar Nusa Ambience" class="w-full h-[420px] sm:h-[550px] lg:h-[650px] object-cover opacity-85 group-hover:scale-105 transition-transform duration-700 ease-out">
             
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/40 to-brand-dark/20"></div>
+
+            <!-- New Style Header Text In Front of Image (Based on Reference SS style) -->
+            <div class="absolute top-12 left-6 right-6 sm:left-12 sm:right-12 z-20 pointer-events-none">
+                <h1 class="text-white text-[9vw] lg:text-[70px] font-normal leading-tight tracking-tight drop-shadow-md">
+                    Sinar <span class="serif-italic font-semibold text-brand-amber">Nusa</span>
+                </h1>
+                <p data-i18n="hero_style_sub" class="text-white/80 text-xs sm:text-sm max-w-md mt-2 font-light">Exclusive privacy & comfort hospitality space.</p>
+            </div>
 
             <!-- Floating Overlay Badges -->
-            <div class="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
+            <div class="absolute bottom-6 left-6 right-6 sm:left-12 sm:right-12 flex flex-wrap items-end justify-between gap-4 z-20">
                 <div class="space-y-2">
                     <div class="flex flex-wrap gap-2">
                         <span data-i18n="badge_ac" class="bg-white/20 backdrop-blur-md text-white text-xs px-3.5 py-1.5 rounded-full border border-white/20">AC & Kipas</span>
                         <span data-i18n="badge_kitchen" class="bg-white/20 backdrop-blur-md text-white text-xs px-3.5 py-1.5 rounded-full border border-white/20">Dapur Umum</span>
                         <span class="bg-brand-amber text-white text-xs font-semibold px-3.5 py-1.5 rounded-full">WiFi Smart TV</span>
+                        <span data-i18n="badge_privacy" class="bg-emerald-600/80 backdrop-blur-md text-white text-xs font-semibold px-3.5 py-1.5 rounded-full border border-emerald-500/30"><i class="fa-solid fa-user-shield mr-1"></i> Privasi Aman & Bebas</span>
                     </div>
                     <p data-i18n="badge_desc" class="text-white text-sm sm:text-base font-medium max-w-md drop-shadow">
-                        Suasana tenang, bersih, dan ramah untuk liburan keluarga maupun rombongan.
+                        Suasana tenang, bersih, dan sangat privat. Nyaman untuk liburan tanpa aturan yang kaku.
                     </p>
                 </div>
 
                 <div class="bg-brand-surface/90 backdrop-blur-md p-4 rounded-2xl border border-white/30 hidden sm:block">
                     <p data-i18n="price_start_label" class="text-xs text-brand-muted uppercase tracking-wider font-semibold">Harga Mulai</p>
-                    <p class="text-2xl font-bold text-brand-dark">IDR 150.000 <span data-i18n="price_per_night" class="text-xs font-normal text-brand-muted">/malam</span></p>
+                    <p class="text-2xl font-bold text-brand-dark">IDR 200.000 <span data-i18n="price_per_night" class="text-xs font-normal text-brand-muted">/malam</span></p>
                 </div>
             </div>
         </div>
@@ -175,7 +173,7 @@
             </div>
             <div class="lg:col-span-4 space-y-4">
                 <p data-i18n="statement_desc" class="text-sm text-brand-muted leading-relaxed">
-                    Penginapan Sinar Nusa menawarkan kenyamanan menginap serasa di rumah sendiri dengan pilihan Kamar AC, Kamar Kipas, hingga Full Homestay untuk rombongan keluarga.
+                    Penginapan Sinar Nusa menawarkan kenyamanan menginap serasa di rumah sendiri dengan pilihan Kamar AC, Kamar Kipas, hingga Full Homestay untuk rombongan keluarga dengan jaminan privasi penuh tanpa ribet.
                 </p>
                 <div class="pt-2">
                     <a href="#kamar" class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-dark border-b-2 border-brand-dark pb-1 hover:text-brand-amber hover:border-brand-amber transition-all">
@@ -207,7 +205,7 @@
         <!-- Room Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Card 1: Homestay -->
+            <!-- Card 1: Homestay (Direct to New Number 088210464992) -->
             <div class="room-card homestay bg-brand-surface rounded-3xl p-6 border border-brand-border flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
                 <div>
                     <div class="relative h-48 rounded-2xl overflow-hidden mb-6 bg-gray-100">
@@ -218,15 +216,15 @@
                         <h4 data-i18n="card1_title" class="text-xl font-bold text-brand-dark">Homestay Sinar Nusa</h4>
                         <span data-i18n="card1_tag" class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">Kapasitas Besar</span>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 1.000.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 1.050.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-bed text-brand-amber"></i><span data-i18n="card1_f1">3 Kamar Kipas + 1 Kamar AC</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-utensils text-brand-amber"></i><span data-i18n="card1_f2">Akses Dapur Umum Lengkap</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-tv text-brand-amber"></i><span data-i18n="card1_f3">TV Smart 42 Inci & Free WiFi</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-key text-brand-amber"></i><span data-i18n="card1_f3">Full Privacy (Aman & Bebas Aturan Ketat)</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20unit%20Homestay%20(IDR%201.000.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6288210464992?text=Halo%20Homestay%20Sinar%20Nusa,%20saya%20ingin%20booking%20unit%20Homestay%20(IDR%201.050.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card1_btn">Pesan Homestay</span>
                 </a>
@@ -242,15 +240,15 @@
                     <div class="flex justify-between items-start mb-2">
                         <h4 data-i18n="card2_title" class="text-xl font-bold text-brand-dark">Kamar AC (Ukuran Luas)</h4>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 300.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 350.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-snowflake text-brand-amber"></i><span data-i18n="card2_f1">Pendingin Ruangan (AC) Cold & Clean</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-users text-brand-amber"></i><span data-i18n="card2_f2">Kamar Luas (Bisa Rame-rame)</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-user-lock text-brand-amber"></i><span data-i18n="card2_f2">Aman, Bebas & Menjaga Privasi Tamu</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-wifi text-brand-amber"></i><span data-i18n="card2_f3">Akses WiFi Gratis</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Luas%20(IDR%20300.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Luas%20(IDR%20350.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card2_btn">Pesan Kamar AC Luas</span>
                 </a>
@@ -266,15 +264,15 @@
                     <div class="flex justify-between items-start mb-2">
                         <h4 data-i18n="card3_title" class="text-xl font-bold text-brand-dark">Kamar AC + Smart TV</h4>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 300.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 350.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-tv text-brand-amber"></i><span data-i18n="card3_f1">Smart TV Lengkap Akses Internet</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-wifi text-brand-amber"></i><span data-i18n="card3_f2">Koneksi High-Speed WiFi</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-eye-slash text-brand-amber"></i><span data-i18n="card3_f2">Kamar Eksklusif & Sangat Tenang</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-snowflake text-brand-amber"></i><span data-i18n="card3_f3">Pendingin Ruangan (AC)</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Smart%20TV%20(IDR%20300.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Smart%20TV%20(IDR%20350.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card3_btn">Pesan AC + Smart TV</span>
                 </a>
@@ -289,21 +287,21 @@
                     <div class="flex justify-between items-start mb-2">
                         <h4 data-i18n="card4_title" class="text-xl font-bold text-brand-dark">Kamar AC Twin Bed</h4>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 250.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 300.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-bed text-brand-amber"></i><span data-i18n="card4_f1">Dua Tempat Tidur Nyaman (Twin Bed)</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-bottle-water text-brand-amber"></i><span data-i18n="card4_f2">Bonus 2 Botol Air Mineral</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-shield-halved text-brand-amber"></i><span data-i18n="card4_f2">Lingkungan Aman & Bebas Gangguan</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-wifi text-brand-amber"></i><span data-i18n="card4_f3">Fasilitas WiFi Gratis</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Twin%20Bed%20(IDR%20250.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20AC%20Twin%20Bed%20(IDR%20300.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card4_btn">Pesan Twin Bed</span>
                 </a>
             </div>
 
-            <!-- Card 5: Kamar Kipas Opsi 2 -->
+            <!-- Card 5: Kamar Kipas Standard -->
             <div class="room-card kipas bg-brand-surface rounded-3xl p-6 border border-brand-border flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
                 <div>
                     <div class="relative h-48 rounded-2xl overflow-hidden mb-6 bg-gray-100">
@@ -312,21 +310,21 @@
                     <div class="flex justify-between items-start mb-2">
                         <h4 data-i18n="card5_title" class="text-xl font-bold text-brand-dark">Kamar Kipas (Standard)</h4>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 200.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 250.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-fan text-brand-amber"></i><span data-i18n="card5_f1">Kipas Angin Sejuk</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-shower text-brand-amber"></i><span data-i18n="card5_f2">Kamar Mandi Bersih & Rapi</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-door-closed text-brand-amber"></i><span data-i18n="card5_f2">Check-in Mudah & Tanpa Ribet</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-utensils text-brand-amber"></i><span data-i18n="card5_f3">Akses Ke Dapur Umum</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20Kipas%20(IDR%20200.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20Kipas%20(IDR%20250.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card5_btn">Pesan Kamar Kipas</span>
                 </a>
             </div>
 
-            <!-- Card 6: Kamar Kipas Hemat (Opsi 1) -->
+            <!-- Card 6: Kamar Kipas Hemat -->
             <div class="room-card kipas bg-brand-surface rounded-3xl p-6 border border-brand-border flex flex-col justify-between hover:shadow-xl transition-all duration-300 group">
                 <div>
                     <div class="relative h-48 rounded-2xl overflow-hidden mb-6 bg-gray-100">
@@ -336,15 +334,15 @@
                     <div class="flex justify-between items-start mb-2">
                         <h4 data-i18n="card6_title" class="text-xl font-bold text-brand-dark">Kamar Kipas (Hemat)</h4>
                     </div>
-                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 150.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
+                    <p class="text-2xl font-extrabold text-brand-dark mb-4">IDR 200.000 <span data-i18n="price_per_night" class="text-xs text-brand-muted font-normal">/ malam</span></p>
                     
                     <ul class="space-y-2 text-xs text-brand-muted mb-6">
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-fan text-brand-amber"></i><span data-i18n="card6_f1">Kipas Angin Ruangan</span></li>
-                        <li class="flex items-center space-x-2"><i class="fa-solid fa-wallet text-brand-amber"></i><span data-i18n="card6_f2">Harga Paling Terjangkau</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-user-secret text-brand-amber"></i><span data-i18n="card6_f2">Jaminan Privasi Penuh Terjaga</span></li>
                         <li class="flex items-center space-x-2"><i class="fa-solid fa-house text-brand-amber"></i><span data-i18n="card6_f3">Akses Fasilitas Umum Homestay</span></li>
                     </ul>
                 </div>
-                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20Kipas%20Hemat%20(IDR%20150.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282317191632?text=Halo%20Penginapan%20Sinar%20Nusa,%20saya%20ingin%20booking%20Kamar%20Kipas%20Hemat%20(IDR%20200.000)" target="_blank" class="w-full py-3 bg-brand-dark text-white text-center rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brand-amber transition-colors flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span data-i18n="card6_btn">Pesan Kamar Hemat</span>
                 </a>
@@ -373,17 +371,17 @@
                 </div>
             </div>
 
-            <!-- Bento Box 2: Smart TV & WiFi -->
+            <!-- Bento Box 2: High Privacy & Freedom -->
             <div class="bg-brand-dark text-white p-8 rounded-3xl border border-brand-dark flex flex-col justify-between relative overflow-hidden group">
                 <div class="absolute -right-10 -bottom-10 text-white/5 text-9xl font-black">
-                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-brand-amber text-xl mb-6">
-                    <i class="fa-solid fa-tv"></i>
+                    <i class="fa-solid fa-key"></i>
                 </div>
                 <div class="relative z-10">
-                    <h4 data-i18n="fac2_title" class="text-xl font-bold mb-2">Smart TV 42" & High-Speed WiFi</h4>
-                    <p data-i18n="fac2_desc" class="text-xs text-white/70 leading-relaxed">Tetap terhubung dengan hiburan favorit, streaming film, atau bekerja jarak jauh tanpa kendala sinyal.</p>
+                    <h4 data-i18n="fac2_title" class="text-xl font-bold mb-2">Privasi & Kebebasan Penuh</h4>
+                    <p data-i18n="fac2_desc" class="text-xs text-white/70 leading-relaxed">Sistem menginap santai yang aman dari gangguan luar. Memberikan kenyamanan tinggal tanpa kekhawatiran aturan jam malam ketat.</p>
                 </div>
             </div>
 
@@ -433,7 +431,7 @@
 
                 <div class="p-6 rounded-2xl bg-brand-light border border-brand-border space-y-4">
                     <p data-i18n="rev2_text" class="text-xs text-brand-dark italic leading-relaxed">
-                        "Pilihan homestay yang worth it! Ada fasilitas dapur umum jadi gampang kalau mau masak air atau makanan kecil. Recomended buat keluarga."
+                        "Pilihan homestay yang worth it! Suasananya tenang banget dan penjaganya cuek tapi ramah, jadi bebas keluar masuk gampang kalau mau nyari makanan kecil. Recomended."
                     </p>
                     <div class="flex items-center justify-between text-xs font-semibold pt-2 border-t border-brand-border">
                         <span data-i18n="rev2_author" class="text-brand-dark">Keluarga Liburan</span>
@@ -443,7 +441,7 @@
 
                 <div class="p-6 rounded-2xl bg-brand-light border border-brand-border space-y-4">
                     <p data-i18n="rev3_text" class="text-xs text-brand-dark italic leading-relaxed">
-                        "Harganya terjangkau banget dibanding kenyamanan yang didapat. Smart TV-nya oke buat santai malam. Pasti bakal balik lagi kalau ke sini."
+                        "Harganya terjangkau banget dibanding kenyamanan yang didapat. Tempatnya bener-bener privat jadi tenang pas istirahat malam. Pasti bakal balik lagi kalau ke sini."
                     </p>
                     <div class="flex items-center justify-between text-xs font-semibold pt-2 border-t border-brand-border">
                         <span data-i18n="rev3_author" class="text-brand-dark">Wisatawan Solo/Pasangan</span>
@@ -527,16 +525,24 @@
     <!-- Footer -->
     <footer class="bg-brand-dark text-white py-12 px-4 sm:px-8 border-t border-white/10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center space-x-3">
-                <span class="w-3 h-3 rounded-full bg-brand-amber"></span>
-                <span class="font-extrabold text-base tracking-tight">PENGINAPAN SINAR NUSA</span>
-                <span class="text-xs text-white/50 border-l border-white/20 pl-3">Cijulang, Pangandaran</span>
+            <div class="flex flex-col items-center md:items-start gap-1">
+                <div class="flex items-center space-x-3">
+                    <span class="w-3 h-3 rounded-full bg-brand-amber"></span>
+                    <span class="font-extrabold text-base tracking-tight">PENGINAPAN SINAR NUSA</span>
+                    <span class="text-xs text-white/50 border-l border-white/20 pl-3">Cijulang, Pangandaran</span>
+                </div>
             </div>
 
-            <p class="text-xs text-white/50 text-center md:text-right">
-                &copy; <span id="year">2026</span> Penginapan Sinar Nusa. All Rights Reserved. <br class="hidden sm:inline">
-                <span data-i18n="footer_sub">Sistem Reservasi Langsung via WhatsApp Official.</span>
-            </p>
+            <div class="text-xs text-white/50 text-center md:text-right space-y-2">
+                <p>
+                    &copy; <span id="year">2026</span> Penginapan Sinar Nusa. All Rights Reserved. <br class="hidden sm:inline">
+                    <span data-i18n="footer_sub">Sistem Reservasi Langsung via WhatsApp Official.</span>
+                </p>
+                <!-- Supported By Credit -->
+                <p class="text-[10px] uppercase tracking-widest text-white/40 font-semibold pt-1 border-t border-white/5">
+                    Supported by <span class="text-brand-amber">Beuna Digital</span>
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -544,7 +550,7 @@
         // Set dynamic current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Bilingual Translation Dictionary
+        // Bilingual Translation Dictionary (Updated with adjusted prices + 50k & privacy clues)
         const translations = {
             id: {
                 nav_rooms: "Pilihan Kamar",
@@ -557,9 +563,11 @@
                 hero_loc_title: "Lokasi Strategis",
                 hero_loc_sub: "Dekat Destinasi Wisata Pangandaran",
                 hero_rev_sub: "41 Ulasan Terverifikasi Google",
+                hero_style_sub: "Ruang penginapan eksklusif yang tenang & menjamin privasi penuh.",
                 badge_ac: "AC & Kipas",
                 badge_kitchen: "Dapur Umum",
-                badge_desc: "Suasana tenang, bersih, dan ramah untuk liburan keluarga maupun rombongan.",
+                badge_privacy: "Privasi Aman & Bebas",
+                badge_desc: "Suasana tenang, bersih, dan sangat privat. Nyaman untuk liburan tanpa aturan yang kaku.",
                 price_start_label: "Harga Mulai",
                 price_per_night: "/malam",
                 metric_rating_lbl: "Rating Sempurna Google",
@@ -567,7 +575,7 @@
                 metric_types_lbl: "Opsi Kamar & Homestay",
                 metric_clean_lbl: "Fasilitas Bersih & Terawat",
                 statement_heading: 'Stunning <span class="serif-italic font-semibold">hospitality spaces</span> where people <span class="serif-italic font-semibold">rest, gather, and explore</span> Pangandaran.',
-                statement_desc: "Penginapan Sinar Nusa menawarkan kenyamanan menginap serasa di rumah sendiri dengan pilihan Kamar AC, Kamar Kipas, hingga Full Homestay untuk rombongan keluarga.",
+                statement_desc: "Penginapan Sinar Nusa menawarkan kenyamanan menginap serasa di rumah sendiri dengan pilihan Kamar AC, Kamar Kipas, hingga Full Homestay untuk rombongan keluarga dengan jaminan privasi penuh tanpa ribet.",
                 statement_link: "Lihat Semua Tipe Kamar",
                 rooms_subtitle: "Pilihan Akomodasi",
                 rooms_title: "Tipe Kamar & Harga",
@@ -580,34 +588,34 @@
                 card1_title: "Homestay Sinar Nusa",
                 card1_f1: "3 Kamar Kipas + 1 Kamar AC",
                 card1_f2: "Akses Dapur Umum Lengkap",
-                card1_f3: "TV Smart 42 Inci & Free WiFi",
+                card1_f3: "Full Privacy (Aman & Bebas Aturan Ketat)",
                 card1_btn: "Pesan Homestay",
                 card2_badge: "Favorit Rame-rame",
                 card2_title: "Kamar AC (Ukuran Luas)",
                 card2_f1: "Pendingin Ruangan (AC) Cold & Clean",
-                card2_f2: "Kamar Luas (Bisa Rame-rame)",
+                card2_f2: "Aman, Bebas & Menjaga Privasi Tamu",
                 card2_f3: "Akses WiFi Gratis",
                 card2_btn: "Pesan Kamar AC Luas",
                 card3_badge: "Entertainment",
                 card3_title: "Kamar AC + Smart TV",
                 card3_f1: "Smart TV Lengkap Akses Internet",
-                card3_f2: "Koneksi High-Speed WiFi",
+                card3_f2: "Kamar Eksklusif & Sangat Tenang",
                 card3_f3: "Pendingin Ruangan (AC)",
                 card3_btn: "Pesan AC + Smart TV",
                 card4_title: "Kamar AC Twin Bed",
                 card4_f1: "Dua Tempat Tidur Nyaman (Twin Bed)",
-                card4_f2: "Bonus 2 Botol Air Mineral",
+                card4_f2: "Lingkungan Aman & Bebas Gangguan",
                 card4_f3: "Fasilitas WiFi Gratis",
                 card4_btn: "Pesan Twin Bed",
                 card5_title: "Kamar Kipas (Standard)",
                 card5_f1: "Kipas Angin Sejuk",
-                card5_f2: "Kamar Mandi Bersih & Rapi",
+                card5_f2: "Check-in Mudah & Tanpa Ribet",
                 card5_f3: "Akses Ke Dapur Umum",
                 card5_btn: "Pesan Kamar Kipas",
                 card6_badge: "Hemat & Economical",
                 card6_title: "Kamar Kipas (Hemat)",
                 card6_f1: "Kipas Angin Ruangan",
-                card6_f2: "Harga Paling Terjangkau",
+                card6_f2: "Jaminan Privasi Penuh Terjaga",
                 card6_f3: "Akses Fasilitas Umum Homestay",
                 card6_btn: "Pesan Kamar Hemat",
                 fac_sub: "Kenyamanan Lengkap",
@@ -615,17 +623,17 @@
                 fac_desc: "Didesain untuk memastikan kebutuhan harian Anda selama berlibur di Pangandaran terpenuhi secara praktis.",
                 fac1_title: "Dapur Umum Lengkap",
                 fac1_desc: "Fasilitas memasak bersama yang bersih, dilengkapi kompor dan perlengkapan mendasar untuk menyiapkan makanan keluarga.",
-                fac2_title: "Smart TV 42\" & High-Speed WiFi",
-                fac2_desc: "Tetap terhubung dengan hiburan favorit, streaming film, atau bekerja jarak jauh tanpa kendala sinyal.",
+                fac2_title: "Privasi & Kebebasan Penuh",
+                fac2_desc: "Sistem menginap santai yang aman dari gangguan luar. Memberikan kenyamanan tinggal tanpa kekhawatiran aturan jam malam ketat.",
                 fac3_title: "AC & Kipas Angin Opsional",
                 fac3_desc: "Pilihan sistem pendingin ruangan yang disesuaikan dengan preferensi kenyamanan dan budget istirahat Anda.",
                 rev_title: "Kata Mereka yang Pernah Menginap",
                 rev_desc: "Berdasarkan 41 Ulasan Asli di Google Maps. Pengalaman jujur dari para wisatawan yang telah memilih Penginapan Sinar Nusa.",
                 rev1_text: '"Tempatnya sangat bersih, AC dingin, air mengalir lancar. Pelayanan ramah sekali. Cocok banget buat singgah pas liburan ke Cijulang dan Pangandaran."',
                 rev1_author: "Tamu Rombongan",
-                rev2_text: '"Pilihan homestay yang worth it! Ada fasilitas dapur umum jadi gampang kalau mau masak air atau makanan kecil. Recomended buat keluarga."',
+                rev2_text: '"Pilihan homestay yang worth it! Suasananya tenang banget dan penjaganya cuek tapi ramah, jadi bebas keluar masuk gampang kalau mau nyari makanan kecil. Recomended."',
                 rev2_author: "Keluarga Liburan",
-                rev3_text: '"Harganya terjangkau banget dibanding kenyamanan yang didapat. Smart TV-nya oke buat santai malam. Pasti bakal balik lagi kalau ke sini."',
+                rev3_text: '"Harganya terjangkau banget dibanding kenyamanan yang didapat. Tempatnya bener-bener privat jadi tenang pas istirahat malam. Pasti bakal balik lagi kalau ke sini."',
                 rev3_author: "Wisatawan Solo/Pasangan",
                 loc_sub: "Lokasi & Kontak",
                 loc_title: "Kemudahan Akses Ke Penginapan",
@@ -648,9 +656,11 @@
                 hero_loc_title: "Strategic Location",
                 hero_loc_sub: "Near Pangandaran Destinations",
                 hero_rev_sub: "41 Verified Google Reviews",
+                hero_style_sub: "Exclusive hospitality space with premium quietness and complete privacy.",
                 badge_ac: "AC & Fan",
                 badge_kitchen: "Shared Kitchen",
-                badge_desc: "Quiet, clean, and welcoming atmosphere for family vacations or group trips.",
+                badge_privacy: "Safe & Unrestricted Privacy",
+                badge_desc: "Calm, clean, and highly private atmosphere. Enjoy your stay without rigid regulations.",
                 price_start_label: "Starting From",
                 price_per_night: "/night",
                 metric_rating_lbl: "Perfect Google Rating",
@@ -658,7 +668,7 @@
                 metric_types_lbl: "Room & Homestay Options",
                 metric_clean_lbl: "Clean & Well-Maintained",
                 statement_heading: 'Stunning <span class="serif-italic font-semibold">hospitality spaces</span> where people <span class="serif-italic font-semibold">rest, gather, and explore</span> Pangandaran.',
-                statement_desc: "Penginapan Sinar Nusa offers homelike comfort with choices of AC Rooms, Fan Rooms, or a Full Homestay for family and group trips.",
+                statement_desc: "Penginapan Sinar Nusa offers homelike comfort with choices of AC Rooms, Fan Rooms, or a Full Homestay for family and group trips with full unbothered privacy.",
                 statement_link: "View All Room Types",
                 rooms_subtitle: "Accommodation Options",
                 rooms_title: "Room Types & Pricing",
@@ -671,34 +681,34 @@
                 card1_title: "Sinar Nusa Homestay",
                 card1_f1: "3 Fan Rooms + 1 AC Room",
                 card1_f2: "Full Access to Shared Kitchen",
-                card1_f3: "42-inch Smart TV & Free WiFi",
+                card1_f3: "Full Privacy (Safe & Flexible Policies)",
                 card1_btn: "Book Homestay",
                 card2_badge: "Group Favorite",
                 card2_title: "AC Room (Spacious)",
                 card2_f1: "Cold & Clean Air Conditioner",
-                card2_f2: "Spacious Room (Ideal for Groups)",
+                card2_f2: "Safe, Independent & Highly Private for Guests",
                 card2_f3: "Free WiFi Access",
                 card2_btn: "Book Spacious AC Room",
                 card3_badge: "Entertainment",
                 card3_title: "AC Room + Smart TV",
                 card3_f1: "Smart TV with Internet Access",
-                card3_f2: "High-Speed WiFi Connection",
+                card3_f2: "Exclusive & Peacefully Disreet Room",
                 card3_f3: "Air Conditioner (AC)",
                 card3_btn: "Book AC + Smart TV",
                 card4_title: "Twin Bed AC Room",
                 card4_f1: "Two Comfortable Beds (Twin Bed)",
-                card4_f2: "Bonus 2 Bottles of Mineral Water",
+                card4_f2: "Safe Environment & Free from Disturbances",
                 card4_f3: "Free WiFi Access",
                 card4_btn: "Book Twin Bed",
                 card5_title: "Fan Room (Standard)",
                 card5_f1: "Cooling Air Fan",
-                card5_f2: "Clean & Tidy Bathroom",
+                card5_f2: "Hassle-Free & Easy Check-in",
                 card5_f3: "Access to Shared Kitchen",
                 card5_btn: "Book Fan Room",
                 card6_badge: "Budget Friendly",
                 card6_title: "Fan Room (Budget)",
                 card6_f1: "In-room Cooling Fan",
-                card6_f2: "Most Affordable Rate",
+                card6_f2: "Guaranteed Discretion & Full Privacy",
                 card6_f3: "Access to Shared Amenities",
                 card6_btn: "Book Budget Room",
                 fac_sub: "Complete Comfort",
@@ -706,17 +716,17 @@
                 fac_desc: "Designed to ensure your daily needs during your holiday in Pangandaran are conveniently met.",
                 fac1_title: "Fully Equipped Shared Kitchen",
                 fac1_desc: "Clean shared cooking facility equipped with stove and basic utensils to prepare meals for your group.",
-                fac2_title: "42\" Smart TV & High-Speed WiFi",
-                fac2_desc: "Stay connected with your favorite shows, movie streaming, or remote work without signal issues.",
+                fac2_title: "Full Privacy & Absolute Freedom",
+                fac2_desc: "A relaxed, laid-back staying system secure from external disturbances. Providing peak comfort without strict curfew worries.",
                 fac3_title: "AC & Optional Cooling Fan",
                 fac3_desc: "Flexible room climate options tailored to your comfort preferences and vacation budget.",
                 rev_title: "What Our Guests Say",
                 rev_desc: "Based on 41 Genuine Google Maps Reviews. Honest experiences from travelers who stayed at Sinar Nusa.",
                 rev1_text: '"The place is super clean, AC is cold, and water flows smoothly. Very friendly host. Perfect stopover for holidays in Cijulang and Pangandaran."',
                 rev1_author: "Group Travelers",
-                rev2_text: '"Totally worth it homestay! Shared kitchen facilities make it easy to boil water or cook snacks. Highly recommended for families."',
+                rev2_text: '"Totally worth it homestay! Super quiet atmosphere and discrete yet friendly staff, so easy to move in and out to get snacks. Highly recommended."',
                 rev2_author: "Family Vacation",
-                rev3_text: '"Very affordable price for the comfort offered. The Smart TV is great for relaxing in the evening. Will definitely return!"',
+                rev3_text: '"Very affordable price for the comfort offered. The place is completely private, making night rests peaceful. Will definitely return!"',
                 rev3_author: "Solo / Couple Travelers",
                 loc_sub: "Location & Contact",
                 loc_title: "Easy Access to Guesthouse",
