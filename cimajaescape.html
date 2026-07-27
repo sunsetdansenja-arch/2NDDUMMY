@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surfing Escape to Cimaja — Premium Private Trip</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        voyenOrange: '#FF5A1F',
+                        voyenCream: '#FBF9F1',
+                        voyenDark: '#1D1D1F',
+                        voyenMuted: '#6E6E73'
+                    },
+                    font: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF9F1;
+            color: #1D1D1F;
+        }
+        .font-serif-premium {
+            font-family: 'Playfair Display', serif;
+        }
+        .hairline-border {
+            border: 1px solid rgba(29, 29, 31, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- TOP HEADER BAR -->
+    <header class="w-full py-4 px-6 md:px-12 bg-[#FBF9F1] hairline-border border-b flex justify-between items-center text-xs uppercase tracking-widest font-medium">
+        <div>DESIGNED BY SURFING ESCAPE</div>
+        <div class="hidden md:block">PRIVATE TRIP & EXPERIENCE — CIMAJA 2026</div>
+        <div>JULY 2026</div>
+    </header>
+
+    <!-- HERO SECTION (Editorial Style) -->
+    <section class="relative w-full hairline-border border-b bg-[#FBF9F1] px-6 md:px-12 pt-12 pb-24 flex flex-col justify-between">
+        <div class="relative w-full z-10">
+            <h1 class="font-serif-premium text-[12vw] md:text-[8vw] font-black leading-none tracking-tight uppercase text-voyenDark select-none relative">
+                Voyen <span class="italic font-normal text-voyenOrange lowercase">escape</span><br>
+                <div class="flex items-center justify-between">
+                    <span>to Cimaja</span>
+                    <span class="text-xs uppercase tracking-widest font-sans font-bold text-voyenOrange bg-white px-4 py-2 rounded-full border border-voyenOrange rotate-[-4deg] hidden md:inline-block">WELCOME TO CIMAJA</span>
+                </div>
+            </h1>
+        </div>
+
+        <!-- Hero Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mt-12 items-end">
+            <div class="md:col-span-4 text-xs tracking-wider text-voyenMuted uppercase max-w-sm">
+                A PREMIUM ONE-STOP ADVENTURE PLATFORM. WE CARRY YOUR BOARDS, PROVIDE THE RIDE, AND COACH YOU RIGHT ON THE WAVE FRONT.
+            </div>
+            
+            <div class="md:col-span-5 relative h-64 md:h-80 w-full rounded-2xl overflow-hidden shadow-sm">
+                <!-- Fallback gradient placeholder simulating premium surf visuals -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-voyenOrange via-amber-500 to-sky-400 opacity-90 flex items-center justify-center">
+                    <span class="font-serif-premium text-white text-2xl italic">Catch Your First Wave.</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 flex flex-col justify-end gap-4">
+                <p class="text-sm text-voyenDark leading-relaxed">
+                    Rancang pelarian akhir pekanmu sendiri. Pilih akomodasi transportasi, sewa kendaraan, atau biarkan Mang Bule melatih teknik surfing terbaikmu.
+                </p>
+                <a href="#storefront" class="px-8 py-4 bg-voyenOrange text-white font-bold text-center uppercase tracking-wider text-xs rounded-full hover:bg-black transition-all">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: THE BENTO CONTEXT (ASYMMETRIC GRID) -->
+    <section id="storefront" class="w-full py-20 px-6 md:px-12 hairline-border border-b bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-bold text-voyenOrange uppercase tracking-widest">A La Carte Options & Passes</span>
+                    <h2 class="font-serif-premium text-4xl md:text-5xl font-bold mt-2">Choose your next journey</h2>
+                </div>
+                <div class="text-xs tracking-widest uppercase flex gap-4 text-voyenMuted">
+                    <span class="text-voyenOrange font-bold border-b border-voyenOrange">ALL SELECTION</span>
+                    <span>• JAKARTA</span>
+                    <span>• BANDUNG</span>
+                    <span>• CIMAJA</span>
+                </div>
+            </div>
+
+            <!-- PRODUCT GRID & CART SPLIT SYSTEM -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- ITEMS AREA (8-COLUMNS) -->
+                <div class="lg:col-span-8 space-y-8">
+                    
+                    <!-- EXCLUSIVE BUNDLING ALERT -->
+                    <div class="bg-[#FBF9F1] border-2 border-dashed border-voyenOrange rounded-3xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="bg-voyenOrange text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">🔥 AUTO-SAVE PASS</span>
+                            <h4 class="font-serif-premium text-xl font-bold mt-2 text-voyenDark">Cimaja Surf & Ride Pass</h4>
+                            <p class="text-xs text-voyenMuted mt-1">Masukkan item <strong>Travel, Lesson, & Motor</strong> sekaligus ke dalam keranjang untuk klaim diskon otomatis senilai <strong>Rp80.000</strong>.</p>
+                        </div>
+                        <button onclick="addAllToCart()" class="px-6 py-3 bg-voyenDark text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-voyenOrange transition-colors shrink-0">
+                            Add All Bundling
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- ITEM 1: TRAVEL -->
+                        <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01]">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">01 / TRANSPORT</span>
+                                    <span class="text-lg font-bold text-voyenOrange">Rp300k<span class="text-xs font-normal text-voyenMuted">/pax</span></span>
+                                </div>
+                                <h3 class="font-serif-premium text-2xl font-bold mt-4 mb-2">Transport Escape (Travel)</h3>
+                                <p class="text-xs text-voyenMuted leading-relaxed">Layanan travel reguler Jakarta/Bandung langsung drop ke spot Pelabuhan Ratu. Aman membawa papan selancar besar tanpa biaya bagasi tambahan.</p>
+                            </div>
+                            <button onclick="addToCart('travel', 'Transport Escape', 300000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
+                                + Add to Cart
+                            </button>
+                        </div>
+
+                        <!-- ITEM 2: LESSON -->
+                        <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01]">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">02 / COACHING</span>
+                                    <span class="text-lg font-bold text-voyenOrange">Rp475k<span class="text-xs font-normal text-voyenMuted">/session</span></span>
+                                </div>
+                                <h3 class="font-serif-premium text-2xl font-bold mt-4 mb-2">Mang Bule Surf Lesson</h3>
+                                <p class="text-xs text-voyenMuted leading-relaxed">Durasi ±2 jam privat sesi bersama coach berpengalaman 10 tahun. Paket lengkap termasuk penyewaan surf board dan dokumentasi cinematic premium via Drone.</p>
+                            </div>
+                            <button onclick="addToCart('lesson', 'Mang Bule Surf Lesson', 475000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
+                                + Add to Cart
+                            </button>
+                        </div>
+
+                        <!-- ITEM 3: MOTORBIKE -->
+                        <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between md:col-span-2 transition-transform duration-300 hover:scale-[1.01]">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                                <div>
+                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">03 / RIDE RENTAL</span>
+                                    <h3 class="font-serif-premium text-2xl font-bold mt-2 mb-2">Island Ride (Sewa Motor)</h3>
+                                    <p class="text-xs text-voyenMuted max-w-xl leading-relaxed">Eksplorasi total semua pantai di Pelabuhan Ratu dari Sunset Beach hingga Cikembang secara bebas tanpa terikat ojek lokal. Unit motor matic prima 24 jam.</p>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <span class="text-lg font-bold text-voyenOrange block mb-2">Rp100k<span class="text-xs font-normal text-voyenMuted">/day</span></span>
+                                    <button onclick="addToCart('motor', 'Sewa Motor Matic', 100000)" class="px-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
+                                        + Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CART AREA (4-COLUMNS / STICKY READY) -->
+                <div class="lg:col-span-4">
+                    <div class="bg-[#FBF9F1] p-6 rounded-3xl border border-voyenDark/10 sticky top-24">
+                        <div class="flex items-center justify-between border-b pb-4 mb-4">
+                            <h3 class="font-serif-premium text-xl font-bold">Your Escape Cart</h3>
+                            <i class="fa-solid fa-suitcase-rolling text-voyenOrange"></i>
+                        </div>
+
+                        <!-- Cart Items Hook -->
+                        <div id="cart-container" class="space-y-4 min-h-[120px] flex flex-col justify-center text-center">
+                            <p class="text-xs text-voyenMuted py-6">Belum ada item yang dipilih.<br>Silakan tambahkan opsi perjalanan Anda.</p>
+                        </div>
+
+                        <!-- Price Breakdown Hook -->
+                        <div class="border-t pt-4 mt-6 space-y-2 text-xs uppercase tracking-wider">
+                            <div class="flex justify-between text-voyenMuted">
+                                <span>Subtotal</span>
+                                <span id="cart-subtotal">Rp0</span>
+                            </div>
+                            <div id="bundling-discount-row" class="flex justify-between text-voyenOrange font-bold hidden">
+                                <span>Bundling Discount</span>
+                                <span id="cart-discount">-Rp80.000</span>
+                            </div>
+                            <div class="flex justify-between text-base font-bold text-voyenDark pt-2 border-t border-dashed">
+                                <span>Total Tagihan</span>
+                                <span id="cart-total">Rp0</span>
+                            </div>
+                        </div>
+
+                        <!-- Policy terms note -->
+                        <div class="mt-6 p-3 bg-white/60 rounded-xl text-[10px] text-voyenMuted border border-black/5">
+                            <i class="fa-solid fa-circle-info text-voyenOrange mr-1"></i> Minimal uang muka (DP) Rp50.000. Reschedule gratis kapan pun jika kondisi cuaca buruk melanda area pantai.
+                        </div>
+
+                        <!-- Checkout Button -->
+                        <button onclick="checkoutWhatsApp()" class="w-full mt-4 py-4 bg-voyenDark hover:bg-voyenOrange text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Amankan Slot Anda Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER EXHAUSTIVE INFO -->
+    <footer class="w-full bg-voyenDark text-voyenCream py-16 px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 text-xs tracking-wider uppercase">
+        <div class="space-y-2">
+            <h3 class="font-serif-premium text-2xl font-bold tracking-normal text-white lowercase">surfing escape.</h3>
+            <p class="text-voyenMuted">Hubungi Tim Kami di +62 882-1046-4992</p>
+        </div>
+        <div class="text-voyenMuted md:text-right">
+            <p>&copy; 2026 SURFING ESCAPE PLATFORM. ALL RIGHTS RESERVED.</p>
+            <p class="mt-1 text-[10px]">CIMAJA SURF POINT • INDONESIA</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTION & CART STATE SYSTEM JAVASCRIPT -->
+    <script>
+        // State Management
+        let cart = {};
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-container');
+            const subtotalRow = document.getElementById('cart-subtotal');
+            const discountRow = document.getElementById('bundling-discount-row');
+            const totalRow = document.getElementById('cart-total');
+            
+            // Bersihkan kontainer
+            container.innerHTML = '';
+            
+            const keys = Object.keys(cart);
+            
+            if(keys.length === 0) {
+                container.innerHTML = `<p class="text-xs text-voyenMuted py-6">Belum ada item yang dipilih.<br>Silakan tambahkan opsi perjalanan Anda.</p>`;
+                subtotalRow.innerText = 'Rp0';
+                discountRow.classList.add('hidden');
+                totalRow.innerText = 'Rp0';
+                return;
+            }
+
+            let subtotal = 0;
+            keys.forEach(key => {
+                const item = cart[key];
+                subtotal += item.price;
+
+                const itemHtml = `
+                    <div class="flex justify-between items-center text-left bg-white p-3 rounded-xl border border-black/5 text-xs">
+                        <div>
+                            <span class="font-bold text-voyenDark block">${item.name}</span>
+                            <span class="text-[10px] text-voyenOrange font-medium uppercase tracking-wider">Rp${(item.price/1000)}k</span>
+                        </div>
+                        <button onclick="removeFromCart('${key}')" class="text-voyenMuted hover:text-red-500 transition-colors p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', itemHtml);
+            });
+
+            // Logika Deteksi Diskon Paket Bundling Otomatis
+            const isBundled = cart['travel'] && cart['lesson'] && cart['motor'];
+            let discount = 0;
+
+            if (isBundled) {
+                discount = 80000;
+                discountRow.classList.remove('hidden');
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            let total = subtotal - discount;
+
+            // Formatter IDR Sederhana
+            subtotalRow.innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+            totalRow.innerText = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function addToCart(id, name, price) {
+            cart[id] = { name, price };
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            delete cart[id];
+            updateCartUI();
+        }
+
+        function addAllToCart() {
+            cart['travel'] = { name: 'Transport Escape (Travel)', price: 300000 };
+            cart['lesson'] = { name: 'Mang Bule Surf Lesson', price: 475000 };
+            cart['motor'] = { name: 'Sewa Motor Matic', price: 100000 };
+            updateCartUI();
+        }
+
+        function checkoutWhatsApp() {
+            const keys = Object.keys(cart);
+            if(keys.length === 0) {
+                alert('Silakan pilih dan masukkan minimal 1 jenis layanan ke keranjang terlebih dahulu.');
+                return;
+            }
+
+            const phoneNumber = "6288210464992";
+            const isBundled = cart['travel'] && cart['lesson'] && cart['motor'];
+            
+            let message = "";
+            
+            if(isBundled) {
+                message = `Halo Surfing Escape, saya mau memesan paket komplit *Cimaja Surf & Ride Pass (Bundling)*.\n`;
+                message += `• Transport Travel Jakarta/Bandung - Cimaja\n`;
+                message += `• Surf Coaching + Drone bersama Mang Bule\n`;
+                message += `• Sewa Motor Matic Escape\n\n`;
+                message += `Total setelah Diskon Bundling: *Rp 795.000*. Apakah ada slot kuota kosong untuk akhir pekan ini?`;
+            } else {
+                message = `Halo Surfing Escape, saya tertarik membuat kustom trip dan memesan opsi layanan berikut:\n\n`;
+                let subtotal = 0;
+                keys.forEach((key, index) => {
+                    const item = cart[key];
+                    message += `${index + 1}. *${item.name}* — (Rp ${item.price.toLocaleString('id-ID')})\n`;
+                    subtotal += item.price;
+                });
+                message += `\nTotal Harga: *Rp ${subtotal.toLocaleString('id-ID')}*.\nMohon info ketersediaan slotnya ya!`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
