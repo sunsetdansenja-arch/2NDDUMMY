@@ -69,10 +69,12 @@
                 Escaping the Jakarta hustle? We carry your boards, provide the ride, and hook you up with the best local surf guides in Pelabuhan Ratu.
             </div>
             
-            <div class="md:col-span-5 relative h-64 md:h-80 w-full rounded-2xl overflow-hidden shadow-sm bg-slate-200">
-                <!-- TEMPAT GAMBAR HERO: 800 x 600 px -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-voyenOrange via-amber-500 to-sky-400 opacity-90 flex items-center justify-center p-6 text-center">
-                    <span class="font-serif-premium text-white text-2xl italic">Catch waves, not deadlines.</span>
+            <!-- HERO IMAGE CONTAINER WITH TEXT OVERLAY -->
+            <div class="md:col-span-5 relative h-64 md:h-80 w-full rounded-2xl overflow-hidden shadow-sm group">
+                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/HERO%20PAGE.png" alt="Cimaja Surf Escape" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30 flex flex-col justify-between p-6">
+                    <span class="text-[10px] text-white tracking-widest uppercase bg-voyenOrange/90 self-start px-2 py-1 rounded">Live Report</span>
+                    <span class="font-serif-premium text-white text-2xl italic drop-shadow-md">Catch waves, not deadlines.</span>
                 </div>
             </div>
 
@@ -92,7 +94,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                 <div>
-                    <span class="text-xs font-bold text-voyenOrange uppercase tracking-widest">Custom Trip / Bundling Passes</span>
+                    <span class="text-xs font-bold text-voyenOrange uppercase tracking-widest">Custom Trip / A La Carte Options</span>
                     <h2 class="font-serif-premium text-4xl md:text-5xl font-bold mt-2">Rancang Trip Sesukamu</h2>
                 </div>
                 <div class="text-xs tracking-widest uppercase flex gap-4 text-voyenMuted">
@@ -107,30 +109,22 @@
                 <!-- ITEMS AREA -->
                 <div class="lg:col-span-8 space-y-8">
                     
-                    <!-- EXCLUSIVE BUNDLING ALERT -->
-                    <div class="bg-[#FBF9F1] border-2 border-dashed border-voyenOrange rounded-3xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div>
-                            <span class="bg-voyenOrange text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">🔥 BUNDLING HEMAT PASS</span>
-                            <h4 class="font-serif-premium text-xl font-bold mt-2 text-voyenDark">Cimaja Surf & Ride Weekend Pass</h4>
-                            <p class="text-xs text-voyenMuted mt-1">Pesan **Travel + Surf Lesson + Sewa Motor** sekaligus dan nikmati potongan langsung sebesar **Rp80.000** secara otomatis.</p>
-                        </div>
-                        <button onclick="addAllToCart()" class="px-6 py-3 bg-voyenDark text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-voyenOrange transition-colors shrink-0">
-                            Ambil Semua Paket
-                        </button>
-                    </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- ITEM 1: TRAVEL -->
+                        <!-- ITEM 1: TRAVEL (ONE WAY) -->
                         <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between">
                             <div>
-                                <div class="flex justify-between items-start">
-                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">01 / ROUND-TRIP TRAVEL</span>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">01 / ONE-WAY TRAVEL</span>
                                     <span class="text-lg font-bold text-voyenOrange">Rp300k<span class="text-xs font-normal text-voyenMuted">/pax</span></span>
                                 </div>
-                                <h3 class="font-serif-premium text-2xl font-bold mt-4 mb-2">Weekend Travel Reguler</h3>
-                                <p class="text-xs text-voyenMuted leading-relaxed">Antar jemput dari titik Jakarta/Bandung langsung ke area Cimaja. Sangat *surfboard-friendly*, papan selancarmu aman di bagasi tanpa biaya tambahan.</p>
+                                <!-- Asset Image -->
+                                <div class="w-full h-40 rounded-xl overflow-hidden mb-4 bg-slate-200">
+                                    <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/INTERIOR%20CAR%20TRACEL.png" alt="Travel Reguler" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-serif-premium text-xl font-bold mb-2">Weekend Travel (One-Way)</h3>
+                                <p class="text-xs text-voyenMuted leading-relaxed">Tiket sekali jalan (Antar ke Cimaja ATAU Jemput dari Cimaja balik ke Jakarta/Bandung). Sangat *surfboard-friendly* tanpa biaya bagasi tambahan.</p>
                             </div>
-                            <button onclick="addToCart('travel', 'Weekend Travel Reguler', 300000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
+                            <button onclick="addToCart('travel', 'Weekend Travel (One-Way)', 300000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
                                 + Tambah Keranjang
                             </button>
                         </div>
@@ -138,11 +132,15 @@
                         <!-- ITEM 2: LESSON -->
                         <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between">
                             <div>
-                                <div class="flex justify-between items-start">
+                                <div class="flex justify-between items-start mb-4">
                                     <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">02 / SURF LESSON</span>
                                     <span class="text-lg font-bold text-voyenOrange">Rp475k<span class="text-xs font-normal text-voyenMuted">/sesi</span></span>
                                 </div>
-                                <h3 class="font-serif-premium text-2xl font-bold mt-4 mb-2">Surf Lesson + Drone Doc</h3>
+                                <!-- Asset Image -->
+                                <div class="w-full h-40 rounded-xl overflow-hidden mb-4 bg-slate-200">
+                                    <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/SURF%20LESSONS.png" alt="Surf Coaching" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-serif-premium text-xl font-bold mb-2">Surf Lesson + Drone Doc</h3>
                                 <p class="text-xs text-voyenMuted leading-relaxed">Durasi ±2 jam bersama *Certified Local Coach*. Cocok untuk pemula. Paket sudah termasuk papan selancar, pelindung, dan video aksi kamu via Drone.</p>
                             </div>
                             <button onclick="addToCart('lesson', 'Surf Lesson + Drone Doc', 475000)" class="w-full mt-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
@@ -152,15 +150,19 @@
 
                         <!-- ITEM 3: MOTORBIKE -->
                         <div class="bg-[#FBF9F1] p-6 rounded-3xl hairline-border flex flex-col justify-between md:col-span-2">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                                <div>
-                                    <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">03 / SCOOTER RENTAL</span>
-                                    <h3 class="font-serif-premium text-2xl font-bold mt-2 mb-2">Island Ride (Sewa Motor)</h3>
-                                    <p class="text-xs text-voyenMuted max-w-xl leading-relaxed">Bebas eksplorasi dari Sunset Beach sampai Pantai Cikembang selama 24 jam penuh tanpa pusing mikirin ongkos ojek atau macetnya Sukabumi.</p>
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <!-- Asset Image -->
+                                <div class="w-full md:w-48 h-32 rounded-xl overflow-hidden bg-slate-200 shrink-0">
+                                    <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/MOTOR%20RENTAL.png" alt="Motor Rental" class="w-full h-full object-cover">
                                 </div>
-                                <div class="text-right shrink-0">
-                                    <span class="text-lg font-bold text-voyenOrange block mb-2">Rp100k<span class="text-xs font-normal text-voyenMuted">/hari</span></span>
-                                    <button onclick="addToCart('motor', 'Sewa Motor Matic', 100000)" class="px-6 py-3 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-black tracking-widest uppercase text-voyenMuted">03 / SCOOTER RENTAL</span>
+                                        <span class="text-lg font-bold text-voyenOrange">Rp100k<span class="text-xs font-normal text-voyenMuted">/hari</span></span>
+                                    </div>
+                                    <h3 class="font-serif-premium text-xl font-bold mt-1 mb-2">Island Ride (Sewa Motor)</h3>
+                                    <p class="text-xs text-voyenMuted leading-relaxed">Bebas eksplorasi dari Sunset Beach sampai Pantai Cikembang selama 24 jam penuh tanpa pusing mikirin ongkos ojek atau macet.</p>
+                                    <button onclick="addToCart('motor', 'Sewa Motor Matic', 100000)" class="mt-4 px-6 py-2.5 bg-white hover:bg-voyenDark hover:text-white rounded-full font-bold text-xs uppercase tracking-wider border border-voyenDark transition-all">
                                         + Tambah Keranjang
                                     </button>
                                 </div>
@@ -169,7 +171,7 @@
                     </div>
                 </div>
 
-                <!-- CART AREA -->
+                <!-- CART AREA & BUNDLING AT THE BOTTOM OF THE CART -->
                 <div class="lg:col-span-4">
                     <div class="bg-[#FBF9F1] p-6 rounded-3xl border border-voyenDark/10 sticky top-24">
                         <div class="flex items-center justify-between border-b pb-4 mb-4">
@@ -177,11 +179,13 @@
                             <i class="fa-solid fa-compass text-voyenOrange"></i>
                         </div>
 
-                        <div id="cart-container" class="space-y-4 min-h-[120px] flex flex-col justify-center text-center">
-                            <p class="text-xs text-voyenMuted py-6">Keranjang kosong.<br>Pilih paket liburanmu di sebelah kiri.</p>
+                        <!-- Cart Items -->
+                        <div id="cart-container" class="space-y-4 min-h-[100px] flex flex-col justify-center text-center">
+                            <p class="text-xs text-voyenMuted py-4">Keranjang kosong.<br>Pilih paket liburanmu di sebelah kiri.</p>
                         </div>
 
-                        <div class="border-t pt-4 mt-6 space-y-2 text-xs uppercase tracking-wider">
+                        <!-- Price Breakdown -->
+                        <div class="border-t pt-4 mt-4 space-y-2 text-xs uppercase tracking-wider">
                             <div class="flex justify-between text-voyenMuted">
                                 <span>Subtotal</span>
                                 <span id="cart-subtotal">Rp0</span>
@@ -196,8 +200,20 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 p-3 bg-white/60 rounded-xl text-[10px] text-voyenMuted border border-black/5">
-                            <i class="fa-solid fa-circle-info text-voyenOrange mr-1"></i> DP minimal Rp50.000 via WhatsApp. Jika cuaca tidak mendukung, jadwal bisa diatur ulang (reschedule) gratis!
+                        <!-- BUNDLING PLACED AT THE BOTTOM AREA -->
+                        <div class="mt-6 border-t pt-6">
+                            <div class="bg-white border border-voyenOrange/30 rounded-2xl p-4 text-center">
+                                <span class="bg-voyenOrange text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-widest">⚡ BUNDLING HEMAT PASS</span>
+                                <h4 class="font-serif-premium text-sm font-bold mt-2">Cimaja Surf & Ride Pass</h4>
+                                <p class="text-[11px] text-voyenMuted mt-1 mb-3">Ambil One-Way Travel + Surf Sesi + Sewa Motor sekaligus & hemat Rp80k.</p>
+                                <button onclick="addAllToCart()" class="w-full py-2.5 bg-voyenDark hover:bg-voyenOrange text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors">
+                                    Ambil Semua Paket
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-white/60 rounded-xl text-[10px] text-voyenMuted border border-black/5">
+                            <i class="fa-solid fa-circle-info text-voyenOrange mr-1"></i> DP minimal Rp50.000 via WhatsApp. Jika cuaca tidak mendukung, jadwal bisa di-reschedule gratis.
                         </div>
 
                         <button onclick="checkoutWhatsApp()" class="w-full mt-4 py-4 bg-voyenDark hover:bg-voyenOrange text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all flex items-center justify-center gap-2 shadow-lg">
@@ -236,7 +252,7 @@
             const keys = Object.keys(cart);
             
             if(keys.length === 0) {
-                container.innerHTML = `<p class="text-xs text-voyenMuted py-6">Keranjang kosong.<br>Pilih paket liburanmu di sebelah kiri.</p>`;
+                container.innerHTML = `<p class="text-xs text-voyenMuted py-4">Keranjang kosong.<br>Pilih paket liburanmu di sebelah kiri.</p>`;
                 subtotalRow.innerText = 'Rp0';
                 discountRow.classList.add('hidden');
                 totalRow.innerText = 'Rp0';
@@ -288,7 +304,7 @@
         }
 
         function addAllToCart() {
-            cart['travel'] = { name: 'Weekend Travel Reguler', price: 300000 };
+            cart['travel'] = { name: 'Weekend Travel (One-Way)', price: 300000 };
             cart['lesson'] = { name: 'Surf Lesson + Drone Doc', price: 475000 };
             cart['motor'] = { name: 'Sewa Motor Matic', price: 100000 };
             updateCartUI();
@@ -307,10 +323,10 @@
             
             if(isBundled) {
                 message = `Halo Surfing Escape, saya mau booking paket komplit *Cimaja Surf & Ride Weekend Pass*.\n`;
-                message += `• Travel Jakarta/Bandung - Cimaja PP\n`;
+                message += `• Travel Antar/Jemput (One-Way)\n`;
                 message += `• Surf Coaching + Dokumentasi Drone\n`;
-                message += `• Sewa Motor Matic\n\n`;
-                message += `Total setelah potongan bundling: *Rp 795.000*. Apakah slot akhir pekan ini masih ada?`;
+                message += `• Sewa Motor Matic 24 Jam\n\n`;
+                message += `Total setelah potongan bundling: *Rp 795.000*. Mohon cek ketersediaan kuota jadwalnya!`;
             } else {
                 message = `Halo Surfing Escape, saya mau buat kustom trip dengan pilihan berikut:\n\n`;
                 let subtotal = 0;
