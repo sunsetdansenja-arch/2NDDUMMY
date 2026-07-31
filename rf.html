@@ -48,10 +48,13 @@
             box-shadow: 0 0 15px rgba(184, 134, 11, 0.15);
         }
         .glass-panel {
-            background: rgba(24, 24, 24, 0.7);
+            background: rgba(24, 24, 24, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .img-overlay {
+            background: linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.85) 100%);
         }
     </style>
 </head>
@@ -81,6 +84,7 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wider uppercase">
                 <a href="#about" class="text-gray-300 hover:text-gold transition-colors">About</a>
                 <a href="#services" class="text-gray-300 hover:text-gold transition-colors">Services</a>
+                <a href="#gallery" class="text-gray-300 hover:text-gold transition-colors">Gallery</a>
                 <a href="#reviews" class="text-gray-300 hover:text-gold transition-colors">Reviews</a>
                 <a href="#location" class="text-gray-300 hover:text-gold transition-colors">Location</a>
             </div>
@@ -92,28 +96,49 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-dark-border">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/10 via-dark-bg to-dark-bg pointer-events-none"></div>
+    <!-- HERO SECTION WITH BACKDROP IMAGE -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-36 overflow-hidden border-b border-dark-border">
+        <!-- Background Image Grid Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920" alt="RF Barbershop Atmosphere" class="w-full h-full object-cover object-center opacity-20 filter grayscale hover:grayscale-0 transition-all duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-dark-bg/80"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest mb-6">
-                    <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                    Premium Grooming Experience
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        Premium Grooming Experience
+                    </div>
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                        Elevate Your <span class="gold-gradient-text">Identity.</span>
+                    </h1>
+                    <p class="text-gray-300 text-base md:text-lg font-light leading-relaxed mb-8 max-w-2xl">
+                        Crafting timeless styles and sharp precision since 2014. Experience top-tier grooming services tailored specifically to accentuate your personal character.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                        <a href="https://wa.me/601163994559" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold-light text-black font-semibold tracking-wider uppercase text-xs transition-all duration-300 text-center shadow-lg gold-border-glow">
+                            Request Appointment
+                        </a>
+                        <a href="#services" class="w-full sm:w-auto px-8 py-4 border border-dark-border hover:border-gold/50 text-white font-semibold tracking-wider uppercase text-xs transition-all duration-300 text-center glass-panel">
+                            View Price List
+                        </a>
+                    </div>
                 </div>
-                <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
-                    Elevate Your <span class="gold-gradient-text">Identity.</span>
-                </h1>
-                <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-8 max-w-2xl">
-                    Crafting timeless styles and sharp precision since 2014. Experience top-tier grooming services tailored specifically to accentuate your personal character.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-                    <a href="https://wa.me/601163994559" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold-light text-black font-semibold tracking-wider uppercase text-xs transition-all duration-300 text-center">
-                        Request Appointment
-                    </a>
-                    <a href="#services" class="w-full sm:w-auto px-8 py-4 border border-dark-border hover:border-gold/50 text-white font-semibold tracking-wider uppercase text-xs transition-all duration-300 text-center glass-panel">
-                        View Price List
-                    </a>
+
+                <!-- Featured Hero Image Display -->
+                <div class="lg:col-span-5 hidden lg:block relative">
+                    <div class="relative mx-auto max-w-sm rounded-none border-2 border-gold/30 p-3 bg-dark-card/60 glass-panel">
+                        <div class="aspect-[3/4] overflow-hidden relative group">
+                            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=800" alt="Master Barber at Work" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 img-overlay flex flex-col justify-end p-6">
+                                <span class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Master Barbering</span>
+                                <p class="text-white font-serif font-bold text-lg">Precision & Detail in Every Cut</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,7 +153,7 @@
                 <p class="text-gray-400 text-sm">Where tradition meets modern luxury grooming standards.</p>
             </div>
 
-            <!-- Bento Grid Layout -->
+            <!-- Bento Grid Layout with Visual Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Rating Box -->
                 <div class="p-8 rounded-none border border-dark-border bg-dark-card glass-panel flex flex-col justify-between hover:border-gold/30 transition-all duration-300">
@@ -148,6 +173,15 @@
                     </div>
                 </div>
 
+                <!-- Barber Chair Visual Card -->
+                <div class="relative overflow-hidden border border-dark-border bg-dark-card group min-h-[220px]">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800" alt="Classic Barber Chair" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-gold text-[10px] font-bold tracking-widest uppercase">Classic Vibe</span>
+                        <h4 class="text-white font-serif font-bold text-base">Luxury Comfort Chairs</h4>
+                    </div>
+                </div>
+
                 <!-- Operating Hours -->
                 <div class="p-8 rounded-none border border-dark-border bg-dark-card glass-panel md:col-span-2 flex flex-col justify-between hover:border-gold/30 transition-all duration-300">
                     <div>
@@ -158,23 +192,16 @@
                         <h3 class="font-serif text-2xl text-white font-bold mb-2">Daily Schedule</h3>
                         <p class="text-gray-400 text-sm mb-4">Open every day to ensure you look your sharpest at all times.</p>
                     </div>
-                    <div class="bg-black/40 p-4 border border-dark-border flex items-center justify-between">
+                    <div class="bg-black/60 p-4 border border-dark-border flex items-center justify-between">
                         <span class="text-sm font-medium text-white">Monday – Sunday</span>
                         <span class="text-sm font-semibold text-gold font-mono">12:00 PM – 12:00 AM</span>
                     </div>
-                </div>
-
-                <!-- Established Tag -->
-                <div class="p-8 rounded-none border border-dark-border bg-dark-card glass-panel flex flex-col justify-center items-center text-center hover:border-gold/30 transition-all duration-300">
-                    <span class="text-xs text-gray-400 tracking-widest uppercase mb-2">Legacy</span>
-                    <span class="font-serif text-5xl font-extrabold text-gold mb-2">10+</span>
-                    <span class="text-xs text-gray-300 uppercase tracking-wider">Years of Craftsmanship</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES & PRICING SECTION -->
+    <!-- SERVICES & PRICING SECTION WITH IMAGE CARDS -->
     <section id="services" class="py-20 md:py-28 border-b border-dark-border">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -187,105 +214,162 @@
                 </p>
             </div>
 
-            <!-- Bento Style Pricing Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Bento Style Pricing Cards Grid with Images -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Haircut -->
-                <div class="p-8 bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group glass-panel">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-black/60 border border-dark-border group-hover:border-gold/40 flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-scissors"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-white">RM 20</span>
+                <div class="bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group overflow-hidden glass-panel flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=800" alt="Haircut Service" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/30">RM 20</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Precision haircut customized to match your head shape and style preference.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Standard Service</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Precision haircut customized to match your head shape and personal style preference.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
+                            <span>Standard Service</span>
+                            <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Shave -->
-                <div class="p-8 bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group glass-panel">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-black/60 border border-dark-border group-hover:border-gold/40 flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-[#121212]"></i>
-                            <i class="fa-solid fa-user-ninja"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-white">RM 7</span>
+                <div class="bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group overflow-hidden glass-panel flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800" alt="Beard Shave Service" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/30">RM 7</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Shave</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Clean razor or clipper shave with hot towel application for maximum comfort.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Beard & Mustache</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Shave</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Clean razor or clipper shave with hot towel application for maximum comfort and skin care.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
+                            <span>Beard & Mustache</span>
+                            <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Haircut + Hair Wash -->
-                <div class="p-8 bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group glass-panel">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-black/60 border border-dark-border group-hover:border-gold/40 flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-shower"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-white">RM 30</span>
+                <div class="bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group overflow-hidden glass-panel flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&q=80&w=800" alt="Haircut and Wash Service" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/30">RM 30</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut + Hair Wash</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Complete styling package accompanied by a refreshing head wash and scalp massage.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Popular Choice</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut + Hair Wash</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Complete styling package accompanied by a refreshing head wash and relaxing scalp massage.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
+                            <span>Popular Choice</span>
+                            <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Treatment -->
-                <div class="p-8 bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group glass-panel">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-black/60 border border-dark-border group-hover:border-gold/40 flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-bottle-droplet"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-white">RM 50</span>
+                <div class="bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group overflow-hidden glass-panel flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Hair Treatment Service" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/30">RM 50</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Treatment</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Deep scalp and hair conditioning treatment to restore vitality and hair health.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Hair Care</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Treatment</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Deep scalp and hair conditioning treatment to restore vitality, strength, and natural health.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
+                            <span>Hair Care</span>
+                            <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Haircut + Treatment -->
-                <div class="p-8 bg-dark-card border border-gold/40 hover:border-gold transition-all duration-300 group glass-panel relative">
-                    <div class="absolute -top-3 right-6 bg-gold text-black text-[10px] font-extrabold uppercase px-3 py-1 tracking-widest">
+                <!-- Haircut + Treatment (Featured) -->
+                <div class="bg-dark-card border-2 border-gold/60 hover:border-gold transition-all duration-300 group overflow-hidden glass-panel flex flex-col relative shadow-xl gold-border-glow">
+                    <div class="absolute top-3 left-3 z-10 bg-gold text-black text-[10px] font-extrabold uppercase px-3 py-1 tracking-widest shadow-md">
                         Best Value
                     </div>
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-gold/10 border border-gold/30 group-hover:border-gold flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-crown"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-gold">RM 60+</span>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&q=80&w=800" alt="Haircut and Treatment VIP" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/90 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/50">RM 60+</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut + Treatment</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">The ultimate grooming experience combining a custom cut with intensive hair treatment.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Full Experience</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Haircut + Treatment</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">The ultimate grooming experience combining a custom cut with intensive therapeutic hair treatment.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-400">
+                            <span>Full Experience</span>
+                            <span class="text-gold font-bold"><i class="fa-solid fa-star"></i> Recommended</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Henna -->
-                <div class="p-8 bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group glass-panel">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-black/60 border border-dark-border group-hover:border-gold/40 flex items-center justify-center text-gold text-xl transition-colors">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <span class="font-serif text-3xl font-bold text-white">RM 15</span>
+                <div class="bg-dark-card border border-dark-border hover:border-gold/50 transition-all duration-300 group overflow-hidden glass-panel flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=800" alt="Henna Hair Coloring" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 font-serif text-xl font-bold text-gold border border-gold/30">RM 15</span>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-white mb-2">Henna Application</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Natural henna color application for hair or beard grooming enhancement.</p>
-                    <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
-                        <span>Color Enhancement</span>
-                        <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Henna Application</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">Natural organic henna color application for hair or beard grooming enhancement.</p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-border flex justify-between items-center text-xs text-gray-500">
+                            <span>Color Enhancement</span>
+                            <span class="text-gold"><i class="fa-solid fa-check"></i> Included</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: GALLERY SHOWCASE (Aesthetic Images) -->
+    <section id="gallery" class="py-20 md:py-28 border-b border-dark-border bg-dark-surface/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold text-xs font-semibold tracking-widest uppercase block mb-2">Visual Showcase</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-3">The RF Experience</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mb-4"></div>
+                <p class="text-gray-400 text-sm">Take a look inside our lounge and explore our craftsmanship.</p>
+            </div>
+
+            <!-- Image Grid Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative overflow-hidden aspect-square border border-dark-border group">
+                    <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&q=80&w=600" alt="Barber Tools" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-serif">Precision Tools</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden aspect-square border border-dark-border group">
+                    <img src="https://images.unsplash.com/photo-1593702295094-aea22597af65?auto=format&fit=crop&q=80&w=600" alt="Hot Towel Shave" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-serif">Hot Towel Treatment</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden aspect-square border border-dark-border group">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600" alt="Beard Grooming" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-serif">Beard Styling</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden aspect-square border border-dark-border group">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" alt="Barbershop Interior" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-serif">Shop Atmosphere</span>
                     </div>
                 </div>
             </div>
@@ -293,7 +377,7 @@
     </section>
 
     <!-- REVIEWS SECTION -->
-    <section id="reviews" class="py-20 md:py-28 border-b border-dark-border bg-dark-surface/30">
+    <section id="reviews" class="py-20 md:py-28 border-b border-dark-border">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-gold text-xs font-semibold tracking-widest uppercase block mb-2">Client Experience</span>
@@ -310,7 +394,7 @@
                         <p class="text-gray-300 text-sm italic leading-relaxed mb-6">"Best barbershop in Setiawangsa area. Extremely precise cuts and very professional atmosphere."</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-dark-border">
-                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold font-serif font-bold text-xs">AZ</div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Ahmad Zulkarnain" class="w-10 h-10 rounded-full object-cover border border-gold/40">
                         <div>
                             <span class="text-xs font-semibold text-white block">Ahmad Zulkarnain</span>
                             <span class="text-[10px] text-gray-500">Local Guide</span>
@@ -326,7 +410,7 @@
                         <p class="text-gray-300 text-sm italic leading-relaxed mb-6">"Operating late till midnight is a lifesaver. The haircut + hair wash package is totally worth the price."</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-dark-border">
-                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold font-serif font-bold text-xs">KF</div>
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="Khairul Faiz" class="w-10 h-10 rounded-full object-cover border border-gold/40">
                         <div>
                             <span class="text-xs font-semibold text-white block">Khairul Faiz</span>
                             <span class="text-[10px] text-gray-500">Verified Client</span>
@@ -342,7 +426,7 @@
                         <p class="text-gray-300 text-sm italic leading-relaxed mb-6">"Solid 5 stars. Friendly barbers, clean tools, and great attention to detail every single time."</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-dark-border">
-                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold font-serif font-bold text-xs">DL</div>
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Daniel Lee" class="w-10 h-10 rounded-full object-cover border border-gold/40">
                         <div>
                             <span class="text-xs font-semibold text-white block">Daniel Lee</span>
                             <span class="text-[10px] text-gray-500">Regular Customer</span>
@@ -392,15 +476,18 @@
                     </div>
                 </div>
 
-                <!-- Google Maps Card Holder -->
+                <!-- Location Visual & Maps -->
                 <div class="p-4 border border-dark-border bg-dark-card glass-panel rounded-none">
                     <div class="w-full h-80 bg-neutral-900 border border-dark-border relative overflow-hidden flex flex-col justify-center items-center text-center p-6">
-                        <i class="fa-solid fa-map-location-dot text-4xl text-gold mb-4"></i>
-                        <h3 class="font-serif text-lg font-bold text-white mb-2">RF BARBERSHOP</h3>
-                        <p class="text-xs text-gray-400 mb-6 max-w-xs">5PHX+JM Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia</p>
-                        <a href="https://maps.google.com/?q=2A-1,+Gerai+Makan,+Jalan+27/56,+Taman+Setiawangsa,+54200+Kuala+Lumpur" target="_blank" class="px-6 py-3 bg-gold hover:bg-gold-light text-black font-semibold text-xs uppercase tracking-wider transition-colors">
-                            Open in Google Maps
-                        </a>
+                        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="Map Location Background" class="absolute inset-0 w-full h-full object-cover opacity-20">
+                        <div class="relative z-10">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-gold mb-4"></i>
+                            <h3 class="font-serif text-lg font-bold text-white mb-2">RF BARBERSHOP</h3>
+                            <p class="text-xs text-gray-300 mb-6 max-w-xs">5PHX+JM Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia</p>
+                            <a href="https://maps.google.com/?q=2A-1,+Gerai+Makan,+Jalan+27/56,+Taman+Setiawangsa,+54200+Kuala+Lumpur" target="_blank" class="px-6 py-3 bg-gold hover:bg-gold-light text-black font-semibold text-xs uppercase tracking-wider transition-colors inline-block shadow-lg">
+                                Open in Google Maps
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
