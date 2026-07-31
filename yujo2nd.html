@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YUJO HAIR STUDIO — Editorial Identity</title>
+    <title>YUJO HAIR STUDIO — Editorial Identity & Visual Curation</title>
     <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts: Inter & Playfair Display for Editorial Contrast -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        oatmeal: '#EAE7E1',
+                        charcoal: '#111111',
+                        surfaceDark: '#181818',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -18,9 +36,6 @@
             font-family: 'Inter', sans-serif;
             background-color: #EAE7E1;
             color: #111111;
-        }
-        .font-editorial {
-            font-family: 'Playfair Display', serif;
         }
         .hairline-border {
             border: 1px solid #111111;
@@ -30,172 +45,960 @@
         .hairline-t { border-top: 1px solid #111111; }
         .hairline-l { border-left: 1px solid #111111; }
         
-        /* Rotated vertical text anchor */
+        .hairline-dark-border {
+            border: 1px solid #2a2a2a;
+        }
+
         .vertical-text {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
         }
+
+        /* Editorial Image Grayscale & Hover Reveal */
+        .editorial-img {
+            filter: grayscale(100%) contrast(105%);
+            transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .editorial-img:hover {
+            filter: grayscale(0%) contrast(102%);
+            transform: scale(1.03);
+        }
+
+        /* SPA Page Transitions */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Interactive Before/After Comparison Slider */
+        .ba-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .ba-after-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EAE7E1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #111111;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8 min-h-screen flex flex-col justify-between selection:bg-black selection:text-[#EAE7E1]">
+<body class="p-2 sm:p-4 md:p-8 min-h-screen flex flex-col justify-between selection:bg-black selection:text-[#EAE7E1] antialiased">
 
-    <!-- SECTION 1: HERO & IDENTITY (LIGHT BLOCK) -->
-    <header class="hairline-border grid grid-cols-1 md:grid-cols-12 bg-[#EAE7E1]">
-        <!-- Brand Title -->
-        <div class="p-6 md:p-8 md:col-span-7 hairline-r flex flex-col justify-between gap-12">
-            <div>
-                <span class="text-xs uppercase tracking-widest hairline-border px-3 py-1 inline-block rounded-full font-mono mb-6">Hair Salon Studio</span>
-                <h1 class="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-none">
-                    START WITH AN <br>
-                    <span class="font-editorial italic font-normal lowercase">understanding.</span>
-                </h1>
+    <header class="hairline-border bg-[#EAE7E1] sticky top-2 z-40 shadow-sm">
+        <!-- Top Status Ticker Bar -->
+        <div class="px-4 py-2 hairline-b bg-black text-[#EAE7E1] flex flex-wrap justify-between items-center text-[11px] font-mono tracking-wider">
+            <div class="flex items-center gap-3">
+                <span class="font-bold uppercase text-white">YUJO HAIR STUDIO</span>
+                <span class="hidden sm:inline text-neutral-400">|</span>
+                <span class="hidden sm:inline text-neutral-300">33-2 DATARAN SUNWAY, SELANGOR</span>
             </div>
-            <div class="max-w-md">
-                <p class="text-sm leading-relaxed uppercase font-semibold">
-                    YUJO HAIR STUDIO[cite: 1]. Good design starts with the content. A pretty picture does not really mean anything if there is nothing in it; at that point it is just color.
-                </p>
+            <div class="flex items-center gap-4">
+                <span class="text-emerald-400 flex items-center gap-1.5 font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    OPEN TODAY UNTIL 19:30
+                </span>
+                <a href="https://wa.me/601175726618" target="_blank" class="hover:text-amber-300 transition-colors hidden md:inline">
+                    <i class="fa-brands fa-whatsapp mr-1"></i>+60 11-7572 6618
+                </a>
             </div>
         </div>
 
-        <!-- Rating & Meta Status -->
-        <div class="p-6 md:p-8 md:col-span-4 hairline-r flex flex-col justify-between bg-white/40">
-            <div>
-                <p class="text-xs uppercase tracking-widest text-neutral-500 mb-1">Google Review</p>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-6xl font-black tracking-tight">4.9</span>
-                    <span class="text-sm font-bold text-neutral-600">/ 5.0</span>
-                </div>
-                <div class="flex text-amber-500 gap-1 my-2 text-xs">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-xs font-mono uppercase text-neutral-600">Based on 84 trusted reviews[cite: 1]</p>
-            </div>
-            
-            <div class="hairline-t pt-6 mt-8">
-                <p class="text-xs uppercase tracking-wider font-bold mb-1"><i class="fa-regular fa-clock mr-2"></i>Operational Hours</p>
-                <p class="text-sm font-semibold uppercase">Closes at 19:30 (7.30 PM)</p>
-            </div>
-        </div>
-
-        <!-- Side Anchor -->
-        <div class="hidden md:flex md:col-span-1 items-center justify-center py-8 bg-white">
-            <span class="vertical-text text-xs uppercase tracking-widest font-bold text-neutral-400">PREMIUM CUT & CURATION</span>
-        </div>
+        <!-- Navigation Tabs Bar -->
+        <nav class="grid grid-cols-2 md:grid-cols-4 text-xs font-mono font-bold uppercase tracking-wider bg-white">
+            <button onclick="switchPage('home')" id="nav-home" class="nav-tab py-3.5 px-4 hairline-r hairline-b md:hairline-b-0 flex items-center justify-between bg-black text-white transition-all">
+                <span>01 / HOME</span>
+                <i class="fa-solid fa-arrow-right text-[10px] opacity-70"></i>
+            </button>
+            <button onclick="switchPage('gallery')" id="nav-gallery" class="nav-tab py-3.5 px-4 hairline-r hairline-b md:hairline-b-0 flex items-center justify-between text-neutral-700 hover:bg-neutral-200 transition-all">
+                <span>02 / GALLERY & VISUALS</span>
+                <i class="fa-solid fa-image text-[10px] opacity-70"></i>
+            </button>
+            <button onclick="switchPage('rates')" id="nav-rates" class="nav-tab py-3.5 px-4 hairline-r flex items-center justify-between text-neutral-700 hover:bg-neutral-200 transition-all">
+                <span>03 / RATES & CALCULATOR</span>
+                <i class="fa-solid fa-calculator text-[10px] opacity-70"></i>
+            </button>
+            <button onclick="switchPage('studio')" id="nav-studio" class="nav-tab py-3.5 px-4 flex items-center justify-between text-neutral-700 hover:bg-neutral-200 transition-all">
+                <span>04 / STUDIO & BOOKING</span>
+                <i class="fa-solid fa-location-dot text-[10px] opacity-70"></i>
+            </button>
+        </nav>
     </header>
 
-    <!-- SECTION 2: THE BENTO GRID MENU & BRANDING (DARK PROTOCOL BLOCK) -->
-    <main class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-12 bg-[#111111] text-white">
-        <!-- Visual Component Placeholder (Left Side) -->
-        <div class="md:col-span-4 p-8 border-b md:border-b-0 md:border-r border-neutral-800 flex flex-col justify-between min-h-[300px] bg-gradient-to-br from-neutral-900 to-neutral-950">
-            <div class="flex justify-between items-start">
-                <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">Authorized Partner</span>
-                <i class="fa-solid fa-scissors text-neutral-600 text-xl"></i>
-            </div>
-            <div>
-                <h3 class="text-xs uppercase tracking-widest text-neutral-500 mb-2">Premium Products Integrated</h3>
-                <div class="space-y-1">
-                    <p class="text-xl font-bold tracking-widest uppercase">MILBON®</p>
-                    <p class="text-xl font-bold tracking-widest uppercase text-neutral-400">OLAPLEX®</p>
-                </div>
-            </div>
-        </div>
+    <!-- CONTAINER FOR SPA PAGES -->
+    <div class="my-3 sm:my-6">
 
-        <!-- Price Curation Center (Middle) -->
-        <div class="md:col-span-5 p-8 border-b md:border-b-0 md:border-r border-neutral-800">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-xs uppercase tracking-widest font-mono text-neutral-400">/ RATE CARDS</h2>
-                <div class="h-[1px] bg-neutral-800 flex-grow"></div>
-            </div>
-            
-            <div class="space-y-6">
-                <!-- Row 1 -->
-                <div class="flex justify-between items-end border-b border-neutral-800 pb-2">
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section active">
+            <!-- HERO HERO BLOCK -->
+            <div class="hairline-border grid grid-cols-1 md:grid-cols-12 bg-[#EAE7E1]">
+                <!-- Main Editorial Headline -->
+                <div class="p-6 sm:p-10 md:col-span-8 hairline-r flex flex-col justify-between gap-8 md:gap-14">
                     <div>
-                        <p class="text-lg font-bold tracking-tight uppercase">HAIRCUT & WASH</p>
-                        <p class="text-xs text-neutral-400 uppercase">Male Selection</p>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="text-xs uppercase tracking-widest hairline-border px-3 py-1 inline-block rounded-full font-mono bg-white/70">Hair Salon Studio</span>
+                            <span class="text-xs font-mono uppercase text-neutral-600">Established Petaling Jaya</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.88]">
+                            START WITH AN <br>
+                            <span class="font-serif italic font-normal lowercase tracking-normal">understanding.</span>
+                        </h1>
                     </div>
-                    <span class="text-xl font-mono font-bold">RM 48</span>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 hairline-t pt-6">
+                        <div>
+                            <p class="text-xs leading-relaxed uppercase font-semibold text-neutral-800">
+                                Good design starts with the content. A pretty haircut does not really mean anything if it does not fit your structure; at that point it is just color and length.
+                            </p>
+                        </div>
+                        <div class="flex flex-col justify-end">
+                            <button onclick="switchPage('gallery')" class="w-full bg-black text-white text-xs font-mono uppercase tracking-widest py-3 px-4 hover:bg-neutral-800 transition-all flex items-center justify-between">
+                                <span>Explore Lookbook Visuals</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <!-- Row 2 -->
-                <div class="flex justify-between items-end border-b border-neutral-800 pb-2">
+
+                <!-- Google Review & Meta Card -->
+                <div class="p-6 sm:p-8 md:col-span-4 flex flex-col justify-between bg-white/50">
                     <div>
-                        <p class="text-lg font-bold tracking-tight uppercase">HAIRCUT & WASH</p>
-                        <p class="text-xs text-neutral-400 uppercase">Female Selection</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono uppercase text-neutral-500">Authentic Client Ratings</span>
+                            <i class="fa-brands fa-google text-sm text-neutral-400"></i>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-6xl font-black tracking-tight">4.9</span>
+                            <span class="text-sm font-bold text-neutral-600">/ 5.0</span>
+                        </div>
+                        <div class="flex text-amber-500 gap-1 my-3 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs font-mono uppercase text-neutral-600">Verified by 84 Authentic Google Reviews</p>
                     </div>
-                    <span class="text-xl font-mono font-bold">RM 58</span>
+
+                    <div class="hairline-t pt-6 mt-8 space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-mono text-neutral-500 uppercase">Japanese Tech</span>
+                            <span class="font-bold uppercase">MILBON® Partner</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-mono text-neutral-500 uppercase">Bond Protection</span>
+                            <span class="font-bold uppercase">OLAPLEX® Partner</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-mono text-neutral-500 uppercase">Location</span>
+                            <span class="font-bold uppercase">Dataran Sunway, PJ</span>
+                        </div>
+                    </div>
                 </div>
-                <!-- Row 3 -->
-                <div class="flex justify-between items-end border-b border-neutral-800 pb-2">
+            </div>
+
+            <!-- FEATURED EDITORIAL PHOTO TRIO -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 sm:grid-cols-3 bg-white">
+                <div class="relative overflow-hidden hairline-r hairline-b sm:hairline-b-0 group h-80 sm:h-96">
+                    <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=800" alt="Precision Layer Cut" class="editorial-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <p class="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">Archive 01 / Technical Cut</p>
+                        <p class="text-sm font-bold uppercase tracking-wide">Structured Precision Layers</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden hairline-r hairline-b sm:hairline-b-0 group h-80 sm:h-96">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800" alt="Ash Blonde Pigment" class="editorial-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <p class="text-[10px] font-mono text-amber-300 uppercase tracking-widest">Archive 02 / Color Pigment</p>
+                        <p class="text-sm font-bold uppercase tracking-wide">Cool Platinum & Ash Tones</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden group h-80 sm:h-96">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=800" alt="Milbon Scalp Care" class="editorial-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                        <p class="text-[10px] font-mono text-emerald-300 uppercase tracking-widest">Archive 03 / Scalp Health</p>
+                        <p class="text-sm font-bold uppercase tracking-wide">Milbon Hydro Moisture Care</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BENTO OVERVIEW MATRIX -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-12 bg-[#111111] text-white">
+                <!-- Bento Block 1: Rates Quick Summary -->
+                <div class="md:col-span-7 p-6 sm:p-8 border-b md:border-b-0 md:border-r border-neutral-800">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xs font-mono uppercase tracking-widest text-neutral-400">/ SIGNATURE SERVICES</h3>
+                        <button onclick="switchPage('rates')" class="text-xs font-mono text-amber-300 hover:underline uppercase">View Full Rate Card →</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+                            <div>
+                                <p class="text-base font-bold uppercase">Gentlemen Haircut & Basin Wash</p>
+                                <p class="text-xs text-neutral-400 font-mono">Scissor precision + head massage wash</p>
+                            </div>
+                            <span class="text-lg font-mono font-bold">RM 48</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+                            <div>
+                                <p class="text-base font-bold uppercase">Ladies Haircut, Wash & Blowdry</p>
+                                <p class="text-xs text-neutral-400 font-mono">Structural layers & custom finish</p>
+                            </div>
+                            <span class="text-lg font-mono font-bold">RM 58</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+                            <div>
+                                <p class="text-base font-bold uppercase">Japanese Hair Color Pigment</p>
+                                <p class="text-xs text-neutral-400 font-mono">Includes scalp barrier protector</p>
+                            </div>
+                            <span class="text-lg font-mono font-bold text-amber-300">FROM RM 128</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Block 2: Instant Booking CTA -->
+                <div class="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-neutral-900">
                     <div>
-                        <p class="text-lg font-bold tracking-tight uppercase">WASH & BLOW</p>
-                        <p class="text-xs text-neutral-400 uppercase">Basin Wash Base</p>
+                        <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">● Direct Booking Line</span>
+                        <h3 class="text-3xl font-black uppercase tracking-tight mt-2 leading-none">
+                            RESERVE YOUR <span class="font-serif italic font-normal text-amber-200 lowercase">session.</span>
+                        </h3>
+                        <p class="text-xs text-neutral-400 mt-3 font-mono leading-relaxed uppercase">
+                            Walk-in sessions subject to stylist schedule. Direct message via Instagram or WhatsApp recommended.
+                        </p>
                     </div>
-                    <span class="text-xl font-mono font-bold text-neutral-300">RM 40 - 50</span>
+
+                    <div class="space-y-3 mt-6">
+                        <a href="https://wa.me/601175726618?text=Hello%20Yujo%20Hair%20Studio,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-500 text-black py-3.5 px-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-emerald-400 transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>WhatsApp Booking</span>
+                        </a>
+                        <button onclick="switchPage('studio')" class="w-full bg-white text-black py-3 px-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-neutral-200 transition-all">
+                            View Studio Map & Details
+                        </button>
+                    </div>
                 </div>
-                <!-- Row 4 -->
-                <div class="flex justify-between items-end border-b border-neutral-800 pb-2">
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: GALLERY & VISUALIZATIONS ================= -->
+        <section id="page-gallery" class="page-section">
+            <!-- HEADER TITLE BAR -->
+            <div class="hairline-border p-6 sm:p-8 bg-white flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-500">PAGE 02 / VISUAL ARCHIVE</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tighter mt-1">
+                        EDITORIAL <span class="font-serif italic font-normal lowercase">visualizations.</span>
+                    </h2>
+                </div>
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <button onclick="filterGallery('all')" class="gallery-filter-btn active bg-black text-white px-3 py-1.5 rounded-full border border-black">ALL VISUALS</button>
+                    <button onclick="filterGallery('cuts')" class="gallery-filter-btn bg-white text-black px-3 py-1.5 rounded-full border border-black hover:bg-neutral-100">PRECISION CUTS</button>
+                    <button onclick="filterGallery('colors')" class="gallery-filter-btn bg-white text-black px-3 py-1.5 rounded-full border border-black hover:bg-neutral-100">COLOR PIGMENTS</button>
+                    <button onclick="filterGallery('science')" class="gallery-filter-btn bg-white text-black px-3 py-1.5 rounded-full border border-black hover:bg-neutral-100">DIAGRAMS & SCIENCE</button>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE BEFORE / AFTER TRANSFORMATION VISUALIZER -->
+            <div class="hairline-border hairline-t-0 p-6 sm:p-8 bg-[#111111] text-white">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                        <div>
+                            <span class="text-xs font-mono text-amber-300 uppercase tracking-widest">Interactive Transformation Slider</span>
+                            <h3 class="text-xl font-bold uppercase tracking-tight">Milbon Moisture & Color Reconstruction</h3>
+                        </div>
+                        <span class="text-xs font-mono text-neutral-400">Drag handle left/right to compare</span>
+                    </div>
+
+                    <!-- Interactive Slider Box -->
+                    <div id="ba-slider" class="ba-container h-80 sm:h-[420px] hairline-dark-border cursor-ew-resize rounded">
+                        <!-- Before Image (Base) -->
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=1200" alt="Before Hair Transformation" class="w-full h-full object-cover filter grayscale contrast-125">
+                        <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 text-xs font-mono uppercase tracking-widest text-neutral-300 border border-neutral-700">
+                            BEFORE / Untreated Texture
+                        </div>
+
+                        <!-- After Image (Overlay) -->
+                        <div id="ba-after-layer" class="ba-after-img border-r-2 border-amber-300">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200" alt="After Hair Transformation" class="absolute top-0 left-0 w-full h-full object-cover max-w-none" style="width: 100%; height: 100%;">
+                            <div class="absolute top-4 left-4 bg-amber-400 text-black px-3 py-1 text-xs font-mono uppercase font-bold tracking-widest">
+                                AFTER / Milbon & Precision Cut
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MASONRY EDITORIAL PHOTO GRID -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-white">
+                <!-- Look 1 -->
+                <div class="gallery-item cuts p-4 hairline-r hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&q=80&w=800" alt="Short Textured Bob" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 01</span>
+                    </div>
+                    <p class="text-xs font-mono text-neutral-500 uppercase">Precision Cut</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Textured Blunt Bob Cut</p>
+                </div>
+
+                <!-- Look 2 -->
+                <div class="gallery-item colors p-4 hairline-r hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="Warm Caramel Balayage" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 02</span>
+                    </div>
+                    <p class="text-xs font-mono text-amber-700 uppercase">Japanese Color</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Warm Caramel Gloss Balayage</p>
+                </div>
+
+                <!-- Look 3 -->
+                <div class="gallery-item cuts p-4 hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&q=80&w=800" alt="Long Fluid Layers" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 03</span>
+                    </div>
+                    <p class="text-xs font-mono text-neutral-500 uppercase">Femme Cut</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Seamless Fluid Face Framing</p>
+                </div>
+
+                <!-- Look 4 -->
+                <div class="gallery-item colors p-4 hairline-r hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1584297091622-af8e5fda9889?auto=format&fit=crop&q=80&w=800" alt="Dark Ash Pigment" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 04</span>
+                    </div>
+                    <p class="text-xs font-mono text-amber-700 uppercase">Japanese Color</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Smoky Dark Obsidian Ash</p>
+                </div>
+
+                <!-- Look 5 -->
+                <div class="gallery-item science p-4 hairline-r hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&q=80&w=800" alt="Scalp Basin Care" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 05</span>
+                    </div>
+                    <p class="text-xs font-mono text-emerald-700 uppercase">Treatment Care</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Milbon Scalp Purifying Basin Wash</p>
+                </div>
+
+                <!-- Look 6 -->
+                <div class="gallery-item cuts p-4 hairline-b group">
+                    <div class="overflow-hidden h-72 mb-3 relative">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=800" alt="Gentlemen Fade Cut" class="editorial-img w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-mono px-2 py-0.5">FIG 06</span>
+                    </div>
+                    <p class="text-xs font-mono text-neutral-500 uppercase">Homme Cut</p>
+                    <p class="text-sm font-bold uppercase tracking-tight">Gentlemen Taper Fade & Styling</p>
+                </div>
+            </div>
+
+            <!-- TECHNICAL ARCHITECTURAL DIAGRAM & COLOR SPECTRUM -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-12 bg-[#EAE7E1]">
+                <!-- SVG Diagram Column -->
+                <div class="md:col-span-7 p-6 sm:p-8 hairline-r">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono uppercase text-neutral-600">Technical Blueprint</span>
+                        <span class="text-xs font-mono bg-black text-white px-2 py-0.5">CUT GEOMETRY</span>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase mb-4">HAIRCUT WEIGHT & ANGLE DIAGRAM</h3>
+                    
+                    <!-- SVG Visual Diagram -->
+                    <div class="bg-white p-6 hairline-border flex items-center justify-center">
+                        <svg viewBox="0 0 500 280" class="w-full h-auto max-h-[260px]" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+                            </pattern>
+                            <rect width="500" height="280" fill="url(#grid)" />
+                            
+                            <!-- Head Silhouette Outline -->
+                            <path d="M180,60 C230,20 270,20 320,60 C350,100 350,150 340,190 C330,220 310,240 290,250 C250,260 210,250 180,210 Z" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4,4"/>
+                            
+                            <!-- Precision Cut Lines -->
+                            <line x1="150" y1="80" x2="350" y2="80" stroke="#111111" stroke-width="1.5" />
+                            <text x="360" y="84" font-family="monospace" font-size="10" fill="#111">0° Weight Line</text>
+
+                            <line x1="160" y1="140" x2="360" y2="100" stroke="#d97706" stroke-width="2" />
+                            <text x="365" y="104" font-family="monospace" font-size="10" fill="#d97706">45° Graduated Layer</text>
+
+                            <line x1="170" y1="210" x2="370" y2="140" stroke="#059669" stroke-width="2" />
+                            <text x="375" y="144" font-family="monospace" font-size="10" fill="#059669">90° High Texture Line</text>
+
+                            <!-- Tension Vector Angles -->
+                            <circle cx="250" cy="130" r="4" fill="#111"/>
+                            <line x1="250" y1="130" x2="250" y2="230" stroke="#111" stroke-width="1" stroke-dasharray="2,2"/>
+                            <text x="255" y="225" font-family="monospace" font-size="9" fill="#666">Gravity Fall Vector</text>
+                        </svg>
+                    </div>
+                    <p class="text-xs font-mono text-neutral-600 mt-3">
+                        *Structural layering calculated based on individual cranial bone structure and natural hair growth swirl.
+                    </p>
+                </div>
+
+                <!-- Color Pigment Spectrum Swatches -->
+                <div class="md:col-span-5 p-6 sm:p-8 bg-white flex flex-col justify-between">
                     <div>
-                        <p class="text-lg font-bold tracking-tight uppercase">HAIR COLOR</p>
-                        <p class="text-xs text-neutral-400 uppercase">Premium Pigment</p>
+                        <span class="text-xs font-mono uppercase text-neutral-500">Color Matrix</span>
+                        <h3 class="text-2xl font-black uppercase mb-4">PIGMENT SPECTRUM</h3>
+
+                        <div class="space-y-3 font-mono text-xs">
+                            <!-- Swatch 1 -->
+                            <div class="flex items-center justify-between p-2.5 hairline-border bg-[#1a1a1a] text-white">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded bg-[#1c1a19] border border-neutral-600"></span>
+                                    <span>Raw Obsidian Ash</span>
+                                </div>
+                                <span class="text-[10px] text-neutral-400">Tone 02 / Low Lift</span>
+                            </div>
+                            <!-- Swatch 2 -->
+                            <div class="flex items-center justify-between p-2.5 hairline-border bg-neutral-100">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded bg-[#8c6d58] border border-neutral-400"></span>
+                                    <span>Milk Tea Beige</span>
+                                </div>
+                                <span class="text-[10px] text-neutral-500">Tone 07 / Med Lift</span>
+                            </div>
+                            <!-- Swatch 3 -->
+                            <div class="flex items-center justify-between p-2.5 hairline-border bg-amber-50">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded bg-[#d9b88c] border border-amber-300"></span>
+                                    <span>Smoky Platinum Ash</span>
+                                </div>
+                                <span class="text-[10px] text-amber-700">Tone 10 / High Lift</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-xl font-mono font-bold text-amber-400">FROM RM 128</span>
+
+                    <button onclick="switchPage('rates')" class="w-full mt-6 bg-black text-white py-3 text-xs font-mono uppercase tracking-widest font-bold hover:bg-neutral-800 transition-all">
+                        Check Color Treatment Pricing
+                    </button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Call to Action & Typography Accent (Right Side) -->
-        <div class="md:col-span-3 p-8 flex flex-col justify-between min-h-[320px] bg-neutral-900">
-            <div>
-                <h2 class="text-4xl font-black uppercase leading-none tracking-tighter">
-                    POST <span class="font-editorial italic font-normal text-amber-200 lowercase">media.</span>
-                </h2>
-                <p class="text-[11px] uppercase text-neutral-400 tracking-wider mt-4 leading-relaxed">
-                    Scalp Treatments and tailored texture adjustments are available through direct consult.
-                </p>
+
+        <!-- ================= PAGE 3: RATES & CALCULATOR ================= -->
+        <section id="page-rates" class="page-section">
+            <!-- TITLE HEADER -->
+            <div class="hairline-border p-6 sm:p-8 bg-white flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-500">PAGE 03 / PRICE CURATION</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tighter mt-1">
+                        SERVICES <span class="font-serif italic font-normal lowercase">& price estimator.</span>
+                    </h2>
+                </div>
+                <span class="text-xs font-mono bg-amber-200 text-black px-3 py-1 font-bold">ALL PRICES IN MYR (RM)</span>
             </div>
 
-            <a href="https://www.instagram.com/yujohairstudio/" target="_blank" class="block w-full bg-white text-black text-center py-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#EAE7E1] transition-all duration-300 group">
-                Book Appointment <i class="fa-brands fa-instagram ml-2 group-hover:scale-110 transition-transform"></i>[cite: 1]
-            </a>
-        </div>
-    </main>
+            <!-- INTERACTIVE SERVICE & PRICE ESTIMATOR CALCULATOR -->
+            <div class="hairline-border hairline-t-0 p-6 sm:p-8 bg-[#111111] text-white">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-calculator text-amber-400 text-xl"></i>
+                        <div>
+                            <h3 class="text-xl font-bold uppercase tracking-tight">INTERACTIVE SESSION ESTIMATOR</h3>
+                            <p class="text-xs text-neutral-400 font-mono">Select your gender, cut type, hair length & treatment add-ons</p>
+                        </div>
+                    </div>
 
-    <!-- SECTION 3: FOOTER & MAP MATRIX (LIGHT ACCENT BLOCK) -->
-    <footer class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-12 bg-white/70 backdrop-blur-md">
-        <!-- Location Info -->
-        <div class="p-6 md:p-8 md:col-span-6 hairline-r flex flex-col justify-between gap-4">
-            <div>
-                <p class="text-xs font-mono uppercase text-neutral-400 mb-2">Location Hub</p>
-                <p class="text-sm font-bold uppercase tracking-tight leading-snug">
-                    33-2, Jalan PJU 5/10, Dataran Sunway, 47810 Petaling Jaya, Selangor, Malaysia[cite: 1]
-                </p>
-            </div>
-            <div class="pt-4 border-t border-neutral-200 flex items-center gap-2">
-                <span class="text-xs font-mono bg-neutral-100 px-2 py-1 uppercase text-neutral-600">Plus Code[cite: 1]</span>
-                <span class="text-xs font-mono font-bold">5H2V+GF Petaling Jaya[cite: 1]</span>
-            </div>
-        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-neutral-900 p-6 hairline-dark-border rounded">
+                        <!-- Left Options -->
+                        <div class="md:col-span-7 space-y-5">
+                            <!-- Step 1: Base Cut Selection -->
+                            <div>
+                                <label class="text-xs font-mono text-amber-300 uppercase block mb-2">1. Select Cut & Wash Base</label>
+                                <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                    <button onclick="calcSelectBase('male', 48)" id="calc-base-male" class="calc-base-btn border border-amber-400 bg-amber-400 text-black p-3 font-bold text-left rounded">
+                                        GENTLEMEN CUT<br><span class="text-sm font-bold">RM 48</span>
+                                    </button>
+                                    <button onclick="calcSelectBase('female', 58)" id="calc-base-female" class="calc-base-btn border border-neutral-700 hover:border-neutral-500 p-3 text-left rounded">
+                                        LADIES CUT & BLOW<br><span class="text-sm font-bold">RM 58</span>
+                                    </button>
+                                </div>
+                            </div>
 
-        <!-- Hotlines & Meta Connect -->
-        <div class="p-6 md:p-8 md:col-span-5 hairline-r flex flex-col justify-between gap-6">
-            <div>
-                <p class="text-xs font-mono uppercase text-neutral-400 mb-1">Direct Hotline</p>
-                <a href="tel:+601175726618" class="text-2xl font-black tracking-tight hover:underline">+60 11-7572 6618[cite: 1]</a>
-            </div>
-            <p class="text-xs uppercase text-neutral-500 font-medium">
-                © 2026 YUJO HAIR STUDIO[cite: 1]. All visual layouts structurally mapped to premium aesthetic references.
-            </p>
-        </div>
+                            <!-- Step 2: Hair Length Surcharge (For Female Cut/Color) -->
+                            <div>
+                                <label class="text-xs font-mono text-amber-300 uppercase block mb-2">2. Hair Length Estimate</label>
+                                <div class="grid grid-cols-3 gap-2 text-xs font-mono">
+                                    <button onclick="calcSelectLength('short', 0)" id="calc-len-short" class="calc-len-btn border border-amber-400 bg-amber-400 text-black p-2 text-center rounded font-bold">SHORT (Above Shoulder)</button>
+                                    <button onclick="calcSelectLength('medium', 20)" id="calc-len-medium" class="calc-len-btn border border-neutral-700 hover:border-neutral-500 p-2 text-center rounded">+RM 20 (Medium)</button>
+                                    <button onclick="calcSelectLength('long', 40)" id="calc-len-long" class="calc-len-btn border border-neutral-700 hover:border-neutral-500 p-2 text-center rounded">+RM 40 (Long / Chest)</button>
+                                </div>
+                            </div>
 
-        <!-- Side Anchor -->
-        <div class="hidden md:flex md:col-span-1 items-center justify-center py-6 bg-[#EAE7E1]">
-            <span class="vertical-text text-xs uppercase tracking-widest font-bold">EST. SELANGOR[cite: 1]</span>
+                            <!-- Step 3: Add-on Treatments -->
+                            <div>
+                                <label class="text-xs font-mono text-amber-300 uppercase block mb-2">3. Optional Care Add-ons</label>
+                                <div class="space-y-2 text-xs font-mono">
+                                    <label class="flex items-center justify-between p-2.5 bg-black/50 border border-neutral-800 rounded cursor-pointer hover:border-neutral-600">
+                                        <div class="flex items-center gap-2">
+                                            <input type="checkbox" id="calc-add-color" onchange="calculateTotal()" class="accent-amber-400">
+                                            <span>Japanese Hair Coloring (Pigment Base)</span>
+                                        </div>
+                                        <span class="font-bold text-amber-300">+RM 128</span>
+                                    </label>
+                                    <label class="flex items-center justify-between p-2.5 bg-black/50 border border-neutral-800 rounded cursor-pointer hover:border-neutral-600">
+                                        <div class="flex items-center gap-2">
+                                            <input type="checkbox" id="calc-add-milbon" onchange="calculateTotal()" class="accent-amber-400">
+                                            <span>Milbon® 3-Step Moisture Treatment</span>
+                                        </div>
+                                        <span class="font-bold text-amber-300">+RM 90</span>
+                                    </label>
+                                    <label class="flex items-center justify-between p-2.5 bg-black/50 border border-neutral-800 rounded cursor-pointer hover:border-neutral-600">
+                                        <div class="flex items-center gap-2">
+                                            <input type="checkbox" id="calc-add-olaplex" onchange="calculateTotal()" class="accent-amber-400">
+                                            <span>Olaplex® Bond Building Protection</span>
+                                        </div>
+                                        <span class="font-bold text-amber-300">+RM 80</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Total Display -->
+                        <div class="md:col-span-5 flex flex-col justify-between bg-black p-6 rounded border border-neutral-800">
+                            <div>
+                                <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">Estimated Total</span>
+                                <div class="text-5xl font-black font-mono text-amber-300 my-4">
+                                    RM <span id="calc-total-display">48</span>
+                                </div>
+                                <p class="text-[11px] font-mono text-neutral-400 uppercase leading-relaxed">
+                                    *Final pricing determined upon physical scalp & hair density consultation at studio.
+                                </p>
+                            </div>
+
+                            <button onclick="bookEstimatedSession()" class="w-full mt-6 bg-emerald-500 text-black py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-widest hover:bg-emerald-400 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Send Estimate to WhatsApp</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLETE RATE CARDS MATRIX -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-2 bg-white">
+                <!-- Haircuts & Styling Column -->
+                <div class="p-6 sm:p-8 hairline-r">
+                    <div class="flex items-center justify-between mb-6 border-b border-neutral-300 pb-2">
+                        <h3 class="text-sm font-mono font-bold uppercase tracking-widest">01 / HAIRCUT & STYLING MENU</h3>
+                        <i class="fa-solid fa-scissors text-neutral-400"></i>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Gentlemen Precision Haircut</span>
+                                <span class="text-lg font-mono font-bold">RM 48</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Includes consultation, precision scissor/clipper cut, basin wash & styling finish.</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Ladies Haircut & Blowdry</span>
+                                <span class="text-lg font-mono font-bold">RM 58</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Includes hair texture profiling, structural layering cut, relaxing wash & signature blowdry finish.</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Wash & Signature Blowdry</span>
+                                <span class="text-lg font-mono font-bold text-neutral-800">RM 40 - 50</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Deep basin scalp wash, scalp massage, and styled blowdry (varies with length).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chemical & Treatment Column -->
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-6 border-b border-neutral-300 pb-2">
+                        <h3 class="text-sm font-mono font-bold uppercase tracking-widest">02 / CHEMICAL & SCIENCE CARE</h3>
+                        <i class="fa-solid fa-flask text-neutral-400"></i>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Japanese Hair Coloring</span>
+                                <span class="text-lg font-mono font-bold text-amber-700">FROM RM 128</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Full pigment application with built-in scalp guard protector.</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Milbon® Hydro Moisture Care</span>
+                                <span class="text-lg font-mono font-bold">UPON CONSULT</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Japanese 3-step internal cortex hydration for porous/damaged hair.</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-base font-bold uppercase">Olaplex® Bond Builder</span>
+                                <span class="text-lg font-mono font-bold">UPON CONSULT</span>
+                            </div>
+                            <p class="text-xs text-neutral-600 mt-0.5">Patented disulfide bond repair during or after technical bleach/color.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 4: STUDIO & BOOKING ================= -->
+        <section id="page-studio" class="page-section">
+            <!-- TITLE HEADER -->
+            <div class="hairline-border p-6 sm:p-8 bg-white flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-500">PAGE 04 / LOCATION & CONTACT</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tighter mt-1">
+                        STUDIO HUB <span class="font-serif italic font-normal lowercase">& booking line.</span>
+                    </h2>
+                </div>
+                <span class="text-xs font-mono bg-emerald-100 text-emerald-800 border border-emerald-300 px-3 py-1 font-bold">
+                    <i class="fa-solid fa-circle-dot text-[9px] mr-1"></i>WALK-INS & APPOINTMENTS WELCOME
+                </span>
+            </div>
+
+            <!-- LOCATION & OPERATIONAL MATRIX -->
+            <div class="hairline-border hairline-t-0 grid grid-cols-1 md:grid-cols-12 bg-[#EAE7E1]">
+                <!-- Address Details Box -->
+                <div class="p-6 sm:p-8 md:col-span-7 hairline-r flex flex-col justify-between gap-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-mono uppercase text-neutral-500">Physical Studio Address</span>
+                            <button onclick="copyToClipboard('33-2, Jalan PJU 5/10, Dataran Sunway, 47810 Petaling Jaya, Selangor, Malaysia', 'Address copied!')" class="text-xs font-mono text-black hover:underline uppercase font-bold">
+                                <i class="fa-regular fa-copy mr-1"></i>Copy Address
+                            </button>
+                        </div>
+                        <p class="text-2xl font-black uppercase leading-tight tracking-tight">
+                            33-2, Jalan PJU 5/10, Dataran Sunway, 47810 Petaling Jaya, Selangor, Malaysia
+                        </p>
+                    </div>
+
+                    <!-- Map Visual Mockup Box -->
+                    <div class="hairline-border bg-white p-4 relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-3 text-xs font-mono">
+                            <span class="font-bold uppercase"><i class="fa-solid fa-map-pin text-amber-600 mr-1.5"></i>Dataran Sunway Hub</span>
+                            <span class="text-neutral-500">Plus Code: 5H2V+GF</span>
+                        </div>
+                        <div class="h-44 bg-neutral-200 relative flex items-center justify-center overflow-hidden rounded border border-neutral-300">
+                            <!-- Stylized Map Pattern -->
+                            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#111 1px, transparent 1px); background-size: 16px 16px;"></div>
+                            <div class="relative z-10 text-center p-4 bg-white/90 backdrop-blur border border-neutral-300 rounded max-w-xs shadow-sm">
+                                <p class="text-xs font-bold uppercase">YUJO HAIR STUDIO</p>
+                                <p class="text-[10px] text-neutral-600 font-mono mt-0.5">2nd Floor, Above Dataran Sunway Shopfront</p>
+                                <a href="https://maps.google.com/?q=YUJO+HAIR+STUDIO+Petaling+Jaya" target="_blank" class="inline-block mt-2 text-[10px] font-mono bg-black text-white px-3 py-1 uppercase tracking-wider hover:bg-neutral-800">
+                                    Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+                        <div class="p-3 bg-white hairline-border">
+                            <span class="text-neutral-500 uppercase block mb-1">Phone Hotline</span>
+                            <a href="tel:+601175726618" class="text-sm font-bold text-black hover:underline">+60 11-7572 6618</a>
+                        </div>
+                        <div class="p-3 bg-white hairline-border">
+                            <span class="text-neutral-500 uppercase block mb-1">Instagram Direct</span>
+                            <a href="https://www.instagram.com/yujohairstudio/" target="_blank" class="text-sm font-bold text-black hover:underline">@yujohairstudio</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Booking Form Column -->
+                <div class="p-6 sm:p-8 md:col-span-5 bg-white flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-xs font-mono uppercase text-neutral-500">Direct Consultation Request</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase mb-4">RESERVE A STYLIST</h3>
+
+                        <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-3 text-xs font-mono">
+                            <div>
+                                <label class="block uppercase font-bold text-neutral-700 mb-1">Your Name</label>
+                                <input type="text" id="form-name" required placeholder="e.g. Alex Tan" class="w-full p-2.5 bg-neutral-100 hairline-border focus:bg-white focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block uppercase font-bold text-neutral-700 mb-1">Contact Number</label>
+                                <input type="tel" id="form-phone" required placeholder="e.g. +60 12-345 6789" class="w-full p-2.5 bg-neutral-100 hairline-border focus:bg-white focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block uppercase font-bold text-neutral-700 mb-1">Desired Service</label>
+                                <select id="form-service" class="w-full p-2.5 bg-neutral-100 hairline-border focus:bg-white focus:outline-none">
+                                    <option value="Gentlemen Cut (RM48)">Gentlemen Precision Cut & Wash (RM 48)</option>
+                                    <option value="Ladies Cut & Blow (RM58)">Ladies Cut, Wash & Blow (RM 58)</option>
+                                    <option value="Japanese Hair Color (From RM128)">Japanese Hair Color Pigment (From RM 128)</option>
+                                    <option value="Milbon Moisture Treatment">Milbon Hydro Moisture Treatment</option>
+                                    <option value="Olaplex Bond Protection">Olaplex Bond Protection Care</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block uppercase font-bold text-neutral-700 mb-1">Preferred Date & Time</label>
+                                <input type="text" id="form-datetime" placeholder="e.g. Tomorrow at 2:30 PM" class="w-full p-2.5 bg-neutral-100 hairline-border focus:bg-white focus:outline-none">
+                            </div>
+
+                            <button type="submit" class="w-full mt-4 bg-black text-white py-3.5 px-4 font-mono text-xs uppercase font-bold tracking-widest hover:bg-neutral-800 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Submit via WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <p class="text-[10px] font-mono text-neutral-500 uppercase mt-6 text-center">
+                        *Submitting will redirect you to WhatsApp with pre-filled details.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MAIN SITE FOOTER -->
+    <footer class="hairline-border bg-white mt-4 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs">
+        <div>
+            <p class="font-bold uppercase tracking-wider text-black">YUJO HAIR STUDIO © 2026</p>
+            <p class="text-neutral-500 text-[11px] uppercase mt-0.5">DATARAN SUNWAY, PETALING JAYA, SELANGOR, MALAYSIA</p>
+        </div>
+        <div class="flex items-center gap-6 text-neutral-600 uppercase">
+            <button onclick="switchPage('home')" class="hover:text-black underline">Home</button>
+            <button onclick="switchPage('gallery')" class="hover:text-black underline">Gallery</button>
+            <button onclick="switchPage('rates')" class="hover:text-black underline">Rates</button>
+            <button onclick="switchPage('studio')" class="hover:text-black underline">Studio</button>
         </div>
     </footer>
 
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-black text-white px-4 py-3 rounded shadow-2xl font-mono text-xs uppercase tracking-wider opacity-0 pointer-events-none transform translate-y-2 z-50 flex items-center gap-2 border border-neutral-700 transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">Copied to clipboard</span>
+    </div>
+
+    <script>
+        // --- 1. SPA PAGE SWITCHER LOGIC ---
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Show selected page
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Nav Tab Button Styles
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(t => {
+                t.classList.remove('bg-black', 'text-white');
+                t.classList.add('text-neutral-700');
+            });
+
+            const activeTab = document.getElementById('nav-' + pageId);
+            if (activeTab) {
+                activeTab.classList.add('bg-black', 'text-white');
+                activeTab.classList.remove('text-neutral-700');
+            }
+
+            // Scroll smoothly to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 2. GALLERY FILTER LOGIC ---
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-black', 'text-white');
+                btn.classList.add('bg-white', 'text-black');
+            });
+
+            event.target.classList.add('bg-black', 'text-white');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 3. INTERACTIVE BEFORE/AFTER SLIDER LOGIC ---
+        const slider = document.getElementById('ba-slider');
+        const afterLayer = document.getElementById('ba-after-layer');
+        let isDragging = false;
+
+        if (slider && afterLayer) {
+            const updateSlider = (x) => {
+                const rect = slider.getBoundingClientRect();
+                let position = ((x - rect.left) / rect.width) * 100;
+                if (position < 0) position = 0;
+                if (position > 100) position = 100;
+                afterLayer.style.width = position + '%';
+            };
+
+            slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+
+            // Touch events for mobile responsiveness
+            slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+            window.addEventListener('touchend', () => { isDragging = false; });
+            window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
+        }
+
+        // --- 4. PRICE CALCULATOR STATE & LOGIC ---
+        let calcState = {
+            basePrice: 48,
+            baseName: 'Gentlemen Cut',
+            lengthPrice: 0,
+            lengthName: 'Short'
+        };
+
+        function calcSelectBase(gender, price) {
+            calcState.basePrice = price;
+            calcState.baseName = gender === 'male' ? 'Gentlemen Cut' : 'Ladies Cut & Blow';
+
+            document.querySelectorAll('.calc-base-btn').forEach(btn => {
+                btn.classList.remove('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+                btn.classList.add('border-neutral-700');
+            });
+
+            const selectedBtn = document.getElementById('calc-base-' + gender);
+            if (selectedBtn) {
+                selectedBtn.classList.add('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+                selectedBtn.classList.remove('border-neutral-700');
+            }
+
+            calculateTotal();
+        }
+
+        function calcSelectLength(lengthKey, price) {
+            calcState.lengthPrice = price;
+            calcState.lengthName = lengthKey;
+
+            document.querySelectorAll('.calc-len-btn').forEach(btn => {
+                btn.classList.remove('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+                btn.classList.add('border-neutral-700');
+            });
+
+            const selectedBtn = document.getElementById('calc-len-' + lengthKey);
+            if (selectedBtn) {
+                selectedBtn.classList.add('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+                selectedBtn.classList.remove('border-neutral-700');
+            }
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = calcState.basePrice + calcState.lengthPrice;
+
+            if (document.getElementById('calc-add-color').checked) total += 128;
+            if (document.getElementById('calc-add-milbon').checked) total += 90;
+            if (document.getElementById('calc-add-olaplex').checked) total += 80;
+
+            document.getElementById('calc-total-display').textContent = total;
+        }
+
+        function bookEstimatedSession() {
+            const total = document.getElementById('calc-total-display').textContent;
+            let addons = [];
+            if (document.getElementById('calc-add-color').checked) addons.push('Japanese Hair Color');
+            if (document.getElementById('calc-add-milbon').checked) addons.push('Milbon Treatment');
+            if (document.getElementById('calc-add-olaplex').checked) addons.push('Olaplex Care');
+
+            const addonStr = addons.length > 0 ? addons.join(', ') : 'None';
+            const msg = `Hello Yujo Hair Studio, I calculated an estimate on your website:\n- Base: ${calcState.baseName}\n- Hair Length: ${calcState.lengthName}\n- Add-ons: ${addonStr}\n- Estimated Total: RM ${total}\nI would like to book a session.`;
+
+            window.open(`https://wa.me/601175726618?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // --- 5. FORM HANDLER LOGIC ---
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+            const datetime = document.getElementById('form-datetime').value;
+
+            const msg = `Hello Yujo Hair Studio, I would like to reserve an appointment:\n- Name: ${name}\n- Contact: ${phone}\n- Desired Service: ${service}\n- Preferred Time: ${datetime}`;
+
+            window.open(`https://wa.me/601175726618?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // --- 6. UTILITY: COPY TO CLIPBOARD & TOAST ---
+        function copyToClipboard(text, message) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast(message || 'Copied to clipboard');
+            } catch (err) {
+                console.error('Copy failed', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = msg;
+            
+            toast.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
