@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raff Trims Barber Shop | Premier Grooming Kuala Lumpur</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Oswald (Display Condensed) & Inter (Clean Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#171717',
+                            surface: '#262626',
+                            surfaceLight: '#333333',
+                            orange: '#F95716',
+                            orangeHover: '#d9470d',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .border-hairline {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(249, 87, 22, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-200 font-sans antialiased selection:bg-brand-orange selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-orange text-white text-xs md:text-sm font-semibold py-2 px-4 text-center tracking-wide">
+        <span data-lang-ms="🔥 PERCUMA Konsultasi Gaya Rambut & Penilaian Kulit Kepala untuk Setiap Potongan!" 
+              data-lang-en="🔥 FREE Haircut Style Consultation & Scalp Assessment with Every Cut!">
+            🔥 PERCUMA Konsultasi Gaya Rambut & Penilaian Kulit Kepala untuk Setiap Potongan!
+        </span>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-brand-orange text-white flex items-center justify-center font-display font-bold text-xl rounded-lg group-hover:scale-105 transition-transform">
+                    RT
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display text-2xl font-bold tracking-wider text-white leading-none">RAFF TRIMS</span>
+                    <span class="text-[10px] text-gray-400 tracking-widest uppercase">BARBER SHOP</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#utamanya" class="hover:text-brand-orange transition-colors" data-lang-ms="Utama" data-lang-en="Home">Utama</a>
+                <a href="#galeri" class="hover:text-brand-orange transition-colors" data-lang-ms="Hasil Kerja" data-lang-en="Our Works">Hasil Kerja</a>
+                <a href="#perkhidmatan" class="hover:text-brand-orange transition-colors" data-lang-ms="Harga & Perkhidmatan" data-lang-en="Services & Prices">Harga & Perkhidmatan</a>
+                <a href="#ulasan" class="hover:text-brand-orange transition-colors" data-lang-ms="Ulasan" data-lang-en="Reviews">Ulasan</a>
+                <a href="#lokasi" class="hover:text-brand-orange transition-colors" data-lang-ms="Lokasi" data-lang-en="Location">Lokasi</a>
+            </nav>
+
+            <!-- Actions & Language Switcher -->
+            <div class="flex items-center gap-4">
+                <!-- Language Toggle -->
+                <div class="bg-brand-surface border-hairline rounded-full p-1 flex items-center text-xs font-semibold">
+                    <button id="lang-ms" onclick="setLanguage('ms')" class="px-3 py-1 rounded-full bg-brand-orange text-white transition-all">MS</button>
+                    <button id="lang-en" onclick="setLanguage('en')" class="px-3 py-1 rounded-full text-gray-400 hover:text-white transition-all">EN</button>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="https://rafayi1f2.setmore.com/book" target="_blank" class="hidden sm:inline-flex items-center justify-center bg-brand-orange hover:bg-brand-orangeHover text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-brand-orange/20 hover:scale-105">
+                    <span data-lang-ms="Tempah Sekarang" data-lang-en="Book Now">Tempah Sekarang</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Bento Grid Style) -->
+    <section id="utamanya" class="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Giant Display Title -->
+        <div class="text-center md:text-left mb-8">
+            <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white uppercase leading-none">
+                RAFF TRIMS <span class="text-brand-orange">BARBER SHOP</span>
+            </h1>
+            <p class="mt-4 text-gray-400 max-w-2xl text-base sm:text-lg" 
+               data-lang-ms="Pengalaman dandanan lelaki premium di Bukit Bintang, Kuala Lumpur. Dikendalikan oleh Master Barber Raff dengan kepakaran potongan moden dan klasik."
+               data-lang-en="Premium men's grooming experience in Bukit Bintang, Kuala Lumpur. Crafted by Master Barber Raff specializing in modern fades and classic cuts.">
+                Pengalaman dandanan lelaki premium di Bukit Bintang, Kuala Lumpur. Dikendalikan oleh Master Barber Raff dengan kepakaran potongan moden dan klasik.
+            </p>
+        </div>
+
+        <!-- Bento Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <!-- Large Image Box Left -->
+            <div class="md:col-span-5 relative group overflow-hidden rounded-2xl border-hairline min-h-[320px] md:min-h-[420px]">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80" alt="Barber Haircut Action" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1" data-lang-ms="Kepakaran Utama" data-lang-en="Core Specialty">Kepakaran Utama</span>
+                    <h3 class="font-display text-2xl text-white uppercase" data-lang-ms="Kemahiran Precision Fade & Beard Styling" data-lang-en="Precision Fade & Beard Styling">Kemahiran Precision Fade & Beard Styling</h3>
+                </div>
+            </div>
+
+            <!-- Middle Stack -->
+            <div class="md:col-span-4 flex flex-col gap-4">
+                <div class="relative group overflow-hidden rounded-2xl border-hairline h-48 sm:h-52">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80" alt="Barber Tools" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-brand-bg/60 p-6 flex flex-col justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid font-bold text-brand-orange text-lg fa-scissors"></i>
+                            <span class="text-xs font-semibold text-gray-300 uppercase tracking-widest" data-lang-ms="Peralatan Profesional" data-lang-en="Professional Gear">Peralatan Profesional</span>
+                        </div>
+                        <p class="text-white font-medium text-sm" data-lang-ms="Peralatan sanitasi gred tinggi & produk penjagaan rambut terbaik dunia." data-lang-en="Top-grade sanitized equipment & world-class hair care products.">Peralatan sanitasi gred tinggi & produk penjagaan rambut terbaik dunia.</p>
+                    </div>
+                </div>
+
+                <!-- Rating Box -->
+                <div class="bg-brand-surface rounded-2xl border-hairline p-6 flex flex-col justify-center items-start relative overflow-hidden">
+                    <div class="flex items-center gap-2 mb-2 text-yellow-400 text-lg">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span class="text-white font-bold text-xl ml-2">5.0</span>
+                    </div>
+                    <p class="text-sm text-gray-300 font-medium" data-lang-ms="Dinilai 5.0 Bintang secara konsisten daripada 380+ Ulasan Pelanggan Setmore & Google Maps." data-lang-en="Consistently rated 5.0 Stars across 380+ Customer Reviews on Setmore & Google Maps.">
+                        Dinilai 5.0 Bintang secara konsisten daripada 380+ Ulasan Pelanggan Setmore & Google Maps.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2 text-xs text-brand-orange font-semibold">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span data-lang-ms="100% Kepuasan Terjamin" data-lang-en="100% Satisfaction Guaranteed">100% Kepuasan Terjamin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right CTA Block -->
+            <div class="md:col-span-3 bg-brand-orange rounded-2xl p-6 md:p-8 flex flex-col justify-between text-white relative overflow-hidden group">
+                <div class="space-y-4">
+                    <span class="inline-block px-3 py-1 bg-black/20 rounded-full text-xs font-bold tracking-widest uppercase" data-lang-ms="Slot Terhad Hari Ini" data-lang-en="Limited Slots Today">Slot Terhad Hari Ini</span>
+                    <h2 class="font-display text-3xl font-bold uppercase leading-tight" data-lang-ms="Dapatkan Gaya Terbaik Anda Sekarang" data-lang-en="Get Your Fresh Style Today">Dapatkan Gaya Terbaik Anda Sekarang</h2>
+                    <p class="text-white/80 text-sm" data-lang-ms="Elak beratur panjang. Tempah masa temu janji anda secara dalam talian dengan pantas." data-lang-en="Avoid long queues. Secure your appointment time online instantly.">Elak beratur panjang. Tempah masa temu janji anda secara dalam talian dengan pantas.</p>
+                </div>
+                <div class="mt-8">
+                    <a href="https://rafayi1f2.setmore.com/book" target="_blank" class="w-full bg-white text-brand-orange hover:bg-gray-100 font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md">
+                        <span data-lang-ms="Tempah Slot Anda" data-lang-en="Book Your Slot">Tempah Slot Anda</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BARBER PROFILE SECTION -->
+    <section class="py-12 bg-brand-surface/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 relative">
+                    <div class="aspect-square rounded-2xl overflow-hidden border-hairline shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80" alt="Master Barber Raff" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-brand-orange text-white p-4 rounded-2xl border-hairline hidden sm:block">
+                        <p class="font-display text-2xl font-bold leading-none">RAFF</p>
+                        <p class="text-xs uppercase text-white/80" data-lang-ms="Master Barber" data-lang-en="Master Barber">Master Barber</p>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-brand-orange text-sm font-semibold uppercase tracking-widest">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span data-lang-ms="Mengenai Barber Anda" data-lang-en="About Your Barber">Mengenai Barber Anda</span>
+                    </div>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase leading-tight" data-lang-ms="Seni Potongan Presisi & Sentuhan Peribadi" data-lang-en="Precision Crafting & Personal Touch">
+                        Seni Potongan Presisi & Sentuhan Peribadi
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed" data-lang-ms="Sebagai barber utama di Raff Trims, Raff membawa dedikasi penuh untuk memastikan setiap pelanggan keluar dari salon dengan keyakinan maksimum. Menggabungkan teknik potong klasik dan trend gaya rambut terkini seperti Burst Fade, Mullet, dan Taper Fade." data-lang-en="As the lead barber at Raff Trims, Raff brings complete dedication to ensuring every client leaves the chair with maximum confidence. Blending classic barbering techniques with current trends like Burst Fade, Mullet, and Taper Fade.">
+                        Sebagai barber utama di Raff Trims, Raff membawa dedikasi penuh untuk memastikan setiap pelanggan keluar dari salon dengan keyakinan maksimum. Menggabungkan teknik potong klasik dan trend gaya rambut terkini seperti Burst Fade, Mullet, dan Taper Fade.
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="bg-brand-surface p-4 rounded-xl border-hairline">
+                            <span class="block text-2xl font-bold text-brand-orange font-display">100%</span>
+                            <span class="text-xs text-gray-400" data-lang-ms="Kepuasan Gaya" data-lang-en="Style Satisfaction">Kepuasan Gaya</span>
+                        </div>
+                        <div class="bg-brand-surface p-4 rounded-xl border-hairline">
+                            <span class="block text-2xl font-bold text-brand-orange font-display">380+</span>
+                            <span class="text-xs text-gray-400" data-lang-ms="Ulasan Bintang 5" data-lang-en="5-Star Reviews">Ulasan Bintang 5</span>
+                        </div>
+                        <div class="bg-brand-surface p-4 rounded-xl border-hairline col-span-2 sm:col-span-1">
+                            <span class="block text-2xl font-bold text-brand-orange font-display">KL TOWN</span>
+                            <span class="text-xs text-gray-400" data-lang-ms="Lokasi Bukit Bintang" data-lang-en="Bukit Bintang Location">Lokasi Bukit Bintang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="galeri" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Galeri Hasil Kerja" data-lang-en="Work Portfolio">Galeri Hasil Kerja</span>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2" data-lang-ms="KOLEKSI GAYA & POTONGAN" data-lang-en="STYLE & CUT GALLERY">KOLEKSI GAYA & POTONGAN</h2>
+            <p class="text-gray-400 text-sm sm:text-base mt-2" data-lang-ms="Hasil kemasan tulen untuk pelbagai jenis dan tekstur rambut pelanggan kami." data-lang-en="Authentic finishes for various hair types and textures of our clients.">Hasil kemasan tulen untuk pelbagai jenis dan tekstur rambut pelanggan kami.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="relative group overflow-hidden rounded-xl border-hairline aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Skin Fade" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                    <span class="text-brand-orange font-bold text-sm">Skin Fade</span>
+                </div>
+            </div>
+            <div class="relative group overflow-hidden rounded-xl border-hairline aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" alt="Beard Trim & Haircut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                    <span class="text-brand-orange font-bold text-sm">Haircut + Beard</span>
+                </div>
+            </div>
+            <div class="relative group overflow-hidden rounded-xl border-hairline aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=600&q=80" alt="Hair Color Highlight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                    <span class="text-brand-orange font-bold text-sm">White Hair Color / Highlights</span>
+                </div>
+            </div>
+            <div class="relative group overflow-hidden rounded-xl border-hairline aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Taper Fade" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                    <span class="text-brand-orange font-bold text-sm">Taper / Burst Fade</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING TABLE SECTION -->
+    <section id="perkhidmatan" class="py-16 md:py-24 bg-brand-surface/30 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Senarai Harga Transparan" data-lang-en="Transparent Pricing">Senarai Harga Transparan</span>
+                    <h2 class="font-display text-4xl sm:text-6xl font-bold text-white uppercase mt-2" data-lang-ms="PERKHIDMATAN & HARGA" data-lang-en="SERVICES & PRICING">PERKHIDMATAN & HARGA</h2>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md mt-4 md:mt-0" data-lang-ms="Pilih perkhidmatan individu atau pakej lengkap khas kami. Tiada kos tersembunyi." data-lang-en="Choose individual services or our signature complete packages. No hidden costs.">
+                    Pilih perkhidmatan individu atau pakej lengkap khas kami. Tiada kos tersembunyi.
+                </p>
+            </div>
+
+            <!-- Special Package Featured Banner -->
+            <div class="mb-8 bg-gradient-to-r from-brand-orange to-orange-700 rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl">
+                <div class="space-y-2 text-center md:text-left">
+                    <span class="bg-black/30 text-white text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wider" data-lang-ms="PAKEJ POPULAR" data-lang-en="MOST POPULAR">PAKEJ POPULAR</span>
+                    <h3 class="font-display text-3xl font-bold uppercase">Raff Trims Special Package</h3>
+                    <p class="text-white/90 text-sm max-w-xl" data-lang-ms="Pengalaman dandanan lengkap menyeluruh termasuk potongan gaya, penjagaan muka, dan rawatan rambut premium." data-lang-en="Complete all-in-one grooming experience including style cut, facial treatment, and premium hair treatment.">
+                        Pengalaman dandanan lengkap menyeluruh termasuk potongan gaya, penjagaan muka, dan rawatan rambut premium.
+                    </p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="text-center md:text-right">
+                        <span class="text-xs text-white/80 block uppercase" data-lang-ms="Masa: 40 Minit" data-lang-en="Duration: 40 Mins">Masa: 40 Minit</span>
+                        <span class="font-display text-4xl font-bold">RM 300</span>
+                    </div>
+                    <a href="https://rafayi1f2.setmore.com/book" target="_blank" class="bg-white text-brand-orange font-bold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all text-sm whitespace-nowrap">
+                        <span data-lang-ms="Tempah Pakej Ini" data-lang-en="Book This Package">Tempah Pakej Ini</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Price Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Service Item 1 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Scissor Cut</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>25 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                </div>
+
+                <!-- Service Item 2 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Skin Fade</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                </div>
+
+                <!-- Service Item 3 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Taper Fade</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>30 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                </div>
+
+                <!-- Service Item 4 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Mullet Cut</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>30 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                </div>
+
+                <!-- Service Item 5 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Mohawk Fade</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 70</span>
+                </div>
+
+                <!-- Service Item 6 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Burst Fade</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                </div>
+
+                <!-- Service Item 7 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Haircut + Beard</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>50 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                </div>
+
+                <!-- Service Item 8 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Hair Treatment Cream</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>10 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 120</span>
+                </div>
+
+                <!-- Service Item 9 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Facial Treatment</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>20 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                </div>
+
+                <!-- Service Item 10 -->
+                <div class="bg-brand-surface p-5 rounded-xl border-hairline flex items-center justify-between hover:border-brand-orange/50 transition-colors">
+                    <div>
+                        <h4 class="font-bold text-white text-lg">White Hair Color / Highlights</h4>
+                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>1h 20 mins</p>
+                    </div>
+                    <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="ulasan" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Kepuasan Pelanggan" data-lang-en="Customer Satisfaction">Kepuasan Pelanggan</span>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2" data-lang-ms="APA KATA PELANGGAN KAMI" data-lang-en="WHAT OUR CLIENTS SAY">APA KATA PELANGGAN KAMI</h2>
+            <div class="flex items-center justify-center gap-1 text-yellow-400 mt-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-white text-sm font-semibold ml-2">5.0 / 5.0 (380+ Review)</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Review 1 -->
+            <div class="bg-brand-surface p-6 rounded-2xl border-hairline flex flex-col justify-between">
+                <p class="text-gray-300 italic text-sm" data-lang-ms="&ldquo;Potongan Burst Fade terbaik yang pernah saya dapat di KL! Raff sangat teliti dan mengambil masa untuk memastikan setiap garisan kelihatan tajam.&rdquo;" data-lang-en="&ldquo;Best Burst Fade cut I've ever gotten in KL! Raff is super detailed and takes his time to ensure every line is razor-sharp.&rdquo;">
+                    &ldquo;Potongan Burst Fade terbaik yang pernah saya dapat di KL! Raff sangat teliti dan mengambil masa untuk memastikan setiap garisan kelihatan tajam.&rdquo;
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Ahmad Daniel</h4>
+                        <span class="text-xs text-gray-500">Google Maps Review</span>
+                    </div>
+                    <div class="text-yellow-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="bg-brand-surface p-6 rounded-2xl border-hairline flex flex-col justify-between">
+                <p class="text-gray-300 italic text-sm" data-lang-ms="&ldquo;Lokasi strategik di Bukit Bintang. Servis mesra dan tempat yang sangat selesa. Pakej Raff Trims Special berbaloi untuk rawatan penuh!&rdquo;" data-lang-en="&ldquo;Strategic location in Bukit Bintang. Friendly service and very comfortable shop. The Raff Trims Special package is worth every penny!&rdquo;">
+                    &ldquo;Lokasi strategik di Bukit Bintang. Servis mesra dan tempat yang sangat selesa. Pakej Raff Trims Special berbaloi untuk rawatan penuh!&rdquo;
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Jason Tan</h4>
+                        <span class="text-xs text-gray-500">Setmore Review</span>
+                    </div>
+                    <div class="text-yellow-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="bg-brand-surface p-6 rounded-2xl border-hairline flex flex-col justify-between">
+                <p class="text-gray-300 italic text-sm" data-lang-ms="&ldquo;Gaya janggut dan potongan rambut dipadankan dengan tepat mengikut bentuk muka saya. Pasti akan menjadi barber tetap saya di Kuala Lumpur.&rdquo;" data-lang-en="&ldquo;Beard styling and haircut matched my face shape perfectly. Definitely making this my go-to barber in Kuala Lumpur.&rdquo;">
+                    &ldquo;Gaya janggut dan potongan rambut dipadankan dengan tepat mengikut bentuk muka saya. Pasti akan menjadi barber tetap saya di Kuala Lumpur.&rdquo;
+                </p>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Michael R.</h4>
+                        <span class="text-xs text-gray-500">Google Maps Review</span>
+                    </div>
+                    <div class="text-yellow-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & HOURS SECTION -->
+    <section id="lokasi" class="py-16 md:py-24 bg-brand-surface/20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Left Info Box -->
+                <div class="lg:col-span-5 bg-brand-surface p-8 rounded-2xl border-hairline flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Kunjungan & Hubungi" data-lang-en="Visit & Contact">Kunjungan & Hubungi</span>
+                            <h2 class="font-display text-4xl font-bold text-white uppercase mt-1" data-lang-ms="LOKASI & WAKTU OPERASI" data-lang-en="LOCATION & HOURS">LOKASI & WAKTU OPERASI</h2>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm" data-lang-ms="Alamat Kedai" data-lang-en="Shop Address">Alamat Kedai</h4>
+                                <p class="text-gray-400 text-sm mt-1">
+                                    81-G, Jalan Bukit Bintang, Town, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Operating Hours -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm" data-lang-ms="Waktu Operasi" data-lang-en="Operating Hours">Waktu Operasi</h4>
+                                <p class="text-gray-400 text-sm mt-1" data-lang-ms="Isnin – Ahad: Buka Setiap Hari" data-lang-en="Monday – Sunday: Open Daily">Isnin – Ahad: Buka Setiap Hari</p>
+                                <p class="text-brand-orange font-semibold text-sm mt-0.5" data-lang-ms="Masa Tutup: 12.00 AM - 12.30 AM" data-lang-en="Closing Time: 12:00 AM - 12:30 AM">Masa Tutup: 12.00 AM - 12.30 AM</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Channels -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm" data-lang-ms="Hubungi & WhatsApp" data-lang-en="Contact & WhatsApp">Hubungi & WhatsApp</h4>
+                                <p class="text-gray-400 text-sm mt-1">+60 14 626 6605</p>
+                                <p class="text-gray-400 text-sm">rafayj307@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Button -->
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <a href="https://wa.me/60146266605" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span data-lang-ms="Sembang via WhatsApp" data-lang-en="Chat via WhatsApp">Sembang via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual/Map Box -->
+                <div class="lg:col-span-7 relative rounded-2xl border-hairline overflow-hidden min-h-[350px]">
+                    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80" alt="Barbershop Interior Atmosphere" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-8 flex flex-col justify-end">
+                        <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Suasana Kedai" data-lang-en="Shop Atmosphere">Suasana Kedai</span>
+                        <h3 class="font-display text-3xl font-bold text-white uppercase mt-1" data-lang-ms="SUASANA SELESA & EKSLUSIF" data-lang-en="COMFORTABLE & EXCLUSIVE ATMOSPHERE">SUASANA SELESA & EKSLUSIF</h3>
+                        <p class="text-gray-300 text-sm max-w-lg mt-1" data-lang-ms="Nikmati ruang menunggu berhawa dingin, muzik santai, dan layanan kelas pertama di tengah pusat bandar Bukit Bintang." data-lang-en="Enjoy an air-conditioned waiting lounge, relaxing tunes, and first-class service in the heart of Bukit Bintang.">
+                            Nikmati ruang menunggu berhawa dingin, muzik santai, dan layanan kelas pertama di tengah pusat bandar Bukit Bintang.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10 text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand-orange text-white flex items-center justify-center font-display font-bold text-sm rounded">RT</div>
+                <span class="text-white font-display text-xl font-bold tracking-wider">RAFF TRIMS</span>
+            </div>
+
+            <p class="text-center md:text-left text-xs text-gray-500">
+                &copy; 2026 Raff Trims Barber Shop. All rights reserved. Bukit Bintang, Kuala Lumpur.
+            </p>
+
+            <div class="flex items-center gap-4 text-xs">
+                <a href="https://rafayi1f2.setmore.com/book" target="_blank" class="hover:text-brand-orange transition-colors" data-lang-ms="Polisi Tempahan" data-lang-en="Booking Policy">Polisi Tempahan</a>
+                <span>•</span>
+                <a href="#utamanya" class="hover:text-brand-orange transition-colors" data-lang-ms="Kembali ke Atas" data-lang-en="Back to Top">Kembali ke Atas</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LANGUAGE SWITCHING SCRIPT -->
+    <script>
+        function setLanguage(lang) {
+            const msBtn = document.getElementById('lang-ms');
+            const enBtn = document.getElementById('lang-en');
+
+            if (lang === 'ms') {
+                msBtn.className = "px-3 py-1 rounded-full bg-brand-orange text-white transition-all";
+                enBtn.className = "px-3 py-1 rounded-full text-gray-400 hover:text-white transition-all";
+            } else {
+                enBtn.className = "px-3 py-1 rounded-full bg-brand-orange text-white transition-all";
+                msBtn.className = "px-3 py-1 rounded-full text-gray-400 hover:text-white transition-all";
+            }
+
+            document.querySelectorAll('[data-lang-ms]').forEach(el => {
+                const text = el.getAttribute(`data-lang-${lang}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
