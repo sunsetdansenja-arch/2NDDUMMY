@@ -72,6 +72,7 @@
                 <a href="#utamanya" class="hover:text-brand-orange transition-colors" data-lang-ms="Utama" data-lang-en="Home">Utama</a>
                 <a href="#galeri" class="hover:text-brand-orange transition-colors" data-lang-ms="Hasil Kerja" data-lang-en="Our Works">Hasil Kerja</a>
                 <a href="#perkhidmatan" class="hover:text-brand-orange transition-colors" data-lang-ms="Harga & Perkhidmatan" data-lang-en="Services & Prices">Harga & Perkhidmatan</a>
+                <a href="#booking" class="hover:text-brand-orange transition-colors" data-lang-ms="Tempah Slot" data-lang-en="Book Slot">Tempah Slot</a>
                 <a href="#ulasan" class="hover:text-brand-orange transition-colors" data-lang-ms="Ulasan" data-lang-en="Reviews">Ulasan</a>
                 <a href="#lokasi" class="hover:text-brand-orange transition-colors" data-lang-ms="Lokasi" data-lang-en="Location">Lokasi</a>
             </nav>
@@ -85,7 +86,7 @@
                 </div>
 
                 <!-- CTA Button -->
-                <a href="https://wa.me/60146266605" target="_blank" class="hidden sm:inline-flex items-center justify-center bg-brand-orange hover:bg-brand-orangeHover text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-brand-orange/20 hover:scale-105">
+                <a href="#booking" class="hidden sm:inline-flex items-center justify-center bg-brand-orange hover:bg-brand-orangeHover text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-brand-orange/20 hover:scale-105">
                     <span data-lang-ms="Tempah Sekarang" data-lang-en="Book Now">Tempah Sekarang</span>
                 </a>
             </div>
@@ -155,11 +156,11 @@
                 <div class="space-y-4">
                     <span class="inline-block px-3 py-1 bg-black/20 rounded-full text-xs font-bold tracking-widest uppercase" data-lang-ms="Slot Terhad Hari Ini" data-lang-en="Limited Slots Today">Slot Terhad Hari Ini</span>
                     <h2 class="font-display text-3xl font-bold uppercase leading-tight" data-lang-ms="Dapatkan Gaya Terbaik Anda Sekarang" data-lang-en="Get Your Fresh Style Today">Dapatkan Gaya Terbaik Anda Sekarang</h2>
-                    <p class="text-white/80 text-sm" data-lang-ms="Elak beratur panjang. Tempah masa temu janji anda melalui WhatsApp secara pantas." data-lang-en="Avoid long queues. Secure your appointment time via WhatsApp instantly.">Elak beratur panjang. Tempah masa temu janji anda melalui WhatsApp secara pantas.</p>
+                    <p class="text-white/80 text-sm" data-lang-ms="Elak beratur panjang. Pilih pakej, tarikh, dan jam pilihan anda di sini secara langsung." data-lang-en="Avoid long queues. Select your preferred package, date, and time right here.">Elak beratur panjang. Pilih pakej, tarikh, dan jam pilihan anda di sini secara langsung.</p>
                 </div>
                 <div class="mt-8">
-                    <a href="https://wa.me/60146266605" target="_blank" class="w-full bg-white text-brand-orange hover:bg-gray-100 font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md">
-                        <span data-lang-ms="Tempah Slot Anda" data-lang-en="Book Your Slot">Tempah Slot Anda</span>
+                    <a href="#booking" class="w-full bg-white text-brand-orange hover:bg-gray-100 font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md">
+                        <span data-lang-ms="Pilih Tarikh & Masa" data-lang-en="Choose Date & Time">Pilih Tarikh & Masa</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -273,9 +274,9 @@
                         <span class="text-xs text-white/80 block uppercase" data-lang-ms="Masa: 40 Minit" data-lang-en="Duration: 40 Mins">Masa: 40 Minit</span>
                         <span class="font-display text-4xl font-bold">RM 300</span>
                     </div>
-                    <a href="https://wa.me/60146266605" target="_blank" class="bg-white text-brand-orange font-bold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all text-sm whitespace-nowrap">
-                        <span data-lang-ms="Tempah Pakej Ini" data-lang-en="Book This Package">Tempah Pakej Ini</span>
-                    </a>
+                    <button onclick="quickSelectService('Raff trims special package - RM 300')" class="bg-white text-brand-orange font-bold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all text-sm whitespace-nowrap">
+                        <span data-lang-ms="Pilih Pakej Ini" data-lang-en="Select This Package">Pilih Pakej Ini</span>
+                    </button>
                 </div>
             </div>
 
@@ -287,7 +288,10 @@
                         <h4 class="font-bold text-white text-lg">Scissor Cut</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>25 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                        <button onclick="quickSelectService('Scissor cut - RM 50')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 2 -->
@@ -296,7 +300,10 @@
                         <h4 class="font-bold text-white text-lg">Skin Fade</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 50</span>
+                        <button onclick="quickSelectService('Skin fade - RM 50')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 3 -->
@@ -305,7 +312,10 @@
                         <h4 class="font-bold text-white text-lg">Taper Fade</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>30 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                        <button onclick="quickSelectService('Taper fade - RM 60')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 4 -->
@@ -314,7 +324,10 @@
                         <h4 class="font-bold text-white text-lg">Mullet Cut</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>30 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 60</span>
+                        <button onclick="quickSelectService('Mullet cut - RM 60')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 5 -->
@@ -323,7 +336,10 @@
                         <h4 class="font-bold text-white text-lg">Mohawk Fade</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 70</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 70</span>
+                        <button onclick="quickSelectService('Mohawk fade - RM 70')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 6 -->
@@ -332,7 +348,10 @@
                         <h4 class="font-bold text-white text-lg">Burst Fade</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>35 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                        <button onclick="quickSelectService('Burst fade - RM 80')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 7 -->
@@ -341,7 +360,10 @@
                         <h4 class="font-bold text-white text-lg">Haircut + Beard</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>50 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 80</span>
+                        <button onclick="quickSelectService('Haircut + beard - RM 80')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 8 -->
@@ -350,7 +372,10 @@
                         <h4 class="font-bold text-white text-lg">Hair Treatment Cream</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>10 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 120</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 120</span>
+                        <button onclick="quickSelectService('Hair treatment cream - RM 120')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 9 -->
@@ -359,7 +384,10 @@
                         <h4 class="font-bold text-white text-lg">Facial Treatment</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>20 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                        <button onclick="quickSelectService('Facial treatment - RM 150')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
 
                 <!-- Service Item 10 -->
@@ -368,14 +396,98 @@
                         <h4 class="font-bold text-white text-lg">White Hair Color / Highlights</h4>
                         <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-clock mr-1"></i>1h 20 mins</p>
                     </div>
-                    <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                    <div class="flex items-center gap-4">
+                        <span class="font-display text-2xl font-bold text-brand-orange">RM 150</span>
+                        <button onclick="quickSelectService('White hair color/highlights - RM 150')" class="text-xs bg-brand-surfaceLight hover:bg-brand-orange text-white px-3 py-1.5 rounded-lg transition-colors" data-lang-ms="Pilih" data-lang-en="Select">Pilih</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- INTERACTIVE BOOKING FORM SECTION -->
+    <section id="booking" class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-surface border-hairline rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div class="text-center mb-8">
+                <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Sistem Tempahan WhatsApp" data-lang-en="WhatsApp Booking System">Sistem Tempahan WhatsApp</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2" data-lang-ms="TEMPAH SLOT TEMU JANJI" data-lang-en="BOOK YOUR APPOINTMENT">TEMPAH SLOT TEMU JANJI</h2>
+                <p class="text-gray-400 text-sm mt-2" data-lang-ms="Pilih servis, tarikh, dan masa. Sistem akan menjana mesej WhatsApp rasmi untuk disahkan." data-lang-en="Select your service, date, and time. System will generate an official WhatsApp message for confirmation.">Pilih servis, tarikh, dan masa. Sistem akan menjana mesej WhatsApp rasmi untuk disahkan.</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-6">
+                <!-- Name Input -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2" data-lang-ms="Nama Anda" data-lang-en="Your Name">Nama Anda</label>
+                    <input type="text" id="custName" required placeholder="Contoh: Ahmad Daniel" class="w-full bg-brand-bg border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange text-sm">
+                </div>
+
+                <!-- Service Selection -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2" data-lang-ms="Pilih Perkhidmatan / Pakej" data-lang-en="Select Service / Package">Pilih Perkhidmatan / Pakej</label>
+                    <select id="custService" required class="w-full bg-brand-bg border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange text-sm">
+                        <option value="" disabled selected data-lang-ms="-- Sila Pilih Layanan --" data-lang-en="-- Please Select Service --">-- Sila Pilih Layanan --</option>
+                        <option value="Raff trims special package - RM 300">Raff Trims Special Package (RM 300)</option>
+                        <option value="Scissor cut - RM 50">Scissor Cut (RM 50)</option>
+                        <option value="Skin fade - RM 50">Skin Fade (RM 50)</option>
+                        <option value="Taper fade - RM 60">Taper Fade (RM 60)</option>
+                        <option value="Mullet cut - RM 60">Mullet Cut (RM 60)</option>
+                        <option value="Mohawk fade - RM 70">Mohawk Fade (RM 70)</option>
+                        <option value="Burst fade - RM 80">Burst Fade (RM 80)</option>
+                        <option value="Haircut + beard - RM 80">Haircut + Beard (RM 80)</option>
+                        <option value="Hair treatment cream - RM 120">Hair Treatment Cream (RM 120)</option>
+                        <option value="Facial treatment - RM 150">Facial Treatment (RM 150)</option>
+                        <option value="White hair color/highlights - RM 150">White Hair Color / Highlights (RM 150)</option>
+                    </select>
+                </div>
+
+                <!-- Date & Time Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Date Input -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2" data-lang-ms="Pilih Tarikh" data-lang-en="Select Date">Pilih Tarikh</label>
+                        <input type="date" id="custDate" required class="w-full bg-brand-bg border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange text-sm">
+                    </div>
+
+                    <!-- Time Select -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2" data-lang-ms="Pilih Masa Slot" data-lang-en="Select Time Slot">Pilih Masa Slot</label>
+                        <select id="custTime" required class="w-full bg-brand-bg border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange text-sm">
+                            <option value="" disabled selected data-lang-ms="-- Pilih Jam --" data-lang-en="-- Select Time --">-- Pilih Jam --</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="01:00 PM">01:00 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="09:00 PM">09:00 PM</option>
+                            <option value="10:00 PM">10:00 PM</option>
+                            <option value="11:00 PM">11:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Notes -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2" data-lang-ms="Catatan Tambahan (Pilihan)" data-lang-en="Additional Notes (Optional)">Catatan Tambahan (Pilihan)</label>
+                    <textarea id="custNotes" rows="2" placeholder="Contoh: Nak konsultasi gaya rambut tajam" class="w-full bg-brand-bg border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-orange text-sm"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-3 transition-all text-base shadow-lg shadow-emerald-900/30">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span data-lang-ms="Hantar Tempahan ke WhatsApp" data-lang-en="Send Booking to WhatsApp">Hantar Tempahan ke WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- REVIEWS SECTION -->
-    <section id="ulasan" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ulasan" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10">
         <div class="text-center max-w-2xl mx-auto mb-12">
             <span class="text-brand-orange text-xs font-bold uppercase tracking-widest" data-lang-ms="Kepuasan Pelanggan" data-lang-en="Customer Satisfaction">Kepuasan Pelanggan</span>
             <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2" data-lang-ms="APA KATA PELANGGAN KAMI" data-lang-en="WHAT OUR CLIENTS SAY">APA KATA PELANGGAN KAMI</h2>
@@ -485,7 +597,7 @@
                     <div class="mt-8 pt-6 border-t border-white/10">
                         <a href="https://wa.me/60146266605" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span data-lang-ms="Sembang via WhatsApp" data-lang-en="Chat via WhatsApp">Sembang via WhatsApp</span>
+                            <span data-lang-ms="Sembang Direct WhatsApp" data-lang-en="Direct WhatsApp Chat">Sembang Direct WhatsApp</span>
                         </a>
                     </div>
                 </div>
@@ -526,8 +638,56 @@
         </div>
     </footer>
 
-    <!-- LANGUAGE SWITCHING SCRIPT -->
+    <!-- INTERACTIVE LOGIC & LANGUAGE SCRIPT -->
     <script>
+        // Set Today's Date as Minimum in Date Picker
+        const dateInput = document.getElementById('custDate');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+
+        // Quick Select Service from Price List
+        function quickSelectService(serviceName) {
+            const serviceSelect = document.getElementById('custService');
+            if (serviceSelect) {
+                serviceSelect.value = serviceName;
+            }
+            const bookingSection = document.getElementById('booking');
+            if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Handle Booking Form Submission to WhatsApp
+        function handleBooking(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('custName').value.trim();
+            const service = document.getElementById('custService').value;
+            const date = document.getElementById('custDate').value;
+            const time = document.getElementById('custTime').value;
+            const notes = document.getElementById('custNotes').value.trim();
+
+            const waNumber = "60146266605";
+            
+            let message = `Hello Raff Trims Barber Shop! Saya ingin membuat tempahan slot:\n\n`;
+            message += `👤 *Nama:* ${name}\n`;
+            message += `✂️ *Perkhidmatan:* ${service}\n`;
+            message += `📅 *Tarikh:* ${date}\n`;
+            message += `⏰ *Masa Slot:* ${time}\n`;
+            if (notes) {
+                message += `📝 *Catatan:* ${notes}\n`;
+            }
+            message += `\nMohon sahkan ketersediaan slot ini. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+            window.open(waUrl, '_blank');
+        }
+
+        // Language Switcher Function
         function setLanguage(lang) {
             const msBtn = document.getElementById('lang-ms');
             const enBtn = document.getElementById('lang-en');
