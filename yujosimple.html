@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUJO HAIR STUDIO — Premium Hair Salon in Petaling Jaya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-bg': '#ECECEC',
+                        'brand-pink': '#F8A4D8',
+                        'brand-pink-hover': '#e88dc6',
+                        'brand-yellow': '#E5C465',
+                        'brand-dark': '#1C1C1E',
+                        'brand-card': '#FFFFFF',
+                    }
+                }
+            }
+        };
+
+        /* Dictionary mapping for English and Malaysian (Bahasa Melayu) */
+        const translations = {
+            en: {
+                nav_about: "About Us",
+                nav_services: "Services",
+                nav_stylists: "Hair Stylists",
+                nav_brands: "Premium Products",
+                nav_contact: "Contact",
+                nav_menu: "Menu",
+                nav_book: "Book Now",
+                rating_reviews: "(84 reviews)",
+                badge_studio: "Hair Studio",
+                about_title: "About Us:",
+                about_desc: "Professional hair stylists at Yujo Hair Studio deliver customized hair beauty services tailored for every client. Our specialties include:",
+                about_li1: "Personal consultation for facial structure and hair type",
+                about_li2: "High-precision cutting and coloring techniques",
+                about_li3: "Scalp care & hair maintenance product recommendations",
+                hours_close: "Closes at 7:30 PM",
+                location_pj: "Petaling Jaya, MY",
+                est_cost_title: "Estimated Pricing",
+                est_cost_desc: "Transparent consultation & treatment pricing:",
+                cut_m: "Cut / Wash (M)",
+                cut_f: "Cut / Wash (F)",
+                hair_color: "Hair Color",
+                color_from: "From RM 128",
+                wash_blow: "Wash / Blow",
+                btn_reserve: "Book Appointment Now",
+                stylists_title: "Meet Our Hair Stylists",
+                stylists_sub: "Experienced stylists ready to transform your look",
+                services_title: "Services & Price List",
+                services_sub: "Comprehensive care options delivered with professional standards",
+                svc1_title: "Cut / Wash",
+                svc1_desc: "High-precision haircut and washing service tailored to your facial structure and personal style.",
+                svc1_price: "Price",
+                svc2_title: "Wash / Blow",
+                svc2_desc: "Deep basin wash treatment followed by professional blow-drying for enhanced volume and freshness.",
+                svc2_price: "Price",
+                svc3_title: "Hair Color & Scalp",
+                svc3_desc: "World-class hair coloring and comprehensive scalp treatment to nourish roots and maintain natural shine.",
+                svc3_price: "Starting From",
+                brands_tag: "Guaranteed Quality",
+                brands_title: "Premium Brands & Products",
+                brands_desc: "We partner exclusively with top international hair care producers to ensure safe and lasting results.",
+                ft_about: "About Us",
+                ft_profile: "Studio Profile",
+                ft_svc_list: "Service Menu",
+                ft_team: "Stylist Team",
+                ft_partners: "Partner Brands",
+                ft_core_svc: "Core Services",
+                ft_cut: "Haircut & Basin Wash",
+                ft_color: "Professional Hair Coloring",
+                ft_scalp: "Scalp & Hair Treatment",
+                ft_blow: "Wash & Blow Styling",
+                ft_contact: "Contact & Location",
+                ft_search: "Search",
+                ft_book: "Register / Book"
+            },
+            my: {
+                nav_about: "Mengenai Kami",
+                nav_services: "Perkhidmatan",
+                nav_stylists: "Pereka Rambut",
+                nav_brands: "Produk Premium",
+                nav_contact: "Hubungi",
+                nav_menu: "Menu",
+                nav_book: "Tempah Sekarang",
+                rating_reviews: "(84 ulasan)",
+                badge_studio: "Studio Rambut",
+                about_title: "Mengenai Kami:",
+                about_desc: "Pereka rambut profesional di Yujo Hair Studio menawarkan perkhidmatan kecantikan rambut mengikut keperluan setiap pelanggan. Kepakaran kami meliputi:",
+                about_li1: "Konsultasi peribadi untuk struktur wajah dan jenis rambut",
+                about_li2: "Teknik guntingan dan pewarnaan berpresisi tinggi",
+                about_li3: "Syor produk penjagaan kulit kepala & penyelenggaraan rambut",
+                hours_close: "Tutup jam 7:30 PM",
+                location_pj: "Petaling Jaya, MY",
+                est_cost_title: "Anggaran Kos",
+                est_cost_desc: "Kos konsultasi & rawatan yang telus:",
+                cut_m: "Gunting / Cuci (L)",
+                cut_f: "Gunting / Cuci (W)",
+                hair_color: "Warna Rambut",
+                color_from: "Bermula RM 128",
+                wash_blow: "Cuci / Blow",
+                btn_reserve: "Tempah Temujanji Sekarang",
+                stylists_title: "Pasukan Pereka Rambut Kami",
+                stylists_sub: "Pereka rambut berpengalaman sedia mentransformasi penampilan anda",
+                services_title: "Senarai Perkhidmatan & Harga",
+                services_sub: "Pilihan rawatan rambut lengkap dengan standard profesional",
+                svc1_title: "Gunting / Cuci",
+                svc1_desc: "Perkhidmatan guntingan dan cucian rambut presisi tinggi untuk lelaki dan wanita mengikut bentuk wajah.",
+                svc1_price: "Harga",
+                svc2_title: "Cuci / Blow",
+                svc2_desc: "Rawatan cuci mendalam diikuti dengan penataan blow profesional agar rambut kelihatan bervolume.",
+                svc2_price: "Harga",
+                svc3_title: "Warna Rambut & Scalp",
+                svc3_desc: "Pewarnaan rambut berkualiti tinggi dan rawatan kulit kepala menyeluruh untuk menutrisi akar rambut.",
+                svc3_price: "Bermula Dari",
+                brands_tag: "Kualiti Terjamin",
+                brands_title: "Jenama & Produk Utama",
+                brands_desc: "Kami bekerjasama dengan pengeluar produk penjagaan rambut antarabangsa terkemuka untuk hasil terbaik.",
+                ft_about: "Mengenai Kami",
+                ft_profile: "Profil Studio",
+                ft_svc_list: "Menu Perkhidmatan",
+                ft_team: "Pasukan Stylist",
+                ft_partners: "Rakan Jenama",
+                ft_core_svc: "Perkhidmatan Utama",
+                ft_cut: "Gunting & Cuci Rambut",
+                ft_color: "Pewarnaan Rambut Profesional",
+                ft_scalp: "Rawatan Scalp & Rambut",
+                ft_blow: "Gaya Cuci & Blow",
+                ft_contact: "Hubungi & Lokasi",
+                ft_search: "Cari",
+                ft_book: "Daftar / Tempah"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            const btnEn = document.getElementById('btn-lang-en');
+            const btnMy = document.getElementById('btn-lang-my');
+            if (btnEn && btnMy) {
+                if (lang === 'en') {
+                    btnEn.className = 'px-2.5 py-1 rounded-full bg-brand-dark text-white transition-all shadow-sm cursor-pointer';
+                    btnMy.className = 'px-2.5 py-1 rounded-full text-gray-600 hover:text-gray-900 transition-all cursor-pointer';
+                } else {
+                    btnMy.className = 'px-2.5 py-1 rounded-full bg-brand-dark text-white transition-all shadow-sm cursor-pointer';
+                    btnEn.className = 'px-2.5 py-1 rounded-full text-gray-600 hover:text-gray-900 transition-all cursor-pointer';
+                }
+            }
+            document.documentElement.lang = lang === 'my' ? 'ms' : 'en';
+        }
+    </script>
+</head>
+<body class="bg-brand-bg text-gray-800 font-sans antialiased min-h-screen selection:bg-brand-pink selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 px-4 pt-4 pb-2 backdrop-blur-md bg-brand-bg/80">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-2.5 px-6 rounded-full border border-white/80 shadow-sm">
+            <!-- Brand Logo -->
+            <a href="#" class="text-xl font-black tracking-tight text-gray-900 flex items-center gap-1">
+                YUJO<span class="w-2 h-2 rounded-full bg-brand-pink inline-block"></span>
+            </a>
+
+            <!-- Navigation Pills -->
+            <nav class="hidden md:flex items-center gap-1">
+                <a href="#about" data-i18n="nav_about" class="px-4 py-1.5 text-xs font-semibold rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all">About Us</a>
+                <a href="#services" data-i18n="nav_services" class="px-4 py-1.5 text-xs font-semibold rounded-full bg-brand-pink text-gray-900 shadow-sm">Services</a>
+                <a href="#stylists" data-i18n="nav_stylists" class="px-4 py-1.5 text-xs font-semibold rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all">Hair Stylists</a>
+                <a href="#brands" data-i18n="nav_brands" class="px-4 py-1.5 text-xs font-semibold rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all">Premium Products</a>
+                <a href="#contact" data-i18n="nav_contact" class="px-4 py-1.5 text-xs font-semibold rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all">Contact</a>
+            </nav>
+
+            <!-- Action Buttons & Language Switcher -->
+            <div class="flex items-center gap-2">
+                <!-- Language Selector Pill -->
+                <div class="flex items-center bg-gray-100/80 p-0.5 rounded-full border border-gray-200 text-[11px] font-bold">
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full bg-brand-dark text-white transition-all shadow-sm cursor-pointer">EN</button>
+                    <button id="btn-lang-my" onclick="setLanguage('my')" class="px-2.5 py-1 rounded-full text-gray-600 hover:text-gray-900 transition-all cursor-pointer">MY</button>
+                </div>
+
+                <a href="#services" class="hidden sm:flex items-center gap-2 bg-brand-yellow hover:opacity-90 text-gray-900 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm">
+                    <span data-i18n="nav_menu">Menu</span>
+                    <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+                </a>
+                <a href="https://wa.me/601175726618" target="_blank" class="flex items-center gap-2 bg-brand-dark hover:bg-black text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-sm text-green-400"></i>
+                    <span data-i18n="nav_book">Book Now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 py-6 space-y-12">
+
+        <!-- HERO BENTO GRID -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <!-- Left Card: Image Spotlight -->
+            <div class="md:col-span-4 bg-brand-card rounded-3xl p-3 shadow-sm flex flex-col justify-between group overflow-hidden border border-white">
+                <div class="relative h-72 md:h-full min-h-[280px] rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Yujo Hair Studio Salon Interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-gray-900 shadow-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>4.9 / 5.0</span>
+                        <span data-i18n="rating_reviews" class="text-gray-400 font-normal">(84 reviews)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Card: Pink Feature Card -->
+            <div class="md:col-span-5 bg-brand-pink rounded-3xl p-8 flex flex-col justify-between text-gray-900 shadow-sm relative overflow-hidden">
+                <div class="space-y-4">
+                    <div data-i18n="badge_studio" class="inline-block bg-white/60 text-gray-900 text-[11px] font-bold px-3 py-1 rounded-full tracking-wider uppercase">
+                        Hair Studio
+                    </div>
+                    <h1 class="text-3xl font-black leading-tight tracking-tight">YUJO HAIR STUDIO</h1>
+                    <div class="space-y-2 text-xs font-medium leading-relaxed text-gray-800">
+                        <p data-i18n="about_title" class="font-bold text-gray-900">About Us:</p>
+                        <p data-i18n="about_desc">Professional hair stylists at Yujo Hair Studio deliver customized hair beauty services tailored for every client. Our specialties include:</p>
+                        <ul class="list-disc list-inside space-y-1 pt-1 opacity-90">
+                            <li data-i18n="about_li1">Personal consultation for facial structure and hair type</li>
+                            <li data-i18n="about_li2">High-precision cutting and coloring techniques</li>
+                            <li data-i18n="about_li3">Scalp care & hair maintenance product recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-black/10 mt-6 flex justify-between items-center text-xs font-bold">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-sm"></i> <span data-i18n="hours_close">Closes at 7:30 PM</span>
+                    </span>
+                    <span data-i18n="location_pj" class="bg-white px-3.5 py-1.5 rounded-full shadow-sm text-[11px]">
+                        Petaling Jaya, MY
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Card: Price / Cost Overview Card -->
+            <div class="md:col-span-3 bg-brand-card rounded-3xl p-6 flex flex-col justify-between border border-white shadow-sm">
+                <div>
+                    <h2 data-i18n="est_cost_title" class="text-xl font-bold text-gray-900 mb-2">Estimated Pricing</h2>
+                    <p data-i18n="est_cost_desc" class="text-xs text-gray-500 leading-relaxed mb-4">
+                        Transparent consultation & treatment pricing:
+                    </p>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span data-i18n="cut_m" class="text-gray-600 font-medium">Cut / Wash (M)</span>
+                            <span class="font-bold text-gray-900">RM 48</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span data-i18n="cut_f" class="text-gray-600 font-medium">Cut / Wash (F)</span>
+                            <span class="font-bold text-gray-900">RM 58</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span data-i18n="hair_color" class="text-gray-600 font-medium">Hair Color</span>
+                            <span data-i18n="color_from" class="font-bold text-brand-pink-hover">From RM 128</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span data-i18n="wash_blow" class="text-gray-600 font-medium">Wash / Blow</span>
+                            <span class="font-bold text-gray-900">RM 40 – 50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/601175726618" target="_blank" class="mt-6 w-full bg-brand-dark hover:bg-black text-white py-3 px-4 rounded-full text-xs font-bold flex items-center justify-between transition-all group">
+                    <span data-i18n="btn_reserve">Book Appointment Now</span>
+                    <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- STYLISTS SHOWCASE SECTION -->
+        <section id="stylists" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 data-i18n="stylists_title" class="text-2xl font-bold text-gray-900">Meet Our Hair Stylists</h2>
+                    <p data-i18n="stylists_sub" class="text-xs text-gray-500">Experienced stylists ready to transform your look</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 text-gray-700 transition-colors">
+                        <i class="fa-solid fa-arrow-left text-xs"></i>
+                    </button>
+                    <button class="w-9 h-9 rounded-full bg-brand-dark text-white flex items-center justify-center shadow-sm hover:bg-black transition-colors">
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stylist Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <!-- Stylist 1 -->
+                <div class="bg-[#E2E6E8] rounded-3xl p-3 flex flex-col justify-between h-[360px] relative group overflow-hidden shadow-sm">
+                    <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Grace Smith - Senior Hair Stylist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="bg-white py-3 px-6 rounded-full text-center shadow-md">
+                            <h3 class="font-bold text-sm text-gray-900">Grace Smith</h3>
+                            <p class="text-[10px] text-gray-500 font-medium">Senior Cut & Colorist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stylist 2 -->
+                <div class="bg-[#DCE1DF] rounded-3xl p-3 flex flex-col justify-between h-[360px] relative group overflow-hidden shadow-sm">
+                    <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600" alt="Bella Thompson - Hair Specialist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="bg-white py-3 px-6 rounded-full text-center shadow-md">
+                            <h3 class="font-bold text-sm text-gray-900">Bella Thompson</h3>
+                            <p class="text-[10px] text-gray-500 font-medium">Scalp & Treatment Specialist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stylist 3 -->
+                <div class="bg-[#CDE1CE] rounded-3xl p-3 flex flex-col justify-between h-[360px] relative group overflow-hidden shadow-sm">
+                    <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Luna Luxe - Creative Color Director" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="bg-white py-3 px-6 rounded-full text-center shadow-md">
+                            <h3 class="font-bold text-sm text-gray-900">Luna Luxe</h3>
+                            <p class="text-[10px] text-gray-500 font-medium">Creative Styling Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES & PRICELIST SECTION -->
+        <section id="services" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 data-i18n="services_title" class="text-2xl font-bold text-gray-900">Services & Price List</h2>
+                    <p data-i18n="services_sub" class="text-xs text-gray-500">Comprehensive care options delivered with professional standards</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Service 1 -->
+                <div class="bg-brand-card rounded-3xl p-6 border border-white shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-pink/20 flex items-center justify-center text-brand-pink-hover">
+                            <i class="fa-solid fa-scissors text-xl"></i>
+                        </div>
+                        <h3 data-i18n="svc1_title" class="text-lg font-bold text-gray-900">Cut / Wash</h3>
+                        <p data-i18n="svc1_desc" class="text-xs text-gray-500 leading-relaxed">
+                            High-precision haircut and washing service tailored to your facial structure and personal style.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-baseline justify-between">
+                        <span data-i18n="svc1_price" class="text-xs font-medium text-gray-400">Price</span>
+                        <div class="text-right">
+                            <span class="text-sm font-black text-gray-900">RM 48 <span class="text-[10px] font-normal text-gray-500">(M)</span></span>
+                            <span class="text-gray-300 mx-1">/</span>
+                            <span class="text-sm font-black text-gray-900">RM 58 <span class="text-[10px] font-normal text-gray-500">(F)</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-brand-card rounded-3xl p-6 border border-white shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-yellow/20 flex items-center justify-center text-brand-yellow">
+                            <i class="fa-solid fa-shower text-xl"></i>
+                        </div>
+                        <h3 data-i18n="svc2_title" class="text-lg font-bold text-gray-900">Wash / Blow</h3>
+                        <p data-i18n="svc2_desc" class="text-xs text-gray-500 leading-relaxed">
+                            Deep basin wash treatment followed by professional blow-drying for enhanced volume and freshness.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-baseline justify-between">
+                        <span data-i18n="svc2_price" class="text-xs font-medium text-gray-400">Price</span>
+                        <span class="text-sm font-black text-gray-900">RM 40 – RM 50</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-brand-card rounded-3xl p-6 border border-white shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-pink/20 flex items-center justify-center text-brand-pink-hover">
+                            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                        </div>
+                        <h3 data-i18n="svc3_title" class="text-lg font-bold text-gray-900">Hair Color & Scalp</h3>
+                        <p data-i18n="svc3_desc" class="text-xs text-gray-500 leading-relaxed">
+                            World-class hair coloring and comprehensive scalp treatment to nourish roots and maintain natural shine.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-baseline justify-between">
+                        <span data-i18n="svc3_price" class="text-xs font-medium text-gray-400">Starting From</span>
+                        <span class="text-sm font-black text-brand-pink-hover">RM 128</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRANDS & PRODUCTS SECTION -->
+        <section id="brands" class="bg-brand-card rounded-3xl p-8 border border-white shadow-sm">
+            <div class="md:flex items-center justify-between gap-6">
+                <div class="max-w-md mb-6 md:mb-0">
+                    <span data-i18n="brands_tag" class="text-xs font-bold text-brand-pink-hover uppercase tracking-wider">Guaranteed Quality</span>
+                    <h2 data-i18n="brands_title" class="text-2xl font-bold text-gray-900 mt-1">Premium Brands & Products</h2>
+                    <p data-i18n="brands_desc" class="text-xs text-gray-500 mt-2 leading-relaxed">
+                        We partner exclusively with top international hair care producers to ensure safe and lasting results.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <div class="bg-brand-bg px-6 py-4 rounded-2xl flex items-center gap-3 border border-gray-200">
+                        <i class="fa-solid fa-gem text-gray-700"></i>
+                        <span class="font-extrabold text-sm text-gray-800 tracking-wider">MILBON</span>
+                    </div>
+                    <div class="bg-brand-bg px-6 py-4 rounded-2xl flex items-center gap-3 border border-gray-200">
+                        <i class="fa-solid fa-shield-halved text-gray-700"></i>
+                        <span class="font-extrabold text-sm text-gray-800 tracking-wider">OLAPLEX</span>
+                    </div>
+                    <div class="bg-brand-bg px-6 py-4 rounded-2xl flex items-center gap-3 border border-gray-200">
+                        <i class="fa-solid fa-spa text-gray-700"></i>
+                        <span class="font-extrabold text-sm text-gray-800 tracking-wider">SCALP TREATMENT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer id="contact" class="mt-16 px-4 pb-8">
+        <div class="max-w-6xl mx-auto bg-brand-dark rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 relative z-10">
+                <!-- Navigation Columns -->
+                <div class="md:col-span-3">
+                    <h4 data-i18n="ft_about" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">About Us</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#about" data-i18n="ft_profile" class="hover:text-brand-pink transition-colors">Studio Profile</a></li>
+                        <li><a href="#services" data-i18n="ft_svc_list" class="hover:text-brand-pink transition-colors">Service Menu</a></li>
+                        <li><a href="#stylists" data-i18n="ft_team" class="hover:text-brand-pink transition-colors">Stylist Team</a></li>
+                        <li><a href="#brands" data-i18n="ft_partners" class="hover:text-brand-pink transition-colors">Partner Brands</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3">
+                    <h4 data-i18n="ft_core_svc" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Core Services</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#services" data-i18n="ft_cut" class="hover:text-brand-pink transition-colors">Haircut & Basin Wash</a></li>
+                        <li><a href="#services" data-i18n="ft_color" class="hover:text-brand-pink transition-colors">Professional Hair Coloring</a></li>
+                        <li><a href="#services" data-i18n="ft_scalp" class="hover:text-brand-pink transition-colors">Scalp & Hair Treatment</a></li>
+                        <li><a href="#services" data-i18n="ft_blow" class="hover:text-brand-pink transition-colors">Wash & Blow Styling</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3">
+                    <h4 data-i18n="ft_contact" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Contact & Location</h4>
+                    <p class="text-xs text-gray-200 font-semibold mb-1">
+                        +60 11-7572 6618
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        33-2, Jalan PJU 5/10, Dataran Sunway, 47810 Petaling Jaya, Selangor, Malaysia
+                    </p>
+                    <p class="text-[10px] text-gray-500 mt-2 font-mono">Plus Code: 5H2V+GF Petaling Jaya</p>
+                </div>
+
+                <!-- Footer Pills & Action -->
+                <div class="md:col-span-3 flex flex-col gap-3 justify-start items-start md:items-end">
+                    <a href="#services" class="bg-brand-yellow text-gray-900 font-bold px-5 py-2.5 rounded-full text-xs flex items-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
+                        <span data-i18n="ft_search">Search</span>
+                        <span class="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center">
+                            <i class="fa-solid fa-magnifying-glass text-[9px]"></i>
+                        </span>
+                    </a>
+                    <a href="https://wa.me/601175726618" target="_blank" class="bg-brand-pink text-gray-900 font-bold px-5 py-2.5 rounded-full text-xs flex items-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
+                        <span data-i18n="ft_book">Register / Book</span>
+                        <span class="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                        </span>
+                    </a>
+                    <a href="https://www.instagram.com/yujohairstudio/" target="_blank" class="text-xs text-gray-400 hover:text-white mt-2 flex items-center gap-2">
+                        <i class="fa-brands fa-instagram text-sm"></i> @yujohairstudio
+                    </a>
+                </div>
+            </div>
+
+            <!-- Decorative Flower / Icon Element -->
+            <div class="absolute right-12 top-1/2 -translate-y-12 text-gray-800 opacity-30 pointer-events-none hidden lg:block">
+                <i class="fa-solid fa-clover text-7xl"></i>
+            </div>
+
+            <!-- Footer Bottom Banner / Copyright -->
+            <div class="pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-10">
+                <p class="text-[11px] text-gray-500">
+                    &copy; 2026 YUJO HAIR STUDIO. All rights reserved.
+                </p>
+                <div class="text-[11px] text-gray-500 flex gap-4">
+                    <a href="#" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+                    <span>&bull;</span>
+                    <a href="#" class="hover:text-gray-300 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+
+            <!-- Giant Typography Logo -->
+            <div class="mt-6 text-center overflow-hidden relative z-0">
+                <h1 class="text-[90px] sm:text-[140px] md:text-[190px] font-black tracking-tighter text-brand-pink select-none leading-none opacity-90 -mb-8 md:-mb-14">
+                    YUJO
+                </h1>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
