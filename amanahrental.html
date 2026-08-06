@@ -150,13 +150,25 @@
 
   <!-- Footer -->
   <footer class="bg-creamCard border-t border-stone-300/40 py-12 mt-auto">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-      <p class="text-base font-bold text-brand text-center mb-1">AMANAH RENTAL MOTOR BANJAR</p>
-      <p class="text-xs text-stone-600 text-center mb-2">Mekarsari, Kec. Banjar, Kota Banjar, Jawa Barat 46321 (Plus Code: JGHQ+3P)</p>
-      <p class="text-xs text-stone-500 text-center mb-6">📱 085703805591 | 🕒 Buka s/d Pukul 21.00 WIB</p>
-      <p class="text-xs text-stone-500 text-center">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+      <p class="text-base font-bold text-brand mb-1">AMANAH RENTAL MOTOR BANJAR</p>
+      <p class="text-xs text-stone-600 mb-2">Mekarsari, Kec. Banjar, Kota Banjar, Jawa Barat 46321 (Plus Code: JGHQ+3P)</p>
+      <p class="text-xs text-stone-500 mb-6">📱 085703805591 | 🕒 Buka s/d Pukul 21.00 WIB</p>
+      
+      <p class="text-xs text-stone-500 mb-4">
         &copy; 2026 Amanah Rental Motor. All rights reserved.
       </p>
+
+      <!-- Courtesy Credit Beuna Digital -->
+      <div class="pt-4 border-t border-stone-300/30 flex items-center justify-center gap-2">
+        <span class="text-xs text-stone-500">Developed by</span>
+        <a href="https://beuna.xyz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold text-xs text-brand hover:text-stone-600 transition-colors">
+          <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20png.png" alt="Beuna Digital" class="h-4 w-auto object-contain">
+          <span>Beuna Digital</span>
+        </a>
+        <span class="text-xs text-stone-400">•</span>
+        <a href="https://beuna.xyz" target="_blank" rel="noopener noreferrer" class="text-xs text-stone-500 hover:underline">Jasa Pembuatan Website UMKM (beuna.xyz)</a>
+      </div>
     </div>
   </footer>
 
@@ -223,7 +235,7 @@
   </div>
 
   <script>
-    // Raw Image Assets (TETAP SAMA SEPERTI KODE ASLI)
+    // Raw Image Assets (Urutan Asli)
     const rawImages = [
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.48.jpeg",
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.52%20(1).jpeg",
@@ -241,7 +253,7 @@
       "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/amanahassets/WhatsApp%20Image%202026-07-25%20at%2018.26.55.jpeg"
     ];
 
-    // Data Deskripsi Unit & Tarif (DIPERBAIKI SESUAI URUTAN BARU KAMU)
+    // Data Deskripsi Unit & Tarif
     const bikeDetails = [
       { name: "Scoopy Sporty 2016", rate24: 120000 },
       { name: "Beat Deluxe 2021", rate24: 120000 },
@@ -262,8 +274,8 @@
     // Menggabungkan armada 1-14 dengan aset gambar
     const bikes = bikeDetails.map((detail, index) => {
       const rate24 = detail.rate24;
-      const rate12 = Math.round((rate24 * 0.8) / 5000) * 5000; // Pembulatan kalkulasi 12 jam
-      const outTownRate = Math.round((rate24 * 0.3) / 5000) * 5000; // Surcharge luar kota
+      const rate12 = Math.round((rate24 * 0.8) / 5000) * 5000;
+      const outTownRate = Math.round((rate24 * 0.3) / 5000) * 5000;
       
       return {
         id: `armada-${index + 1}`,
