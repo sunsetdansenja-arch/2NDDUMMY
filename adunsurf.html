@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADUN SURF — Est. 2011</title>
+    <title>ADON SURF — Est. 2011 | 70s Surf Academy & Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -40,38 +40,45 @@
         }
     </script>
     <style>
+        /* 70s Surf Film Grain Background Effect */
         .retro-grain {
             background-color: #3BB4B6;
-            background-image: radial-gradient(rgba(243, 242, 203, 0.15) 1px, transparent 0);
-            background-size: 24px 24px;
+            background-image: radial-gradient(rgba(243, 242, 203, 0.18) 1.5px, transparent 0);
+            background-size: 20px 20px;
         }
+        /* Hard Retro Pop Shadows */
         .retro-shadow {
             box-shadow: 4px 4px 0px 0px #1B6B6D;
         }
         .retro-shadow-lg {
             box-shadow: 6px 6px 0px 0px #1B6B6D;
         }
+        .retro-shadow-sand {
+            box-shadow: 5px 5px 0px 0px #F3F2CB;
+        }
+        /* Glassmorphism Blend with Retro Warmth */
         .glass-retro {
-            background: rgba(59, 180, 182, 0.85);
+            background: rgba(59, 180, 182, 0.88);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(243, 242, 203, 0.3);
+            border-bottom: 2px solid rgba(243, 242, 203, 0.3);
         }
     </style>
 </head>
 <body class="bg-ocean text-sand-light font-sans antialiased selection:bg-sand selection:text-ocean-deep min-h-screen flex flex-col retro-grain">
 
-    <!-- NAVIGATION -->
-    <header class="sticky top-0 z-50 glass-retro border-b border-sand/20">
+    <header class="sticky top-0 z-50 glass-retro">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
-                <i class="fa-solid font-retro fa-water text-sand text-3xl group-hover:rotate-12 transition-transform"></i>
+                <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-ocean-deep border-2 border-ocean-deep retro-shadow group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-water text-xl"></i>
+                </div>
                 <div>
-                    <span class="font-retro text-2xl font-bold tracking-wider text-sand block leading-none">ADUN SURF</span>
-                    <span class="text-[10px] tracking-widest text-sand-dark uppercase font-semibold">EST. 2011</span>
+                    <span class="font-retro text-2xl font-bold tracking-wider text-sand block leading-none">ADON SURF</span>
+                    <span class="text-[10px] tracking-widest text-sand-dark uppercase font-bold">EST. 2011 • ACEH WAVES</span>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center gap-8 font-retro tracking-wide text-sand">
+            <nav class="hidden md:flex items-center gap-8 font-retro tracking-wide text-sand text-lg">
                 <a href="#services" class="hover:text-sunset transition-colors text-id">Layanan & Harga</a>
                 <a href="#services" class="hover:text-sunset transition-colors text-en hidden">Services & Pricing</a>
                 
@@ -83,148 +90,136 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <!-- LANGUAGE SWITCHER TOGGLE -->
-                <div class="bg-ocean-deep/80 p-1 rounded-full border border-sand/30 flex items-center">
-                    <button id="lang-id-btn" onclick="setLanguage('id')" class="font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep transition-all">
+                <div class="bg-ocean-deep/90 p-1 rounded-full border-2 border-sand/40 flex items-center retro-shadow">
+                    <button id="lang-id-btn" onclick="setLanguage('id')" class="font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep font-bold transition-all">
                         🇮🇩 ID
                     </button>
-                    <button id="lang-en-btn" onclick="setLanguage('en')" class="font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light transition-all">
+                    <button id="lang-en-btn" onclick="setLanguage('en')" class="font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light font-bold transition-all">
                         🇬🇧 EN
                     </button>
                 </div>
 
-                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="bg-sunset hover:bg-sunset-hover text-sand-light font-retro px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border-2 border-sand-light retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center gap-2 text-sm sm:text-base">
+                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="bg-sunset hover:bg-sunset-hover text-sand-light font-retro px-4 sm:px-5 py-2.5 rounded-full border-2 border-sand-light retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center gap-2 text-sm sm:text-base">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span class="text-id">Hubungi Kami</span>
-                    <span class="text-en hidden">Contact Us</span>
+                    <span class="text-id">Hubungi Adon</span>
+                    <span class="text-en hidden">Contact Adon</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="relative py-16 lg:py-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="inline-block bg-ocean-dark/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-sand/30 mb-6">
+            <div class="inline-flex items-center gap-2 bg-ocean-dark/70 backdrop-blur-md px-5 py-2 rounded-full border-2 border-sand/40 mb-8 retro-shadow">
+                <span class="w-2 h-2 rounded-full bg-sunset animate-pulse"></span>
                 <span class="font-retro text-sand text-xs sm:text-sm tracking-wider uppercase text-id">⚡ Professional Surf Guide & Academy Sejak 2011</span>
                 <span class="font-retro text-sand text-xs sm:text-sm tracking-wider uppercase text-en hidden">⚡ Professional Surf Guide & Academy Since 2011</span>
             </div>
             
-            <h1 class="font-retro text-4xl sm:text-7xl lg:text-8xl font-bold text-sand tracking-wide leading-tight mb-6 drop-shadow-md">
-                SURF THE BEST WAVES<br><span class="text-sunset">WITH ADUN</span>
+            <h1 class="font-retro text-5xl sm:text-7xl lg:text-8xl font-bold text-sand tracking-wide leading-tight mb-6 drop-shadow-md">
+                SURF THE BEST WAVES<br><span class="text-sunset underline decoration-sand/30 decoration-wavy">WITH ADON</span>
             </h1>
             
-            <p class="max-w-2xl mx-auto text-base sm:text-xl text-sand-light/90 mb-10 font-medium text-id">
-                Pengalaman lebih dari 15 tahun membimbing surfer lokal & turis mancanegara menaklukan ombak terbaik di Aceh.
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-sand-light/95 mb-10 font-medium leading-relaxed text-id">
+                Pengalaman lebih dari 15 tahun membimbing surfer lokal & turis mancanegara. Siap membimbing pemula sampai bisa berselancar dengan lancar, diajarkan langsung dengan <span class="bg-sand text-ocean-deep px-2 py-0.5 rounded font-retro">Adon himself person to person</span>.
             </p>
-            <p class="max-w-2xl mx-auto text-base sm:text-xl text-sand-light/90 mb-10 font-medium text-en hidden">
-                Over 15 years of experience guiding local & international surfers to conquer the best waves in Aceh.
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-sand-light/95 mb-10 font-medium leading-relaxed text-en hidden">
+                Over 15 years of experience guiding local & international surfers. Ready to guide beginners step-by-step until you surf smoothly, taught directly by <span class="bg-sand text-ocean-deep px-2 py-0.5 rounded font-retro">Adon himself person to person</span>.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#services" class="w-full sm:w-auto bg-sand text-ocean-deep hover:bg-sand-light font-retro text-lg px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                <a href="#services" class="w-full sm:w-auto bg-sand text-ocean-deep hover:bg-sand-light font-retro text-xl px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
                     <span class="text-id">Lihat Paket Lesson & Trip</span>
                     <span class="text-en hidden">Explore Lessons & Trips</span>
                 </a>
-                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-ocean-dark/80 hover:bg-ocean-dark text-sand font-retro text-lg px-8 py-4 rounded-full border-2 border-sand retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-ocean-dark hover:bg-ocean-deep text-sand font-retro text-xl px-8 py-4 rounded-full border-2 border-sand retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-2xl text-sunset"></i> Chat WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="py-16 bg-ocean-dark/40 border-y border-sand/10">
+    <section id="services" class="py-16 bg-ocean-dark/50 border-y-2 border-sand/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="font-retro text-4xl sm:text-5xl text-sand mb-4 text-id">LAYANAN & HARGA</h2>
-                <h2 class="font-retro text-4xl sm:text-5xl text-sand mb-4 text-en hidden">SERVICES & PRICING</h2>
+                <span class="font-retro text-sunset text-xl uppercase tracking-widest">Pricing & Packages</span>
+                <h2 class="font-retro text-4xl sm:text-6xl text-sand mb-4 text-id">LAYANAN & HARGA</h2>
+                <h2 class="font-retro text-4xl sm:text-6xl text-sand mb-4 text-en hidden">SERVICES & PRICING</h2>
                 
-                <p class="text-sand-light/80 max-w-xl mx-auto text-id">Pilih paket les selancar atau petualangan surf trip yang sesuai dengan kebutuhan Anda.</p>
-                <p class="text-sand-light/80 max-w-xl mx-auto text-en hidden">Choose a surf lesson package or guided surf trip adventure tailored to your needs.</p>
+                <p class="text-sand-light/80 max-w-xl mx-auto text-id font-medium">Pilih paket les selancar privat atau petualangan surf trip eksklusif bersama Adon.</p>
+                <p class="text-sand-light/80 max-w-xl mx-auto text-en hidden">Choose a private surf lesson or guided surf trip adventure tailored with Adon.</p>
             </div>
 
-            <!-- BENTO GRID -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- CARD 1: SURF LESSON (DYNAMIC PRICE ACCORDING TO LANG) -->
-                <div class="bg-ocean-dark/90 rounded-3xl p-8 border-2 border-sand/40 retro-shadow flex flex-col justify-between hover:border-sand transition-all">
+                <div class="bg-ocean-dark/95 rounded-3xl p-8 border-2 border-sand/40 retro-shadow-lg flex flex-col justify-between hover:border-sand transition-all">
                     <div>
                         <div class="flex items-center justify-between mb-6">
-                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-id">Local Rate</span>
-                            <span class="bg-sunset/30 text-sand-light text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-en hidden">Tourist Rate (English)</span>
-                            <i class="fa-solid fa-person-surfing text-sunset text-2xl"></i>
+                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-id border border-sand/30">Local Rate</span>
+                            <span class="bg-sunset/30 text-sand-light text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-en hidden border border-sunset/40">Tourist Rate (English)</span>
+                            <i class="fa-solid fa-person-surfing text-sunset text-3xl"></i>
                         </div>
                         <h3 class="font-retro text-3xl text-sand mb-2">Surf Lesson</h3>
-                        <p class="text-sm text-sand-light/70 mb-6 text-id">Sesi Pelatihan Selancar Privat / Grup</p>
-                        <p class="text-sm text-sand-light/70 mb-6 text-en hidden">Private or Group Surf Training Session</p>
+                        <p class="text-sm text-sand-light/80 mb-6 text-id">Sesi Pelatihan Selancar Privat / Person to Person</p>
+                        <p class="text-sm text-sand-light/80 mb-6 text-en hidden">Private Person-to-Person Surf Training Session</p>
                         
                         <div class="space-y-4 mb-8">
-                            <!-- PER SESSION DYNAMIC -->
-                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
-                                <div class="text-xs text-sand-dark font-medium uppercase text-id">Per Session</div>
-                                <div class="text-xs text-sand-dark font-medium uppercase text-en hidden">Per Session</div>
+                            <div class="p-5 rounded-2xl bg-ocean-deep/70 border-2 border-sand/20">
+                                <div class="text-xs text-sand-dark font-retro uppercase tracking-wider text-id">Per Session</div>
+                                <div class="text-xs text-sand-dark font-retro uppercase tracking-wider text-en hidden">Per Session</div>
                                 
-                                <div class="font-retro text-3xl text-sand text-id">Rp 300.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Jam</span></div>
-                                <div class="font-retro text-3xl text-sand text-en hidden">Rp 400.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Hours</span></div>
+                                <div class="font-retro text-4xl text-sand mt-1 text-id">Rp 300.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Jam</span></div>
+                                <div class="font-retro text-4xl text-sand mt-1 text-en hidden">Rp 400.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Hours</span></div>
                                 
-                                <p class="text-xs text-sand-light/80 mt-2 text-id"><i class="fa-solid fa-check text-sunset mr-1"></i> Termasuk Papan Selancar & Peralatan</p>
-                                <p class="text-xs text-sand-light/80 mt-2 text-en hidden"><i class="fa-solid fa-check text-sunset mr-1"></i> Includes Surfboard & All Gear</p>
+                                <p class="text-xs text-sand-light/90 mt-3 text-id"><i class="fa-solid fa-check text-sunset mr-1.5"></i> Termasuk Papan Selancar & Peralatan Lengkap</p>
+                                <p class="text-xs text-sand-light/90 mt-3 text-en hidden"><i class="fa-solid fa-check text-sunset mr-1.5"></i> Includes Surfboard & All Equipment</p>
                             </div>
 
-                            <!-- WEEKLY PACKAGE -->
-                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
-                                <div class="text-xs text-sand-dark font-medium uppercase text-id">Paket Weekly</div>
-                                <div class="text-xs text-sand-dark font-medium uppercase text-en hidden">Weekly Package</div>
-                                
-                                <div class="font-retro text-2xl text-sand">Rp 1.800.000 <span class="text-sm font-sans text-sand-light/70">/ 7 Session</span></div>
-                                
-                                <p class="text-xs text-sand-light/80 mt-1 text-id"><i class="fa-solid fa-check text-sunset mr-1"></i> Durasi 2 Jam / Session</p>
-                                <p class="text-xs text-sand-light/80 mt-1 text-en hidden"><i class="fa-solid fa-check text-sunset mr-1"></i> Duration 2 Hours / Session</p>
+                            <div id="weekly-pkg-container" class="p-5 rounded-2xl bg-ocean-deep/70 border-2 border-sand/20 text-id">
+                                <div class="text-xs text-sand-dark font-retro uppercase tracking-wider">Paket Weekly</div>
+                                <div class="font-retro text-3xl text-sand mt-1">Rp 1.800.000 <span class="text-sm font-sans text-sand-light/70">/ 7 Session</span></div>
+                                <p class="text-xs text-sand-light/90 mt-2"><i class="fa-solid fa-check text-sunset mr-1.5"></i> Durasi 2 Jam / Session</p>
                             </div>
                         </div>
                     </div>
-                    <a id="wa-lesson-btn" href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20mau%20booking%20Surf%20Lesson" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sand hover:bg-sand-light text-ocean-deep font-retro py-3 rounded-xl border border-ocean-deep transition-colors block">
+                    <a id="wa-lesson-btn" href="https://wa.me/6285359033973?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Surf%20Lesson" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sand hover:bg-sand-light text-ocean-deep font-retro text-lg py-3.5 rounded-2xl border-2 border-ocean-deep retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] block">
                         <span class="text-id">Book Surf Lesson (Rp300k)</span>
                         <span class="text-en hidden">Book Surf Lesson (Rp400k)</span>
                     </a>
                 </div>
 
-                <!-- CARD 2: SURF TRIP -->
-                <div class="bg-ocean-dark/90 rounded-3xl p-8 border-2 border-sand/40 retro-shadow flex flex-col justify-between hover:border-sand transition-all lg:col-span-2">
+                <div class="bg-ocean-dark/95 rounded-3xl p-8 border-2 border-sand/40 retro-shadow-lg flex flex-col justify-between hover:border-sand transition-all lg:col-span-2">
                     <div>
                         <div class="flex items-center justify-between mb-6">
-                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-id">Short Trip</span>
-                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-en hidden">Short Trip</span>
-                            <i class="fa-solid fa-route text-sunset text-2xl"></i>
+                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-id border border-sand/30">Short Trip</span>
+                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider text-en hidden border border-sand/30">Short Trip</span>
+                            <i class="fa-solid fa-route text-sunset text-3xl"></i>
                         </div>
                         <h3 class="font-retro text-3xl text-sand mb-1">Surf Trip</h3>
-                        <p class="text-xs font-retro text-sunset mb-6 uppercase">DESTINASI: SANEY BEACH & LHOONG</p>
+                        <p class="text-xs font-retro text-sunset mb-6 uppercase tracking-wider">DESTINASI: SANEY BEACH & LHOONG</p>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                            <!-- OPTION A -->
-                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20 flex flex-col justify-between">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="p-5 rounded-2xl bg-ocean-deep/70 border-2 border-sand/20 flex flex-col justify-between">
                                 <div>
-                                    <div class="text-xs text-sand-dark font-medium uppercase">Option A: Trip Only</div>
-                                    <div class="font-retro text-2xl text-sand mt-1">Rp 500.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
+                                    <div class="text-xs text-sand-dark font-retro uppercase tracking-wider">Option A: Trip Only</div>
+                                    <div class="font-retro text-3xl text-sand mt-1">Rp 500.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
                                 </div>
-                                <p class="text-xs text-sand-light/80 mt-3 text-id"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, Water & Snack</p>
-                                <p class="text-xs text-sand-light/80 mt-3 text-en hidden"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, Water & Snack</p>
+                                <p class="text-xs text-sand-light/90 mt-4 text-id"><i class="fa-solid fa-circle-check text-sunset mr-1.5"></i> Scooter, Guide, Water & Snack</p>
+                                <p class="text-xs text-sand-light/90 mt-4 text-en hidden"><i class="fa-solid fa-circle-check text-sunset mr-1.5"></i> Scooter, Guide, Water & Snack</p>
                             </div>
                             
-                            <!-- OPTION B DYNAMIC -->
-                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
-                                <div class="text-xs text-sand-dark font-medium uppercase">Option B: Include 1 Session Lesson</div>
+                            <div class="p-5 rounded-2xl bg-ocean-deep/70 border-2 border-sand/20">
+                                <div class="text-xs text-sand-dark font-retro uppercase tracking-wider">Option B: Include 1 Session Lesson</div>
                                 
-                                <div class="font-retro text-2xl text-sand mt-1 text-id">Rp 800.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
-                                <div class="font-retro text-2xl text-sand mt-1 text-en hidden">Rp 900.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
+                                <div class="font-retro text-3xl text-sand mt-1 text-id">Rp 800.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
+                                <div class="font-retro text-3xl text-sand mt-1 text-en hidden">Rp 900.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
                                 
-                                <p class="text-xs text-sand-light/80 mt-3 text-id"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, 1x Lesson, Water & Snack</p>
-                                <p class="text-xs text-sand-light/80 mt-3 text-en hidden"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, 1x Lesson, Water & Snack</p>
+                                <p class="text-xs text-sand-light/90 mt-4 text-id"><i class="fa-solid fa-circle-check text-sunset mr-1.5"></i> Scooter, Guide, 1x Lesson, Water & Snack</p>
+                                <p class="text-xs text-sand-light/90 mt-4 text-en hidden"><i class="fa-solid fa-circle-check text-sunset mr-1.5"></i> Scooter, Guide, 1x Lesson, Water & Snack</p>
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20tertarik%20dengan%20paket%20Surf%20Trip" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sunset hover:bg-sunset-hover text-sand-light font-retro py-3 rounded-xl border border-sand-light transition-colors block">
+                    <a href="https://wa.me/6285359033973?text=Halo%20Adon%20Surf,%20saya%20tertarik%20dengan%20paket%20Surf%20Trip" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sunset hover:bg-sunset-hover text-sand-light font-retro text-xl py-3.5 rounded-2xl border-2 border-sand-light retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] block">
                         <span class="text-id">Pesan Surf Trip</span>
                         <span class="text-en hidden">Book Surf Trip</span>
                     </a>
@@ -234,84 +229,80 @@
         </div>
     </section>
 
-    <!-- SURF SPOTS SECTION -->
     <section id="spots" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
-                    <span class="font-retro text-sunset text-lg uppercase tracking-wider">Explore The Waves</span>
+                    <span class="font-retro text-sunset text-xl uppercase tracking-wider">Explore The Waves</span>
                     <h2 class="font-retro text-4xl sm:text-5xl text-sand mt-1">DESTINASI SURF SPOT</h2>
                 </div>
-                <p class="text-sand-light/80 mt-4 md:mt-0 max-w-md text-id">Kami membawa Anda ke spot ombak terbaik sesuai dengan tingkat kemampuan selancar Anda.</p>
-                <p class="text-sand-light/80 mt-4 md:mt-0 max-w-md text-en hidden">We take you to the best wave spots matching your surfing skill level.</p>
+                <p class="text-sand-light/80 mt-4 md:mt-0 max-w-md text-id font-medium">Kami membawa Anda ke spot ombak terbaik Aceh sesuai dengan tingkat kemampuan selancar Anda.</p>
+                <p class="text-sand-light/80 mt-4 md:mt-0 max-w-md text-en hidden font-medium">We take you to the best wave spots in Aceh matching your surfing skill level.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">01</div>
-                    <h3 class="font-retro text-xl text-sand mb-2">Kuala Cut Lampuuk</h3>
-                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Reef Break</span>
+                <div class="bg-ocean-dark/80 p-6 rounded-3xl border-2 border-sand/30 retro-shadow hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-sunset text-sand-light flex items-center justify-center text-xl font-retro mb-4 border border-sand">01</div>
+                    <h3 class="font-retro text-2xl text-sand mb-2">Kuala Cut Lampuuk</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs font-retro px-3 py-1 rounded-full border border-sand/20">Reef Break</span>
                 </div>
 
-                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">02</div>
-                    <h3 class="font-retro text-xl text-sand mb-2">Cement Factory</h3>
-                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Beach Break</span>
+                <div class="bg-ocean-dark/80 p-6 rounded-3xl border-2 border-sand/30 retro-shadow hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-sunset text-sand-light flex items-center justify-center text-xl font-retro mb-4 border border-sand">02</div>
+                    <h3 class="font-retro text-2xl text-sand mb-2">Cement Factory</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs font-retro px-3 py-1 rounded-full border border-sand/20">Beach Break</span>
                 </div>
 
-                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">03</div>
-                    <h3 class="font-retro text-xl text-sand mb-2">Saney Beach</h3>
-                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Beach Break</span>
+                <div class="bg-ocean-dark/80 p-6 rounded-3xl border-2 border-sand/30 retro-shadow hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-sunset text-sand-light flex items-center justify-center text-xl font-retro mb-4 border border-sand">03</div>
+                    <h3 class="font-retro text-2xl text-sand mb-2">Saney Beach</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs font-retro px-3 py-1 rounded-full border border-sand/20">Beach Break</span>
                 </div>
 
-                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">04</div>
-                    <h3 class="font-retro text-xl text-sand mb-2">Aceh Jaya</h3>
-                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">& Much More</span>
+                <div class="bg-ocean-dark/80 p-6 rounded-3xl border-2 border-sand/30 retro-shadow hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-sunset text-sand-light flex items-center justify-center text-xl font-retro mb-4 border border-sand">04</div>
+                    <h3 class="font-retro text-2xl text-sand mb-2">Aceh Jaya</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs font-retro px-3 py-1 rounded-full border border-sand/20">& Much More</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONSULTATION SECTION -->
-    <section id="consultation" class="py-16 bg-sand text-ocean-deep">
+    <section id="consultation" class="py-16 bg-sand text-ocean-deep border-t-2 border-ocean-deep">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="bg-ocean-light/20 p-8 sm:p-12 rounded-3xl border-2 border-ocean-deep/20">
-                <i class="fa-solid fa-comments text-sunset text-4xl mb-4"></i>
+            <div class="bg-ocean/20 p-8 sm:p-12 rounded-3xl border-2 border-ocean-deep/30 retro-shadow-lg">
+                <i class="fa-solid fa-comments text-sunset text-5xl mb-4"></i>
                 
                 <h2 class="font-retro text-3xl sm:text-5xl mb-4 text-ocean-deep text-id">BUTUH KONSULTASI KHUSUS?</h2>
                 <h2 class="font-retro text-3xl sm:text-5xl mb-4 text-ocean-deep text-en hidden">NEED SPECIFIC CONSULTATION?</h2>
                 
-                <p class="text-ocean-deep/80 max-w-xl mx-auto mb-8 font-medium text-id">Punya kebutuhan khusus, itinerary rombongan, atau pertanyaan kustom seputar kondisi ombak? Diskusi langsung dengan Adun.</p>
-                <p class="text-ocean-deep/80 max-w-xl mx-auto mb-8 font-medium text-en hidden">Have custom requirements, group itineraries, or specific wave condition questions? Chat directly with Adun.</p>
+                <p class="text-ocean-deep/90 max-w-xl mx-auto mb-8 font-medium text-base sm:text-lg text-id">Punya kebutuhan khusus, itinerary rombongan, atau pertanyaan kustom seputar kondisi ombak? Diskusi langsung dengan Adon person to person.</p>
+                <p class="text-ocean-deep/90 max-w-xl mx-auto mb-8 font-medium text-base sm:text-lg text-en hidden">Have custom requirements, group itineraries, or specific wave condition questions? Chat directly with Adon person to person.</p>
                 
-                <a href="https://wa.me/6285359033973?text=Halo%20Adun,%20saya%20ingin%20konsultasi%20khusus%20mengenai%20surfing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-sunset hover:bg-sunset-hover text-sand-light font-retro text-xl px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                <a href="https://wa.me/6285359033973?text=Halo%20Adon,%20saya%20ingin%20konsultasi%20khusus%20mengenai%20surfing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-sunset hover:bg-sunset-hover text-sand-light font-retro text-xl px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
                     <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    <span>Consult for Specific Need</span>
+                    <span>Consult Person to Person</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-ocean-deep py-12 border-t border-sand/10">
+    <footer class="bg-ocean-deep py-12 border-t-2 border-sand/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <i class="fa-solid fa-water text-sand text-2xl"></i>
-                <span class="font-retro text-xl text-sand tracking-wider">ADUN SURF</span>
-                <span class="text-xs text-sand-dark">© 2011 - 2026. All Rights Reserved.</span>
+                <span class="font-retro text-xl text-sand tracking-wider">ADON SURF</span>
+                <span class="text-xs text-sand-dark font-medium">© 2011 - 2026. All Rights Reserved.</span>
             </div>
             
             <div class="flex items-center gap-6 font-retro text-sm text-sand-light/80">
                 <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="hover:text-sunset transition-colors flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp"></i> 085359033973
+                    <i class="fa-brands fa-whatsapp text-lg"></i> 085359033973
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- LANGUAGE SWITCHER SCRIPT -->
     <script>
         function setLanguage(lang) {
             const idElements = document.querySelectorAll('.text-id');
@@ -324,20 +315,20 @@
                 idElements.forEach(el => el.classList.add('hidden'));
                 enElements.forEach(el => el.classList.remove('hidden'));
                 
-                idBtn.className = "font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light transition-all";
-                enBtn.className = "font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep transition-all";
+                idBtn.className = "font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light font-bold transition-all";
+                enBtn.className = "font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep font-bold transition-all";
 
                 // Update WhatsApp Link text for English (400k rate)
-                waLessonBtn.href = "https://wa.me/6285359033973?text=Hi%20Adun%20Surf,%20I%20would%20like%20to%20book%20a%20Tourist%20Surf%20Lesson%20(Rp400.000)";
+                waLessonBtn.href = "https://wa.me/6285359033973?text=Hi%20Adon%20Surf,%20I%20would%20like%20to%20book%20a%20Tourist%20Surf%20Lesson%20(Rp400.000)";
             } else {
                 enElements.forEach(el => el.classList.add('hidden'));
                 idElements.forEach(el => el.classList.remove('hidden'));
 
-                enBtn.className = "font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light transition-all";
-                idBtn.className = "font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep transition-all";
+                enBtn.className = "font-retro text-xs px-3 py-1 rounded-full text-sand hover:text-sand-light font-bold transition-all";
+                idBtn.className = "font-retro text-xs px-3 py-1 rounded-full bg-sand text-ocean-deep font-bold transition-all";
 
                 // Update WhatsApp Link text for Indonesian (300k rate)
-                waLessonBtn.href = "https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20mau%20booking%20Surf%20Lesson%20Local%20(Rp300.000)";
+                waLessonBtn.href = "https://wa.me/6285359033973?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Surf%20Lesson%20Local%20(Rp300.000)";
             }
         }
     </script>
