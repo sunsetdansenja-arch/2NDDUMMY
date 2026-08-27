@@ -1,416 +1,628 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lampuuk Surf School - Belajar Surfing di Aceh bersama Adon</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .glass-nav {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-  </style>
-</head>
-<body class="bg-slate-900 text-slate-100 antialiased selection:bg-cyan-500 selection:text-white">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADON SURF — Surf Academy & Local Wave Guide Aceh (Est. 2011)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Header / Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 py-3">
-    <div class="max-w-6xl mx-auto glass-nav rounded-2xl px-5 py-3 flex items-center justify-between border border-slate-700/50 shadow-2xl">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30">
-          <i data-lucide="waves" class="w-6 h-6"></i>
-        </div>
-        <span class="font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-          Lampuuk Surf School
-        </span>
-      </div>
-
-      <!-- Navigation & Lang Switcher -->
-      <div class="flex items-center space-x-6">
-        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-300">
-          <a href="#hero" class="hover:text-cyan-400 transition" data-i18n="nav_home">Beranda</a>
-          <a href="#about" class="hover:text-cyan-400 transition" data-i18n="nav_about">Instruktur</a>
-          <a href="#spots" class="hover:text-cyan-400 transition" data-i18n="nav_spots">Spot Surfing</a>
-          <a href="#packages" class="hover:text-cyan-400 transition" data-i18n="nav_packages">Paket</a>
-        </nav>
-
-        <!-- Language Switcher Toggle -->
-        <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700">
-          <button id="btn-id" onclick="setLanguage('id')" class="px-3 py-1 text-xs font-bold rounded-lg transition-all bg-cyan-500 text-white shadow-md">ID</button>
-          <button id="btn-en" onclick="setLanguage('en')" class="px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">EN</button>
-        </div>
-
-        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl hover:opacity-90 transition shadow-lg shadow-cyan-500/20" data-i18n="btn_book_now">
-          Booking Sekarang
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-    <!-- Background Glow -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[140px] rounded-full pointer-events-none"></div>
-
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-6 shadow-inner">
-        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-        <span data-i18n="hero_location">Lhoknga & Lampuuk, Aceh Besar</span>
-      </div>
-
-      <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight mb-6" data-i18n="hero_title">
-        Belajar Surfing di Aceh Bersama Adon
-      </h1>
-
-      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed mb-8" data-i18n="hero_subtitle">
-        Pengalaman privat selancar terbaik dengan bimbingan lokal profesional di pesisir ombak eksotis Aceh.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm shadow-xl shadow-cyan-500/25 hover:scale-[1.02] active:scale-[0.98] transition flex items-center justify-center space-x-2">
-          <span data-i18n="hero_cta_primary">Mulai Belajar</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition flex items-center justify-center space-x-2">
-          <span data-i18n="hero_cta_secondary">Tentang Instruktur</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Instructor Section (Foto Adon & Copywriting di Bawah Foto) -->
-  <section id="about" class="py-16 bg-slate-950/50 border-y border-slate-800/60">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
-        <div class="max-w-xl mx-auto text-center space-y-6">
-          
-          <!-- Foto Profil Adon -->
-          <div class="relative inline-block">
-            <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl mx-auto bg-slate-800">
-              <img 
-                src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/profil%20adun.png" 
-                alt="Adon - Lampuuk Surf School Instructor" 
-                class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500"
-              />
-            </div>
-            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-white text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
-              Head Coach
-            </div>
-          </div>
-
-          <!-- Name & Title -->
-          <div>
-            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Adon</h2>
-            <p class="text-cyan-400 font-medium text-sm mt-1" data-i18n="instructor_role">Local Surfer & Senior Surf Instructor</p>
-          </div>
-
-          <!-- Copywriting Tepat di Bawah Foto Adon -->
-          <div class="bg-slate-950/60 rounded-2xl p-6 border border-slate-800/80 text-slate-300 text-base leading-relaxed shadow-inner">
-            <p data-i18n="instructor_bio">
-              Lebih dari 15 tahun pengalaman mengajar. Bimbingan langsung <span class="text-cyan-400 font-semibold italic">person-to-person</span> oleh Adon, dari pemula tanpa pengalaman hingga lancar berselancar di spot eksotis Aceh.
-            </p>
-          </div>
-
-          <!-- Key Highlights -->
-          <div class="grid grid-cols-3 gap-4 pt-2 border-t border-slate-800 text-left">
-            <div class="text-center p-3 rounded-xl bg-slate-800/40">
-              <span class="block text-xl font-extrabold text-cyan-400">15+</span>
-              <span class="text-xs text-slate-400" data-i18n="stat_exp">Tahun Pengalaman</span>
-            </div>
-            <div class="text-center p-3 rounded-xl bg-slate-800/40">
-              <span class="block text-xl font-extrabold text-cyan-400">1-on-1</span>
-              <span class="text-xs text-slate-400" data-i18n="stat_coaching">Privat Coaching</span>
-            </div>
-            <div class="text-center p-3 rounded-xl bg-slate-800/40">
-              <span class="block text-xl font-extrabold text-cyan-400">100%</span>
-              <span class="text-xs text-slate-400" data-i18n="stat_safety">Prioritas Keamanan</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Surf Spots Gallery & Custom Trip -->
-  <section id="spots" class="py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-3xl font-extrabold text-white tracking-tight" data-i18n="spots_title">Spot Surfing Eksotis Aceh</h2>
-        <p class="text-slate-400 mt-3 text-sm" data-i18n="spots_subtitle">Jelajahi berbagai spot selancar terbaik dari pantai pasir putih hingga reef break bersama kami.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- Card 1: Saney -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 shadow-lg">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/saney.jpeg" 
-              alt="Saney Beach Surf Spot" 
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-4 text-white font-bold text-lg">Saney Beach</span>
-          </div>
-          <div class="p-5 text-sm text-slate-300">
-            <p data-i18n="spot_saney_desc">Ombak konsisten dengan pemandangan pantai yang tenang, cocok untuk sesi latihan teknik dasar hingga menengah.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Cement Factory / Lhoknga -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 shadow-lg">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/cement%20factory.jpeg" 
-              alt="Cement Factory Surf Spot" 
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-4 text-white font-bold text-lg">Cement Factory Break</span>
-          </div>
-          <div class="p-5 text-sm text-slate-300">
-            <p data-i18n="spot_cement_desc">Salah satu spot populer di kawasan Lhoknga dengan karakter ombak reef break yang menantang dan memuat daya tarik tinggi.</p>
-          </div>
-        </div>
-
-        <!-- Card 3: Aceh Jaya & Custom Trip -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 shadow-lg">
-          <div class="h-48 overflow-hidden relative">
-            <img 
-              src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/aceh%20jaya%20dan%20custom%20trip.jpeg" 
-              alt="Aceh Jaya Custom Trip" 
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-4 text-white font-bold text-lg">Aceh Jaya & Custom Trip</span>
-          </div>
-          <div class="p-5 text-sm text-slate-300">
-            <p data-i18n="spot_custom_desc">Perjalanan selancar kustom menjelajahi pesisir Aceh Jaya, menemukan secret spot ombak mulus bersama panduan lokal.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Packages Section -->
-  <section id="packages" class="py-20 bg-slate-950/60 border-t border-slate-800/60">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-3xl font-extrabold text-white tracking-tight" data-i18n="pkg_title">Pilihan Paket Belajar</h2>
-        <p class="text-slate-400 mt-3 text-sm" data-i18n="pkg_subtitle">Pilih sesi kelas yang sesuai dengan kebutuhan dan level kemampuan Anda.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Beginner Lesson -->
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative flex flex-col justify-between hover:border-cyan-500/50 transition">
-          <div>
-            <div class="inline-block px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 text-xs font-bold mb-4" data-i18n="pkg_beg_tag">Pemula / First Timer</div>
-            <h3 class="text-2xl font-bold text-white mb-2" data-i18n="pkg_beg_name">Single Beginner Session</h3>
-            <p class="text-slate-400 text-sm mb-6" data-i18n="pkg_beg_desc">Sesi perkenalan 2 jam meliputi teori dasar di darat, keamanan air, dan panduan berdiri di atas papan.</p>
-            
-            <ul class="space-y-3 text-sm text-slate-300 mb-8">
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_beg_f1">2 Jam Bimbingan Privat (1-on-1)</span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_beg_f2">Termasuk Sewa Papan Selancar & Rashguard</span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_beg_f3">Teori Keselamatan & Etika Ombak</span>
-              </li>
-            </ul>
-          </div>
-          <a href="#contact" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition text-center" data-i18n="btn_choose">
-            Pilih Paket
-          </a>
-        </div>
-
-        <!-- Multi-Session / Custom Surf Trip -->
-        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-cyan-500/40 rounded-3xl p-8 relative flex flex-col justify-between shadow-xl shadow-cyan-950/20">
-          <div class="absolute -top-3.5 right-6 bg-cyan-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
-            Recommended
-          </div>
-          <div>
-            <div class="inline-block px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 text-xs font-bold mb-4" data-i18n="pkg_adv_tag">Intensif & Surf Trip</div>
-            <h3 class="text-2xl font-bold text-white mb-2" data-i18n="pkg_adv_name">Multi-Day & Custom Trip</h3>
-            <p class="text-slate-400 text-sm mb-6" data-i18n="pkg_adv_desc">Program beberapa hari untuk mempertajam teknik berbelok, catching green waves, atau eksplorasi spot Aceh Jaya.</p>
-            
-            <ul class="space-y-3 text-sm text-slate-300 mb-8">
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_adv_f1">Jadwal Fleksibel & Spot Scouting</span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_adv_f2">Analisis Video & Koreksi Postur</span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 shrink-0"></i>
-                <span data-i18n="pkg_adv_f3">Trip Eksplorasi Pesisir Aceh Jaya</span>
-              </li>
-            </ul>
-          </div>
-          <a href="#contact" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 text-white font-bold text-sm transition text-center shadow-lg shadow-cyan-500/20" data-i18n="btn_choose">
-            Pilih Paket
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Booking CTA Section -->
-  <section id="contact" class="py-20 relative">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="bg-gradient-to-r from-cyan-950/80 via-slate-900 to-slate-900 border border-cyan-500/30 rounded-3xl p-10 md:p-14 shadow-2xl relative overflow-hidden">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4" data-i18n="cta_title">Siap Mencoba Ombak Aceh?</h2>
-        <p class="text-slate-300 text-base max-w-xl mx-auto mb-8" data-i18n="cta_desc">
-          Hubungi Adon secara langsung untuk konsultasi kondisi ombak, jadwal kelas, dan reservasi sesi berselancar Anda.
-        </p>
-        
-        <a 
-          href="https://wa.me/?text=Halo%20Adon,%20saya%20tertarik%20belajar%20surfing%20di%20Lampuuk%20Surf%20School." 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center space-x-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/20 transition transform hover:scale-[1.02]"
-        >
-          <i data-lucide="message-circle" class="w-5 h-5"></i>
-          <span data-i18n="btn_whatsapp">Hubungi via WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 border-t border-slate-800 text-center text-xs text-slate-500">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>&copy; 2026 Lampuuk Surf School. All rights reserved.</p>
-      <p data-i18n="footer_location">Lhoknga & Lampuuk, Aceh Besar, Indonesia</p>
-    </div>
-  </footer>
-
-  <!-- Script Translations & Logic -->
-  <script>
-    const translations = {
-      id: {
-        nav_home: "Beranda",
-        nav_about: "Instruktur",
-        nav_spots: "Spot Surfing",
-        nav_packages: "Paket",
-        btn_book_now: "Booking Sekarang",
-        hero_location: "Lhoknga & Lampuuk, Aceh Besar",
-        hero_title: "Belajar Surfing di Aceh Bersama Adon",
-        hero_subtitle: "Pengalaman privat selancar terbaik dengan bimbingan lokal profesional di pesisir ombak eksotis Aceh.",
-        hero_cta_primary: "Mulai Belajar",
-        hero_cta_secondary: "Tentang Instruktur",
-        instructor_role: "Local Surfer & Senior Surf Instructor",
-        instructor_bio: "Lebih dari 15 tahun pengalaman mengajar. Bimbingan langsung <span class=\"text-cyan-400 font-semibold italic\">person-to-person</span> oleh Adon, dari pemula tanpa pengalaman hingga lancar berselancar di spot eksotis Aceh.",
-        stat_exp: "Tahun Pengalaman",
-        stat_coaching: "Privat Coaching",
-        stat_safety: "Prioritas Keamanan",
-        spots_title: "Spot Surfing Eksotis Aceh",
-        spots_subtitle: "Jelajahi berbagai spot selancar terbaik dari pantai pasir putih hingga reef break bersama kami.",
-        spot_saney_desc: "Ombak konsisten dengan pemandangan pantai yang tenang, cocok untuk sesi latihan teknik dasar hingga menengah.",
-        spot_cement_desc: "Salah satu spot populer di kawasan Lhoknga dengan karakter ombak reef break yang menantang dan memuat daya tarik tinggi.",
-        spot_custom_desc: "Perjalanan selancar kustom menjelajahi pesisir Aceh Jaya, menemukan secret spot ombak mulus bersama panduan lokal.",
-        pkg_title: "Pilihan Paket Belajar",
-        pkg_subtitle: "Pilih sesi kelas yang sesuai dengan kebutuhan dan level kemampuan Anda.",
-        pkg_beg_tag: "Pemula / First Timer",
-        pkg_beg_name: "Single Beginner Session",
-        pkg_beg_desc: "Sesi perkenalan 2 jam meliputi teori dasar di darat, keamanan air, dan panduan berdiri di atas papan.",
-        pkg_beg_f1: "2 Jam Bimbingan Privat (1-on-1)",
-        pkg_beg_f2: "Termasuk Sewa Papan Selancar & Rashguard",
-        pkg_beg_f3: "Teori Keselamatan & Etika Ombak",
-        pkg_adv_tag: "Intensif & Surf Trip",
-        pkg_adv_name: "Multi-Day & Custom Trip",
-        pkg_adv_desc: "Program beberapa hari untuk mempertajam teknik berbelok, catching green waves, atau eksplorasi spot Aceh Jaya.",
-        pkg_adv_f1: "Jadwal Fleksibel & Spot Scouting",
-        pkg_adv_f2: "Analisis Video & Koreksi Postur",
-        pkg_adv_f3: "Trip Eksplorasi Pesisir Aceh Jaya",
-        btn_choose: "Pilih Paket",
-        cta_title: "Siap Mencoba Ombak Aceh?",
-        cta_desc: "Hubungi Adon secara langsung untuk konsultasi kondisi ombak, jadwal kelas, dan reservasi sesi berselancar Anda.",
-        btn_whatsapp: "Hubungi via WhatsApp",
-        footer_location: "Lhoknga & Lampuuk, Aceh Besar, Indonesia"
-      },
-      en: {
-        nav_home: "Home",
-        nav_about: "Instructor",
-        nav_spots: "Surf Spots",
-        nav_packages: "Packages",
-        btn_book_now: "Book Now",
-        hero_location: "Lhoknga & Lampuuk, Aceh Besar",
-        hero_title: "Learn to Surf in Aceh with Adon",
-        hero_subtitle: "The ultimate private surfing experience with professional local guidance along Aceh's exotic coastline.",
-        hero_cta_primary: "Start Surfing",
-        hero_cta_secondary: "About Instructor",
-        instructor_role: "Local Surfer & Senior Surf Instructor",
-        instructor_bio: "Over 15 years of teaching experience. Direct <span class=\"text-cyan-400 font-semibold italic\">person-to-person</span> coaching by Adon, taking you from a complete beginner to confidently surfing Aceh's exotic spots.",
-        stat_exp: "Years Experience",
-        stat_coaching: "Private Coaching",
-        stat_safety: "Safety First",
-        spots_title: "Exotic Surf Spots in Aceh",
-        spots_subtitle: "Explore the finest surf spots ranging from white sand beach breaks to thrilling reef breaks.",
-        spot_saney_desc: "Consistent waves with peaceful beach views, perfect for practicing fundamental to intermediate techniques.",
-        spot_cement_desc: "A renowned spot in the Lhoknga area featuring challenging reef breaks and scenic views.",
-        spot_custom_desc: "Custom surfing journeys exploring the coastline of Aceh Jaya, discovering smooth secret breaks with local guidance.",
-        pkg_title: "Lesson Packages",
-        pkg_subtitle: "Choose the class session tailored to your skill level and goals.",
-        pkg_beg_tag: "Beginner / First Timer",
-        pkg_beg_name: "Single Beginner Session",
-        pkg_beg_desc: "A 2-hour introductory session covering beach theory, water safety, and standing up on the board.",
-        pkg_beg_f1: "2 Hours Private Coaching (1-on-1)",
-        pkg_beg_f2: "Includes Surfboard & Rashguard Rental",
-        pkg_beg_f3: "Water Safety & Wave Etiquette Theory",
-        pkg_adv_tag: "Intensive & Surf Trip",
-        pkg_adv_name: "Multi-Day & Custom Trip",
-        pkg_adv_desc: "Multi-day programs designed to hone turning techniques, catch green waves, or explore Aceh Jaya spots.",
-        pkg_adv_f1: "Flexible Schedule & Spot Scouting",
-        pkg_adv_f2: "Video Analysis & Posture Correction",
-        pkg_adv_f3: "Coastal Exploration Trip to Aceh Jaya",
-        btn_choose: "Select Package",
-        cta_title: "Ready to Catch Aceh Waves?",
-        cta_desc: "Get in touch directly with Adon to discuss wave conditions, class schedules, and reserve your surf session.",
-        btn_whatsapp: "Contact via WhatsApp",
-        footer_location: "Lhoknga & Lampuuk, Aceh Besar, Indonesia"
-      }
-    };
-
-    function setLanguage(lang) {
-      const btnId = document.getElementById('btn-id');
-      const btnEn = document.getElementById('btn-en');
-
-      if (lang === 'id') {
-        btnId.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all bg-cyan-500 text-white shadow-md";
-        btnEn.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
-      } else {
-        btnEn.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all bg-cyan-500 text-white shadow-md";
-        btnId.className = "px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
-      }
-
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          element.innerHTML = translations[lang][key];
+    <style>
+        :root {
+            --bg-paper: #F5F2EB;
+            --color-navy: #1B365D;
+            --color-coral: #D94E34;
+            --color-cream: #EFECE6;
+            --color-dark: #2B2927;
         }
-      });
-    }
 
-    lucide.createIcons();
-  </script>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--color-dark);
+            background-image: radial-gradient(#1B365D 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+
+        .font-serif-editorial {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .font-script {
+            font-family: 'Caveat', cursive;
+        }
+
+        .font-mono-code {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .glass-nav {
+            background: rgba(245, 242, 235, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#D94E34] selection:text-white">
+
+    <header class="sticky top-0 z-50 glass-nav border-b-2 border-[#1B365D] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="group flex items-center space-x-2">
+                        <div class="bg-[#1B365D] text-[#F5F2EB] font-serif-editorial text-2xl font-black px-4 py-1.5 border-2 border-[#1B365D] shadow-[3px_3px_0px_#D94E34] tracking-tighter transition-transform group-hover:scale-105">
+                            ADON SURF
+                        </div>
+                    </a>
+                    <span class="hidden sm:inline-block bg-[#D94E34] text-white text-[10px] font-mono-code font-bold tracking-widest uppercase px-2.5 py-1 rounded-none border border-[#1B365D] shadow-sm">
+                        EST. 2011
+                    </span>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-8 text-xs font-mono-code uppercase tracking-widest font-bold text-[#1B365D]">
+                    <a href="#about" class="hover:text-[#D94E34] transition-colors relative py-1 border-b-2 border-transparent hover:border-[#D94E34]">
+                        <span data-lang-id>Tentang</span>
+                        <span data-lang-en class="hidden">About</span>
+                    </a>
+                    <a href="#services" class="hover:text-[#D94E34] transition-colors relative py-1 border-b-2 border-transparent hover:border-[#D94E34]">
+                        <span data-lang-id>Layanan & Harga</span>
+                        <span data-lang-en class="hidden">Packages & Rates</span>
+                    </a>
+                    <a href="#spots" class="hover:text-[#D94E34] transition-colors relative py-1 border-b-2 border-transparent hover:border-[#D94E34]">
+                        <span data-lang-id>Surf Spots</span>
+                        <span data-lang-en class="hidden">Surf Spots</span>
+                    </a>
+                    <a href="#consultation" class="hover:text-[#D94E34] transition-colors relative py-1 border-b-2 border-transparent hover:border-[#D94E34]">
+                        <span data-lang-id>Konsultasi</span>
+                        <span data-lang-en class="hidden">Consultation</span>
+                    </a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white p-1 flex items-center border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D]">
+                        <button id="btn-lang-id" onclick="setLanguage('id')" class="px-3 py-1 text-xs font-mono-code font-bold transition-all bg-[#1B365D] text-white">
+                            ID
+                        </button>
+                        <button id="btn-lang-en" onclick="setLanguage('en')" class="px-3 py-1 text-xs font-mono-code font-bold transition-all text-[#1B365D] hover:text-[#D94E34]">
+                            EN
+                        </button>
+                    </div>
+
+                    <a id="nav-wa-cta" href="https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20ingin%20bertanya%20mengenai%20bimbingan%20selancar" target="_blank" class="hidden lg:inline-flex items-center space-x-2 bg-[#D94E34] text-white px-5 py-2.5 text-xs font-mono-code font-bold uppercase tracking-wider hover:bg-[#1B365D] transition-all border-2 border-[#1B365D] shadow-[3px_3px_0px_#1B365D]">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span data-lang-id>Chat Adon</span>
+                        <span data-lang-en class="hidden">Chat Adon</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-12 pb-20 overflow-hidden border-b-4 border-[#1B365D]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 border-2 border-[#1B365D] bg-white px-4 py-1.5 shadow-[2px_2px_0px_#1B365D]">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#D94E34] animate-pulse"></span>
+                        <span class="text-xs uppercase font-mono-code font-bold tracking-wider text-[#1B365D]" data-lang-id>Surfing Professional Guide • Aceh, Indonesia</span>
+                        <span class="text-xs uppercase font-mono-code font-bold tracking-wider text-[#1B365D] hidden" data-lang-en>Professional Surfing Guide • Aceh, Indonesia</span>
+                    </div>
+
+                    <div class="relative">
+                        <span class="font-script text-3xl sm:text-4xl text-[#D94E34] block -mb-2 rotate-[-2deg]">Petualangan Ombak Terbaik</span>
+                        <h1 class="text-4xl sm:text-6xl font-serif-editorial font-bold text-[#1B365D] leading-tight">
+                            <span data-lang-id>Belajar Surfing di Aceh bersama Adon.</span>
+                            <span data-lang-en class="hidden">Learn Surfing in Aceh with Adon.</span>
+                            <span class="block italic font-normal text-[#D94E34] text-3xl sm:text-5xl mt-3 font-serif-editorial">
+                                <span data-lang-id>Bisa berselancar dari sesi pertama.</span>
+                                <span data-lang-en class="hidden">Ride your first wave in session one.</span>
+                            </span>
+                        </h1>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t-2 border-dashed border-[#1B365D]/40 max-w-lg">
+                        <div class="bg-white p-3 border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D]">
+                            <span class="block text-2xl font-black text-[#1B365D] font-mono-code">15+</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold" data-lang-id>Tahun Pengalaman</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold hidden" data-lang-en>Years Experience</span>
+                        </div>
+                        <div class="bg-white p-3 border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D]">
+                            <span class="block text-2xl font-black text-[#1B365D] font-mono-code">1-on-1</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold" data-lang-id>Bimbingan Intim</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold hidden" data-lang-en>Personal Coaching</span>
+                        </div>
+                        <div class="bg-white p-3 border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D]">
+                            <span class="block text-2xl font-black text-[#1B365D] font-mono-code">100%</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold" data-lang-id>Peralatan Siap</span>
+                            <span class="text-[10px] uppercase font-mono-code tracking-wider text-[#2B2927]/80 font-bold hidden" data-lang-en>Gear Included</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#services" class="bg-[#1B365D] text-[#F5F2EB] px-8 py-4 font-mono-code font-bold uppercase text-xs tracking-widest hover:bg-[#D94E34] transition-all border-2 border-[#1B365D] shadow-[4px_4px_0px_#D94E34] flex items-center space-x-3">
+                            <span data-lang-id>Pilih Paket Belajar</span>
+                            <span data-lang-en class="hidden">Explore Lesson Packages</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#spots" class="bg-white border-2 border-[#1B365D] text-[#1B365D] px-6 py-4 font-mono-code font-bold uppercase text-xs tracking-widest hover:bg-[#1B365D] hover:text-[#F5F2EB] transition-all shadow-[4px_4px_0px_#1B365D] flex items-center space-x-2">
+                            <span data-lang-id>Lihat Spot Ombak</span>
+                            <span data-lang-en class="hidden">View Surf Spots</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative space-y-6">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative bg-white p-5 border-4 border-[#1B365D] shadow-[8px_8px_0px_#1B365D] rotate-1">
+                            <div class="relative h-96 bg-[#1B365D] overflow-hidden flex items-center justify-center text-[#F5F2EB] border-2 border-[#1B365D]">
+                                <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80" alt="Surf Coaching Aceh" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#1B365D]/90 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <p class="font-script text-2xl leading-snug" data-lang-id>"Adon memberikan instruksi yang jelas dan membangun rasa percaya diri di air."</p>
+                                    <p class="font-script text-2xl leading-snug hidden" data-lang-en>"Adon gives clear instructions and builds complete confidence in the water."</p>
+                                    <span class="text-[10px] font-mono-code uppercase tracking-widest text-[#F5F2EB]/90 mt-1 block">— Surfer Experience</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 flex justify-between items-center text-xs font-mono-code text-[#1B365D] pt-2 border-t-2 border-dashed border-[#1B365D]">
+                                <span class="font-bold">ACEH WAVE ACADEMY</span>
+                                <span class="bg-[#D94E34] text-white px-2 py-0.5 font-bold">COACH: ADON</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute -top-6 -right-6 bg-[#D94E34] text-white rounded-full w-28 h-28 flex flex-col items-center justify-center text-center p-2 border-4 border-[#1B365D] shadow-lg rotate-12">
+                            <i class="fa-solid fa-certificate text-lg mb-0.5"></i>
+                            <span class="text-[9px] font-mono-code font-black uppercase tracking-tighter leading-tight">100% Personal Coach</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 border-2 border-[#1B365D] shadow-[4px_4px_0px_#1B365D] relative">
+                        <div class="absolute -top-3 left-4 bg-[#1B365D] text-white px-3 py-0.5 text-[10px] font-mono-code uppercase tracking-widest font-bold">
+                            PHILOSOPHY
+                        </div>
+                        <p class="text-xs sm:text-sm text-[#2B2927] leading-relaxed font-medium">
+                            <span data-lang-id>Lebih dari 15 tahun pengalaman mengajar. Bimbingan langsung <em>person-to-person</em> oleh Adon, dari pemula tanpa pengalaman hingga lancar berselancar di spot eksotis Aceh.</span>
+                            <span data-lang-en class="hidden">Over 15 years of coaching experience. Direct step-by-step person-to-person guidance by Adon, taking you from a absolute beginner to riding waves confidently across Aceh’s exotic spots.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 bg-[#EFECE6] border-b-2 border-[#1B365D]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="font-script text-3xl text-[#D94E34] block">Keunggulan Utama</span>
+                <h2 class="text-xs font-mono-code uppercase tracking-widest text-[#1B365D] font-bold mb-1">Why ADON SURF</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif-editorial font-bold text-[#1B365D]">
+                    <span data-lang-id>Pengalaman Berkelas Internasional dengan Sentuhan Lokal</span>
+                    <span data-lang-en class="hidden">World-Class Coaching with Local Expertise</span>
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] relative group hover:translate-y-[-2px] transition-transform">
+                    <div class="w-14 h-14 bg-[#1B365D] text-white flex items-center justify-center text-2xl mb-6 border-2 border-[#1B365D] shadow-[2px_2px_0px_#D94E34]">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h4 class="font-serif-editorial font-bold text-2xl text-[#1B365D] mb-3">Est. 2011 (15+ Years)</h4>
+                    <p class="text-xs text-[#2B2927] leading-relaxed">
+                        <span data-lang-id>Berdiri sejak 2011, Adon telah melatih ratusan peselancar lokal maupun mancanegara dengan pemahaman mendalam tentang karakter arus laut Aceh.</span>
+                        <span data-lang-en class="hidden">Established in 2011, Adon has coached hundreds of domestic and international surfers with an intimate understanding of Aceh's wave dynamics.</span>
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 border-4 border-[#1B365D] shadow-[6px_6px_0px_#D94E34] relative group hover:translate-y-[-2px] transition-transform">
+                    <div class="w-14 h-14 bg-[#D94E34] text-white flex items-center justify-center text-2xl mb-6 border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D]">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h4 class="font-serif-editorial font-bold text-2xl text-[#1B365D] mb-3">1-on-1 Guidance</h4>
+                    <p class="text-xs text-[#2B2927] leading-relaxed">
+                        <span data-lang-id>Pendampingan penuh secara personal. Adon berada langsung di samping Anda di dalam air untuk memastikan keamanan dan kemajuan teknik secara presisi.</span>
+                        <span data-lang-en class="hidden">Full 1-on-1 personal coaching. Adon stays right beside you in the water, ensuring maximum safety and rapid technical progress.</span>
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] relative group hover:translate-y-[-2px] transition-transform">
+                    <div class="w-14 h-14 bg-[#1B365D] text-white flex items-center justify-center text-2xl mb-6 border-2 border-[#1B365D] shadow-[2px_2px_0px_#D94E34]">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <h4 class="font-serif-editorial font-bold text-2xl text-[#1B365D] mb-3">All Gear Provided</h4>
+                    <p class="text-xs text-[#2B2927] leading-relaxed">
+                        <span data-lang-id>Anda tidak perlu membawa peralatan sendiri. Papan selancar profesional, rashguard, dan perlengkapan keamanan sudah disediakan lengkap.</span>
+                        <span data-lang-en class="hidden">No gear required. High-quality surfboards, rashguards, and full safety gear are fully provided for all sessions.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 relative border-b-2 border-[#1B365D]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b-4 border-[#1B365D] pb-6">
+                <div>
+                    <span class="font-script text-3xl text-[#D94E34] block">Investasi & Pilihan Paket</span>
+                    <span class="text-xs font-mono-code uppercase tracking-widest text-[#1B365D] font-bold block mb-1">PRICING MATRIX</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif-editorial font-bold text-[#1B365D]">
+                        <span data-lang-id>Layanan & Skema Tarif</span>
+                        <span data-lang-en class="hidden">Coaching & Trip Packages</span>
+                    </h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-2 bg-white px-4 py-2 border-2 border-[#1B365D] shadow-[3px_3px_0px_#1B365D]">
+                    <span class="w-3 h-3 rounded-full bg-[#D94E34]"></span>
+                    <span class="text-xs font-mono-code text-[#1B365D] uppercase font-bold" id="mode-indicator-text">MODE LOKAL (IDR)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <div class="bg-white border-4 border-[#1B365D] p-8 flex flex-col justify-between shadow-[8px_8px_0px_#1B365D] relative">
+                    <div class="absolute -top-4 left-6 bg-[#1B365D] text-white text-[10px] font-mono-code uppercase tracking-widest px-4 py-1 border border-[#1B365D] font-bold">
+                        MOST POPULAR
+                    </div>
+
+                    <div>
+                        <div class="mb-6 pt-2">
+                            <h3 class="text-2xl font-serif-editorial font-bold text-[#1B365D]">Lampuuk Surf School</h3>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1" data-lang-id>Single Session (2 Jam)</p>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1 hidden" data-lang-en>Single Session (2 Hours)</p>
+                        </div>
+
+                        <div class="bg-[#EFECE6] p-4 border-l-4 border-[#1B365D] mb-6 border-2 border-[#1B365D]">
+                            <span class="text-3xl font-black text-[#1B365D] font-mono-code" id="price-lesson-single">Rp 300.000</span>
+                            <span class="text-xs text-[#2B2927] block font-mono-code font-bold mt-1" id="sub-lesson-single">/ sesi (Lokal)</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-[#2B2927] mb-8 font-medium">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Pelatihan Person-to-Person bersama Adon</span>
+                                <span data-lang-en class="hidden">Direct 1-on-1 coaching with Adon</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Sudah termasuk papan selancar & seluruh peralatan</span>
+                                <span data-lang-en class="hidden">Includes surfboard & full safety gear</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Teori dasar di darat + Eksekusi di air</span>
+                                <span data-lang-en class="hidden">Ocean safety theory & in-water execution</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a id="btn-book-single" href="#" target="_blank" class="w-full bg-[#1B365D] text-white text-center py-3.5 font-mono-code font-bold uppercase text-xs tracking-widest hover:bg-[#D94E34] transition-colors border-2 border-[#1B365D] shadow-[3px_3px_0px_#1B365D] block">
+                        <span data-lang-id>Booking Single Session</span>
+                        <span data-lang-en class="hidden">Book Single Session</span>
+                    </a>
+                </div>
+
+                <div id="card-weekly-package" class="bg-white border-4 border-[#1B365D] p-8 flex flex-col justify-between shadow-[8px_8px_0px_#D94E34] relative">
+                    <div class="absolute -top-4 left-6 bg-[#D94E34] text-white text-[10px] font-mono-code uppercase tracking-widest px-4 py-1 border border-[#1B365D] font-bold">
+                        BEST VALUE (LOCAL)
+                    </div>
+
+                    <div>
+                        <div class="mb-6 pt-2">
+                            <h3 class="text-2xl font-serif-editorial font-bold text-[#1B365D]">Lampuuk Surf School</h3>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1" data-lang-id>Paket Mingguan (7 Sesi)</p>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1 hidden" data-lang-en>Weekly Package (7 Sessions)</p>
+                        </div>
+
+                        <div class="bg-[#EFECE6] p-4 border-l-4 border-[#D94E34] mb-6 border-2 border-[#1B365D]">
+                            <span class="text-3xl font-black text-[#1B365D] font-mono-code">Rp 1.800.000</span>
+                            <span class="text-xs text-[#2B2927] block font-mono-code font-bold mt-1" data-lang-id>/ 7 sesi x 2 jam</span>
+                            <span class="text-xs text-[#2B2927] block font-mono-code font-bold mt-1 hidden" data-lang-en>/ 7 sessions x 2 hours</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-[#2B2927] mb-8 font-medium">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Total 7 sesi x 2 jam pelatihan personal</span>
+                                <span data-lang-en class="hidden">Total 7 sessions x 2 hours of personal coaching</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Jadwal latihan fleksibel menyesuaikan waktu Anda</span>
+                                <span data-lang-en class="hidden">Flexible session scheduling to match your timing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Evaluasi perkembangan teknik selancar bertahap</span>
+                                <span data-lang-en class="hidden">Step-by-step technical progression evaluation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-[#D94E34] mt-0.5 mr-2 text.sm"></i>
+                                <span data-lang-id>Hemat hingga Rp 300.000 dibanding sesi harian</span>
+                                <span data-lang-en class="hidden">Save up to Rp 300,000 compared to daily sessions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a id="btn-book-weekly" href="https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Lampuuk%20Surf%20School%20Weekly%20Package%20(Rp1.800.000)" target="_blank" class="w-full bg-[#D94E34] text-white text-center py-3.5 font-mono-code font-bold uppercase text-xs tracking-widest hover:bg-[#1B365D] transition-colors border-2 border-[#1B365D] shadow-[3px_3px_0px_#1B365D] block">
+                        <span data-lang-id>Booking Weekly Package</span>
+                        <span data-lang-en class="hidden">Book Weekly Package</span>
+                    </a>
+                </div>
+
+                <div class="bg-white border-4 border-[#1B365D] p-8 flex flex-col justify-between shadow-[8px_8px_0px_#1B365D] relative md:col-span-1">
+                    <div class="absolute -top-4 left-6 bg-[#1B365D] text-white text-[10px] font-mono-code uppercase tracking-widest px-4 py-1 border border-[#1B365D] font-bold">
+                        EXPLORE ACEH WAVES
+                    </div>
+
+                    <div>
+                        <div class="mb-6 pt-2">
+                            <h3 class="text-2xl font-serif-editorial font-bold text-[#1B365D]">Surf Trip</h3>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1" data-lang-id>Destinasi: Saney Beach & Lhoong</p>
+                            <p class="text-xs text-[#2B2927]/80 font-mono-code font-bold mt-1 hidden" data-lang-en>Destinations: Saney Beach & Lhoong</p>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-[#EFECE6] p-4 border-l-4 border-[#1B365D] border-2 border-[#1B365D]">
+                                <span class="text-xs font-mono-code font-bold text-[#1B365D] block uppercase" data-lang-id>Option A (Trip Only)</span>
+                                <span class="text-xs font-mono-code font-bold text-[#1B365D] block uppercase hidden" data-lang-en>Option A (Trip Only)</span>
+                                <span class="text-2xl font-black text-[#1B365D] font-mono-code" id="price-trip-a">Rp 500.000</span>
+                                <span class="text-[10px] font-mono-code text-[#2B2927] font-bold block mt-1" data-lang-id>Fasilitas Motor, Guide, Mineral & Snack</span>
+                                <span class="text-[10px] font-mono-code text-[#2B2927] font-bold block mt-1 hidden" data-lang-en>Includes Scooter, Guide, Water & Snack</span>
+                            </div>
+
+                            <div class="bg-[#EFECE6] p-4 border-l-4 border-[#D94E34] border-2 border-[#1B365D]">
+                                <span class="text-xs font-mono-code font-bold text-[#D94E34] block uppercase" data-lang-id>Option B (+ 1 Sesi Belajar)</span>
+                                <span class="text-xs font-mono-code font-bold text-[#D94E34] block uppercase hidden" data-lang-en>Option B (+ 1 Surf Lesson)</span>
+                                <span class="text-2xl font-black text-[#1B365D] font-mono-code" id="price-trip-b">Rp 800.000</span>
+                                <span class="text-[10px] font-mono-code text-[#2B2927] font-bold block mt-1" data-lang-id>Motor, Guide, 1x Belajar, Mineral & Snack</span>
+                                <span class="text-[10px] font-mono-code text-[#2B2927] font-bold block mt-1 hidden" data-lang-en>Scooter, Guide, 1x Lesson, Water & Snack</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <a id="btn-book-trip-a" href="#" target="_blank" class="w-full bg-white text-[#1B365D] border-2 border-[#1B365D] text-center py-2.5 font-mono-code font-bold uppercase text-[11px] tracking-widest hover:bg-[#1B365D] hover:text-white transition-colors shadow-[2px_2px_0px_#1B365D] block">
+                            <span data-lang-id>Book Trip Option A</span>
+                            <span data-lang-en class="hidden">Book Trip Option A</span>
+                        </a>
+                        <a id="btn-book-trip-b" href="#" target="_blank" class="w-full bg-[#1B365D] text-white text-center py-2.5 font-mono-code font-bold uppercase text-[11px] tracking-widest hover:bg-[#D94E34] transition-colors border-2 border-[#1B365D] shadow-[2px_2px_0px_#1B365D] block">
+                            <span data-lang-id>Book Trip Option B</span>
+                            <span data-lang-en class="hidden">Book Trip Option B</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="spots" class="py-20 bg-[#EFECE6] border-b-2 border-[#1B365D]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-script text-3xl text-[#D94E34] block">Destinasi Favorit</span>
+                <span class="text-xs font-mono-code uppercase tracking-widest text-[#1B365D] font-bold block mb-1">ACEH WAVE MAP</span>
+                <h2 class="text-3xl sm:text-5xl font-serif-editorial font-bold text-[#1B365D]">
+                    <span data-lang-id>Katalog Spot Ombak Unggulan</span>
+                    <span data-lang-en class="hidden">Featured Surf Spot Destinations</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-[#2B2927] mt-3 font-medium">
+                    <span data-lang-id>Disesuaikan dengan tingkat pengalaman dan kondisi angin/pasang surut harian.</span>
+                    <span data-lang-en class="hidden">Tailored specifically to your skill level and real-time wind/tide conditions.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-white border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-[#1B365D] relative overflow-hidden border-b-2 border-[#1B365D]">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Kuala Cut Lampuuk" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform">
+                            <span class="absolute top-3 left-3 bg-[#1B365D] text-white text-[9px] font-mono-code font-bold px-2.5 py-1 uppercase border border-white">Reef Break</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif-editorial font-bold text-xl text-[#1B365D]">Kuala Cut Lampuuk</h3>
+                            <p class="text-xs text-[#2B2927] mt-2 leading-relaxed">
+                                <span data-lang-id>Spot ikonik dengan konsistensi ombak yang baik. Cocok untuk sesi menengah hingga pembentukan kestabilan berevolusi.</span>
+                                <span data-lang-en class="hidden">An iconic spot with solid swell consistency. Perfect for intermediate sessions and honing wave control.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t-2 border-dashed border-[#1B365D]">
+                        <span class="text-[10px] font-mono-code text-[#D94E34] font-bold uppercase">Level: Beginner - Intermediate</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-[#1B365D] relative overflow-hidden border-b-2 border-[#1B365D]">
+                            <img src="https://images.unsplash.com/photo-1512353087810-25dfcd100962?auto=format&fit=crop&w=600&q=80" alt="Cement Factory Beach" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform">
+                            <span class="absolute top-3 left-3 bg-[#D94E34] text-white text-[9px] font-mono-code font-bold px-2.5 py-1 uppercase border border-white">Beach Break</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif-editorial font-bold text-xl text-[#1B365D]">Cement Factory</h3>
+                            <p class="text-xs text-[#2B2927] mt-2 leading-relaxed">
+                                <span data-lang-id>Dasar pasir yang aman, ideal untuk pemula yang baru pertama kali berdiri di atas papan selancar.</span>
+                                <span data-lang-en class="hidden">A safe sandy bottom break, ideal for absolute beginners standing up on a surfboard for the first time.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t-2 border-dashed border-[#1B365D]">
+                        <span class="text-[10px] font-mono-code text-[#D94E34] font-bold uppercase">Level: First-Time Beginner</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-[#1B365D] relative overflow-hidden border-b-2 border-[#1B365D]">
+                            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" alt="Saney Beach" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform">
+                            <span class="absolute top-3 left-3 bg-[#1B365D] text-white text-[9px] font-mono-code font-bold px-2.5 py-1 uppercase border border-white">Beach Break</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif-editorial font-bold text-xl text-[#1B365D]">Saney Beach</h3>
+                            <p class="text-xs text-[#2B2927] mt-2 leading-relaxed">
+                                <span data-lang-id>Pemandangan eksotis dengan dinding ombak panjang. Destinasi favorit untuk paket Surf Trip.</span>
+                                <span data-lang-en class="hidden">Exotic scenic backdrop with long peeling wave walls. A top favorite destination for day surf trips.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t-2 border-dashed border-[#1B365D]">
+                        <span class="text-[10px] font-mono-code text-[#D94E34] font-bold uppercase">Level: All Levels (Trip Option)</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border-4 border-[#1B365D] shadow-[6px_6px_0px_#1B365D] overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-[#1B365D] relative overflow-hidden border-b-2 border-[#1B365D]">
+                            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=600&q=80" alt="Aceh Jaya & Custom Trip" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform">
+                            <span class="absolute top-3 left-3 bg-[#D94E34] text-white text-[9px] font-mono-code font-bold px-2.5 py-1 uppercase border border-white">Custom Secret Breaks</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif-editorial font-bold text-xl text-[#1B365D]">Aceh Jaya & Custom Trip</h3>
+                            <p class="text-xs text-[#2B2927] mt-2 leading-relaxed">
+                                <span data-lang-id>Eksplorasi ombak tersembunyi di pesisir Aceh Jaya sesuai dengan permintaan rombongan.</span>
+                                <span data-lang-en class="hidden">Explore uncrowded secret wave breaks along the scenic coast of Aceh Jaya tailored to your group.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t-2 border-dashed border-[#1B365D]">
+                        <span class="text-[10px] font-mono-code text-[#D94E34] font-bold uppercase">Level: Custom Itinerary</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="consultation" class="py-20 relative bg-[#F5F2EB]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#1B365D] text-[#F5F2EB] p-8 sm:p-14 border-4 border-[#1B365D] shadow-[12px_12px_0px_#D94E34] relative overflow-hidden">
+                <div class="absolute -right-12 -bottom-12 text-[#F5F2EB]/10 font-serif-editorial font-black text-9xl pointer-events-none select-none">
+                    ADON
+                </div>
+
+                <div class="relative z-10 text-center space-y-6">
+                    <span class="inline-block bg-[#D94E34] text-white text-[10px] font-mono-code uppercase tracking-widest px-4 py-1.5 font-bold border border-white">
+                        DIRECT CONSULTATION
+                    </span>
+
+                    <h2 class="text-3xl sm:text-5xl font-serif-editorial font-bold leading-tight">
+                        <span data-lang-id>Butuh Custom Itinerary atau Diskusi Ombak?</span>
+                        <span data-lang-en class="hidden">Need a Custom Itinerary or Wave Check?</span>
+                    </h2>
+
+                    <p class="text-xs sm:text-sm text-[#F5F2EB]/90 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <span data-lang-id>Konsultasikan jadwal kedatangan Anda, jumlah rombongan, atau kondisi pasang surut air laut Aceh secara langsung *person-to-person* bersama Adon.</span>
+                        <span data-lang-en class="hidden">Discuss your trip dates, group size, or real-time ocean swell conditions in Aceh directly 1-on-1 with Adon.</span>
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a id="btn-consultation-wa" href="https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20ingin%20konsultasi%20custom%20trip%20/%20rombongan" target="_blank" class="w-full sm:w-auto bg-[#D94E34] text-white px-8 py-4 font-mono-code font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#1B365D] transition-all border-2 border-white shadow-[4px_4px_0px_#1B365D] flex items-center justify-center space-x-3">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span data-lang-id>Konsultasi Langsung (WhatsApp)</span>
+                            <span data-lang-en class="hidden">Direct WhatsApp Consult</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1B365D] text-[#F5F2EB] border-t-8 border-[#D94E34] py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b-2 border-dashed border-white/20 pb-8 gap-6">
+                <div>
+                    <span class="font-serif-editorial text-3xl font-bold block text-[#F5F2EB]">ADON SURF ACEH</span>
+                    <span class="text-xs text-[#F5F2EB]/70 font-mono-code">Surf Academy & Coastal Guide • Est. 2011</span>
+                </div>
+                <div class="flex space-x-6 text-xs font-mono-code font-bold uppercase text-[#F5F2EB]/90">
+                    <a href="#about" class="hover:text-[#D94E34]">About</a>
+                    <a href="#services" class="hover:text-[#D94E34]">Rates</a>
+                    <a href="#spots" class="hover:text-[#D94E34]">Spots</a>
+                    <a href="#consultation" class="hover:text-[#D94E34]">Contact</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-[#F5F2EB]/60 font-mono-code">
+                <p>&copy; 2011-2026 ADON SURF ACEH. Lead Coach: Adon (+62 813-6041-8440).</p>
+                <p class="mt-2 sm:mt-0">Design & Code Architecture: UI Steward Engine</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'id';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+
+            const btnId = document.getElementById('btn-lang-id');
+            const btnEn = document.getElementById('btn-lang-en');
+            const modeIndicator = document.getElementById('mode-indicator-text');
+            const cardWeekly = document.getElementById('card-weekly-package');
+            
+            // Elements
+            const idElements = document.querySelectorAll('[data-lang-id]');
+            const enElements = document.querySelectorAll('[data-lang-en]');
+
+            // Dynamic Price Fields
+            const priceSingle = document.getElementById('price-lesson-single');
+            const subSingle = document.getElementById('sub-lesson-single');
+            const priceTripA = document.getElementById('price-trip-a');
+            const priceTripB = document.getElementById('price-trip-b');
+
+            // Dynamic CTA Links
+            const btnSingle = document.getElementById('btn-book-single');
+            const btnTripA = document.getElementById('btn-book-trip-a');
+            const btnTripB = document.getElementById('btn-book-trip-b');
+
+            if (lang === 'id') {
+                btnId.className = "px-3 py-1 text-xs font-mono-code font-bold transition-all bg-[#1B365D] text-white shadow-sm";
+                btnEn.className = "px-3 py-1 text-xs font-mono-code font-bold transition-all text-[#1B365D] hover:text-[#D94E34]";
+
+                idElements.forEach(el => el.classList.remove('hidden'));
+                enElements.forEach(el => el.classList.add('hidden'));
+
+                modeIndicator.innerText = "MODE LOKAL (IDR)";
+
+                if (cardWeekly) cardWeekly.classList.remove('hidden');
+
+                priceSingle.innerText = "Rp 300.000";
+                subSingle.innerText = "/ sesi (Tarif Lokal)";
+                priceTripA.innerText = "Rp 500.000";
+                priceTripB.innerText = "Rp 800.000";
+
+                btnSingle.href = "https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Lampuuk%20Surf%20School%20Local%20(Rp300.000)";
+                btnTripA.href = "https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Surf%20Trip%20Option%20A%20Local%20(Rp500.000)";
+                btnTripB.href = "https://wa.me/6281360418440?text=Halo%20Adon%20Surf,%20saya%20mau%20booking%20Surf%20Trip%20Option%20B%20Local%20(Rp800.000)";
+
+            } else {
+                btnEn.className = "px-3 py-1 text-xs font-mono-code font-bold transition-all bg-[#1B365D] text-white shadow-sm";
+                btnId.className = "px-3 py-1 text-xs font-mono-code font-bold transition-all text-[#1B365D] hover:text-[#D94E34]";
+
+                enElements.forEach(el => el.classList.remove('hidden'));
+                idElements.forEach(el => el.classList.add('hidden'));
+
+                modeIndicator.innerText = "TOURIST MODE (EN)";
+
+                if (cardWeekly) cardWeekly.classList.add('hidden');
+
+                priceSingle.innerText = "Rp 400.000";
+                subSingle.innerText = "/ session (Tourist Rate)";
+                priceTripA.innerText = "Rp 500.000";
+                priceTripB.innerText = "Rp 900.000";
+
+                btnSingle.href = "https://wa.me/6281360418440?text=Hi%20Adon%20Surf,%20I%20would%20like%20to%20book%20a%20Lampuuk%20Surf%20School%20Tourist%20Session%20(Rp400.000)";
+                btnTripA.href = "https://wa.me/6281360418440?text=Hi%20Adon%20Surf,%20I%20would%20like%20to%20book%20a%20Tourist%20Surf%20Trip%20Option%20A%20(Rp500.000)";
+                btnTripB.href = "https://wa.me/6281360418440?text=Hi%20Adon%20Surf,%20I%20would%20like%20to%20book%20a%20Tourist%20Surf%20Trip%20Option%20B%20(Rp900.000)";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('id');
+        });
+    </script>
 </body>
 </html>
