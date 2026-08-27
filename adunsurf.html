@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADUN SURF — Est. 2011 | Surf Lessons & Coastal Trips</title>
-    <!-- Tailwind CSS CDN -->
+    <title>ADUN SURF — Est. 2011</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Space Grotesk & Syne -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -19,408 +16,272 @@
                 extend: {
                     colors: {
                         ocean: {
-                            900: '#021F20',
-                            800: '#032B2B',
-                            700: '#053D3D',
-                            600: '#095454'
+                            light: '#56C5C7',
+                            DEFAULT: '#3BB4B6',
+                            dark: '#2AA1A4',
+                            deep: '#1B6B6D'
                         },
-                        acid: {
-                            DEFAULT: '#DFFF00',
-                            hover: '#cce600',
-                            glow: 'rgba(223, 255, 0, 0.25)'
+                        sand: {
+                            DEFAULT: '#F3F2CB',
+                            light: '#FFFDD0',
+                            dark: '#E2E1AD'
+                        },
+                        sunset: {
+                            DEFAULT: '#E86D43',
+                            hover: '#D45B32'
                         }
                     },
                     fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        display: ['Syne', 'sans-serif']
+                        retro: ['Fredoka', 'cursive', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-
     <style>
-        body {
-            background-color: #021F20;
-            color: #E2E8F0;
-            font-family: 'Space Grotesk', sans-serif;
+        .retro-grain {
+            background-color: #3BB4B6;
+            background-image: radial-gradient(rgba(243, 242, 203, 0.15) 1px, transparent 0);
+            background-size: 24px 24px;
         }
-
-        /* Glassmorphism Surface Elevation */
-        .glass-panel {
-            background: rgba(3, 43, 43, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(223, 255, 0, 0.2);
+        .retro-shadow {
+            box-shadow: 4px 4px 0px 0px #1B6B6D;
         }
-
-        .glass-pill {
-            background: rgba(9, 84, 84, 0.4);
-            border: 1px solid rgba(223, 255, 0, 0.3);
-            backdrop-filter: blur(8px);
+        .retro-shadow-lg {
+            box-shadow: 6px 6px 0px 0px #1B6B6D;
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #021F20;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #095454;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #DFFF00;
+        .glass-retro {
+            background: rgba(59, 180, 182, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(243, 242, 203, 0.3);
         }
     </style>
 </head>
-<body class="antialiased text-slate-100 bg-ocean-900 selection:bg-acid selection:text-ocean-900">
+<body class="bg-ocean text-sand-light font-sans antialiased selection:bg-sand selection:text-ocean-deep min-h-screen flex flex-col retro-grain">
 
-    <!-- NAVIGATION HEADER -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 lg:px-12 py-4 glass-panel border-b-0 border-b-acid/10">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group">
-                <span class="font-display font-black text-2xl tracking-tighter text-acid group-hover:scale-105 transition-transform">ADUN SURF</span>
-                <span class="text-xs px-2 py-0.5 rounded-full glass-pill text-acid font-mono font-bold tracking-widest">EST. 2011</span>
+    <!-- NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-retro border-b border-sand/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <i class="fa-solid font-retro fa-water text-sand text-3xl group-hover:rotate-12 transition-transform"></i>
+                <div>
+                    <span class="font-retro text-2xl font-bold tracking-wider text-sand block leading-none">ADUN SURF</span>
+                    <span class="text-[10px] tracking-widest text-sand-dark uppercase font-semibold">EST. 2011</span>
+                </div>
             </a>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
-                <a href="#about" class="hover:text-acid transition-colors">Tentang</a>
-                <a href="#services" class="hover:text-acid transition-colors">Layanan & Harga</a>
-                <a href="#spots" class="hover:text-acid transition-colors">Spot Surfing</a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-retro tracking-wide text-sand">
+                <a href="#services" class="hover:text-sunset transition-colors">Layanan & Harga</a>
+                <a href="#spots" class="hover:text-sunset transition-colors">Surf Spots</a>
+                <a href="#consultation" class="hover:text-sunset transition-colors">Konsultasi</a>
             </nav>
 
-            <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-acid text-ocean-900 font-bold px-5 py-2.5 rounded-full hover:bg-acid-hover transition-all duration-300 shadow-[0_0_20px_rgba(223,255,0,0.3)] hover:shadow-[0_0_30px_rgba(223,255,0,0.5)]">
+            <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="bg-sunset hover:bg-sunset-hover text-sand-light font-retro px-5 py-2.5 rounded-full border-2 border-sand-light retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center gap-2">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>Hubungi WA</span>
+                <span>Hubungi Us</span>
             </a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 lg:px-12 overflow-hidden">
-        <!-- Background Grid Graphic -->
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#DFFF00_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    <section class="relative py-20 lg:py-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-block bg-ocean-dark/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-sand/30 mb-6">
+                <span class="font-retro text-sand text-sm tracking-wider uppercase">⚡ Professional Surf Guide & Academy Since 2011</span>
+            </div>
+            
+            <h1 class="font-retro text-5xl sm:text-7xl lg:text-8xl font-bold text-sand tracking-wide leading-tight mb-6 drop-shadow-md">
+                SURF THE BEST WAVES<br><span class="text-sunset">WITH ADUN</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-sand-light/90 mb-10 font-medium">
+                Pengalaman lebih dari 15 tahun membimbing surfer lokal & turis mancanegara menaklukan ombak terbaik di Aceh.
+            </p>
 
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-            <!-- Left Hero Content -->
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-pill text-acid text-xs font-mono font-bold tracking-wider uppercase">
-                    <span class="w-2 h-2 rounded-full bg-acid animate-ping"></span>
-                    <span>* ADUN SURFING EXPERIENCE</span>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#services" class="w-full sm:w-auto bg-sand text-ocean-deep hover:bg-sand-light font-retro text-lg px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                    Lihat Paket Lesson & Trip
+                </a>
+                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-ocean-dark/80 hover:bg-ocean-dark text-sand font-retro text-lg px-8 py-4 rounded-full border-2 border-sand retro-shadow-lg transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID SERVICES SECTION -->
+    <section id="services" class="py-16 bg-ocean-dark/40 border-y border-sand/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-retro text-4xl sm:text-5xl text-sand mb-4">LAYANAN & HARGA</h2>
+                <p class="text-sand-light/80 max-w-xl mx-auto">Pilih paket les selancar atau petualangan surf trip yang sesuai dengan kebutuhan Anda.</p>
+            </div>
+
+            <!-- BENTO GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <h1 class="font-display text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-none">
-                    RIDE THE OCEAN WITH <span class="text-acid underline decoration-acid/30 underline-offset-8">ADUN SURF</span>
-                </h1>
-
-                <p class="text-slate-300 text-lg md:text-xl font-normal max-w-2xl leading-relaxed">
-                    Pengalaman berselancar profesional sejak 2011. Kami menyediakan kelas surf privat, bimbingan lokal berstandar tinggi, hingga trip mengeksplorasi spot ombak terbaik.
-                </p>
-
-                <div class="pt-4 flex flex-wrap gap-4 items-center">
-                    <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="bg-acid text-ocean-900 font-bold text-lg px-8 py-4 rounded-full hover:bg-acid-hover transition-all duration-300 flex items-center gap-3 shadow-[0_0_25px_rgba(223,255,0,0.4)]">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                        <span>Booking via WhatsApp</span>
-                    </a>
-                    <a href="#services" class="glass-panel text-white font-semibold text-lg px-8 py-4 rounded-full hover:border-acid transition-all duration-300">
-                        Lihat Paket & Layanan
-                    </a>
-                </div>
-
-                <!-- Coordinates & Tech Spec overlay -->
-                <div class="pt-8 border-t border-acid/10 grid grid-cols-2 md:grid-cols-3 gap-4 font-mono text-xs text-slate-400">
+                <!-- CARD 1: SURF LESSON LOCAL -->
+                <div class="bg-ocean-dark/90 rounded-3xl p-8 border-2 border-sand/40 retro-shadow flex flex-col justify-between hover:border-sand transition-all">
                     <div>
-                        <span class="block text-acid/70">ESTABLISHED</span>
-                        <span class="text-white text-sm font-bold">2011 (15+ Years)</span>
-                    </div>
-                    <div>
-                        <span class="block text-acid/70">LOCATION</span>
-                        <span class="text-white text-sm font-bold">Sumatra Break Points</span>
-                    </div>
-                    <div class="col-span-2 md:col-span-1">
-                        <span class="block text-acid/70">COORDINATES</span>
-                        <span class="text-acid font-bold">5°33'00"N 95°19'00"E</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Hero Bento Card / Visual Anchor -->
-            <div class="lg:col-span-5">
-                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden group hover:border-acid/50 transition-all duration-500">
-                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-acid/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="font-mono text-acid text-sm tracking-widest">[01] QUICK SPECS</span>
-                        <i class="fa-solid fa-water text-acid text-2xl"></i>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="p-4 rounded-2xl bg-ocean-800/80 border border-acid/10">
-                            <h4 class="font-bold text-white text-base">Full Gear Included</h4>
-                            <p class="text-xs text-slate-300 mt-1">Setiap sesi pelajaran sudah termasuk papan selancar dan perlengkapan keamanan lengkap.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider">Local Rate</span>
+                            <i class="fa-solid fa-person-surfing text-sunset text-2xl"></i>
                         </div>
-                        <div class="p-4 rounded-2xl bg-ocean-800/80 border border-acid/10">
-                            <h4 class="font-bold text-white text-base">Experienced Local Guide</h4>
-                            <p class="text-xs text-slate-300 mt-1">Dipandu langsung oleh insktruktur berpengalaman lokal sejak tahun 2011.</p>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-ocean-800/80 border border-acid/10">
-                            <h4 class="font-bold text-white text-base">Custom Trips Available</h4>
-                            <p class="text-xs text-slate-300 mt-1">Eksplorasi spot tersembunyi dengan armada scooter dan konsumsi lengkap.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 1: ABOUT / INFORMASI UMUM -->
-    <section id="about" class="py-20 px-4 lg:px-12 border-t border-acid/10 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="font-mono text-acid font-bold text-sm">(1)</span>
-                <span class="h-px w-12 bg-acid/40"></span>
-                <span class="font-mono text-xs tracking-widest text-acid uppercase">Tentang Adun Surf</span>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div class="lg:col-span-5">
-                    <h2 class="font-display text-4xl lg:text-5xl font-bold text-white leading-tight">
-                        MEMBANTU ANDA MENAKLUKKAN OMBAK SEJAK <span class="text-acid">2011</span>.
-                    </h2>
-                </div>
-                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl space-y-4 text-slate-300">
-                    <p class="text-lg">
-                        Berdiri lebih dari satu dekade, <strong class="text-white">Adun Surf</strong> berdedikasi memberikan pengalaman selancar terbaik bagi pemula hingga peselancar berpengalaman.
-                    </p>
-                    <p class="text-sm leading-relaxed">
-                        Kami mengutamakan keamanan, pemahaman membaca ombak secara teknis, dan keseruan di sepanjang pantai. Baik Anda menginginkan sesi latihan mandiri di pantai lokal maupun petualangan surf trip antar spot, Adun Surf siap menjadi pandu andalan Anda.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: SERVICES & PRICING BENTO GRID -->
-    <section id="services" class="py-20 px-4 lg:px-12 border-t border-acid/10 bg-ocean-800/40 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="font-mono text-acid font-bold text-sm">(2)</span>
-                        <span class="h-px w-12 bg-acid/40"></span>
-                        <span class="font-mono text-xs tracking-widest text-acid uppercase">Layanan & Investasi</span>
-                    </div>
-                    <h2 class="font-display text-4xl lg:text-5xl font-bold text-white">PAKET SURF LESSON & TRIP</h2>
-                </div>
-                <span class="hidden md:block font-mono text-xs text-slate-400">* Opsi Kurs Lokal & Turis Manconegara</span>
-            </div>
-
-            <!-- Bento Grid Structure -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-
-                <!-- CARD 1: SURF LESSON (LOCAL) -->
-                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl relative flex flex-col justify-between hover:border-acid transition-all group">
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="px-3 py-1 rounded-full glass-pill text-acid font-mono text-xs font-bold uppercase">A. SURF LESSON — LOCAL RATE</span>
-                            <i class="fa-solid fa-person-surfing text-acid text-2xl"></i>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white mb-4">Kelas Selancar Lokal</h3>
-                        <p class="text-slate-300 text-sm mb-6">Bimbingan intensif berdurasi 2 jam per sesi. Sangat cocok untuk pemula yang ingin belajar teknik dasar hingga berdiri di atas papan.</p>
+                        <h3 class="font-retro text-3xl text-sand mb-2">Surf Lesson</h3>
+                        <p class="text-sm text-sand-light/70 mb-6">Khusus Domestik / WNI</p>
                         
-                        <div class="space-y-4 my-6">
-                            <div class="p-4 rounded-2xl bg-ocean-900/60 border border-acid/10 flex justify-between items-center">
-                                <div>
-                                    <span class="text-white font-bold block">Per Session</span>
-                                    <span class="text-xs text-slate-400">Durasi: 2 Jam (Include surfboard & surfgear)</span>
-                                </div>
-                                <span class="font-mono text-xl font-bold text-acid">Rp300.000</span>
+                        <div class="space-y-4 mb-8">
+                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
+                                <div class="text-xs text-sand-dark font-medium uppercase">Per Session</div>
+                                <div class="font-retro text-2xl text-sand">Rp 300.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Jam</span></div>
+                                <p class="text-xs text-sand-light/80 mt-1"><i class="fa-solid fa-check text-sunset mr-1"></i> Include Surfboard & Surfgear</p>
                             </div>
-
-                            <div class="p-4 rounded-2xl bg-ocean-900/60 border border-acid/20 flex justify-between items-center relative overflow-hidden">
-                                <div class="absolute top-0 right-0 bg-acid text-ocean-900 text-[10px] font-bold px-2 py-0.5 rounded-bl">HEMAT</div>
-                                <div>
-                                    <span class="text-white font-bold block">Paket Weekly</span>
-                                    <span class="text-xs text-slate-400">Total 7 Sessions (Durasi: 2 Jam / session)</span>
-                                </div>
-                                <span class="font-mono text-xl font-bold text-acid">Rp1.800.000</span>
+                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
+                                <div class="text-xs text-sand-dark font-medium uppercase">Paket Weekly</div>
+                                <div class="font-retro text-2xl text-sand">Rp 1.800.000 <span class="text-sm font-sans text-sand-light/70">/ 7 Session</span></div>
+                                <p class="text-xs text-sand-light/80 mt-1"><i class="fa-solid fa-check text-sunset mr-1"></i> 2 Jam per Session</p>
                             </div>
                         </div>
                     </div>
-
-                    <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20tertarik%20booking%20Surf%20Lesson%20(Local)" target="_blank" rel="noopener noreferrer" class="w-full mt-4 py-3 rounded-xl bg-acid/10 border border-acid text-acid font-bold text-center hover:bg-acid hover:text-ocean-900 transition-all duration-300">
-                        Pesan Kelas Lokal
+                    <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20mau%20booking%20Surf%20Lesson%20Local" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sand hover:bg-sand-light text-ocean-deep font-retro py-3 rounded-xl border border-ocean-deep transition-colors block">
+                        Book Local Lesson
                     </a>
                 </div>
 
-                <!-- CARD 2: SURF LESSON (TOURIST / ENGLISH MODE) -->
-                <div class="lg:col-span-5 glass-panel p-8 rounded-3xl relative flex flex-col justify-between hover:border-acid transition-all">
+                <!-- CARD 2: SURF LESSON TOURIST -->
+                <div class="bg-ocean-dark/90 rounded-3xl p-8 border-2 border-sand/40 retro-shadow flex flex-col justify-between hover:border-sand transition-all">
                     <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="px-3 py-1 rounded-full glass-pill text-acid font-mono text-xs font-bold uppercase">TOURIST PRICE (ENGLISH)</span>
-                            <i class="fa-solid fa-globe text-acid text-2xl"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-sunset/30 text-sand-light text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider">Tourist Rate (English)</span>
+                            <i class="fa-solid fa-earth-americas text-sunset text-2xl"></i>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-white mb-4">Surf Lesson (English Mode)</h3>
-                        <p class="text-slate-300 text-sm mb-6">Full English instruction tailored for international visitors and tourists.</p>
-
-                        <div class="p-4 rounded-2xl bg-ocean-900/60 border border-acid/10 flex justify-between items-center my-6">
-                            <div>
-                                <span class="text-white font-bold block">Per Session</span>
-                                <span class="text-xs text-slate-400">2 Hours Duration (Surfboard & gear included)</span>
+                        <h3 class="font-retro text-3xl text-sand mb-2">Surf Lesson</h3>
+                        <p class="text-sm text-sand-light/70 mb-6">International Visitors / English Instruction</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
+                                <div class="text-xs text-sand-dark font-medium uppercase">Per Session</div>
+                                <div class="font-retro text-2xl text-sand">Rp 400.000 <span class="text-sm font-sans text-sand-light/70">/ 2 Hours</span></div>
+                                <p class="text-xs text-sand-light/80 mt-1"><i class="fa-solid fa-check text-sunset mr-1"></i> Includes Surfboard & All Gear</p>
                             </div>
-                            <span class="font-mono text-xl font-bold text-acid">Rp400.000</span>
                         </div>
                     </div>
-
-                    <a href="https://wa.me/6285359033973?text=Hello%20Adun%20Surf,%20I%20would%20like%20to%20book%20a%20Surf%20Lesson" target="_blank" rel="noopener noreferrer" class="w-full mt-4 py-3 rounded-xl bg-acid/10 border border-acid text-acid font-bold text-center hover:bg-acid hover:text-ocean-900 transition-all duration-300">
+                    <a href="https://wa.me/6285359033973?text=Hi%20Adun%20Surf,%20I%20would%20like%20to%20book%20a%20Tourist%20Surf%20Lesson" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sunset hover:bg-sunset-hover text-sand-light font-retro py-3 rounded-xl border border-sand-light transition-colors block">
                         Book Tourist Lesson
                     </a>
                 </div>
 
-                <!-- CARD 3: SURF TRIP SHORT TRIP -->
-                <div class="lg:col-span-8 glass-panel p-8 rounded-3xl relative hover:border-acid transition-all">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="px-3 py-1 rounded-full glass-pill text-acid font-mono text-xs font-bold uppercase">B. SURF TRIP — SHORT TRIP</span>
-                        <i class="fa-solid fa-route text-acid text-2xl"></i>
-                    </div>
-                    <h3 class="font-display text-2xl font-bold text-white mb-2">Pilihan Short Trip</h3>
-                    <p class="text-slate-300 text-sm mb-6">Destinasi Spesial: <strong class="text-acid">Saney Beach & Lhoong</strong></p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Option A -->
-                        <div class="p-5 rounded-2xl bg-ocean-900/70 border border-acid/10 flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-white">Option A (Trip Only)</h4>
-                                    <span class="font-mono text-lg font-bold text-acid">Rp500.000 <span class="text-xs text-slate-400 font-normal">/ pax</span></span>
-                                </div>
-                                <ul class="text-xs text-slate-300 space-y-1.5 my-3">
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-acid"></i> Motor / Scooter Provided</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-acid"></i> Local Guide Included</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-acid"></i> Mineral Water & Snack</li>
-                                </ul>
-                            </div>
-                            <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20mau%20pesan%20Surf%20Trip%20Option%20A" target="_blank" rel="noopener noreferrer" class="mt-4 w-full py-2.5 rounded-lg border border-acid/40 text-acid font-bold text-xs text-center hover:bg-acid hover:text-ocean-900 transition-all">
-                                Pilih Option A
-                            </a>
-                        </div>
-
-                        <!-- Option B -->
-                        <div class="p-5 rounded-2xl bg-ocean-900/70 border border-acid/20 flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-white">Option B (+ Lesson 1 Session)</h4>
-                                </div>
-                                <div class="space-y-1 mb-3">
-                                    <div class="flex justify-between text-xs">
-                                        <span class="text-slate-300">Local Rate:</span>
-                                        <span class="font-mono font-bold text-acid">Rp800.000 / pax</span>
-                                    </div>
-                                    <div class="flex justify-between text-xs">
-                                        <span class="text-slate-300">Tourist Rate:</span>
-                                        <span class="font-mono font-bold text-acid">Rp900.000 / pax</span>
-                                    </div>
-                                </div>
-                                <ul class="text-xs text-slate-300 space-y-1.5">
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-acid"></i> Scooter, Guide, Water & Snack</li>
-                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-acid"></i> Surf Lesson 1 Session Included</li>
-                                </ul>
-                            </div>
-                            <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20mau%20pesan%20Surf%20Trip%20Option%20B" target="_blank" rel="noopener noreferrer" class="mt-4 w-full py-2.5 rounded-lg border border-acid/40 text-acid font-bold text-xs text-center hover:bg-acid hover:text-ocean-900 transition-all">
-                                Pilih Option B
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CARD 4: KONSULTASI KHUSUS -->
-                <div class="lg:col-span-4 glass-panel p-8 rounded-3xl flex flex-col justify-between border border-acid/30 bg-gradient-to-br from-ocean-800 to-ocean-700">
+                <!-- CARD 3: SURF TRIP -->
+                <div class="bg-ocean-dark/90 rounded-3xl p-8 border-2 border-sand/40 retro-shadow flex flex-col justify-between hover:border-sand transition-all md:col-span-2 lg:col-span-1">
                     <div>
-                        <span class="px-3 py-1 rounded-full glass-pill text-acid font-mono text-xs font-bold uppercase">C. CUSTOM REQUIREMENT</span>
-                        <h3 class="font-display text-2xl font-bold text-white mt-4 mb-3">Konsultasi Khusus</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Punya kebutuhan khusus, itinerary grup besar, permintaan spot tertentu, atau penyesuaian durasi trip?
-                        </p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-sand/20 text-sand text-xs font-retro px-3 py-1 rounded-full uppercase tracking-wider">Short Trip</span>
+                            <i class="fa-solid fa-route text-sunset text-2xl"></i>
+                        </div>
+                        <h3 class="font-retro text-3xl text-sand mb-1">Surf Trip</h3>
+                        <p class="text-xs font-retro text-sunset mb-6">DESTINASI: SANEY BEACH & LHOONG</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
+                                <div class="text-xs text-sand-dark font-medium uppercase">Option A: Trip Only</div>
+                                <div class="font-retro text-2xl text-sand">Rp 500.000 <span class="text-sm font-sans text-sand-light/70">/ pax</span></div>
+                                <p class="text-xs text-sand-light/80 mt-1"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, Water & Snack</p>
+                            </div>
+                            
+                            <div class="p-4 rounded-2xl bg-ocean-deep/50 border border-sand/20">
+                                <div class="text-xs text-sand-dark font-medium uppercase">Option B: Include 1 Session Lesson</div>
+                                <div class="flex justify-between items-baseline mt-1">
+                                    <span class="text-xs text-sand-light/70">Local:</span>
+                                    <span class="font-retro text-xl text-sand">Rp 800.000 / pax</span>
+                                </div>
+                                <div class="flex justify-between items-baseline">
+                                    <span class="text-xs text-sand-light/70">Tourist:</span>
+                                    <span class="font-retro text-xl text-sand">Rp 900.000 / pax</span>
+                                </div>
+                                <p class="text-xs text-sand-light/80 mt-2 border-t border-sand/10 pt-2"><i class="fa-solid fa-circle-check text-sunset mr-1"></i> Scooter, Guide, 1x Lesson, Water & Snack</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="pt-6">
-                        <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20ingin%20konsultasi%20kebutuhan%20khusus" target="_blank" rel="noopener noreferrer" class="w-full bg-acid text-ocean-900 font-bold py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-acid-hover transition-all shadow-[0_0_20px_rgba(223,255,0,0.3)]">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            <span>Consult Specific Need</span>
-                        </a>
-                    </div>
+                    <a href="https://wa.me/6285359033973?text=Halo%20Adun%20Surf,%20saya%20tertarik%20dengan%20paket%20Surf%20Trip" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-sand hover:bg-sand-light text-ocean-deep font-retro py-3 rounded-xl border border-ocean-deep transition-colors block">
+                        Pesan Surf Trip
+                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: SPOT SURFING (PILL TAG CLOUD) -->
-    <section id="spots" class="py-20 px-4 lg:px-12 border-t border-acid/10 relative">
-        <div class="max-w-7xl mx-auto text-center space-y-8">
-            <div class="inline-flex items-center gap-3">
-                <span class="font-mono text-acid font-bold text-sm">(3)</span>
-                <span class="h-px w-12 bg-acid/40"></span>
-                <span class="font-mono text-xs tracking-widest text-acid uppercase">SURF DESTINATIONS</span>
+    <!-- SURF SPOTS SECTION -->
+    <section id="spots" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="font-retro text-sunset text-lg uppercase tracking-wider">Explore The Waves</span>
+                    <h2 class="font-retro text-4xl sm:text-5xl text-sand mt-1">DESTINASI SURF SPOT</h2>
+                </div>
+                <p class="text-sand-light/80 mt-4 md:mt-0 max-w-md">Kami membawa Anda ke spot ombak terbaik sesuai dengan tingkat kemampuan selancar Anda.</p>
             </div>
 
-            <h2 class="font-display text-4xl lg:text-6xl font-bold text-white">KAMUS & SPOT SURFING ADUN</h2>
-            <p class="text-slate-300 max-w-xl mx-auto text-sm">
-                Berbagai karakter ombak siap ditaklukkan, mulai dari Beach Break aman untuk latihan hingga Reef Break menantang.
-            </p>
-
-            <!-- Pill Tag Cloud Layout -->
-            <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto pt-6">
-                <div class="glass-pill px-6 py-3 rounded-full border border-acid/30 text-white font-bold text-sm flex items-center gap-2 hover:border-acid transition-colors">
-                    <i class="fa-solid fa-location-dot text-acid"></i>
-                    <span>Kuala Cut Lampuuk</span>
-                    <span class="text-xs font-mono text-acid/80 font-normal">(Reef Break)</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">01</div>
+                    <h3 class="font-retro text-xl text-sand mb-2">Kuala Cut Lampuuk</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Reef Break</span>
                 </div>
 
-                <div class="glass-pill px-6 py-3 rounded-full border border-acid/30 text-white font-bold text-sm flex items-center gap-2 hover:border-acid transition-colors">
-                    <i class="fa-solid fa-location-dot text-acid"></i>
-                    <span>Cement Factory</span>
-                    <span class="text-xs font-mono text-acid/80 font-normal">(Beach Break)</span>
+                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">02</div>
+                    <h3 class="font-retro text-xl text-sand mb-2">Cement Factory</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Beach Break</span>
                 </div>
 
-                <div class="glass-pill px-6 py-3 rounded-full border border-acid/30 text-white font-bold text-sm flex items-center gap-2 hover:border-acid transition-colors">
-                    <i class="fa-solid fa-location-dot text-acid"></i>
-                    <span>Saney</span>
-                    <span class="text-xs font-mono text-acid/80 font-normal">(Beach Break)</span>
+                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">03</div>
+                    <h3 class="font-retro text-xl text-sand mb-2">Saney Beach</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">Beach Break</span>
                 </div>
 
-                <div class="glass-pill px-6 py-3 rounded-full border border-acid/30 text-white font-bold text-sm flex items-center gap-2 hover:border-acid transition-colors">
-                    <i class="fa-solid fa-location-dot text-acid"></i>
-                    <span>Aceh Jaya</span>
+                <div class="bg-ocean-dark/60 p-6 rounded-2xl border border-sand/20 hover:border-sand transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-sunset/20 flex items-center justify-center text-sunset text-xl font-retro mb-4">04</div>
+                    <h3 class="font-retro text-xl text-sand mb-2">Aceh Jaya</h3>
+                    <span class="inline-block bg-ocean-deep text-sand-light text-xs px-3 py-1 rounded-full font-medium">& Much More</span>
                 </div>
 
-                <div class="glass-pill px-6 py-3 rounded-full border border-acid/30 text-acid font-mono font-bold text-sm flex items-center gap-2">
-                    <span>+ And much more</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER & DIRECT CONTACT -->
-    <footer class="py-12 px-4 lg:px-12 border-t border-acid/20 glass-panel">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div>
-                <a href="#" class="font-display font-black text-2xl text-acid tracking-tighter">ADUN SURF</a>
-                <p class="text-xs text-slate-400 mt-1">Professional Surfing Lessons & Coastal Trips — Est. 2011</p>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="text-sm font-mono text-acid hover:underline flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>+62 853-5903-3973</span>
+    <!-- CONSULTATION / CTA SECTION -->
+    <section id="consultation" class="py-16 bg-sand text-ocean-deep">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-ocean-light/20 p-8 sm:p-12 rounded-3xl border-2 border-ocean-deep/20">
+                <i class="fa-solid fa-comments text-sunset text-4xl mb-4"></i>
+                <h2 class="font-retro text-3xl sm:text-5xl mb-4 text-ocean-deep">BUTUH KONSULTASI KHUSUS?</h2>
+                <p class="text-ocean-deep/80 max-w-xl mx-auto mb-8 font-medium">Punya kebutuhan khusus, itinerary rombongan, atau pertanyaan kustom seputar kondisi ombak? Diskusi langsung dengan Adun.</p>
+                
+                <a href="https://wa.me/6285359033973?text=Halo%20Adun,%20saya%20ingin%20konsultasi%20khusus%20mengenai%20surfing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-sunset hover:bg-sunset-hover text-sand-light font-retro text-xl px-8 py-4 rounded-full border-2 border-ocean-deep retro-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Consult for Specific Need</span>
                 </a>
             </div>
+        </div>
+    </section>
 
-            <div class="text-xs text-slate-500 font-mono">
-                &copy; 2026 ADUN SURF. All rights reserved.
+    <!-- FOOTER -->
+    <footer class="bg-ocean-deep py-12 border-t border-sand/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-water text-sand text-2xl"></i>
+                <span class="font-retro text-xl text-sand tracking-wider">ADUN SURF</span>
+                <span class="text-xs text-sand-dark">© 2011 - 2026. All Rights Reserved.</span>
+            </div>
+            
+            <div class="flex items-center gap-6 font-retro text-sm text-sand-light/80">
+                <a href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer" class="hover:text-sunset transition-colors flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> 085359033973
+                </a>
             </div>
         </div>
     </footer>
