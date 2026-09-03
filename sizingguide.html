@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Size Guide — All-in Merchmaker</title>
+  <title>All-in Merchmaker — Size Guide</title>
+
+  <meta
+    name="description"
+    content="Temukan ukuran PDH dan Workshirt yang paling sesuai dengan tinggi, berat, dan preferensi fit kamu."
+  />
 
   <style>
-    :root {
-      --black: #111111;
-      --dark: #181818;
-      --gray: #6f6f6f;
-      --light-gray: #f3f3f0;
-      --border: #deded8;
-      --cream: #f8f7f2;
-      --white: #ffffff;
-      --gold: #b58a4a;
-      --green: #20352b;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    :root {
+      --black: #111111;
+      --dark: #181818;
+      --cream: #f5f2eb;
+      --white: #ffffff;
+      --gray: #777777;
+      --light-gray: #e7e4dd;
+      --border: #dedbd3;
+      --accent: #b52832;
+      --accent-dark: #8e1f27;
+      --green: #16845b;
     }
 
     html {
@@ -33,116 +39,150 @@
       font-family: Arial, Helvetica, sans-serif;
       background: var(--cream);
       color: var(--black);
-      min-height: 100vh;
+      line-height: 1.5;
     }
 
     button,
     input {
-      font-family: inherit;
+      font: inherit;
     }
 
     button {
-      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
     }
 
-    /* ========================================
+    /* =========================
        HEADER
-    ======================================== */
+    ========================= */
 
-    .header {
-      text-align: center;
-      padding: 46px 20px 25px;
+    header {
+      background: var(--black);
+      color: white;
+      padding: 22px 20px;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
     .brand {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .brand span {
+      color: #d34a53;
+    }
+
+    .header-small {
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      margin-bottom: 14px;
+      color: #bdbdbd;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
-    .header h1 {
-      font-size: clamp(34px, 6vw, 62px);
-      line-height: .95;
-      letter-spacing: -2.5px;
-      margin-bottom: 15px;
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 70px 20px 40px;
+      text-align: center;
     }
 
-    .header p {
-      max-width: 600px;
+    .hero-label {
+      display: inline-block;
+      background: var(--black);
+      color: white;
+      padding: 7px 13px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 620px;
       margin: auto;
-      color: var(--gray);
-      font-size: 14px;
-      line-height: 1.6;
+      color: #555;
+      font-size: 16px;
     }
 
-    /* ========================================
-       MAIN CONTAINER
-    ======================================== */
+    /* =========================
+       MAIN
+    ========================= */
 
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto 70px;
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 20px 80px;
     }
 
-    /* ========================================
+    /* =========================
        INPUT CARD
-    ======================================== */
+    ========================= */
 
     .input-card {
-      background: var(--white);
+      background: white;
       border: 1px solid var(--border);
-      border-radius: 24px;
       padding: 30px;
-      box-shadow: 0 15px 50px rgba(0,0,0,.05);
+      margin-bottom: 45px;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.07);
     }
 
-    .eyebrow {
-      color: var(--gray);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .section-title {
+      font-size: 12px;
+      font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
     }
 
-    .input-card h2 {
-      font-size: 24px;
-      margin-bottom: 26px;
-      letter-spacing: -.5px;
-    }
-
-    .form-group {
+    .field-group {
       margin-bottom: 25px;
     }
 
-    .form-label {
+    .field-label {
       display: block;
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
-    /* ========================================
-       CHOICE BUTTONS
-    ======================================== */
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .choice-row {
+      display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .choice-btn {
-      border: 1.5px solid var(--border);
+      border: 1px solid #cfcfcf;
       background: white;
-      color: var(--black);
-      border-radius: 12px;
-      padding: 16px;
-      cursor: pointer;
-      font-size: 13px;
+      padding: 13px 22px;
+      min-width: 130px;
       font-weight: 800;
-      transition: all .2s ease;
+      transition: 0.2s ease;
     }
 
     .choice-btn:hover {
@@ -155,374 +195,330 @@
       border-color: var(--black);
     }
 
-    /* ========================================
-       INPUT
-    ======================================== */
-
-    .input-row {
+    .number-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 15px;
     }
 
-    .input-unit {
+    .input-wrapper {
       position: relative;
     }
 
-    .number-input {
+    .input-wrapper input {
       width: 100%;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      padding-right: 50px;
-      font-size: 16px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      padding: 15px 55px 15px 15px;
       outline: none;
-      background: white;
-      transition: border .2s;
+      font-size: 17px;
+      font-weight: 700;
     }
 
-    .number-input:focus {
+    .input-wrapper input:focus {
       border-color: var(--black);
+      background: white;
     }
 
-    .input-unit span {
+    .input-unit {
       position: absolute;
       right: 15px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--gray);
+      color: #777;
       font-size: 12px;
-      pointer-events: none;
+      font-weight: 700;
     }
 
-    /* ========================================
-       CTA
-    ======================================== */
-
-    .check-btn {
+    .calculate-btn {
       width: 100%;
       border: none;
-      background: var(--black);
+      background: var(--accent);
       color: white;
-      padding: 18px;
-      border-radius: 13px;
-      cursor: pointer;
-      font-size: 13px;
+      padding: 17px 20px;
       font-weight: 900;
-      letter-spacing: .5px;
-      transition: all .2s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.2s ease;
+      margin-top: 5px;
     }
 
-    .check-btn:hover {
-      opacity: .9;
+    .calculate-btn:hover {
+      background: var(--accent-dark);
       transform: translateY(-1px);
     }
 
-    .error {
+    .error-message {
+      color: #c5222c;
+      font-size: 13px;
+      margin-top: 12px;
       display: none;
-      background: #fff0f0;
-      color: #a12828;
-      padding: 13px 15px;
-      border-radius: 10px;
-      font-size: 12px;
       font-weight: 700;
-      margin-bottom: 15px;
     }
 
-    /* ========================================
+    /* =========================
        RESULT
-    ======================================== */
+    ========================= */
 
-    #result {
+    #resultSection {
       display: none;
-      margin-top: 35px;
     }
 
     .result-intro {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
 
     .result-intro .eyebrow {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 8px;
     }
 
     .result-intro h2 {
-      font-size: clamp(25px, 4vw, 38px);
-      letter-spacing: -1.2px;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -2px;
+      line-height: 1;
     }
 
-    /* ========================================
+    /* =========================
        PRODUCT TABS
-    ======================================== */
+    ========================= */
 
     .product-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      background: #e8e8e3;
-      border-radius: 14px;
-      padding: 5px;
-      margin-bottom: 20px;
+      border-bottom: 2px solid var(--black);
+      margin-bottom: 25px;
     }
 
     .product-tab {
       border: none;
       background: transparent;
-      padding: 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 12px;
+      padding: 17px 15px;
+      font-size: 14px;
       font-weight: 900;
       letter-spacing: 1px;
+      text-transform: uppercase;
       color: #777;
-      transition: all .2s;
+      position: relative;
     }
 
     .product-tab.active {
-      background: white;
-      color: black;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      background: var(--black);
+      color: white;
     }
 
-    /* ========================================
+    /* =========================
        PRODUCT CARD
-    ======================================== */
+    ========================= */
 
     .product-card {
       background: white;
       border: 1px solid var(--border);
-      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 15px 50px rgba(0,0,0,.05);
     }
 
     .product-image {
       width: 100%;
-      height: 540px;
-      overflow: hidden;
-      background: #ddd;
+      background: #e9e9e4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 600px;
     }
 
     .product-image img {
       width: 100%;
-      height: 100%;
+      height: 680px;
+      object-fit: contain;
       display: block;
-      object-fit: cover;
-      object-position: center center;
     }
 
     .product-info {
       padding: 30px;
     }
 
-    .product-name {
-      color: var(--gray);
-      font-size: 10px;
+    .product-kicker {
+      font-size: 11px;
+      color: #777;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 7px;
     }
 
-    .get-title {
-      font-size: 17px;
-      font-weight: 800;
+    .product-name {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .recommendation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
       margin-bottom: 25px;
     }
 
-    /* ========================================
-       RECOMMENDATION
-    ======================================== */
-
-    .recommendation-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    .size-box {
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: #faf9f6;
     }
 
-    .recommendation-box {
+    .size-box.primary {
       background: var(--black);
       color: white;
-      border-radius: 18px;
-      padding: 25px;
+      border-color: var(--black);
     }
 
-    .recommendation-box .label {
-      color: #aaa;
+    .size-label {
       font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
       text-transform: uppercase;
-    }
-
-    .recommended-size {
-      font-size: 88px;
-      line-height: .9;
+      letter-spacing: 1.2px;
       font-weight: 900;
-      letter-spacing: -7px;
-      margin: 10px 0 5px;
+      margin-bottom: 7px;
+      opacity: 0.7;
     }
 
-    .recommendation-box .small-text {
-      color: #bbb;
-      font-size: 12px;
-      line-height: 1.5;
+    .size-value {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
     }
+
+    .size-description {
+      font-size: 12px;
+      margin-top: 8px;
+      opacity: 0.75;
+    }
+
+    /* =========================
+       WHY BOX
+    ========================= */
 
     .why-box {
-      background: var(--light-gray);
-      border-radius: 18px;
-      padding: 25px;
+      border-left: 4px solid var(--accent);
+      background: #f6f3ed;
+      padding: 20px;
+      margin-bottom: 25px;
     }
 
-    .why-box strong {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 1.5px;
+    .why-title {
+      font-size: 11px;
+      font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
-    .why-box p {
+    .why-text {
+      font-size: 14px;
       color: #444;
-      font-size: 13px;
-      line-height: 1.65;
     }
 
-    /* ========================================
-       ALTERNATIVE
-    ======================================== */
+    /* =========================
+       PRODUCT FOOTER
+    ========================= */
 
-    .alternative {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 20px;
-      margin-top: 15px;
+    .product-bottom {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-    }
-
-    .alternative small {
-      display: block;
-      color: var(--gray);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .alternative strong {
-      font-size: 13px;
-    }
-
-    .alternative-size {
-      font-size: 27px;
-      font-weight: 900;
-    }
-
-    /* ========================================
-       PRICE / ORDER
-    ======================================== */
-
-    .order-box {
-      background: #f5f0e7;
-      border-radius: 18px;
-      padding: 22px;
-      margin-top: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      align-items: flex-end;
       gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
 
-    .order-label {
+    .price-label {
       font-size: 10px;
-      font-weight: 900;
+      color: #777;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--gray);
-      margin-bottom: 5px;
+      letter-spacing: 1px;
+      font-weight: 800;
     }
 
     .price {
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 900;
-    }
-
-    .minimum-order {
-      font-size: 11px;
-      color: var(--gray);
       margin-top: 3px;
     }
 
-    .order-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      background: var(--black);
-      color: white;
-      padding: 13px 18px;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: 900;
-      white-space: nowrap;
+    .order-note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 3px;
     }
 
-    /* ========================================
+    .order-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 13px 20px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: 0.2s;
+    }
+
+    .order-btn:hover {
+      background: var(--accent-dark);
+    }
+
+    /* =========================
        SIZE CHART
-    ======================================== */
+    ========================= */
 
     .chart-section {
+      margin-top: 45px;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 27px;
-      margin-top: 20px;
+      padding: 30px;
     }
 
-    .chart-heading {
-      margin-bottom: 18px;
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .chart-heading small {
-      color: var(--gray);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .chart-header h3 {
+      font-size: 25px;
+      letter-spacing: -1px;
     }
 
-    .chart-heading h3 {
-      font-size: 22px;
-      margin-top: 5px;
+    .chart-header p {
+      color: #777;
+      font-size: 12px;
+      max-width: 350px;
+      text-align: right;
     }
 
-    .table-wrapper {
+    .table-wrap {
       overflow-x: auto;
     }
 
     table {
-      border-collapse: collapse;
       width: 100%;
+      border-collapse: collapse;
       min-width: 650px;
-      font-size: 12px;
     }
 
     th,
     td {
-      padding: 13px 10px;
+      padding: 14px 12px;
       text-align: center;
-      border-bottom: 1px solid #ededeb;
-      white-space: nowrap;
-    }
-
-    th:first-child,
-    td:first-child {
-      text-align: left;
-      font-weight: 800;
+      border-bottom: 1px solid #e5e2db;
+      font-size: 13px;
     }
 
     th {
@@ -531,258 +527,363 @@
       font-weight: 900;
     }
 
-    .highlight {
-      background: #eee8dc !important;
-      font-weight: 900;
-    }
-
-    /* ========================================
-       DISCLAIMER
-    ======================================== */
-
-    .disclaimer {
-      text-align: center;
-      color: #888;
-      font-size: 10px;
-      line-height: 1.6;
-      max-width: 650px;
-      margin: 18px auto 0;
-    }
-
-    /* ========================================
-       FOOTER
-    ======================================== */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 20px 25px;
-      text-align: center;
-      background: white;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 35px;
-      flex-wrap: wrap;
-    }
-
-    .footer-link {
-      text-decoration: none;
-      color: black;
-      border: 1px solid var(--border);
-      padding: 11px 17px;
-      border-radius: 9px;
-      font-size: 11px;
+    th:first-child,
+    td:first-child {
+      text-align: left;
       font-weight: 800;
-      transition: .2s;
     }
 
-    .footer-link:hover {
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      margin-top: 45px;
       background: var(--black);
       color: white;
-      border-color: var(--black);
+      padding: 45px 30px;
+      text-align: center;
     }
 
-    .developer {
-      color: #888;
-      font-size: 10px;
-      letter-spacing: .5px;
+    .cta h2 {
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1;
+      letter-spacing: -2px;
       margin-bottom: 12px;
     }
 
-    .developer strong {
-      color: #333;
+    .cta p {
+      color: #bbb;
+      margin-bottom: 25px;
     }
 
-    .beuna-logo {
-      display: block;
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 13px 22px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .cta-btn.whatsapp {
+      background: #25d366;
+      color: white;
+    }
+
+    .cta-btn.instagram {
+      background: white;
+      color: var(--black);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #0c0c0c;
+      color: white;
+      padding: 45px 20px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    .footer-brand span {
+      color: #d34a53;
+    }
+
+    .developer {
+      text-align: right;
+    }
+
+    .developer p {
+      font-size: 10px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    .developer img {
       width: 90px;
-      max-height: 45px;
+      height: 70px;
       object-fit: contain;
-      margin: 0 auto 15px;
+      display: block;
+      margin-left: auto;
     }
 
     .copyright {
-      color: #aaa;
-      font-size: 9px;
+      max-width: 1180px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #292929;
+      color: #666;
+      font-size: 10px;
     }
 
-    /* ========================================
-       MOBILE
-    ======================================== */
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
     @media (max-width: 700px) {
-
-      .header {
-        padding: 35px 18px 20px;
+      header {
+        padding: 17px 15px;
       }
 
-      .container {
-        width: calc(100% - 20px);
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .header-small {
+        font-size: 9px;
+        text-align: right;
+      }
+
+      .hero {
+        padding: 50px 15px 30px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      main {
+        padding: 0 15px 55px;
       }
 
       .input-card {
-        padding: 22px;
-        border-radius: 19px;
+        padding: 20px;
       }
 
-      .input-row {
+      .number-grid {
         grid-template-columns: 1fr;
+      }
+
+      .choice-btn {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .product-tabs {
+        margin-left: -15px;
+        margin-right: -15px;
       }
 
       .product-image {
-        height: 480px;
+        min-height: 430px;
+      }
+
+      .product-image img {
+        height: 500px;
       }
 
       .product-info {
-        padding: 22px;
+        padding: 20px;
       }
 
-      .recommendation-layout {
-        grid-template-columns: 1fr;
+      .product-name {
+        font-size: 28px;
       }
 
-      .recommended-size {
-        font-size: 76px;
+      .recommendation-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .size-box {
+        padding: 17px;
+      }
+
+      .size-value {
+        font-size: 38px;
+      }
+
+      .product-bottom {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .order-btn {
+        text-align: center;
       }
 
       .chart-section {
         padding: 20px;
-        border-radius: 19px;
       }
 
-      .order-box {
+      .chart-header {
+        display: block;
+      }
+
+      .chart-header p {
+        text-align: left;
+        margin-top: 7px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
         align-items: flex-start;
-        flex-direction: column;
       }
 
-      .order-button {
-        width: 100%;
+      .developer {
+        text-align: left;
       }
 
-      .footer-links {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .footer-link {
-        width: 180px;
+      .developer img {
+        margin-left: 0;
       }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- ======================================
+  <!-- =========================
        HEADER
-  ======================================= -->
+  ========================= -->
 
-  <header class="header">
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        ALL-IN <span>MERCHMAKER</span>
+      </div>
 
-    <div class="brand">
-      ALL-IN MERCHMAKER
+      <div class="header-small">
+        Size Recommendation
+      </div>
     </div>
-
-    <h1>Find Your Size</h1>
-
-    <p>
-      Masukkan data tubuh kamu dan temukan ukuran
-      yang paling sesuai untuk PDH dan Workshirt All-in.
-    </p>
-
   </header>
 
 
-  <main class="container">
+  <!-- =========================
+       HERO
+  ========================= -->
 
-    <!-- ======================================
+  <section class="hero">
+    <div class="hero-label">
+      Find Your Size
+    </div>
+
+    <h1>
+      Get Your<br />
+      <span>Perfect Fit.</span>
+    </h1>
+
+    <p>
+      Masukkan tinggi dan berat badan kamu.
+      Kami akan memberikan rekomendasi ukuran
+      yang paling sesuai untuk PDH dan Workshirt.
+    </p>
+  </section>
+
+
+  <main>
+
+    <!-- =========================
          INPUT
-    ======================================= -->
+    ========================= -->
 
     <section class="input-card">
 
-      <div class="eyebrow">
-        All-in Size Advisor
+      <div class="section-title">
+        01 — Tell us about you
       </div>
 
-      <h2>
-        Cari ukuran yang pas buat kamu.
-      </h2>
 
+      <!-- Gender -->
 
-      <!-- SEX -->
-
-      <div class="form-group">
-
-        <label class="form-label">
-          Kamu laki-laki atau perempuan?
+      <div class="field-group">
+        <label class="field-label">
+          Kamu
         </label>
 
-        <div class="choice-grid">
+        <div class="choice-row">
 
           <button
+            type="button"
             class="choice-btn active"
-            data-sex="male"
-            onclick="selectSex('male')"
+            id="maleBtn"
+            onclick="selectGender('male')"
           >
             MALE
           </button>
 
           <button
+            type="button"
             class="choice-btn"
-            data-sex="female"
-            onclick="selectSex('female')"
+            id="femaleBtn"
+            onclick="selectGender('female')"
           >
             FEMALE
           </button>
 
         </div>
-
       </div>
 
 
-      <!-- BODY -->
+      <!-- Height / Weight -->
 
-      <div class="form-group">
+      <div class="field-group">
 
-        <label class="form-label">
-          Tinggi & berat badan
+        <label class="field-label">
+          Tinggi & Berat Badan
         </label>
 
-        <div class="input-row">
+        <div class="number-grid">
 
-          <div class="input-unit">
-
+          <div class="input-wrapper">
             <input
-              id="height"
-              class="number-input"
               type="number"
-              min="120"
-              max="220"
-              placeholder="Tinggi badan"
-            >
+              id="height"
+              placeholder="Contoh: 170"
+              min="100"
+              max="230"
+            />
 
-            <span>cm</span>
-
+            <span class="input-unit">
+              CM
+            </span>
           </div>
 
-          <div class="input-unit">
-
+          <div class="input-wrapper">
             <input
-              id="weight"
-              class="number-input"
               type="number"
+              id="weight"
+              placeholder="Contoh: 65"
               min="30"
               max="200"
-              placeholder="Berat badan"
-            >
+            />
 
-            <span>kg</span>
-
+            <span class="input-unit">
+              KG
+            </span>
           </div>
 
         </div>
@@ -790,58 +891,62 @@
       </div>
 
 
-      <!-- FIT -->
+      <!-- Fit preference -->
 
-      <div class="form-group">
+      <div class="field-group">
 
-        <label class="form-label">
-          Kamu suka baju seperti apa?
+        <label class="field-label">
+          Kamu lebih suka?
         </label>
 
-        <div class="choice-grid">
+        <div class="choice-row">
 
           <button
-            class="choice-btn"
-            data-fit="fit"
-            onclick="selectFit('fit')"
+            type="button"
+            class="choice-btn active"
+            id="normalBtn"
+            onclick="selectFit('normal')"
           >
-            FIT
+            NORMAL FIT
           </button>
 
           <button
-            class="choice-btn active"
-            data-fit="normal"
-            onclick="selectFit('normal')"
+            type="button"
+            class="choice-btn"
+            id="fitBtn"
+            onclick="selectFit('fit')"
           >
-            NORMAL
+            LEBIH FIT
           </button>
 
         </div>
 
       </div>
-
-
-      <div
-        id="error"
-        class="error"
-      ></div>
 
 
       <button
-        class="check-btn"
+        type="button"
+        class="calculate-btn"
         onclick="calculateSize()"
       >
-        CHECK MY SIZE
+        CHECK MY SIZE →
       </button>
+
+      <div
+        id="errorMessage"
+        class="error-message"
+      >
+        Masukkan tinggi dan berat badan terlebih dahulu.
+      </div>
 
     </section>
 
 
-    <!-- ======================================
+    <!-- =========================
          RESULT
-    ======================================= -->
+    ========================= -->
 
-    <section id="result">
+    <section id="resultSection">
 
       <div class="result-intro">
 
@@ -850,7 +955,7 @@
         </div>
 
         <h2>
-          Ini ukuran yang kami rekomendasikan.
+          Here's Your Size.
         </h2>
 
       </div>
@@ -861,19 +966,21 @@
       <div class="product-tabs">
 
         <button
+          type="button"
           id="pdhTab"
           class="product-tab active"
           onclick="switchProduct('pdh')"
         >
-          PDH
+          PDH — Long Sleeve
         </button>
 
         <button
+          type="button"
           id="workshirtTab"
           class="product-tab"
           onclick="switchProduct('workshirt')"
         >
-          WORKSHIRT
+          Workshirt — Short Sleeve
         </button>
 
       </div>
@@ -881,21 +988,15 @@
 
       <!-- PRODUCT -->
 
-      <section class="product-card">
+      <div class="product-card">
 
         <div class="product-image">
 
-          <!--
-            Rename your photos to:
-            pdh.png
-            workshirt.png
-          -->
-
           <img
             id="productImage"
-            src="pdh.png"
-            alt="All-in PDH"
-          >
+            src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"
+            alt="All-in Merchmaker PDH"
+          />
 
         </div>
 
@@ -903,222 +1004,168 @@
         <div class="product-info">
 
           <div
-            id="productName"
-            class="product-name"
+            class="product-kicker"
+            id="productKicker"
           >
-            ALL-IN PDH
+            Long Sleeve
           </div>
 
           <div
-            id="getTitle"
-            class="get-title"
+            class="product-name"
+            id="productName"
           >
-            Get your PDH at All-in.
+            PDH
           </div>
 
 
-          <!-- RECOMMENDATION -->
+          <!-- Recommendation -->
 
-          <div class="recommendation-layout">
+          <div class="recommendation-grid">
 
-            <div class="recommendation-box">
+            <div class="size-box primary">
 
-              <div class="label">
-                Recommended Size
+              <div class="size-label">
+                Recommended
               </div>
 
               <div
+                class="size-value"
                 id="recommendedSize"
-                class="recommended-size"
               >
                 L
               </div>
 
-              <div class="small-text">
-                Ukuran yang paling kami rekomendasikan
-                berdasarkan data kamu.
+              <div class="size-description">
+                Ukuran utama yang kami rekomendasikan.
               </div>
 
             </div>
 
 
-            <div class="why-box">
+            <div class="size-box">
 
-              <strong>
-                Why this size?
-              </strong>
-
-              <p id="reasonText">
-                -
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <!-- ALTERNATIVE -->
-
-          <div class="alternative">
-
-            <div>
-
-              <small>
-                Your alternative
-              </small>
-
-              <strong id="alternativeText">
-                Kalau ingin tampilan lebih fit
-              </strong>
-
-            </div>
-
-            <div
-              id="alternativeSize"
-              class="alternative-size"
-            >
-              M
-            </div>
-
-          </div>
-
-
-          <!-- PRICE -->
-
-          <div class="order-box">
-
-            <div>
-
-              <div class="order-label">
-                Start from
+              <div class="size-label">
+                Alternative
               </div>
 
               <div
-                id="price"
+                class="size-value"
+                id="alternativeSize"
+              >
+                M
+              </div>
+
+              <div class="size-description">
+                Pilihan alternatif jika ingin sedikit berbeda.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Why -->
+
+          <div class="why-box">
+
+            <div class="why-title">
+              Why this size?
+            </div>
+
+            <div
+              class="why-text"
+              id="whyText"
+            >
+              Rekomendasi berdasarkan tinggi, berat, dan preferensi fit kamu.
+            </div>
+
+          </div>
+
+
+          <!-- Price -->
+
+          <div class="product-bottom">
+
+            <div>
+
+              <div class="price-label">
+                Starting from
+              </div>
+
+              <div
                 class="price"
+                id="productPrice"
               >
                 Rp135.000
               </div>
 
-              <div class="minimum-order">
+              <div class="order-note">
                 Minimum order 1 lusin
               </div>
 
             </div>
 
+
             <a
-              id="orderButton"
-              class="order-button"
+              class="order-btn"
+              id="orderBtn"
               href="https://wa.me/6285359033973"
               target="_blank"
+              rel="noopener"
             >
-              ORDER VIA WHATSAPP
+              Order via WhatsApp →
             </a>
 
           </div>
 
         </div>
 
-      </section>
+      </div>
 
 
-      <!-- ======================================
+      <!-- =========================
            SIZE CHART
-      ======================================= -->
+      ========================= -->
 
       <section class="chart-section">
 
-        <div class="chart-heading">
+        <div class="chart-header">
 
-          <small>
-            All-in Merchmaker
-          </small>
+          <div>
+            <div class="section-title">
+              02 — Size Chart
+            </div>
 
-          <h3 id="chartTitle">
-            Size Chart — PDH
-          </h3>
+            <h3 id="chartTitle">
+              PDH — Long Sleeve
+            </h3>
+          </div>
+
+          <p>
+            Ukuran di bawah adalah ukuran produk dalam centimeter.
+            Gunakan rekomendasi di atas sebagai panduan awal.
+          </p>
 
         </div>
 
 
-        <div class="table-wrapper">
+        <div class="table-wrap">
 
           <table>
 
             <thead>
-
               <tr>
-
-                <th>UKURAN</th>
+                <th>Measurement</th>
                 <th>S</th>
                 <th>M</th>
                 <th>L</th>
                 <th>XL</th>
                 <th>2XL</th>
                 <th>3XL</th>
-
               </tr>
-
             </thead>
 
-
-            <tbody>
-
-              <tr>
-
-                <td>Lebar Dada (cm)</td>
-
-                <td data-size="S">50</td>
-                <td data-size="M">52</td>
-                <td data-size="L">54</td>
-                <td data-size="XL">56</td>
-                <td data-size="2XL">58</td>
-                <td data-size="3XL">60</td>
-
-              </tr>
-
-
-              <tr>
-
-                <td>Tinggi Kemeja (cm)</td>
-
-                <td>68</td>
-                <td>70</td>
-                <td>72</td>
-                <td>74</td>
-                <td>76</td>
-                <td>78</td>
-
-              </tr>
-
-
-              <tr id="sleeveRow">
-
-                <td>Panjang Tangan (cm)</td>
-
-                <td>58</td>
-                <td>59</td>
-                <td>60</td>
-                <td>61</td>
-                <td>62</td>
-                <td>63</td>
-
-              </tr>
-
-
-              <tr>
-
-                <td>Pundak / Bahu (cm)</td>
-
-                <td>44</td>
-                <td>45</td>
-                <td>46</td>
-                <td>47</td>
-                <td>48</td>
-                <td>49</td>
-
-              </tr>
-
+            <tbody id="sizeTableBody">
             </tbody>
 
           </table>
@@ -1128,83 +1175,104 @@
       </section>
 
 
-      <p class="disclaimer">
-        Rekomendasi ukuran merupakan estimasi berdasarkan data yang kamu masukkan.
-        Untuk hasil paling akurat, cocokkan kembali dengan size chart.
-      </p>
+      <!-- =========================
+           CTA
+      ========================= -->
+
+      <section class="cta">
+
+        <h2>
+          Get Your Fit<br />
+          at All-in.
+        </h2>
+
+        <p>
+          Sudah tahu ukuran kamu?
+          Saatnya bikin apparel untuk tim kamu.
+        </p>
+
+        <div class="cta-buttons">
+
+          <a
+            href="https://wa.me/6285359033973"
+            target="_blank"
+            rel="noopener"
+            class="cta-btn whatsapp"
+          >
+            WhatsApp All-in
+          </a>
+
+          <a
+            href="https://www.instagram.com/all_in_merchmaker/"
+            target="_blank"
+            rel="noopener"
+            class="cta-btn instagram"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+      </section>
 
     </section>
 
   </main>
 
 
-  <!-- ======================================
+  <!-- =========================
        FOOTER
-  ======================================= -->
+  ========================= -->
 
   <footer>
 
-    <div class="footer-links">
+    <div class="footer-inner">
 
-      <a
-        class="footer-link"
-        href="https://www.instagram.com/all_in_merchmaker/"
-        target="_blank"
-      >
-        INSTAGRAM
-      </a>
+      <div>
+        <div class="footer-brand">
+          ALL-IN <span>MERCHMAKER</span>
+        </div>
 
-      <a
-        class="footer-link"
-        href="https://wa.me/6285359033973"
-        target="_blank"
-      >
-        WHATSAPP
-      </a>
+        <div style="color:#666; font-size:11px; margin-top:5px;">
+          Custom apparel for your team.
+        </div>
+      </div>
+
+
+      <div class="developer">
+
+        <p>
+          Website by
+        </p>
+
+        <img
+          src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20png.png"
+          alt="Beuna Digital"
+        />
+
+      </div>
 
     </div>
-
-
-    <div class="developer">
-      Website developed by
-      <strong>Beuna Digital</strong>
-    </div>
-
-
-    <!--
-      Simpan logo Beuna sebagai:
-      beuna-logo.png
-
-      di folder sizingguideassets,
-      lalu gunakan file tersebut di bawah.
-    -->
-
-    <img
-      class="beuna-logo"
-      src="beuna-logo.png"
-      alt="Beuna Digital"
-    >
 
 
     <div class="copyright">
-      © 2026 All-in Merchmaker
+      © 2026 All-in Merchmaker. All rights reserved.
     </div>
 
   </footer>
 
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
 
-    /* ========================================
-       STATE
-    ======================================== */
+    /* =====================================
+       DATA
+    ===================================== */
 
-    let selectedSex = "male";
-    let selectedFit = "normal";
-    let currentProduct = "pdh";
-
-
-    const sizes = [
+    const sizeOrder = [
       "S",
       "M",
       "L",
@@ -1214,217 +1282,293 @@
     ];
 
 
-    /* ========================================
-       SIZE ENGINE
-    ======================================== */
+    const sizeCharts = {
 
-    function calculateBaseSize(height, weight) {
+      pdh: {
+        "Lebar dada": [50, 52, 54, 56, 58, 60],
+        "Tinggi kemeja": [68, 70, 72, 74, 76, 78],
+        "Panjang tangan": [58, 59, 60, 61, 62, 63],
+        "Pundak / bahu": [44, 45, 46, 47, 48, 49]
+      },
 
-      let score;
+      workshirt: {
+        "Lebar dada": [50, 52, 54, 56, 58, 60],
+        "Tinggi kemeja": [68, 70, 72, 74, 76, 78],
+        "Panjang tangan": [24.5, 25, 26, 26.5, 27, 27.5],
+        "Pundak / bahu": [44, 45, 46, 47, 48, 49]
+      }
+
+    };
 
 
-      /*
-        Base calculation.
+    const products = {
 
-        V1:
-        Weight menjadi faktor utama.
-        Height digunakan sebagai correction.
-      */
+      pdh: {
+        name: "PDH",
+        kicker: "Long Sleeve",
+        price: "Rp135.000",
+
+        image:
+          "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"
+      },
+
+      workshirt: {
+        name: "WORKSHIRT",
+        kicker: "Short Sleeve",
+        price: "Rp155.000",
+
+        image:
+          "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_30_22%20PM.png"
+      }
+
+    };
+
+
+    /* =====================================
+       USER STATE
+    ===================================== */
+
+    let selectedGender = "male";
+    let selectedFit = "normal";
+
+    let recommendation = {
+      primary: "L",
+      alternative: "M"
+    };
+
+    let currentProduct = "pdh";
+
+
+    /* =====================================
+       GENDER
+    ===================================== */
+
+    function selectGender(gender) {
+
+      selectedGender = gender;
+
+      document
+        .getElementById("maleBtn")
+        .classList
+        .toggle("active", gender === "male");
+
+      document
+        .getElementById("femaleBtn")
+        .classList
+        .toggle("active", gender === "female");
+
+    }
+
+
+    /* =====================================
+       FIT
+    ===================================== */
+
+    function selectFit(fit) {
+
+      selectedFit = fit;
+
+      document
+        .getElementById("normalBtn")
+        .classList
+        .toggle("active", fit === "normal");
+
+      document
+        .getElementById("fitBtn")
+        .classList
+        .toggle("active", fit === "fit");
+
+    }
+
+
+    /* =====================================
+       GET BASE SIZE
+    ===================================== */
+
+    function getBaseSize(weight) {
 
       if (weight < 52) {
-        score = 0;
-      }
-      else if (weight < 62) {
-        score = 1;
-      }
-      else if (weight < 73) {
-        score = 2;
-      }
-      else if (weight < 85) {
-        score = 3;
-      }
-      else if (weight < 98) {
-        score = 4;
-      }
-      else {
-        score = 5;
+        return 0; // S
       }
 
+      if (weight < 62) {
+        return 1; // M
+      }
+
+      if (weight < 73) {
+        return 2; // L
+      }
+
+      if (weight < 85) {
+        return 3; // XL
+      }
+
+      if (weight < 98) {
+        return 4; // 2XL
+      }
+
+      return 5; // 3XL
+    }
+
+
+    /* =====================================
+       CALCULATE SIZE
+    ===================================== */
+
+    function calculateSize() {
+
+      const height =
+        parseFloat(
+          document.getElementById("height").value
+        );
+
+      const weight =
+        parseFloat(
+          document.getElementById("weight").value
+        );
+
+      const error =
+        document.getElementById("errorMessage");
+
+
+      /* Validation */
+
+      if (
+        !height ||
+        !weight ||
+        height < 100 ||
+        height > 230 ||
+        weight < 30 ||
+        weight > 200
+      ) {
+
+        error.style.display = "block";
+        return;
+
+      }
+
+      error.style.display = "none";
+
+
+      /* Start with weight */
+
+      let index =
+        getBaseSize(weight);
+
+
+      /* =====================================
+         BODY PROPORTION ADJUSTMENT
+      ===================================== */
 
       /*
-        Tall body correction
+        Tinggi badan digunakan sebagai
+        penyesuaian tambahan.
+
+        Ini adalah sizing engine V1
+        berbasis asumsi, sehingga threshold
+        mudah diubah jika nanti sudah punya
+        data customer.
       */
 
       if (
         height >= 180 &&
-        weight >= 65
+        weight >= 65 &&
+        index < 5
       ) {
-        score += 1;
+        index++;
       }
 
-
-      /*
-        Smaller height correction
-      */
 
       if (
         height <= 160 &&
-        weight <= 65
+        weight <= 65 &&
+        index > 0
       ) {
-        score -= 1;
+        index--;
       }
 
 
-      score = Math.max(
-        0,
-        Math.min(5, score)
-      );
+      /* =====================================
+         FIT PREFERENCE
+      ===================================== */
+
+      if (
+        selectedFit === "fit" &&
+        index > 0
+      ) {
+        index--;
+      }
 
 
-      return score;
-    }
-
-
-    /* ========================================
-       RECOMMENDATION
-    ======================================== */
-
-    function getRecommendation(
-      height,
-      weight,
-      sex,
-      fit
-    ) {
-
-      let baseIndex =
-        calculateBaseSize(
-          height,
-          weight
-        );
-
+      /* =====================================
+         FEMALE GUARDRAIL
+      ===================================== */
 
       /*
-        Female adjustment.
+        Female tetap menggunakan size chart
+        yang sama.
 
-        Tidak otomatis naik size.
-        Hanya menjaga agar female yang
-        berada di area borderline tidak
-        terlalu agresif turun size.
+        Penyesuaian hanya digunakan sebagai
+        guardrail ringan, bukan chart berbeda.
       */
 
       if (
-        sex === "female" &&
-        weight >= 60 &&
-        weight <= 78 &&
-        height >= 155 &&
-        height <= 175
+        selectedGender === "female" &&
+        height <= 160 &&
+        weight <= 60 &&
+        index > 0
       ) {
-
-        /*
-          Keep base index stable.
-          Adjustment diterapkan sebagai
-          guardrail di bawah.
-        */
-
-        baseIndex =
-          Math.max(
-            0,
-            Math.min(5, baseIndex)
-          );
+        index--;
       }
 
 
-      let recommendedIndex =
-        baseIndex;
-
-
-      /*
-        FIT = satu size lebih kecil,
-        selama masih aman.
-      */
-
-      if (fit === "fit") {
-
-        if (recommendedIndex > 0) {
-          recommendedIndex--;
-        }
-
-      }
-
-
-      /*
-        Female guardrail.
-
-        Jika female berada di area
-        borderline, jangan terlalu mudah
-        diturunkan karena memilih FIT.
-      */
-
-      if (
-        sex === "female" &&
-        weight >= 65 &&
-        weight <= 80 &&
-        fit === "fit"
-      ) {
-
-        recommendedIndex =
-          Math.max(
-            recommendedIndex,
-            baseIndex
-          );
-      }
-
-
-      /*
-        Heavy body guardrail.
-
-        Orang dengan berat tinggi tidak
-        otomatis turun satu size hanya
-        karena memilih FIT.
-      */
+      /* =====================================
+         HEAVY BODY GUARDRAIL
+      ===================================== */
 
       if (
         weight >= 90 &&
-        fit === "fit"
+        index < 4
       ) {
-
-        recommendedIndex =
-          Math.max(
-            recommendedIndex,
-            3
-          );
+        index = 4;
       }
 
 
-      recommendedIndex =
+      /* Safety */
+
+      index =
         Math.max(
           0,
           Math.min(
             5,
-            recommendedIndex
+            index
           )
         );
 
 
+      recommendation.primary =
+        sizeOrder[index];
+
+
       /*
-        Alternative.
+        Alternative:
 
-        FIT:
-        alternative satu size lebih besar.
+        Normal:
+        satu ukuran di bawah.
 
-        NORMAL:
-        alternative satu size lebih kecil.
+        Fit:
+        satu ukuran di atas
+        sebagai opsi lebih lega.
       */
 
       let alternativeIndex;
 
-
-      if (fit === "fit") {
+      if (selectedFit === "fit") {
 
         alternativeIndex =
           Math.min(
             5,
-            recommendedIndex + 1
+            index + 1
           );
 
       } else {
@@ -1432,211 +1576,91 @@
         alternativeIndex =
           Math.max(
             0,
-            recommendedIndex - 1
+            index - 1
           );
 
       }
 
 
-      return {
-
-        recommended:
-          sizes[recommendedIndex],
-
-        alternative:
-          sizes[alternativeIndex],
-
-        base:
-          sizes[baseIndex]
-
-      };
-
-    }
-
-
-    /* ========================================
-       REASON
-    ======================================== */
-
-    function generateReason(
-      height,
-      weight,
-      sex,
-      fit,
-      recommendation
-    ) {
-
-      const size =
-        recommendation.recommended;
-
-
-      let reason;
-
-
-      if (fit === "fit") {
-
-        reason =
-          `Dengan tinggi ${height} cm dan berat ${weight} kg, ` +
-          `kami merekomendasikan ${size} karena kamu memilih ` +
-          `fit yang lebih mengikuti bentuk badan. ` +
-          `Ukuran ini tetap memberikan ruang yang cukup ` +
-          `untuk bergerak tanpa terlihat terlalu longgar.`;
-
-      }
-      else {
-
-        reason =
-          `Dengan tinggi ${height} cm dan berat ${weight} kg, ` +
-          `kami merekomendasikan ${size} karena kamu memilih ` +
-          `fit normal. Ukuran ini memberikan ruang yang nyaman ` +
-          `di badan tanpa terlihat terlalu longgar.`;
-
-      }
-
-
-      if (height >= 180) {
-
-        reason +=
-          ` Tinggi badan kamu juga menjadi pertimbangan ` +
-          `agar proporsi panjang kemeja tetap nyaman.`;
-
-      }
-
-
-      if (weight >= 85) {
-
-        reason +=
-          ` Berat badan menjadi pertimbangan utama agar ` +
-          `area dada dan badan tidak terasa terlalu sempit.`;
-
-      }
-
-
-      if (sex === "female") {
-
-        reason +=
-          ` Untuk female, sistem juga mempertimbangkan ` +
-          `kenyamanan area badan saat menentukan ukuran.`;
-
-      }
-
-
-      return reason;
-
-    }
-
-
-    /* ========================================
-       SEX
-    ======================================== */
-
-    function selectSex(sex) {
-
-      selectedSex = sex;
-
-
-      document
-        .querySelectorAll("[data-sex]")
-        .forEach(btn => {
-
-          btn.classList.toggle(
-            "active",
-            btn.dataset.sex === sex
-          );
-
-        });
-
-    }
-
-
-    /* ========================================
-       FIT
-    ======================================== */
-
-    function selectFit(fit) {
-
-      selectedFit = fit;
-
-
-      document
-        .querySelectorAll("[data-fit]")
-        .forEach(btn => {
-
-          btn.classList.toggle(
-            "active",
-            btn.dataset.fit === fit
-          );
-
-        });
-
-    }
-
-
-    /* ========================================
-       CALCULATE
-    ======================================== */
-
-    function calculateSize() {
-
-      const height =
-        parseInt(
-          document.getElementById("height").value
-        );
-
-      const weight =
-        parseInt(
-          document.getElementById("weight").value
-        );
-
-      const error =
-        document.getElementById("error");
-
-
-      if (
-        !height ||
-        !weight ||
-        height < 120 ||
-        height > 220 ||
-        weight < 30 ||
-        weight > 200
-      ) {
-
-        error.style.display = "block";
-
-        error.innerText =
-          "Masukkan tinggi dan berat badan yang valid.";
-
-        return;
-
-      }
-
-
-      error.style.display = "none";
-
-
-      const recommendation =
-        getRecommendation(
-          height,
-          weight,
-          selectedSex,
-          selectedFit
-        );
-
-
-      document.getElementById(
-        "result"
-      ).style.display = "block";
+      recommendation.alternative =
+        sizeOrder[alternativeIndex];
 
 
       updateResult(
-        recommendation,
         height,
         weight
       );
 
+    }
+
+
+    /* =====================================
+       UPDATE RESULT
+    ===================================== */
+
+    function updateResult(
+      height,
+      weight
+    ) {
 
       document
-        .getElementById("result")
+        .getElementById("recommendedSize")
+        .textContent =
+        recommendation.primary;
+
+
+      document
+        .getElementById("alternativeSize")
+        .textContent =
+        recommendation.alternative;
+
+
+      let fitText =
+        selectedFit === "fit"
+          ? "lebih fit"
+          : "normal";
+
+
+      let genderText =
+        selectedGender === "male"
+          ? "male"
+          : "female";
+
+
+      let reason =
+        `Untuk tinggi ${height} cm dan berat ${weight} kg, ` +
+        `kami memperkirakan proporsi badan kamu paling mendekati ukuran ` +
+        `${recommendation.primary}. ` +
+        `Kamu memilih ${fitText}, jadi ukuran ini dijadikan pilihan utama. ` +
+        `Alternatif ${recommendation.alternative} bisa dipilih jika kamu ingin ` +
+        `feel yang sedikit berbeda.`;
+
+
+      if (selectedGender === "female") {
+
+        reason +=
+          " Size chart untuk female tetap menggunakan ukuran produk yang sama.";
+
+      }
+
+
+      document
+        .getElementById("whyText")
+        .textContent =
+        reason;
+
+
+      document
+        .getElementById("resultSection")
+        .style.display =
+        "block";
+
+
+      switchProduct(currentProduct);
+
+
+      document
+        .getElementById("resultSection")
         .scrollIntoView({
           behavior: "smooth",
           block: "start"
@@ -1645,67 +1669,24 @@
     }
 
 
-    /* ========================================
-       UPDATE RESULT
-    ======================================== */
-
-    function updateResult(
-      recommendation,
-      height,
-      weight
-    ) {
-
-      document.getElementById(
-        "recommendedSize"
-      ).innerText =
-        recommendation.recommended;
-
-
-      document.getElementById(
-        "alternativeSize"
-      ).innerText =
-        recommendation.alternative;
-
-
-      document.getElementById(
-        "alternativeText"
-      ).innerText =
-        selectedFit === "fit"
-          ? "Kalau ingin sedikit lebih relaxed"
-          : "Kalau ingin tampilan lebih fit";
-
-
-      document.getElementById(
-        "reasonText"
-      ).innerText =
-        generateReason(
-          height,
-          weight,
-          selectedSex,
-          selectedFit,
-          recommendation
-        );
-
-
-      highlightSize(
-        recommendation.recommended
-      );
-
-    }
-
-
-    /* ========================================
-       PRODUCT SWITCH
-    ======================================== */
+    /* =====================================
+       SWITCH PRODUCT
+    ===================================== */
 
     function switchProduct(product) {
 
       currentProduct = product;
 
+      const data =
+        products[product];
+
+
+      /* Tabs */
 
       document
         .getElementById("pdhTab")
-        .classList.toggle(
+        .classList
+        .toggle(
           "active",
           product === "pdh"
         );
@@ -1713,208 +1694,180 @@
 
       document
         .getElementById("workshirtTab")
-        .classList.toggle(
+        .classList
+        .toggle(
           "active",
           product === "workshirt"
         );
 
 
-      const image =
-        document.getElementById(
-          "productImage"
+      /* Product text */
+
+      document
+        .getElementById("productKicker")
+        .textContent =
+        data.kicker;
+
+
+      document
+        .getElementById("productName")
+        .textContent =
+        data.name;
+
+
+      document
+        .getElementById("productPrice")
+        .textContent =
+        data.price;
+
+
+      /* Image */
+
+      document
+        .getElementById("productImage")
+        .src =
+        data.image;
+
+
+      document
+        .getElementById("productImage")
+        .alt =
+        "All-in Merchmaker " +
+        data.name;
+
+
+      /* Chart */
+
+      document
+        .getElementById("chartTitle")
+        .textContent =
+        product === "pdh"
+          ? "PDH — Long Sleeve"
+          : "Workshirt — Short Sleeve";
+
+
+      renderSizeChart(product);
+
+
+      /* Update WhatsApp message */
+
+      const message =
+        encodeURIComponent(
+          `Halo All-in Merchmaker, saya mau order ${data.name}. ` +
+          `Rekomendasi size saya: ${recommendation.primary}. ` +
+          `Alternative: ${recommendation.alternative}.`
         );
 
 
-      const productName =
-        document.getElementById(
-          "productName"
-        );
-
-
-      const getTitle =
-        document.getElementById(
-          "getTitle"
-        );
-
-
-      const price =
-        document.getElementById(
-          "price"
-        );
-
-
-      const chartTitle =
-        document.getElementById(
-          "chartTitle"
-        );
-
-
-      const sleeveRow =
-        document.getElementById(
-          "sleeveRow"
-        );
-
-
-      if (product === "pdh") {
-
-        image.src = "pdh.png";
-
-        image.alt =
-          "All-in Merchmaker PDH";
-
-        productName.innerText =
-          "ALL-IN PDH";
-
-        getTitle.innerText =
-          "Get your PDH at All-in.";
-
-        price.innerText =
-          "Rp135.000";
-
-        chartTitle.innerText =
-          "Size Chart — PDH";
-
-
-        sleeveRow.innerHTML = `
-          <td>Panjang Tangan (cm)</td>
-          <td>58</td>
-          <td>59</td>
-          <td>60</td>
-          <td>61</td>
-          <td>62</td>
-          <td>63</td>
-        `;
-
-      }
-      else {
-
-        image.src = "workshirt.png";
-
-        image.alt =
-          "All-in Merchmaker Workshirt";
-
-        productName.innerText =
-          "ALL-IN WORKSHIRT";
-
-        getTitle.innerText =
-          "Get your Workshirt at All-in.";
-
-        price.innerText =
-          "Rp155.000";
-
-        chartTitle.innerText =
-          "Size Chart — Workshirt";
-
-
-        sleeveRow.innerHTML = `
-          <td>Panjang Tangan (cm)</td>
-          <td>24,5</td>
-          <td>25</td>
-          <td>26</td>
-          <td>26,5</td>
-          <td>27</td>
-          <td>27,5</td>
-        `;
-
-      }
-
-
-      /*
-        Recalculate if user already
-        entered their data.
-      */
-
-      const height =
-        parseInt(
-          document.getElementById("height").value
-        );
-
-      const weight =
-        parseInt(
-          document.getElementById("weight").value
-        );
-
-
-      if (height && weight) {
-
-        const recommendation =
-          getRecommendation(
-            height,
-            weight,
-            selectedSex,
-            selectedFit
-          );
-
-
-        updateResult(
-          recommendation,
-          height,
-          weight
-        );
-
-      }
+      document
+        .getElementById("orderBtn")
+        .href =
+        `https://wa.me/6285359033973?text=${message}`;
 
     }
 
 
-    /* ========================================
-       HIGHLIGHT SIZE
-    ======================================== */
+    /* =====================================
+       RENDER SIZE CHART
+    ===================================== */
 
-    function highlightSize(size) {
+    function renderSizeChart(product) {
 
-      /*
-        Remove previous highlights
-      */
+      const tbody =
+        document.getElementById(
+          "sizeTableBody"
+        );
 
-      document
-        .querySelectorAll(
-          "table td, table th"
-        )
-        .forEach(cell => {
 
-          cell.classList.remove(
-            "highlight"
+      tbody.innerHTML = "";
+
+
+      const chart =
+        sizeCharts[product];
+
+
+      Object.keys(chart).forEach(
+        function(label) {
+
+          const tr =
+            document.createElement("tr");
+
+
+          const nameCell =
+            document.createElement("td");
+
+          nameCell.textContent =
+            label;
+
+          tr.appendChild(
+            nameCell
           );
 
-        });
 
+          chart[label].forEach(
+            function(value) {
 
-      /*
-        Find size column
-      */
+              const td =
+                document.createElement("td");
 
-      const index =
-        sizes.indexOf(size) + 1;
+              td.textContent =
+                value;
 
-
-      /*
-        Highlight the selected
-        size column.
-      */
-
-      document
-        .querySelectorAll("table tr")
-        .forEach(row => {
-
-          const cells =
-            row.querySelectorAll(
-              "th, td"
-            );
-
-
-          if (cells[index]) {
-
-            cells[index]
-              .classList.add(
-                "highlight"
+              tr.appendChild(
+                td
               );
 
-          }
+            }
+          );
 
-        });
+
+          tbody.appendChild(
+            tr
+          );
+
+        }
+      );
 
     }
+
+
+    /* =====================================
+       ENTER KEY
+    ===================================== */
+
+    document
+      .getElementById("height")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (event.key === "Enter") {
+            calculateSize();
+          }
+
+        }
+      );
+
+
+    document
+      .getElementById("weight")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (event.key === "Enter") {
+            calculateSize();
+          }
+
+        }
+      );
+
+
+    /* =====================================
+       INITIALIZE
+    ===================================== */
+
+    renderSizeChart("pdh");
 
   </script>
 
