@@ -353,6 +353,43 @@
     .footer-inner{display:block}
     footer .footer-inner div+div{margin-top:8px}
   }
+
+  /* Mobile / touch enhancements */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
+  .reveal.is-visible{opacity:1;transform:none}
+  .hero-cutout{will-change:transform}
+  .fleet-card,.point,.step,.stat{will-change:transform}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+  @media (hover:none){
+    .fleet-card:hover img{transform:none;opacity:.82}
+    .btn-primary:hover,.btn-dark:hover,.contact-link:hover{transform:none}
+  }
+
+
+  @media(max-width:600px){
+    .hero{min-height:760px}
+    .hero-inner{min-height:690px;padding-top:38px}
+    .hero-copy-wrap{position:relative;z-index:4}
+    .hero-visual{height:350px;margin-top:0;overflow:visible}
+    .hero-cutout{
+      width:108%;
+      max-width:none;
+      right:-8%;
+      bottom:-12px;
+      transform-origin:center bottom;
+    }
+    .hero-tag{right:2%;top:5%;font-size:9px;padding:10px 12px}
+    .hero-number{left:2px;bottom:12px;font-size:8px}
+    .ticker-track{animation-duration:20s}
+    .fleet-card{min-height:360px}
+    .about-image{min-height:340px}
+    .contact-link{gap:12px;font-size:11px}
+  }
+
 </style>
 </head>
 <body>
@@ -395,8 +432,7 @@
       </div>
 
       <div class="hero-visual">
-        <img class="hero-photo" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241">
-        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator Komatsu">
+        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator untuk proyek 241" loading="eager" fetchpriority="high">
         <div class="hero-tag">241 — READY TO WORK</div>
         <div class="hero-number">01 / 04 — HEAVY EQUIPMENT</div>
       </div>
@@ -410,7 +446,7 @@
     </div>
   </div>
 
-  <section id="fleet" class="fleet">
+  <section id="fleet" class="fleet reveal">
     <div class="container">
       <div class="section-head">
         <div>
@@ -422,7 +458,7 @@
 
       <div class="fleet-grid">
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator 241" loading="lazy">
           <div class="fleet-content">
             <div class="fleet-num">01 / EXCAVATOR</div>
             <h3>Excavator</h3>
@@ -432,7 +468,7 @@
         </article>
 
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Crane dan alat berat">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane truck 241" loading="lazy">
           <div class="fleet-content">
             <div class="fleet-num">02 / CRANE</div>
             <h3>Crane</h3>
@@ -442,7 +478,7 @@
         </article>
 
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat lainnya">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" loading="lazy">
           <div class="fleet-content">
             <div class="fleet-num">03 / OTHER</div>
             <h3>Alat Berat Lainnya</h3>
@@ -463,7 +499,7 @@
     </div>
   </div>
 
-  <section id="why">
+  <section id="why" class="reveal">
     <div class="container">
       <div class="section-head">
         <div>
@@ -499,7 +535,7 @@
     </div>
   </section>
 
-  <section id="process" class="process">
+  <section id="process" class="process reveal">
     <div class="container">
       <div class="section-head">
         <div>
@@ -517,10 +553,10 @@
     </div>
   </section>
 
-  <section id="about" class="about">
+  <section id="about" class="about reveal">
     <div class="container about-grid">
       <div class="about-image">
-        <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="241 alat berat di lokasi proyek">
+        <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" loading="lazy">
         <div class="about-badge">241<br>READY<br>TO WORK.</div>
       </div>
       <div class="about-copy">
@@ -535,7 +571,7 @@
     </div>
   </section>
 
-  <section class="contact">
+  <section class="contact reveal">
     <div class="container contact-grid">
       <div>
         <div class="kicker">05 — Contact</div>
@@ -557,6 +593,57 @@
     <div>Lam Lagang, Banda Raya, Banda Aceh · <strong>0853-7334-0600</strong></div>
   </div>
 </footer>
+
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin:'0px 0px -10% 0px', threshold:0.08 });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+
+  const hero = document.querySelector('.hero');
+  const cutout = document.querySelector('.hero-cutout');
+  let ticking = false;
+
+  function parallax(){
+    if (!hero || !cutout || reduce) return;
+    const rect = hero.getBoundingClientRect();
+    const progress = Math.max(-1, Math.min(1, -rect.top / Math.max(1, hero.offsetHeight)));
+    const y = progress * 34;
+    const rotate = progress * -1.2;
+    cutout.style.transform = 'translate3d(0,' + y + 'px,0) rotate(' + rotate + 'deg)';
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function(){
+    if (!ticking) {
+      window.requestAnimationFrame(parallax);
+      ticking = true;
+    }
+  }, {passive:true});
+  parallax();
+
+  // Lightweight touch feedback for fleet cards.
+  document.querySelectorAll('.fleet-card').forEach(card => {
+    card.addEventListener('touchstart', () => card.style.transform='translateY(-3px)', {passive:true});
+    card.addEventListener('touchend', () => card.style.transform='', {passive:true});
+    card.addEventListener('touchcancel', () => card.style.transform='', {passive:true});
+  });
+})();
+</script>
 
 </body>
 </html>
