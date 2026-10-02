@@ -523,7 +523,6 @@
 
   /* Mobile hero sequence */
   .hero-sequence-canvas{display:none}
-  .mobile-scroll-toggle{display:none}
   .sequence-loader{
     position:fixed;
     inset:0;
@@ -586,7 +585,6 @@
     .about-image{min-height:340px}
     .contact-link{gap:12px;font-size:11px}
   }
-
   @media(max-width:600px){
     .hero-sequence-canvas{
       display:none;
@@ -602,63 +600,9 @@
     }
     .hero.sequence-active .hero-cutout{display:none}
     .hero.sequence-active .hero-sequence-canvas{display:block}
-    .mobile-scroll-toggle{
-      position:fixed;
-      display:flex;
-      right:10px;
-      top:50%;
-      transform:translateY(-50%);
-      width:30px;
-      height:82px;
-      z-index:30;
-      border:1px solid rgba(17,17,17,.28);
-      background:rgba(247,247,245,.78);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      align-items:center;
-      justify-content:center;
-      padding:0;
-      cursor:pointer;
-      touch-action:manipulation;
-    }
-    .mobile-scroll-toggle .toggle-track{
-      position:relative;
-      width:2px;
-      height:48px;
-      background:#bbb;
-    }
-    .mobile-scroll-toggle .toggle-knob{
-      position:absolute;
-      left:50%;
-      top:2px;
-      width:8px;
-      height:8px;
-      background:#111;
-      transform:translateX(-50%) rotate(45deg);
-      transition:top .2s ease,background .2s ease;
-    }
-    .mobile-scroll-toggle .toggle-mark{
-      position:absolute;
-      width:7px;
-      height:7px;
-      border-top:1px solid #777;
-      border-right:1px solid #777;
-      transform:rotate(45deg);
-      top:8px;
-      left:11px;
-    }
-    .mobile-scroll-toggle .toggle-mark:last-child{
-      transform:rotate(225deg);
-      top:auto;
-      bottom:8px;
-    }
-    .mobile-scroll-toggle.is-off .toggle-knob{
-      top:38px;
-      background:#777;
-    }
   }
   @media(min-width:601px){
-    .hero-sequence-canvas,.mobile-scroll-toggle{display:none!important}
+    .hero-sequence-canvas{display:none!important}
   }
 
 </style>
@@ -721,14 +665,6 @@
       </div>
     </div>
   </section>
-
-  <button class="mobile-scroll-toggle" type="button" aria-label="Aktifkan atau matikan animasi scroll hero" aria-pressed="true">
-    <span class="toggle-track">
-      <i class="toggle-knob"></i>
-      <i class="toggle-mark"></i>
-      <i class="toggle-mark"></i>
-    </span>
-  </button>
 
   <div class="ticker">
     <div class="ticker-track">
@@ -907,26 +843,24 @@
 
   /*
    * Mobile-only hero sequence:
-   * New Cloudinary sequence starts at frame 020 and contains 300 frames:
-   * 020 -> 319. Every frame is used.
+   * New Cloudinary sequence starts at frame 000 and contains frames 000 -> 300.
    *
    * The full sequence is loaded before the hero sequence becomes active.
    * Desktop keeps the static excavator.
    */
   const hero = document.querySelector('.hero');
   const canvas = document.querySelector('.hero-sequence-canvas');
-  const toggle = document.querySelector('.mobile-scroll-toggle');
-  const loader = document.getElementById('sequence-loader');
+    const loader = document.getElementById('sequence-loader');
   const loaderPercent = document.getElementById('sequence-loader-percent');
   const loaderProgress = document.getElementById('sequence-loader-progress');
 
   const isMobile = window.matchMedia('(max-width:600px)').matches;
 
-  if (hero && canvas && toggle && loader && isMobile && !reduce) {
+  if (hero && canvas && loader && isMobile && !reduce) {
     const ctx = canvas.getContext('2d', {alpha:true});
-    const frameCount = 300;
-    const firstFrame = 20;
-    const lastFrame = firstFrame + frameCount - 1;
+    const frameCount = 301;
+    const firstFrame = 0;
+    const lastFrame = 300;
 
     let currentFrame = 0;
     let targetFrame = 0;
@@ -1050,25 +984,13 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', resize, {passive:true});
 
-    toggle.addEventListener('click', () => {
-      if (!initialized) return;
-      active = !active;
-      hero.classList.toggle('sequence-active', active);
-      toggle.classList.toggle('is-off', !active);
-      toggle.setAttribute('aria-pressed', String(active));
-
-      if (active) updateFromScroll();
-      else cancelAnimationFrame(raf);
-    });
-
     /*
      * Start the full preload immediately.
      * The loader remains visible until all 300 requests have completed.
      */
     preloadAll();
   } else {
-    if (toggle) toggle.style.display = 'none';
-    if (loader) loader.classList.add('is-ready');
+        if (loader) loader.classList.add('is-ready');
   }
 
   document.querySelectorAll('.fleet-card').forEach(card => {
