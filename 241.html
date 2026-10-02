@@ -591,11 +591,11 @@
     .hero-sequence-canvas{
       display:none;
       position:absolute;
-      width:108%;
+      width:118%;
       max-width:none;
       height:350px;
-      right:-8%;
-      bottom:-12px;
+      right:-12%;
+      bottom:-4px;
       object-fit:contain;
       z-index:2;
       pointer-events:none;
@@ -952,7 +952,7 @@
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
       const x = (cw - w) / 2;
-      const y = ch - h;
+      const y = Math.max(0, ch - h - 4);
 
       canvas.width = Math.round(cw * devicePixelRatio);
       canvas.height = Math.round(ch * devicePixelRatio);
