@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="241 menyediakan layanan sewa excavator, crane, dan alat berat lainnya untuk kebutuhan proyek di Banda Aceh dan sekitarnya.">
+<title>241 — Sewa Alat Berat Banda Aceh</title>
+<style>
+  :root{
+    --yellow:#f5c400;
+    --yellow-2:#ffd52a;
+    --black:#0b0b0b;
+    --ink:#171717;
+    --muted:#666;
+    --line:#dedede;
+    --paper:#f7f7f5;
+    --white:#fff;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+  header{
+    position:fixed;
+    inset:0 0 auto;
+    z-index:20;
+    background:rgba(247,247,245,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  nav{
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-weight:900;letter-spacing:-2px;font-size:28px;
+  }
+  .brand-mark{
+    width:38px;height:38px;background:var(--yellow);
+    display:grid;place-items:center;
+    font-size:19px;font-weight:1000;
+    transform:skew(-8deg);
+  }
+  .brand small{
+    display:block;font-size:8px;letter-spacing:1.4px;
+    line-height:1;margin-top:-2px;
+  }
+  .nav-links{display:flex;gap:28px;font-size:12px;font-weight:800;text-transform:uppercase}
+  .nav-links a{position:relative;padding:8px 0}
+  .nav-links a:after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:3px;
+    background:var(--yellow);transition:.25s;
+  }
+  .nav-links a:hover:after{width:100%}
+  .nav-cta{
+    background:var(--black);color:white;padding:13px 18px;
+    font-size:12px;font-weight:900;white-space:nowrap;
+  }
+
+  .hero{
+    min-height:780px;
+    padding-top:78px;
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(90deg,#f7f7f5 0%,#f7f7f5 44%,#ecece8 100%);
+  }
+  .hero:before{
+    content:"241";
+    position:absolute;right:-40px;top:105px;
+    font-size:clamp(220px,31vw,520px);
+    font-weight:1000;line-height:.8;
+    letter-spacing:-35px;color:rgba(0,0,0,.035);
+    pointer-events:none;
+  }
+  .hero-inner{
+    min-height:702px;display:grid;
+    grid-template-columns:43% 57%;align-items:center;
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11px;font-weight:900;letter-spacing:2px;
+    text-transform:uppercase;margin-bottom:22px;
+  }
+  .eyebrow:before{content:"";width:30px;height:4px;background:var(--yellow)}
+  h1{
+    font-size:clamp(58px,7vw,104px);
+    line-height:.86;letter-spacing:-7px;
+    text-transform:uppercase;font-weight:1000;
+    max-width:620px;
+  }
+  h1 span{display:block}
+  h1 .accent{color:var(--yellow);-webkit-text-stroke:2px #111}
+  .hero-copy{
+    margin-top:28px;max-width:480px;
+    color:#4e4e4e;font-size:16px;
+  }
+  .hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:16px 22px;font-size:12px;font-weight:900;
+    text-transform:uppercase;letter-spacing:.5px;
+    transition:.2s;
+  }
+  .btn-primary{background:var(--yellow);color:#111}
+  .btn-primary:hover{background:var(--yellow-2);transform:translateY(-2px)}
+  .btn-dark{background:#111;color:#fff}
+  .btn-dark:hover{transform:translateY(-2px)}
+  .hero-visual{
+    height:100%;position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .hero-photo{
+    position:absolute;right:-7%;top:11%;
+    width:92%;height:75%;object-fit:cover;
+    filter:saturate(.95) contrast(1.05);
+    clip-path:polygon(8% 0,100% 0,100% 92%,0 100%,0 12%);
+  }
+  .hero-cutout{
+    position:absolute;
+    right:2%;bottom:4%;
+    width:min(78%,650px);
+    max-height:610px;
+    object-fit:contain;
+    object-position:center bottom;
+    mix-blend-mode:multiply;
+    filter:drop-shadow(0 28px 20px rgba(0,0,0,.22));
+    z-index:2;
+  }
+  .hero-tag{
+    position:absolute;right:7%;top:20%;z-index:3;
+    background:var(--yellow);padding:13px 17px;
+    font-size:11px;font-weight:1000;text-transform:uppercase;
+    transform:rotate(-3deg);
+  }
+  .hero-number{
+    position:absolute;left:0;bottom:22px;
+    font-size:11px;font-weight:900;letter-spacing:1px;
+    writing-mode:vertical-rl;transform:rotate(180deg);
+  }
+
+  .ticker{
+    background:var(--black);color:#fff;
+    overflow:hidden;border-top:5px solid var(--yellow);
+  }
+  .ticker-track{
+    display:flex;gap:60px;white-space:nowrap;
+    padding:18px 0;font-size:12px;font-weight:900;
+    text-transform:uppercase;letter-spacing:1.5px;
+    animation:marquee 24s linear infinite;
+  }
+  .ticker b{color:var(--yellow)}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  section{padding:105px 0}
+  .section-head{
+    display:flex;justify-content:space-between;gap:30px;
+    align-items:end;margin-bottom:45px;
+  }
+  .kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#777}
+  h2{
+    font-size:clamp(42px,5vw,70px);line-height:.92;
+    letter-spacing:-4px;text-transform:uppercase;
+    margin-top:10px;font-weight:1000;
+  }
+  .section-intro{max-width:400px;color:#666;font-size:14px}
+
+  .fleet{
+    background:#111;color:#fff;
+  }
+  .fleet .kicker{color:#aaa}
+  .fleet h2{color:#fff}
+  .fleet .section-intro{color:#aaa}
+  .fleet-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:2px;background:#333;
+  }
+  .fleet-card{
+    background:#191919;min-height:430px;
+    position:relative;overflow:hidden;
+    padding:28px;display:flex;flex-direction:column;justify-content:end;
+  }
+  .fleet-card:before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.95) 100%);
+    z-index:1;
+  }
+  .fleet-card img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;opacity:.82;transition:.45s;
+  }
+  .fleet-card:hover img{transform:scale(1.05);opacity:1}
+  .fleet-content{position:relative;z-index:2}
+  .fleet-num{
+    color:var(--yellow);font-size:11px;font-weight:900;
+    letter-spacing:2px;margin-bottom:8px;
+  }
+  .fleet-card h3{
+    font-size:31px;line-height:.95;text-transform:uppercase;
+    letter-spacing:-1.5px;margin-bottom:9px;
+  }
+  .fleet-card p{color:#ccc;font-size:13px;max-width:310px}
+  .fleet-link{
+    display:inline-block;margin-top:17px;
+    font-size:11px;font-weight:900;text-transform:uppercase;
+    border-bottom:2px solid var(--yellow);padding-bottom:3px;
+  }
+
+  .stats{
+    background:var(--yellow);padding:0;
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:38px 25px;border-right:1px solid rgba(0,0,0,.18)}
+  .stat:last-child{border:0}
+  .stat strong{font-size:48px;line-height:1;font-weight:1000;letter-spacing:-3px}
+  .stat span{display:block;margin-top:7px;font-size:11px;font-weight:900;text-transform:uppercase}
+
+  .why-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:70px;align-items:start;
+  }
+  .manifesto{
+    font-size:clamp(28px,3.3vw,48px);
+    line-height:1;letter-spacing:-2px;font-weight:900;
+    text-transform:uppercase;
+  }
+  .manifesto mark{background:var(--yellow);padding:0 5px}
+  .points{display:grid;gap:0}
+  .point{
+    display:grid;grid-template-columns:50px 1fr;
+    gap:20px;padding:22px 0;border-top:1px solid var(--line);
+  }
+  .point:last-child{border-bottom:1px solid var(--line)}
+  .point-num{font-weight:1000;color:#aaa}
+  .point h3{font-size:17px;text-transform:uppercase;margin-bottom:4px}
+  .point p{font-size:13px;color:#666;max-width:430px}
+
+  .process{background:#e8e8e4}
+  .process-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #bbb;border-bottom:1px solid #bbb;
+  }
+  .step{padding:28px 22px 35px;border-right:1px solid #bbb}
+  .step:last-child{border:0}
+  .step-num{font-size:50px;font-weight:1000;letter-spacing:-4px;color:#aaa}
+  .step h3{font-size:16px;text-transform:uppercase;margin:20px 0 7px}
+  .step p{font-size:13px;color:#666}
+
+  .about{
+    background:#fff;
+  }
+  .about-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;
+  }
+  .about-image{
+    min-height:500px;position:relative;overflow:hidden;background:#ddd;
+  }
+  .about-image img{width:100%;height:100%;object-fit:cover;position:absolute}
+  .about-badge{
+    position:absolute;left:24px;bottom:24px;
+    background:var(--yellow);padding:20px;
+    width:160px;font-weight:1000;font-size:23px;
+    line-height:.95;text-transform:uppercase;letter-spacing:-1px;
+  }
+  .about-copy p{font-size:16px;color:#666;margin-top:22px;max-width:510px}
+  .contact{
+    background:var(--black);color:#fff;position:relative;overflow:hidden;
+  }
+  .contact:after{
+    content:"241";position:absolute;right:-30px;bottom:-100px;
+    font-size:360px;font-weight:1000;letter-spacing:-30px;
+    color:rgba(255,255,255,.035);line-height:1;
+  }
+  .contact-grid{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;
+  }
+  .contact h2{color:#fff;max-width:700px}
+  .contact h2 span{color:var(--yellow)}
+  .contact-copy{color:#aaa;max-width:440px;margin-top:25px}
+  .contact-box{display:grid;gap:13px}
+  .contact-link{
+    border:1px solid #444;padding:18px 20px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;font-weight:900;text-transform:uppercase;
+    transition:.2s;
+  }
+  .contact-link:hover{background:var(--yellow);color:#111;border-color:var(--yellow)}
+  footer{
+    background:#050505;color:#777;
+    padding:28px 0;font-size:11px;
+  }
+  .footer-inner{display:flex;justify-content:space-between;gap:20px}
+  footer strong{color:#fff}
+
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .hero{min-height:auto}
+    .hero-inner{grid-template-columns:1fr;min-height:780px;padding:70px 0 30px}
+    .hero-copy{max-width:560px}
+    .hero-visual{height:390px;margin-top:-20px}
+    .hero-photo{width:100%;height:100%;right:0;top:0}
+    .hero-cutout{width:82%;right:4%;bottom:0}
+    .hero-tag{right:3%;top:10%}
+    .fleet-grid{grid-template-columns:1fr}
+    .fleet-card{min-height:390px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border:0}
+    .stat{border-bottom:1px solid rgba(0,0,0,.18)}
+    .why-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+    .process-grid{grid-template-columns:1fr 1fr}
+    .step:nth-child(2){border-right:0}
+    .step:nth-child(-n+2){border-bottom:1px solid #bbb}
+  }
+  @media(max-width:600px){
+    .container{width:min(var(--max),calc(100% - 28px))}
+    nav{height:68px}
+    .brand{font-size:25px}
+    .brand-mark{width:34px;height:34px}
+    .nav-cta{padding:11px 13px;font-size:10px}
+    .hero-inner{min-height:720px;padding-top:45px}
+    h1{font-size:54px;letter-spacing:-4px}
+    .hero-copy{font-size:14px}
+    .hero-visual{height:320px}
+    .hero-cutout{width:96%;right:-1%}
+    .hero-photo{clip-path:polygon(4% 0,100% 0,100% 93%,0 100%,0 8%)}
+    section{padding:75px 0}
+    .section-head{display:block;margin-bottom:30px}
+    .section-intro{margin-top:20px}
+    h2{letter-spacing:-2.5px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .stat{padding:27px 18px}
+    .stat strong{font-size:38px}
+    .why-grid{gap:35px}
+    .process-grid{grid-template-columns:1fr}
+    .step{border-right:0!important;border-bottom:1px solid #bbb!important}
+    .step:last-child{border-bottom:0!important}
+    .about-image{min-height:360px}
+    .footer-inner{display:block}
+    footer .footer-inner div+div{margin-top:8px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#top" aria-label="241">
+        <span class="brand-mark">2</span>
+        <span>241<small>HEAVY EQUIPMENT RENTAL</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#fleet">Alat</a>
+        <a href="#why">Keunggulan</a>
+        <a href="#process">Cara Sewa</a>
+        <a href="#about">Tentang</a>
+      </div>
+      <a class="nav-cta" href="https://wa.me/6285373340600" target="_blank" rel="noopener">Hubungi 241</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy-wrap">
+        <div class="eyebrow">Rental alat berat · Banda Aceh</div>
+        <h1>
+          <span>Alat</span>
+          <span class="accent">Berat.</span>
+          <span>Siap Kerja.</span>
+        </h1>
+        <p class="hero-copy">
+          Sewa excavator, crane, dan alat berat lainnya untuk mendukung pekerjaan konstruksi, penggalian, pemindahan material, dan kebutuhan proyek Anda.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20cek%20ketersediaan%20alat%20berat." target="_blank" rel="noopener">Cek Ketersediaan ↗</a>
+          <a class="btn btn-dark" href="#fleet">Lihat Alat</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-photo" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241">
+        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator Komatsu">
+        <div class="hero-tag">241 — READY TO WORK</div>
+        <div class="hero-number">01 / 04 — HEAVY EQUIPMENT</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>EXCAVATOR <b>///</b></span><span>CRANE <b>///</b></span><span>HEAVY EQUIPMENT <b>///</b></span><span>BANDA ACEH <b>///</b></span><span>PROJECT READY <b>///</b></span>
+      <span>EXCAVATOR <b>///</b></span><span>CRANE <b>///</b></span><span>HEAVY EQUIPMENT <b>///</b></span><span>BANDA ACEH <b>///</b></span><span>PROJECT READY <b>///</b></span>
+    </div>
+  </div>
+
+  <section id="fleet" class="fleet">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">01 — Fleet</div>
+          <h2>Alat untuk<br>pekerjaan nyata.</h2>
+        </div>
+        <p class="section-intro">Pilih alat berdasarkan kebutuhan proyek. Belum tahu unit yang paling sesuai? Sampaikan jenis pekerjaan dan lokasi proyek ke tim 241.</p>
+      </div>
+
+      <div class="fleet-grid">
+        <article class="fleet-card">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator">
+          <div class="fleet-content">
+            <div class="fleet-num">01 / EXCAVATOR</div>
+            <h3>Excavator</h3>
+            <p>Untuk penggalian, pemindahan tanah, pembukaan lahan, dan berbagai pekerjaan konstruksi.</p>
+            <a class="fleet-link" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20menanyakan%20unit%20excavator." target="_blank" rel="noopener">Tanya Unit ↗</a>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Crane dan alat berat">
+          <div class="fleet-content">
+            <div class="fleet-num">02 / CRANE</div>
+            <h3>Crane</h3>
+            <p>Untuk kebutuhan pengangkatan dan pemindahan material berat di area proyek.</p>
+            <a class="fleet-link" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20menanyakan%20unit%20crane." target="_blank" rel="noopener">Tanya Unit ↗</a>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat lainnya">
+          <div class="fleet-content">
+            <div class="fleet-num">03 / OTHER</div>
+            <h3>Alat Berat Lainnya</h3>
+            <p>Kebutuhan alat berat lain dapat dikonsultasikan sesuai jenis pekerjaan dan kondisi proyek.</p>
+            <a class="fleet-link" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20konsultasi%20kebutuhan%20alat%20berat." target="_blank" rel="noopener">Konsultasi ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat"><strong>5.0</strong><span>Rating Google</span></div>
+      <div class="stat"><strong>19+</strong><span>Ulasan pelanggan</span></div>
+      <div class="stat"><strong>24/7</strong><span>Konsultasi kebutuhan proyek</span></div>
+      <div class="stat"><strong>ACEH</strong><span>Area layanan utama</span></div>
+    </div>
+  </div>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">02 — Why 241</div>
+          <h2>Proyek nggak<br>boleh tertahan.</h2>
+        </div>
+      </div>
+      <div class="why-grid">
+        <div class="manifesto">
+          Alat yang tepat.<br>
+          Waktu yang tepat.<br>
+          <mark>Kerja jalan.</mark>
+        </div>
+        <div class="points">
+          <div class="point">
+            <div class="point-num">01</div>
+            <div><h3>Alat siap digunakan</h3><p>Kondisi alat menjadi bagian penting dalam menjaga pekerjaan proyek tetap berjalan.</p></div>
+          </div>
+          <div class="point">
+            <div class="point-num">02</div>
+            <div><h3>Pilihan alat berat</h3><p>Excavator, crane, dan kebutuhan alat berat lainnya dapat disesuaikan dengan pekerjaan.</p></div>
+          </div>
+          <div class="point">
+            <div class="point-num">03</div>
+            <div><h3>Konsultasi kebutuhan</h3><p>Ceritakan jenis pekerjaan, lokasi, dan durasi. Tim 241 membantu menentukan kebutuhan alat.</p></div>
+          </div>
+          <div class="point">
+            <div class="point-num">04</div>
+            <div><h3>Banda Aceh & sekitarnya</h3><p>Melayani kebutuhan proyek di Banda Aceh dan area sekitarnya.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="process">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">03 — How it works</div>
+          <h2>Mulai sewa<br>tanpa ribet.</h2>
+        </div>
+        <p class="section-intro">Cukup sampaikan kebutuhan proyek. Setelah itu kita cek unit, jadwal, dan detail sewanya.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step"><div class="step-num">01</div><h3>Sampaikan kebutuhan</h3><p>Beritahu jenis pekerjaan, lokasi proyek, dan alat yang dibutuhkan.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Cek ketersediaan</h3><p>Tim 241 mengecek unit yang tersedia sesuai kebutuhan proyek.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Tentukan jadwal</h3><p>Sepakati durasi dan jadwal penggunaan alat.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Alat menuju lokasi</h3><p>Alat dipersiapkan dan dimobilisasi menuju lokasi proyek.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="241 alat berat di lokasi proyek">
+        <div class="about-badge">241<br>READY<br>TO WORK.</div>
+      </div>
+      <div class="about-copy">
+        <div class="kicker">04 — About 241</div>
+        <h2>Rental alat berat di Banda Aceh.</h2>
+        <p>241 menyediakan layanan penyewaan excavator, crane, dan alat berat lainnya untuk mendukung kebutuhan proyek konstruksi dan pekerjaan lapangan.</p>
+        <p>Berbasis di Banda Aceh, 241 hadir untuk membantu pelanggan mendapatkan alat yang sesuai dengan kebutuhan pekerjaan dan jadwal proyek.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="https://wa.me/6285373340600" target="_blank" rel="noopener">Hubungi 241 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="kicker">05 — Contact</div>
+        <h2>Punya proyek yang butuh <span>alat berat?</span></h2>
+        <p class="contact-copy">Hubungi 241 untuk cek ketersediaan alat dan konsultasikan kebutuhan proyek Anda.</p>
+      </div>
+      <div class="contact-box">
+        <a class="contact-link" href="https://wa.me/6285373340600" target="_blank" rel="noopener"><span>WhatsApp</span><span>0853-7334-0600 ↗</span></a>
+        <a class="contact-link" href="tel:+6285373340600"><span>Telepon</span><span>Hubungi 241 ↗</span></a>
+        <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Lam+Lagang+Banda+Raya+Banda+Aceh" target="_blank" rel="noopener"><span>Lokasi</span><span>Banda Aceh ↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>241</strong> — Sewa Excavator, Crane & Alat Berat Lainnya</div>
+    <div>Lam Lagang, Banda Raya, Banda Aceh · <strong>0853-7334-0600</strong></div>
+  </div>
+</footer>
+
+</body>
+</html>
