@@ -2,557 +2,201 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f7f5">
 <meta name="description" content="241 menyediakan layanan sewa excavator, crane, dan alat berat lainnya untuk kebutuhan proyek di Banda Aceh dan sekitarnya.">
 <title>241 — Sewa Alat Berat Banda Aceh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-  :root{
-    --yellow:#f5c400;
-    --yellow-2:#ffd52a;
-    --black:#0b0b0b;
-    --ink:#171717;
-    --muted:#666;
-    --line:#dedede;
-    --paper:#f7f7f5;
-    --white:#fff;
-    --max:1180px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Barlow',Arial,Helvetica,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.5;
-    overflow-x:hidden;
-  }
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3,.brand,.nav-links,.nav-cta,.btn,.kicker,.eyebrow,.hero-tag,.hero-number,.ticker-track,.fleet-num,.fleet-link,.stat strong,.stat span,.step-num,.step h3,.about-badge,.contact-link,footer strong{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;}
-  img{display:block;max-width:100%}
-  .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+:root{--yellow:#f5c400;--yellow-2:#ffd52a;--black:#0b0b0b;--ink:#171717;--line:#dedede;--paper:#f7f7f5;--max:1180px;--nav:78px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+h1,h2,h3,.brand,.nav-links,.nav-cta,.btn,.kicker,.eyebrow,.hero-tag,.hero-number,.ticker-track,.fleet-num,.fleet-link,.stat strong,.stat span,.step-num,.step h3,.about-badge,.contact-link,footer strong{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif}
+.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
 
-  header{
-    position:fixed;
-    inset:0 0 auto;
-    z-index:20;
-    background:rgba(247,247,245,.92);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(0,0,0,.08);
-  }
-  nav{
-    height:78px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-  }
-  .brand{
-    display:flex;align-items:center;gap:10px;
-    font-weight:900;letter-spacing:-2px;font-size:28px;
-  }
-  .brand-mark{
-    width:38px;height:38px;background:var(--yellow);
-    display:grid;place-items:center;
-    font-size:19px;font-weight:1000;
-    transform:skew(-8deg);
-  }
-  .brand small{
-    display:block;font-size:8px;letter-spacing:1.4px;
-    line-height:1;margin-top:-2px;
-  }
-  .nav-links{display:flex;gap:28px;font-size:12px;font-weight:800;text-transform:uppercase}
-  .nav-links a{position:relative;padding:8px 0}
-  .nav-links a:after{
-    content:"";position:absolute;left:0;bottom:0;width:0;height:3px;
-    background:var(--yellow);transition:.25s;
-  }
-  .nav-links a:hover:after{width:100%}
-  .nav-cta{
-    background:var(--black);color:white;padding:13px 18px;
-    font-size:12px;font-weight:900;white-space:nowrap;
-  }
+header{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(247,247,245,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.08)}
+nav{height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-2px;font-size:28px;line-height:1}
+.brand-mark{width:38px;height:38px;background:var(--yellow);display:grid;place-items:center;font-size:19px;transform:skew(-8deg)}
+.brand small{display:block;font-size:8px;letter-spacing:1.4px;margin-top:1px}
+.nav-links{display:flex;gap:28px;font-size:12px;font-weight:800;text-transform:uppercase}
+.nav-links a{position:relative;padding:12px 0}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:6px;width:0;height:3px;background:var(--yellow);transition:width .25s}
+.nav-links a:hover:after{width:100%}
+.nav-cta{background:var(--black);color:#fff;padding:14px 18px;font-size:12px;font-weight:900;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;text-transform:uppercase}
 
-  .hero{
-    min-height:780px;
-    padding-top:78px;
-    position:relative;
-    overflow:hidden;
-    background:
-      linear-gradient(90deg,#f7f7f5 0%,#f7f7f5 43%,#e9e9e5 100%);
-    color:var(--ink);
-  }
-  .hero:before{
-    content:"241";
-    position:absolute;
-    right:-40px;
-    top:105px;
-    font-size:clamp(220px,31vw,520px);
-    font-weight:1000;
-    line-height:.8;
-    letter-spacing:-35px;
-    color:rgba(0,0,0,.035);
-    pointer-events:none;
-  }
-  .hero-inner{
-    min-height:702px;
-    display:grid;
-    grid-template-columns:43% 57%;
-    align-items:center;
-    position:relative;
-    z-index:1;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:22px;
-  }
-  .eyebrow:before{
-    content:"";
-    width:30px;
-    height:4px;
-    background:var(--yellow);
-  }
-  h1{
-    font-size:clamp(58px,7vw,104px);
-    line-height:.86;
-    letter-spacing:-7px;
-    text-transform:uppercase;
-    font-weight:1000;
-    max-width:620px;
-  }
-  h1 span{display:block}
-  h1 .accent{
-    color:var(--yellow);
-    -webkit-text-stroke:2px #111;
-  }
-  .hero-copy{
-    margin-top:28px;
-    max-width:480px;
-    color:#4e4e4e;
-    font-size:16px;
-  }
-  .hero-actions{
-    display:flex;
-    gap:12px;
-    margin-top:32px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:16px 22px;
-    font-size:12px;
-    font-weight:900;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-    transition:.2s;
-  }
-  .btn-primary{background:var(--yellow);color:#111}
-  .btn-primary:hover{background:var(--yellow-2);transform:translateY(-2px)}
-  .btn-dark{background:#111;color:#fff}
-  .btn-dark:hover{transform:translateY(-2px)}
-  .hero-visual{
-    height:100%;
-    min-height:600px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .hero-cutout{
-    position:absolute;
-    right:1%;
-    bottom:2%;
-    width:min(88%,720px);
-    max-height:650px;
-    object-fit:contain;
-    object-position:center bottom;
-    mix-blend-mode:multiply;
-    filter:drop-shadow(0 28px 20px rgba(0,0,0,.22));
-    z-index:2;
-  }
-  .hero-tag{
-    position:absolute;
-    right:7%;
-    top:18%;
-    z-index:3;
-    background:var(--yellow);
-    padding:13px 17px;
-    font-size:11px;
-    font-weight:1000;
-    text-transform:uppercase;
-    transform:rotate(-3deg);
-  }
-  .hero-number{
-    position:absolute;
-    left:0;
-    bottom:22px;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:1px;
-    writing-mode:vertical-rl;
-    transform:rotate(180deg);
-  }
+.hero{padding-top:calc(var(--nav) + env(safe-area-inset-top));position:relative;overflow:clip;background:linear-gradient(90deg,#f7f7f5 43%,#e9e9e5 100%)}
+.hero:before{content:"241";position:absolute;right:-40px;top:105px;font:900 clamp(220px,31vw,520px)/.8 'Barlow Condensed',sans-serif;letter-spacing:-35px;color:rgba(0,0,0,.035);pointer-events:none}
+.hero-inner{min-height:700px;display:grid;grid-template-columns:43% 57%;align-items:center;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+.eyebrow:before{content:"";width:30px;height:4px;background:var(--yellow)}
+h1{font-size:clamp(58px,7vw,104px);line-height:.86;letter-spacing:-5px;text-transform:uppercase;font-weight:900;max-width:620px}
+h1 span{display:block}
+h1 .accent{color:var(--yellow);-webkit-text-stroke:2px #111;paint-order:stroke fill}
+.hero-copy{margin-top:28px;max-width:480px;color:#4e4e4e;font-size:16px}
+.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:15px 22px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;transition:transform .2s,background .2s}
+.btn-primary{background:var(--yellow);color:#111}
+.btn-primary:hover{background:var(--yellow-2);transform:translateY(-2px)}
+.btn-dark{background:#111;color:#fff}
+.btn-dark:hover{transform:translateY(-2px)}
+.hero-visual{height:100%;min-height:600px;position:relative}
+.hero-cutout{position:absolute;right:1%;bottom:2%;width:min(88%,720px);max-height:650px;object-fit:contain;object-position:center bottom;mix-blend-mode:multiply;filter:drop-shadow(0 28px 20px rgba(0,0,0,.22));z-index:2;transition:opacity .6s}
+.hero-sequence-canvas{display:none}
+.hero-tag{position:absolute;right:7%;top:18%;z-index:3;background:var(--yellow);padding:13px 17px;font-size:11px;font-weight:900;text-transform:uppercase;transform:rotate(-3deg)}
+.hero-number{position:absolute;left:0;bottom:22px;font-size:11px;font-weight:900;letter-spacing:1px;writing-mode:vertical-rl;transform:rotate(180deg)}
 
-  @media(max-width:900px){
-    .hero{
-      min-height:820px;
-      padding-top:68px;
-      background:linear-gradient(180deg,#f7f7f5 0%,#f7f7f5 55%,#e9e9e5 100%);
-    }
-    .hero-inner{
-      min-height:752px;
-      grid-template-columns:1fr;
-      align-content:start;
-      padding:42px 0 0;
-    }
-    .hero-copy-wrap{
-      position:relative;
-      z-index:4;
-    }
-    .hero-copy{
-      max-width:560px;
-    }
-    .hero-visual{
-      height:390px;
-      min-height:390px;
-      margin-top:-4px;
-    }
-    .hero-cutout{
-      width:92%;
-      max-height:390px;
-      right:4%;
-      bottom:-5px;
-    }
-    .hero-tag{
-      right:3%;
-      top:8%;
-    }
-    .hero-number{
-      left:2px;
-      bottom:12px;
-      font-size:8px;
-    }
-  }
+.ticker{background:var(--black);color:#fff;overflow:hidden;border-top:5px solid var(--yellow)}
+.ticker-track{display:flex;width:max-content;gap:60px;padding:18px 60px 18px 0;white-space:nowrap;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;animation:marquee 24s linear infinite}
+.ticker-track span{flex:none}
+.ticker b{color:var(--yellow)}
+@keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 
-  @media(max-width:600px){
-    .container{width:min(var(--max),calc(100% - 28px))}
-    nav{height:68px}
-    .brand{font-size:25px}
-    .brand-mark{width:34px;height:34px}
-    .nav-cta{padding:11px 13px;font-size:10px}
+section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:45px}
+.kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#777}
+h2{font-size:clamp(42px,5vw,70px);line-height:.92;letter-spacing:-3px;text-transform:uppercase;margin-top:10px;font-weight:900}
+.section-intro{max-width:400px;color:#666;font-size:14px}
 
-    .hero{
-      min-height:720px;
-      padding-top:68px;
-    }
-    .hero:before{
-      right:-85px;
-      top:170px;
-      font-size:230px;
-      letter-spacing:-18px;
-    }
-    .hero-inner{
-      min-height:652px;
-      padding-top:25px;
-    }
-    h1{
-      font-size:54px;
-      letter-spacing:-4px;
-      line-height:.88;
-    }
-    .hero-copy{
-      font-size:14px;
-      line-height:1.45;
-      max-width:350px;
-      margin-top:18px;
-    }
-    .hero-actions{
-      margin-top:20px;
-      gap:8px;
-    }
-    .hero-actions .btn{
-      padding:13px 15px;
-      font-size:10px;
-    }
-    .hero-visual{
-      height:310px;
-      min-height:310px;
-      margin-top:4px;
-    }
-    .hero-cutout{
-      width:112%;
-      max-height:330px;
-      right:-8%;
-      bottom:-8px;
-    }
-    .hero-tag{
-      right:2%;
-      top:3%;
-      font-size:9px;
-      padding:10px 12px;
-    }
-    .hero-number{
-      left:0;
-      bottom:7px;
-      font-size:7px;
-    }
-  }
+.fleet{background:#fff}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.fleet-card{background:#fff;min-height:430px;position:relative;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .25s}
+.fleet-card:active{transform:translateY(-3px)}
+.fleet-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.96) 100%);z-index:1}
+.fleet-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 22px 92px;transition:transform .45s}
+.fleet-card:hover img{transform:scale(1.02)}
+.fleet-content{position:relative;z-index:2}
+.fleet-num{color:#9a7800;font-size:11px;font-weight:900;letter-spacing:2px;margin-bottom:8px}
+.fleet-card h3{font-size:31px;line-height:.95;text-transform:uppercase;letter-spacing:-1px;margin-bottom:9px}
+.fleet-card p{color:#555;font-size:14px;max-width:310px}
+.fleet-link{display:inline-block;margin-top:12px;padding:8px 0 3px;font-size:12px;font-weight:900;text-transform:uppercase;border-bottom:2px solid var(--yellow)}
 
-  .ticker{
-    background:var(--black);color:#fff;
-    overflow:hidden;border-top:5px solid var(--yellow);
-  }
-  .ticker-track{
-    display:flex;gap:60px;white-space:nowrap;
-    padding:18px 0;font-size:12px;font-weight:900;
-    text-transform:uppercase;letter-spacing:1.5px;
-    animation:marquee 24s linear infinite;
-  }
-  .ticker b{color:var(--yellow)}
-  @keyframes marquee{to{transform:translateX(-50%)}}
+.stats{background:var(--yellow)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:38px 25px;border-right:1px solid rgba(0,0,0,.18)}
+.stat:last-child{border:0}
+.stat strong{font-size:48px;line-height:1;font-weight:900;letter-spacing:-2px}
+.stat span{display:block;margin-top:7px;font-size:12px;font-weight:900;text-transform:uppercase}
 
-  section{padding:105px 0}
-  .section-head{
-    display:flex;justify-content:space-between;gap:30px;
-    align-items:end;margin-bottom:45px;
-  }
-  .kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#777}
-  h2{
-    font-size:clamp(42px,5vw,70px);line-height:.92;
-    letter-spacing:-4px;text-transform:uppercase;
-    margin-top:10px;font-weight:1000;
-  }
-  .section-intro{max-width:400px;color:#666;font-size:14px}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.manifesto{font:900 clamp(28px,3.3vw,48px)/1 'Barlow Condensed',sans-serif;letter-spacing:-1px;text-transform:uppercase}
+.manifesto mark{background:var(--yellow);padding:0 5px}
+.point{display:grid;grid-template-columns:50px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.point:last-child{border-bottom:1px solid var(--line)}
+.point-num{font-weight:900;color:#aaa}
+.point h3{font-size:18px;text-transform:uppercase;margin-bottom:4px}
+.point p{font-size:14px;color:#666;max-width:430px}
 
-  .fleet{
-    background:#fff;color:var(--ink);
-  }
-  .fleet .kicker{color:#777}
-  .fleet h2{color:var(--ink)}
-  .fleet .section-intro{color:#666}
-  .fleet-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:2px;background:#dedede;
-  }
-  .fleet-card{
-    background:#fff;min-height:430px;
-    position:relative;overflow:hidden;
-    padding:28px;display:flex;flex-direction:column;justify-content:end;
-  }
-  .fleet-card:before{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.96) 100%);
-    z-index:1;
-  }
-  .fleet-card img{
-    position:absolute;inset:0;width:100%;height:100%;
-    object-fit:contain;object-position:center center;
-    padding:22px 22px 92px;
-    opacity:1;transition:.45s;
-  }
-  .fleet-card:hover img{transform:scale(1.02);opacity:1}
-  .fleet-content{position:relative;z-index:2}
-  .fleet-num{
-    color:#9a7800;font-size:11px;font-weight:900;
-    letter-spacing:2px;margin-bottom:8px;
-  }
-  .fleet-card h3{
-    font-size:31px;line-height:.95;text-transform:uppercase;
-    letter-spacing:-1.5px;margin-bottom:9px;
-  }
-  .fleet-card p{color:#555;font-size:13px;max-width:310px}
-  .fleet-link{
-    display:inline-block;margin-top:17px;
-    font-size:11px;font-weight:900;text-transform:uppercase;
-    border-bottom:2px solid var(--yellow);padding-bottom:3px;
-  }
+.process{background:#e8e8e4}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid #bbb}
+.step{padding:28px 22px 35px;border-right:1px solid #bbb}
+.step:last-child{border:0}
+.step-num{font-size:50px;font-weight:900;letter-spacing:-3px;color:#aaa;line-height:1}
+.step h3{font-size:18px;text-transform:uppercase;margin:20px 0 7px}
+.step p{font-size:14px;color:#666}
 
-  .stats{
-    background:var(--yellow);padding:0;
-  }
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:38px 25px;border-right:1px solid rgba(0,0,0,.18)}
-  .stat:last-child{border:0}
-  .stat strong{font-size:48px;line-height:1;font-weight:1000;letter-spacing:-3px}
-  .stat span{display:block;margin-top:7px;font-size:11px;font-weight:900;text-transform:uppercase}
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.about-image{min-height:500px;position:relative;overflow:hidden;background:#ddd}
+.about-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.about-badge{position:absolute;left:24px;bottom:24px;background:var(--yellow);padding:20px;width:160px;font-weight:900;font-size:23px;line-height:.95;text-transform:uppercase;letter-spacing:-.5px}
+.about-copy p{font-size:16px;color:#666;margin-top:22px;max-width:510px}
 
-  .why-grid{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:70px;align-items:start;
-  }
-  .manifesto{
-    font-size:clamp(28px,3.3vw,48px);
-    line-height:1;letter-spacing:-2px;font-weight:900;
-    text-transform:uppercase;
-  }
-  .manifesto mark{background:var(--yellow);padding:0 5px}
-  .points{display:grid;gap:0}
-  .point{
-    display:grid;grid-template-columns:50px 1fr;
-    gap:20px;padding:22px 0;border-top:1px solid var(--line);
-  }
-  .point:last-child{border-bottom:1px solid var(--line)}
-  .point-num{font-weight:1000;color:#aaa}
-  .point h3{font-size:17px;text-transform:uppercase;margin-bottom:4px}
-  .point p{font-size:13px;color:#666;max-width:430px}
+.contact{background:var(--black);color:#fff;position:relative;overflow:hidden}
+.contact:after{content:"241";position:absolute;right:-30px;bottom:-100px;font:900 360px/1 'Barlow Condensed',sans-serif;letter-spacing:-30px;color:rgba(255,255,255,.035);pointer-events:none}
+.contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.contact h2{color:#fff;max-width:700px}
+.contact h2 span{color:var(--yellow)}
+.contact-copy{color:#aaa;max-width:440px;margin-top:25px}
+.contact-box{display:grid;gap:13px}
+.contact-link{border:1px solid #444;padding:18px 20px;min-height:56px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;font-weight:900;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+.contact-link:hover{background:var(--yellow);color:#111;border-color:var(--yellow)}
+footer{background:#050505;color:#888;padding:28px 0;padding-bottom:calc(28px + env(safe-area-inset-bottom));font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}
+footer strong{color:#fff}
 
-  .process{background:#e8e8e4}
-  .process-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);
-    border-top:1px solid #bbb;border-bottom:1px solid #bbb;
-  }
-  .step{padding:28px 22px 35px;border-right:1px solid #bbb}
-  .step:last-child{border:0}
-  .step-num{font-size:50px;font-weight:1000;letter-spacing:-4px;color:#aaa}
-  .step h3{font-size:16px;text-transform:uppercase;margin:20px 0 7px}
-  .step p{font-size:13px;color:#666}
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
+.js .reveal.is-visible{opacity:1;transform:none}
 
-  .about{
-    background:#fff;
-  }
-  .about-grid{
-    display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;
-  }
-  .about-image{
-    min-height:500px;position:relative;overflow:hidden;background:#ddd;
-  }
-  .about-image img{width:100%;height:100%;object-fit:cover;position:absolute}
-  .about-badge{
-    position:absolute;left:24px;bottom:24px;
-    background:var(--yellow);padding:20px;
-    width:160px;font-weight:1000;font-size:23px;
-    line-height:.95;text-transform:uppercase;letter-spacing:-1px;
-  }
-  .about-copy p{font-size:16px;color:#666;margin-top:22px;max-width:510px}
-  .contact{
-    background:var(--black);color:#fff;position:relative;overflow:hidden;
-  }
-  .contact:after{
-    content:"241";position:absolute;right:-30px;bottom:-100px;
-    font-size:360px;font-weight:1000;letter-spacing:-30px;
-    color:rgba(255,255,255,.035);line-height:1;
-  }
-  .contact-grid{
-    position:relative;z-index:1;
-    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;
-  }
-  .contact h2{color:#fff;max-width:700px}
-  .contact h2 span{color:var(--yellow)}
-  .contact-copy{color:#aaa;max-width:440px;margin-top:25px}
-  .contact-box{display:grid;gap:13px}
-  .contact-link{
-    border:1px solid #444;padding:18px 20px;
-    display:flex;justify-content:space-between;align-items:center;
-    font-size:13px;font-weight:900;text-transform:uppercase;
-    transition:.2s;
-  }
-  .contact-link:hover{background:var(--yellow);color:#111;border-color:var(--yellow)}
-  footer{
-    background:#050505;color:#777;
-    padding:28px 0;font-size:11px;
-  }
-  .footer-inner{display:flex;justify-content:space-between;gap:20px}
-  footer strong{color:#fff}
+@media(max-width:900px){
+  :root{--nav:68px}
+  .nav-links{display:none}
+  .hero{background:linear-gradient(180deg,#f7f7f5 55%,#e9e9e5)}
+  .hero-inner{grid-template-columns:1fr;min-height:0;padding:42px 0 0;align-content:start}
+  .hero-copy-wrap{position:relative;z-index:4}
+  .hero-visual{height:400px;min-height:400px}
+  .hero-cutout{width:92%;right:4%;bottom:0}
+  .hero-tag{right:3%;top:6%}
+  .hero-number{font-size:9px;bottom:12px}
+  .fleet-grid{grid-template-columns:1fr}
+  .fleet-card{min-height:390px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-bottom:1px solid rgba(0,0,0,.18)}
+  .stat:nth-child(2n){border-right:0}
+  .stat:nth-last-child(-n+2){border-bottom:0}
+  .why-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .step:nth-child(2n){border-right:0}
+  .step:nth-child(-n+2){border-bottom:1px solid #bbb}
+}
+@media(max-width:600px){
+  .container{width:calc(100% - 28px)}
+  .brand{font-size:25px}
+  .brand-mark{width:34px;height:34px}
+  .nav-cta{padding:12px 14px;font-size:11px}
+  h1{font-size:clamp(46px,15vw,64px);letter-spacing:-3px;line-height:.88}
+  h2{letter-spacing:-2px}
+  .hero-copy{font-size:15px;max-width:360px;margin-top:16px}
+  .hero-actions{margin-top:18px;gap:8px}
+  .hero-actions .btn{padding:13px 16px;font-size:12px}
+  .hero:before{right:-85px;top:170px;font-size:230px;letter-spacing:-18px}
+  section{padding:75px 0}
+  .section-head{display:block;margin-bottom:30px}
+  .section-intro{margin-top:20px}
+  .fleet-card{min-height:360px;padding:22px}
+  .stat{padding:27px 16px}
+  .stat strong{font-size:38px}
+  .why-grid{gap:35px}
+  .process-grid{grid-template-columns:1fr}
+  .step{border-right:0!important;border-bottom:1px solid #bbb!important}
+  .step:last-child{border-bottom:0!important}
+  .about-image{min-height:340px}
+  .contact:after{font-size:240px;bottom:-60px}
+  .footer-inner{display:block}
+  .footer-inner div+div{margin-top:8px}
 
-  @media(max-width:900px){
-    .nav-links{display:none}
-    .hero{min-height:auto}
-    .hero-inner{grid-template-columns:1fr;min-height:780px;padding:70px 0 30px}
-    .hero-copy{max-width:560px}
-    .hero-visual{height:390px;margin-top:-20px}
-    .hero-photo{width:100%;height:100%;right:0;top:0}
-    .hero-cutout{width:82%;right:4%;bottom:0}
-    .hero-tag{right:3%;top:10%}
-    .fleet-grid{grid-template-columns:1fr}
-    .fleet-card{min-height:390px}
-    .stats-grid{grid-template-columns:1fr 1fr}
-    .stat:nth-child(2){border:0}
-    .stat{border-bottom:1px solid rgba(0,0,0,.18)}
-    .why-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
-    .process-grid{grid-template-columns:1fr 1fr}
-    .step:nth-child(2){border-right:0}
-    .step:nth-child(-n+2){border-bottom:1px solid #bbb}
-  }
-  @media(max-width:600px){
-    .container{width:min(var(--max),calc(100% - 28px))}
-    nav{height:68px}
-    .brand{font-size:25px}
-    .brand-mark{width:34px;height:34px}
-    .nav-cta{padding:11px 13px;font-size:10px}
-    .hero-inner{min-height:720px;padding-top:45px}
-    h1{font-size:54px;letter-spacing:-4px}
-    .hero-copy{font-size:14px}
-    .hero-visual{height:320px}
-    .hero-cutout{width:96%;right:-1%}
-    .hero-photo{clip-path:polygon(4% 0,100% 0,100% 93%,0 100%,0 8%)}
-    section{padding:75px 0}
-    .section-head{display:block;margin-bottom:30px}
-    .section-intro{margin-top:20px}
-    h2{letter-spacing:-2.5px}
-    .stats-grid{grid-template-columns:1fr 1fr}
-    .stat{padding:27px 18px}
-    .stat strong{font-size:38px}
-    .why-grid{gap:35px}
-    .process-grid{grid-template-columns:1fr}
-    .step{border-right:0!important;border-bottom:1px solid #bbb!important}
-    .step:last-child{border-bottom:0!important}
-    .about-image{min-height:360px}
-    .footer-inner{display:block}
-    footer .footer-inner div+div{margin-top:8px}
-  }
-
-  /* Mobile / touch enhancements */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
-  .reveal.is-visible{opacity:1;transform:none}
-  .hero-cutout{will-change:transform}
-  .fleet-card,.point,.step,.stat{will-change:transform}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-    .reveal{opacity:1;transform:none}
-  }
-  @media (hover:none){
-    .fleet-card:hover img{transform:none;opacity:1}
-    .btn-primary:hover,.btn-dark:hover,.contact-link:hover{transform:none}
-  }
-
-
-  /* Mobile hero sequence */
-  .hero-sequence-canvas{display:none}
-  @media(max-width:600px){
-    .hero{min-height:200vh}
-    .hero-inner{min-height:calc(100vh - 68px);height:calc(100vh - 68px);padding-top:38px;position:sticky;top:68px}
-    .hero-copy-wrap{position:relative;z-index:4}
-    .hero-visual{height:350px;margin-top:0;overflow:visible}
-    .hero-cutout{width:108%;max-width:none;right:-8%;bottom:-12px;transform-origin:center bottom;transition:opacity .8s ease}
-    .hero-tag{right:2%;top:5%;font-size:9px;padding:10px 12px}
-    .hero-number{left:2px;bottom:12px;font-size:8px}
-    .ticker-track{animation-duration:20s}
-    .fleet-card{min-height:360px}
-    .about-image{min-height:340px}
-    .contact-link{gap:12px;font-size:11px}
-    .hero-sequence-canvas{display:block;position:absolute;width:min(88vw,430px);height:auto;aspect-ratio:1 / 1;right:50%;bottom:0;transform:translate(50%,0);background:#fff;z-index:2;pointer-events:none;opacity:0;transition:opacity .8s ease,transform .05s linear}
-    .hero.sequence-ready .hero-cutout{opacity:0}
-    .hero.sequence-ready .hero-sequence-canvas{opacity:1}
-  }
-  @media(min-width:601px){.hero-sequence-canvas{display:none!important}}
+  /* Scroll-driven image sequence: tall hero + sticky stage */
+  .hero.has-seq{height:240vh;height:240svh}
+  .has-seq .hero-inner{position:sticky;top:var(--nav);height:calc(100vh - var(--nav));height:calc(100svh - var(--nav));min-height:480px;padding:28px 0 0;grid-template-rows:auto 1fr}
+  .has-seq .hero-visual{min-height:0;height:100%}
+  .hero-sequence-canvas{display:block;position:absolute;left:50%;bottom:0;height:100%;max-height:100%;width:auto;aspect-ratio:1/1;max-width:112%;transform:translateX(-50%);mix-blend-mode:multiply;z-index:2;opacity:0;transition:opacity .5s;pointer-events:none}
+  .has-seq .hero-cutout{width:auto;height:100%;max-width:112%;right:auto;left:50%;transform:translateX(-50%)}
+  .hero.sequence-ready .hero-sequence-canvas{opacity:1}
+  .hero.sequence-ready .hero-cutout{opacity:0}
+  .has-seq .hero-tag{top:4%}
+}
+@media(max-height:560px) and (max-width:600px){.hero.has-seq{height:auto}.has-seq .hero-inner{position:static;height:auto}}
+@media(hover:none){.btn:hover,.btn-primary:hover{transform:none}.fleet-card:hover img{transform:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 <header>
   <div class="container">
     <nav>
-      <a class="brand" href="#top" aria-label="241">
+      <a class="brand" href="#top" aria-label="241 — beranda">
         <span class="brand-mark">2</span>
         <span>241<small>HEAVY EQUIPMENT RENTAL</small></span>
       </a>
@@ -572,30 +216,23 @@
     <div class="container hero-inner">
       <div class="hero-copy-wrap">
         <div class="eyebrow">Rental alat berat · Banda Aceh</div>
-        <h1>
-          <span>Alat</span>
-          <span class="accent">Berat.</span>
-          <span>Siap Kerja.</span>
-        </h1>
-        <p class="hero-copy">
-          Sewa excavator, crane, dan alat berat lainnya untuk mendukung pekerjaan konstruksi, penggalian, pemindahan material, dan kebutuhan proyek Anda.
-        </p>
+        <h1><span>Alat</span><span class="accent">Berat.</span><span>Siap Kerja.</span></h1>
+        <p class="hero-copy">Sewa excavator, crane, dan alat berat lainnya untuk mendukung pekerjaan konstruksi, penggalian, pemindahan material, dan kebutuhan proyek Anda.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20cek%20ketersediaan%20alat%20berat." target="_blank" rel="noopener">Cek Ketersediaan ↗</a>
           <a class="btn btn-dark" href="#fleet">Lihat Alat</a>
         </div>
       </div>
-
       <div class="hero-visual">
         <canvas class="hero-sequence-canvas" aria-hidden="true"></canvas>
-        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane 241" loading="eager" fetchpriority="high">
+        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane 241" width="720" height="480" loading="eager" fetchpriority="high" decoding="async">
         <div class="hero-tag">241 — READY TO WORK</div>
         <div class="hero-number">01 / 04 — HEAVY EQUIPMENT</div>
       </div>
     </div>
   </section>
 
-  <div class="ticker">
+  <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span>EXCAVATOR <b>///</b></span><span>CRANE <b>///</b></span><span>HEAVY EQUIPMENT <b>///</b></span><span>BANDA ACEH <b>///</b></span><span>PROJECT READY <b>///</b></span>
       <span>EXCAVATOR <b>///</b></span><span>CRANE <b>///</b></span><span>HEAVY EQUIPMENT <b>///</b></span><span>BANDA ACEH <b>///</b></span><span>PROJECT READY <b>///</b></span>
@@ -611,10 +248,9 @@
         </div>
         <p class="section-intro">Pilih alat berdasarkan kebutuhan proyek. Belum tahu unit yang paling sesuai? Sampaikan jenis pekerjaan dan lokasi proyek ke tim 241.</p>
       </div>
-
       <div class="fleet-grid">
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator 241" loading="lazy">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator 241" width="600" height="450" loading="lazy" decoding="async">
           <div class="fleet-content">
             <div class="fleet-num">01 / EXCAVATOR</div>
             <h3>Excavator</h3>
@@ -622,9 +258,8 @@
             <a class="fleet-link" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20menanyakan%20unit%20excavator." target="_blank" rel="noopener">Tanya Unit ↗</a>
           </div>
         </article>
-
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane truck 241" loading="lazy">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane truck 241" width="600" height="450" loading="lazy" decoding="async">
           <div class="fleet-content">
             <div class="fleet-num">02 / CRANE</div>
             <h3>Crane</h3>
@@ -632,9 +267,8 @@
             <a class="fleet-link" href="https://wa.me/6285373340600?text=Halo%20241%2C%20saya%20ingin%20menanyakan%20unit%20crane." target="_blank" rel="noopener">Tanya Unit ↗</a>
           </div>
         </article>
-
         <article class="fleet-card">
-          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" loading="lazy">
+          <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" width="600" height="450" loading="lazy" decoding="async">
           <div class="fleet-content">
             <div class="fleet-num">03 / OTHER</div>
             <h3>Alat Berat Lainnya</h3>
@@ -664,28 +298,12 @@
         </div>
       </div>
       <div class="why-grid">
-        <div class="manifesto">
-          Alat yang tepat.<br>
-          Waktu yang tepat.<br>
-          <mark>Kerja jalan.</mark>
-        </div>
+        <div class="manifesto">Alat yang tepat.<br>Waktu yang tepat.<br><mark>Kerja jalan.</mark></div>
         <div class="points">
-          <div class="point">
-            <div class="point-num">01</div>
-            <div><h3>Alat siap digunakan</h3><p>Kondisi alat menjadi bagian penting dalam menjaga pekerjaan proyek tetap berjalan.</p></div>
-          </div>
-          <div class="point">
-            <div class="point-num">02</div>
-            <div><h3>Pilihan alat berat</h3><p>Excavator, crane, dan kebutuhan alat berat lainnya dapat disesuaikan dengan pekerjaan.</p></div>
-          </div>
-          <div class="point">
-            <div class="point-num">03</div>
-            <div><h3>Konsultasi kebutuhan</h3><p>Ceritakan jenis pekerjaan, lokasi, dan durasi. Tim 241 membantu menentukan kebutuhan alat.</p></div>
-          </div>
-          <div class="point">
-            <div class="point-num">04</div>
-            <div><h3>Banda Aceh & sekitarnya</h3><p>Melayani kebutuhan proyek di Banda Aceh dan area sekitarnya.</p></div>
-          </div>
+          <div class="point"><div class="point-num">01</div><div><h3>Alat siap digunakan</h3><p>Kondisi alat menjadi bagian penting dalam menjaga pekerjaan proyek tetap berjalan.</p></div></div>
+          <div class="point"><div class="point-num">02</div><div><h3>Pilihan alat berat</h3><p>Excavator, crane, dan kebutuhan alat berat lainnya dapat disesuaikan dengan pekerjaan.</p></div></div>
+          <div class="point"><div class="point-num">03</div><div><h3>Konsultasi kebutuhan</h3><p>Ceritakan jenis pekerjaan, lokasi, dan durasi. Tim 241 membantu menentukan kebutuhan alat.</p></div></div>
+          <div class="point"><div class="point-num">04</div><div><h3>Banda Aceh &amp; sekitarnya</h3><p>Melayani kebutuhan proyek di Banda Aceh dan area sekitarnya.</p></div></div>
         </div>
       </div>
     </div>
@@ -712,7 +330,7 @@
   <section id="about" class="about reveal">
     <div class="container about-grid">
       <div class="about-image">
-        <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" loading="lazy">
+        <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931307/ChatGPT_Image_Oct_2_2026_03_38_51_PM.png" alt="Alat berat 241 di lokasi proyek" width="800" height="600" loading="lazy" decoding="async">
         <div class="about-badge">241<br>READY<br>TO WORK.</div>
       </div>
       <div class="about-copy">
@@ -727,7 +345,7 @@
     </div>
   </section>
 
-  <section class="contact reveal">
+  <section id="contact" class="contact reveal">
     <div class="container contact-grid">
       <div>
         <div class="kicker">05 — Contact</div>
@@ -737,7 +355,7 @@
       <div class="contact-box">
         <a class="contact-link" href="https://wa.me/6285373340600" target="_blank" rel="noopener"><span>WhatsApp</span><span>0853-7334-0600 ↗</span></a>
         <a class="contact-link" href="tel:+6285373340600"><span>Telepon</span><span>Hubungi 241 ↗</span></a>
-        <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Lam+Lagang+Banda+Raya+Banda+Aceh" target="_blank" rel="noopener"><span>Lokasi</span><span>Banda Aceh ↗</span></a>
+        <a class="contact-link" href="https://www.google.com/maps/search/?api=1&amp;query=Lam+Lagang+Banda+Raya+Banda+Aceh" target="_blank" rel="noopener"><span>Lokasi</span><span>Banda Aceh ↗</span></a>
       </div>
     </div>
   </section>
@@ -745,163 +363,152 @@
 
 <footer>
   <div class="container footer-inner">
-    <div><strong>241</strong> — Sewa Excavator, Crane & Alat Berat Lainnya</div>
+    <div><strong>241</strong> — Sewa Excavator, Crane &amp; Alat Berat Lainnya</div>
     <div>Lam Lagang, Banda Raya, Banda Aceh · <strong>0853-7334-0600</strong></div>
   </div>
 </footer>
 
-
 <script>
 (function(){
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const reveals = document.querySelectorAll('.reveal');
+  /* Reveal on scroll */
+  var reveals = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
       });
-    }, { rootMargin:'0px 0px -10% 0px', threshold:0.08 });
-    reveals.forEach(el => observer.observe(el));
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    reveals.forEach(function(el){ io.observe(el); });
   } else {
-    reveals.forEach(el => el.classList.add('is-visible'));
+    reveals.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  /*
-   * Mobile-only hero sequence.
-   * Logical frames 0-299 map to Cloudinary files 001-300.
-   */
-  const hero = document.querySelector('.hero');
-  const canvas = document.querySelector('.hero-sequence-canvas');
-  const isMobile = window.matchMedia('(max-width:600px)').matches;
+  /* Mobile hero image sequence (scroll-scrubbed, progressive loading) */
+  var hero = document.querySelector('.hero');
+  var canvas = document.querySelector('.hero-sequence-canvas');
+  var mq = matchMedia('(max-width:600px)');
+  var conn = navigator.connection || {};
+  if (!hero || !canvas || !mq.matches || reduce || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')) return;
 
-  if (hero && canvas && isMobile && !reduce) {
-    const ctx = canvas.getContext('2d', {alpha:false});
-    const frameCount = 300;
-    const cache = new Array(frameCount);
-    const loaded = new Array(frameCount).fill(false);
-    let currentFrame = 0;
-    let targetFrame = 0;
-    let raf = 0;
-    let active = false;
+  var ctx = canvas.getContext('2d', {alpha:false});
+  var COUNT = 300, STRIDE = 15, CONCURRENCY = 6, MAX_RETRY = 3;
+  var frames = new Array(COUNT);
+  var coarseTotal = Math.ceil(COUNT / STRIDE), coarseLoaded = 0;
+  var current = 0, target = 0, last = 0, raf = 0, active = false, drawn = -1, heroTop = 0, range = 1;
 
-    const frameUrl = index => {
-      const fileFrame = String(index + 1).padStart(3,'0');
-      return 'https://res.cloudinary.com/naqr1mob/image/upload/v1791005005/ezgif-frame-' + fileFrame + '.jpg';
-    };
+  hero.classList.add('has-seq');
 
-    const draw = img => {
-      if (!img || !img.naturalWidth) return;
-      const size = Math.max(1, canvas.clientWidth);
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const pixels = Math.round(size * dpr);
-      if (canvas.width !== pixels || canvas.height !== pixels) {
-        canvas.width = pixels;
-        canvas.height = pixels;
-      }
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.fillStyle = '#fff';
-      ctx.fillRect(0,0,size,size);
-      const scale = Math.min(size / img.naturalWidth, size / img.naturalHeight);
-      const w = img.naturalWidth * scale;
-      const h = img.naturalHeight * scale;
-      ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);
-    };
-
-    const updateSequencePosition = progress => {
-      const rect = canvas.getBoundingClientRect();
-      const exitDistance = window.innerHeight - rect.top + rect.height;
-      canvas.style.transform = 'translate(50%, ' + (-exitDistance * progress) + 'px)';
-    };
-
-    const requestFrame = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const delta = targetFrame - currentFrame;
-        if (Math.abs(delta) > 0.01) currentFrame += delta * 0.3;
-        else currentFrame = targetFrame;
-        const index = Math.max(0, Math.min(frameCount - 1, Math.round(currentFrame)));
-        if (loaded[index]) draw(cache[index]);
-        if (Math.abs(targetFrame - currentFrame) > 0.01) requestFrame();
-      });
-    };
-
-    const updateFromScroll = () => {
-      if (!active) return;
-      const rect = hero.getBoundingClientRect();
-      const range = Math.max(1, hero.offsetHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, -rect.top / range));
-      targetFrame = progress * (frameCount - 1);
-      updateSequencePosition(progress);
-      requestFrame();
-    };
-
-    const activate = () => {
-      if (active) return;
-      active = true;
-      hero.classList.add('sequence-ready');
-      updateFromScroll();
-    };
-
-    const loadFrame = index => {
-      const img = new Image();
-      img.decoding = 'async';
-      img.fetchPriority = index < 8 ? 'high' : 'auto';
-      img.onload = () => {
-        cache[index] = img;
-        loaded[index] = true;
-        if (loaded.every(Boolean)) activate();
-      };
-      img.onerror = () => setTimeout(() => loadFrame(index), 500);
-      img.src = frameUrl(index);
-    };
-
-    const preloadAll = () => {
-      let next = 0;
-      const concurrency = 8;
-      const pump = () => {
-        let started = 0;
-        while (next < frameCount && started < concurrency) {
-          loadFrame(next++);
-          started++;
-        }
-        if (next < frameCount) setTimeout(pump, 0);
-      };
-      pump();
-    };
-
-    let scrollTick = false;
-    const onScroll = () => {
-      if (!active || scrollTick) return;
-      scrollTick = true;
-      requestAnimationFrame(() => {
-        scrollTick = false;
-        updateFromScroll();
-      });
-    };
-
-    const resize = () => {
-      const index = Math.max(0, Math.min(frameCount - 1, Math.round(currentFrame)));
-      if (loaded[index]) draw(cache[index]);
-      if (active) updateFromScroll();
-    };
-
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', resize, {passive:true});
-    preloadAll();
+  function url(i){
+    return 'https://res.cloudinary.com/naqr1mob/image/upload/v1791005005/ezgif-frame-' + String(i + 1).padStart(3,'0') + '.jpg';
   }
 
-  document.querySelectorAll('.fleet-card').forEach(card => {
-    card.addEventListener('touchstart', () => card.style.transform='translateY(-3px)', {passive:true});
-    card.addEventListener('touchend', () => card.style.transform='', {passive:true});
-    card.addEventListener('touchcancel', () => card.style.transform='', {passive:true});
+  /* Nearest already-loaded frame, so scrubbing never shows a blank canvas */
+  function nearest(i){
+    if (frames[i]) return i;
+    for (var d = 1; d < COUNT; d++) {
+      if (i - d >= 0 && frames[i - d]) return i - d;
+      if (i + d < COUNT && frames[i + d]) return i + d;
+    }
+    return -1;
+  }
+
+  function sizeCanvas(){
+    var dpr = Math.min(devicePixelRatio || 1, 2);
+    var s = Math.max(1, Math.round(canvas.clientWidth * dpr));
+    if (canvas.width !== s || canvas.height !== s) { canvas.width = s; canvas.height = s; drawn = -1; }
+  }
+
+  function draw(i){
+    var n = nearest(i);
+    if (n < 0 || n === drawn) return;
+    var img = frames[n], s = canvas.width;
+    var k = Math.min(s / img.naturalWidth, s / img.naturalHeight);
+    var w = img.naturalWidth * k, h = img.naturalHeight * k;
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, s, s);
+    ctx.drawImage(img, (s - w) / 2, (s - h) / 2, w, h);
+    drawn = n;
+  }
+
+  function measure(){
+    var r = hero.getBoundingClientRect();
+    heroTop = r.top + scrollY;
+    range = Math.max(1, hero.offsetHeight - innerHeight);
+  }
+
+  function readScroll(){
+    var p = (scrollY - heroTop) / range;
+    target = Math.min(1, Math.max(0, p)) * (COUNT - 1);
+  }
+
+  /* Time-based easing: same feel at 60Hz and 120Hz, loop idles when settled */
+  function tick(now){
+    raf = 0;
+    var dt = Math.min(0.05, (now - last) / 1000 || 0.016);
+    last = now;
+    var diff = target - current;
+    current = Math.abs(diff) < 0.05 ? target : current + diff * (1 - Math.exp(-dt * 14));
+    draw(Math.round(current));
+    if (current !== target) raf = requestAnimationFrame(tick);
+  }
+  function kick(){ if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }
+
+  var ticking = false;
+  function onScroll(){
+    if (!active || ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; readScroll(); kick(); });
+  }
+
+  function activate(){
+    if (active) return;
+    active = true;
+    measure(); sizeCanvas(); readScroll();
+    current = target;
+    draw(Math.round(current));
+    hero.classList.add('sequence-ready');
+  }
+
+  /* Load order: coarse pass first (every STRIDE-th frame), then the rest */
+  var order = [], seen = {};
+  [STRIDE, 5, 1].forEach(function(step){
+    for (var i = 0; i < COUNT; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); }
   });
+  var next = 0;
+
+  function load(i, tries){
+    var img = new Image();
+    img.decoding = 'async';
+    if ('fetchPriority' in img) img.fetchPriority = i % STRIDE === 0 ? 'high' : 'low';
+    img.onload = function(){
+      var go = function(){
+        frames[i] = img;
+        if (i % STRIDE === 0 && ++coarseLoaded >= coarseTotal) activate();
+        else if (active && Math.abs(i - current) < 2) { drawn = -1; kick(); }
+        pump();
+      };
+      (img.decode ? img.decode().catch(function(){}) : Promise.resolve()).then(go);
+    };
+    img.onerror = function(){
+      if (tries < MAX_RETRY) setTimeout(function(){ load(i, tries + 1); }, 600 * (tries + 1));
+      else pump();
+    };
+    img.src = url(i);
+  }
+  function pump(){ if (next < order.length) load(order[next++], 0); }
+
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', function(){
+    if (!mq.matches) return;
+    measure(); sizeCanvas(); readScroll(); drawn = -1; kick();
+  }, {passive:true});
+  addEventListener('orientationchange', function(){ setTimeout(function(){ measure(); sizeCanvas(); readScroll(); drawn = -1; kick(); }, 250); });
+  addEventListener('load', function(){ measure(); if (active) { readScroll(); kick(); } });
+
+  for (var c = 0; c < CONCURRENCY; c++) pump();
 })();
 </script>
-
 </body>
 </html>
