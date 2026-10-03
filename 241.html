@@ -358,7 +358,7 @@
     position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;opacity:.82;transition:.45s;
   }
-  .fleet-card:hover img{transform:scale(1.05);opacity:1}
+  .fleet-card:hover img{transform:scale(1.02);opacity:1}
   .fleet-content{position:relative;z-index:2}
   .fleet-num{
     color:var(--yellow);font-size:11px;font-weight:900;
@@ -368,7 +368,7 @@
     font-size:31px;line-height:.95;text-transform:uppercase;
     letter-spacing:-1.5px;margin-bottom:9px;
   }
-  .fleet-card p{color:#ccc;font-size:13px;max-width:310px}
+  .fleet-card p{color:#555;font-size:13px;max-width:310px}
   .fleet-link{
     display:inline-block;margin-top:17px;
     font-size:11px;font-weight:900;text-transform:uppercase;
@@ -520,7 +520,7 @@
     .reveal{opacity:1;transform:none}
   }
   @media (hover:none){
-    .fleet-card:hover img{transform:none;opacity:.82}
+    .fleet-card:hover img{transform:none;opacity:1}
     .btn-primary:hover,.btn-dark:hover,.contact-link:hover{transform:none}
   }
 
@@ -788,7 +788,7 @@
 
     const frameUrl = index => {
       const fileFrame = String(index + 1).padStart(3,'0');
-      return 'https://res.cloudinary.com/naqr1mob/image/upload/f_auto,q_auto/v1791004967/ezgif-frame-' + fileFrame + '.jpg';
+      return 'https://res.cloudinary.com/naqr1mob/image/upload/f_auto,q_auto/v1791005005/ezgif-frame-' + fileFrame + '.jpg';
     };
 
     const draw = img => {
