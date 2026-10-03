@@ -523,109 +523,26 @@
 
   /* Mobile hero sequence */
   .hero-sequence-canvas{display:none}
-  .sequence-loader{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f7f7f5;
-    color:#111;
-    opacity:1;
-    visibility:visible;
-    transition:opacity .45s ease,visibility .45s ease;
-  }
-  .sequence-loader.is-ready{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
-  .sequence-loader-inner{
-    width:min(320px,calc(100% - 48px));
-  }
-  .sequence-loader-label{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1.8px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-  }
-  .sequence-loader-bar{
-    height:4px;
-    background:#ddd;
-    overflow:hidden;
-  }
-  .sequence-loader-progress{
-    width:0%;
-    height:100%;
-    background:var(--yellow);
-    transition:width .18s ease;
-  }
-
   @media(max-width:600px){
     .hero{min-height:200vh}
-    .hero-inner{
-      min-height:calc(100vh - 68px);
-      height:calc(100vh - 68px);
-      padding-top:38px;
-      position:sticky;
-      top:68px;
-    }
+    .hero-inner{min-height:calc(100vh - 68px);height:calc(100vh - 68px);padding-top:38px;position:sticky;top:68px}
     .hero-copy-wrap{position:relative;z-index:4}
     .hero-visual{height:350px;margin-top:0;overflow:visible}
-    .hero-cutout{
-      width:108%;
-      max-width:none;
-      right:-8%;
-      bottom:-12px;
-      transform-origin:center bottom;
-    }
+    .hero-cutout{width:108%;max-width:none;right:-8%;bottom:-12px;transform-origin:center bottom;transition:opacity .8s ease}
     .hero-tag{right:2%;top:5%;font-size:9px;padding:10px 12px}
     .hero-number{left:2px;bottom:12px;font-size:8px}
     .ticker-track{animation-duration:20s}
     .fleet-card{min-height:360px}
     .about-image{min-height:340px}
     .contact-link{gap:12px;font-size:11px}
+    .hero-sequence-canvas{display:block;position:absolute;width:min(88vw,430px);height:auto;aspect-ratio:1 / 1;right:50%;bottom:0;transform:translate(50%,0);background:#fff;z-index:2;pointer-events:none;opacity:0;transition:opacity .8s ease,transform .05s linear}
+    .hero.sequence-ready .hero-cutout{opacity:0}
+    .hero.sequence-ready .hero-sequence-canvas{opacity:1}
   }
-  @media(max-width:600px){
-    .hero-sequence-canvas{
-      display:none;
-      position:absolute;
-      width:118%;
-      max-width:none;
-      height:350px;
-      right:-12%;
-      bottom:-4px;
-      object-fit:contain;
-      z-index:2;
-      pointer-events:none;
-    }
-    .hero.sequence-active .hero-cutout{display:none}
-    .hero.sequence-active .hero-sequence-canvas{display:block}
-  }
-  @media(min-width:601px){
-    .hero-sequence-canvas{display:none!important}
-  }
-
+  @media(min-width:601px){.hero-sequence-canvas{display:none!important}}
 </style>
 </head>
 <body>
-<div class="sequence-loader" id="sequence-loader" aria-live="polite">
-  <div class="sequence-loader-inner">
-    <div class="sequence-loader-label">
-      <span>241 — Loading</span>
-      <span id="sequence-loader-percent">0%</span>
-    </div>
-    <div class="sequence-loader-bar">
-      <div class="sequence-loader-progress" id="sequence-loader-progress"></div>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="container">
     <nav>
@@ -665,7 +582,7 @@
 
       <div class="hero-visual">
         <canvas class="hero-sequence-canvas" aria-hidden="true"></canvas>
-        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790931337/Komatsu_PC78US_Excavator_Cutout.png" alt="Excavator untuk proyek 241" loading="eager" fetchpriority="high">
+        <img class="hero-cutout" src="https://res.cloudinary.com/naqr1mob/image/upload/v1790946133/Lime_Green_Crane_Flatbed_Truck.png" alt="Crane 241" loading="eager" fetchpriority="high">
         <div class="hero-tag">241 — READY TO WORK</div>
         <div class="hero-number">01 / 04 — HEAVY EQUIPMENT</div>
       </div>
@@ -848,62 +765,50 @@
   }
 
   /*
-   * Mobile-only hero sequence:
-   * New Cloudinary sequence starts at frame 000 and contains frames 000 -> 300.
-   *
-   * The full sequence is loaded before the hero sequence becomes active.
-   * Desktop keeps the static excavator.
+   * Mobile-only hero sequence.
+   * Logical frames 0-300 map to Cloudinary files 001-301.
    */
   const hero = document.querySelector('.hero');
   const canvas = document.querySelector('.hero-sequence-canvas');
-    const loader = document.getElementById('sequence-loader');
-  const loaderPercent = document.getElementById('sequence-loader-percent');
-  const loaderProgress = document.getElementById('sequence-loader-progress');
-
   const isMobile = window.matchMedia('(max-width:600px)').matches;
 
-  if (hero && canvas && loader && isMobile && !reduce) {
-    const ctx = canvas.getContext('2d', {alpha:true});
+  if (hero && canvas && isMobile && !reduce) {
+    const ctx = canvas.getContext('2d', {alpha:false});
     const frameCount = 301;
-    const firstFrame = 0;
-    const lastFrame = 300;
-
+    const cache = new Array(frameCount);
+    const loaded = new Array(frameCount).fill(false);
     let currentFrame = 0;
     let targetFrame = 0;
     let raf = 0;
     let active = false;
-    let loadedCount = 0;
-    let failedCount = 0;
-    let initialized = false;
-
-    const cache = new Array(frameCount);
-    const loaded = new Array(frameCount).fill(false);
 
     const frameUrl = index => {
-      const frame = String(firstFrame + index).padStart(3,'0');
-      return 'https://res.cloudinary.com/naqr1mob/image/upload/f_auto,q_auto/v1790960762/ezgif-frame-' + frame + '.jpg';
+      const fileFrame = String(index + 1).padStart(3,'0');
+      return 'https://res.cloudinary.com/naqr1mob/image/upload/f_auto,q_auto/v1791004967/ezgif-frame-' + fileFrame + '.jpg';
     };
 
     const draw = img => {
       if (!img || !img.naturalWidth) return;
-      const cw = canvas.clientWidth || 1;
-      const ch = canvas.clientHeight || 1;
-      const scale = Math.min(cw / img.naturalWidth, ch / img.naturalHeight);
-      const w = img.naturalWidth * scale;
-      const h = img.naturalHeight * scale;
-      const x = (cw - w) / 2;
-      const y = Math.max(0, ch - h - 4);
-
+      const size = Math.max(1, canvas.clientWidth);
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const pixelWidth = Math.round(cw * dpr);
-      const pixelHeight = Math.round(ch * dpr);
-      if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
-        canvas.width = pixelWidth;
-        canvas.height = pixelHeight;
+      const pixels = Math.round(size * dpr);
+      if (canvas.width !== pixels || canvas.height !== pixels) {
+        canvas.width = pixels;
+        canvas.height = pixels;
       }
       ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.clearRect(0,0,cw,ch);
-      ctx.drawImage(img,x,y,w,h);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0,0,size,size);
+      const scale = Math.min(size / img.naturalWidth, size / img.naturalHeight);
+      const w = img.naturalWidth * scale;
+      const h = img.naturalHeight * scale;
+      ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);
+    };
+
+    const updateSequencePosition = progress => {
+      const rect = canvas.getBoundingClientRect();
+      const exitDistance = window.innerHeight - rect.top + rect.height;
+      canvas.style.transform = 'translate(50%, ' + (-exitDistance * progress) + 'px)';
     };
 
     const requestFrame = () => {
@@ -911,57 +816,42 @@
       raf = requestAnimationFrame(() => {
         raf = 0;
         const delta = targetFrame - currentFrame;
-        if (Math.abs(delta) > 0.01) currentFrame += delta * 0.28;
+        if (Math.abs(delta) > 0.01) currentFrame += delta * 0.3;
         else currentFrame = targetFrame;
-
-        const index = Math.round(currentFrame);
+        const index = Math.max(0, Math.min(frameCount - 1, Math.round(currentFrame)));
         if (loaded[index]) draw(cache[index]);
-
         if (Math.abs(targetFrame - currentFrame) > 0.01) requestFrame();
       });
     };
 
-    const updateLoader = () => {
-      const percent = Math.round(((loadedCount + failedCount) / frameCount) * 100);
-      if (loaderPercent) loaderPercent.textContent = percent + '%';
-      if (loaderProgress) loaderProgress.style.width = percent + '%';
+    const updateFromScroll = () => {
+      if (!active) return;
+      const rect = hero.getBoundingClientRect();
+      const range = Math.max(1, hero.offsetHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, -rect.top / range));
+      targetFrame = progress * (frameCount - 1);
+      updateSequencePosition(progress);
+      requestFrame();
     };
 
-    const finishLoading = () => {
-      if (initialized) return;
-      initialized = true;
+    const activate = () => {
+      if (active) return;
       active = true;
-      hero.classList.add('sequence-active');
+      hero.classList.add('sequence-ready');
       updateFromScroll();
-      requestAnimationFrame(() => loader.classList.add('is-ready'));
     };
 
     const loadFrame = index => {
-      if (index < 0 || index >= frameCount || cache[index]) return;
-
       const img = new Image();
       img.decoding = 'async';
-      img.fetchPriority = index < 12 ? 'high' : 'auto';
-
+      img.fetchPriority = index < 8 ? 'high' : 'auto';
       img.onload = () => {
-        loaded[index] = true;
         cache[index] = img;
-        loadedCount++;
-        updateLoader();
-
-        if (index === 0 || Math.round(currentFrame) === index) draw(img);
-        if (loadedCount + failedCount >= frameCount) finishLoading();
+        loaded[index] = true;
+        if (loaded.every(Boolean)) activate();
       };
-
-      img.onerror = () => {
-        failedCount++;
-        cache[index] = null;
-        updateLoader();
-        if (loadedCount + failedCount >= frameCount) finishLoading();
-      };
-
+      img.onerror = () => setTimeout(() => loadFrame(index), 500);
       img.src = frameUrl(index);
-      cache[index] = img;
     };
 
     const preloadAll = () => {
@@ -978,15 +868,6 @@
       pump();
     };
 
-    const updateFromScroll = () => {
-      if (!active) return;
-      const rect = hero.getBoundingClientRect();
-      const range = Math.max(1, hero.offsetHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, -rect.top / range));
-      targetFrame = progress * (frameCount - 1);
-      requestFrame();
-    };
-
     let scrollTick = false;
     const onScroll = () => {
       if (!active || scrollTick) return;
@@ -998,20 +879,14 @@
     };
 
     const resize = () => {
-      const index = Math.round(currentFrame);
+      const index = Math.max(0, Math.min(frameCount - 1, Math.round(currentFrame)));
       if (loaded[index]) draw(cache[index]);
+      if (active) updateFromScroll();
     };
 
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', resize, {passive:true});
-
-    /*
-     * Start the full preload immediately.
-     * The loader remains visible until all 300 requests have completed.
-     */
     preloadAll();
-  } else {
-        if (loader) loader.classList.add('is-ready');
   }
 
   document.querySelectorAll('.fleet-card').forEach(card => {
