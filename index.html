@@ -63,15 +63,40 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 16px;
+      overflow: hidden;
       text-decoration: none;
       display: block;
-      min-height: 120px;
+      min-height: 250px;
+      transition: border-color .2s ease, transform .2s ease;
     }
-    .card:hover { border-color: var(--accent); }
-    .card strong { display: block; font-size: 16px; margin-bottom: 6px; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #10161d;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .card-body { padding: 15px 16px 16px; }
+    .card strong { display: block; font-size: 16px; margin-bottom: 5px; }
     .card span { color: var(--muted); font-size: 13px; }
-    .file { display: block; margin-top: 10px; font-size: 11px; color: #6d7c8b; }
+    .file { display: block; margin-top: 9px; font-size: 11px !important; color: #6d7c8b !important; }
+    .no-image {
+      display: grid;
+      place-items: center;
+      height: 100%;
+      color: var(--accent);
+      font-size: 28px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(61,156,240,.18), transparent 45%),
+        #10161d;
+    }
     footer {
       max-width: 1100px;
       margin: 0 auto;
@@ -95,43 +120,43 @@
   <main>
     <h2>Rental & transport</h2>
     <div class="grid">
-      <a class="card" href="sewamotor.html"><strong>Your Bike in Bali</strong><span>Rental motor Bali</span><span class="file">sewamotor.html</span></a>
-      <a class="card" href="damirental.html"><strong>Dami Rental Bali</strong><span>Rental motor Bali</span><span class="file">damirental.html</span></a>
-      <a class="card" href="amanahrental.html"><strong>Amanah Rental</strong><span>Sewa motor Banjar</span><span class="file">amanahrental.html</span></a>
-      <a class="card" href="raytransport.html"><strong>Ray Transport</strong><span>Rental motor Sukabumi</span><span class="file">raytransport.html</span></a>
-      <a class="card" href="sms.html"><strong>Sewa Motor Sukabumi</strong><span>Transport 24 jam</span><span class="file">sms.html</span></a>
+      <a class="card" href="sewamotor.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=80" alt="Rental motor Bali"></div><div class="card-body"><strong>Your Bike in Bali</strong><span>Rental motor Bali</span><span class="file">sewamotor.html</span></div></a>
+      <a class="card" href="damirental.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=80" alt="Dami Rental Bali"></div><div class="card-body"><strong>Dami Rental Bali</strong><span>Rental motor Bali</span><span class="file">damirental.html</span></div></a>
+      <a class="card" href="amanahrental.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=1000&q=80" alt="Amanah Rental"></div><div class="card-body"><strong>Amanah Rental</strong><span>Sewa motor Banjar</span><span class="file">amanahrental.html</span></div></a>
+      <a class="card" href="raytransport.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=1000&q=80" alt="Ray Transport"></div><div class="card-body"><strong>Ray Transport</strong><span>Rental motor Sukabumi</span><span class="file">raytransport.html</span></div></a>
+      <a class="card" href="sms.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&q=80" alt="Sewa Motor Sukabumi"></div><div class="card-body"><strong>Sewa Motor Sukabumi</strong><span>Transport 24 jam</span><span class="file">sms.html</span></div></a>
     </div>
 
     <h2>Bengkel & coating</h2>
     <div class="grid">
-      <a class="card" href="clio.html"><strong>CLIO Auto Center</strong><span>Auto care & detailing</span><span class="file">clio.html</span></a>
-      <a class="card" href="dcoating.html"><strong>Dcoating Sealant</strong><span>Supplier & workshop Jakarta</span><span class="file">dcoating.html</span></a>
-      <a class="card" href="kaka.html"><strong>Kaka Autocare</strong><span>Nano ceramic coating</span><span class="file">kaka.html</span></a>
-      <a class="card" href="scuto.html"><strong>Scuto Aceh</strong><span>Nano ceramic coating</span><span class="file">scuto.html</span></a>
+      <a class="card" href="clio.html"><div class="card-media"><img loading="lazy" src="assets-car/car%201.png" alt="CLIO Auto Center"></div><div class="card-body"><strong>CLIO Auto Center</strong><span>Auto care & detailing</span><span class="file">clio.html</span></div></a>
+      <a class="card" href="dcoating.html"><div class="card-media"><img loading="lazy" src="assets-car/car%201.png" alt="Dcoating Sealant"></div><div class="card-body"><strong>Dcoating Sealant</strong><span>Supplier & workshop Jakarta</span><span class="file">dcoating.html</span></div></a>
+      <a class="card" href="kaka.html"><div class="card-media"><img loading="lazy" src="assets-car/car%202.png" alt="Kaka Autocare"></div><div class="card-body"><strong>Kaka Autocare</strong><span>Nano ceramic coating</span><span class="file">kaka.html</span></div></a>
+      <a class="card" href="scuto.html"><div class="card-media"><img loading="lazy" src="assets-car/ceramic.png" alt="Scuto Aceh"></div><div class="card-body"><strong>Scuto Aceh</strong><span>Nano ceramic coating</span><span class="file">scuto.html</span></div></a>
     </div>
 
     <h2>Barber & salon</h2>
     <div class="grid">
-      <a class="card" href="raffv1.html"><strong>Raff Trims</strong><span>Barber Kuala Lumpur</span><span class="file">raffv1.html</span></a>
-      <a class="card" href="rf.html"><strong>RF Barbershop</strong><span>Barbershop</span><span class="file">rf.html</span></a>
-      <a class="card" href="yujo2nd.html"><strong>YUJO Hair Studio</strong><span>Editorial lookbook</span><span class="file">yujo2nd.html</span></a>
-      <a class="card" href="yujosimple.html"><strong>YUJO Hair Studio</strong><span>Salon Petaling Jaya</span><span class="file">yujosimple.html</span></a>
+      <a class="card" href="raffv1.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80" alt="Raff Trims"></div><div class="card-body"><strong>Raff Trims</strong><span>Barber Kuala Lumpur</span><span class="file">raffv1.html</span></div></a>
+      <a class="card" href="rf.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1000&q=80" alt="RF Barbershop"></div><div class="card-body"><strong>RF Barbershop</strong><span>Barbershop</span><span class="file">rf.html</span></div></a>
+      <a class="card" href="yujo2nd.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1000&q=80" alt="YUJO Hair Studio editorial"></div><div class="card-body"><strong>YUJO Hair Studio</strong><span>Editorial lookbook</span><span class="file">yujo2nd.html</span></div></a>
+      <a class="card" href="yujosimple.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80" alt="YUJO Hair Studio"></div><div class="card-body"><strong>YUJO Hair Studio</strong><span>Salon Petaling Jaya</span><span class="file">yujosimple.html</span></div></a>
     </div>
 
     <h2>Travel, surf, penginapan</h2>
     <div class="grid">
-      <a class="card" href="cimajaescape.html"><strong>Cimaja Escape</strong><span>Private surfing trip</span><span class="file">cimajaescape.html</span></a>
-      <a class="card" href="surfschool.html"><strong>Lampuuk Surf School</strong><span>Surf academy Aceh</span><span class="file">surfschool.html</span></a>
-      <a class="card" href="sinarnusa.html"><strong>Sinar Nusa</strong><span>Homestay Pangandaran</span><span class="file">sinarnusa.html</span></a>
+      <a class="card" href="cimajaescape.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/HERO%20PAGE.png" alt="Cimaja Escape"></div><div class="card-body"><strong>Cimaja Escape</strong><span>Private surfing trip</span><span class="file">cimajaescape.html</span></div></a>
+      <a class="card" href="surfschool.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/profil%20adun.png" alt="Lampuuk Surf School"></div><div class="card-body"><strong>Lampuuk Surf School</strong><span>Surf academy Aceh</span><span class="file">surfschool.html</span></div></a>
+      <a class="card" href="sinarnusa.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png" alt="Sinar Nusa Homestay"></div><div class="card-body"><strong>Sinar Nusa</strong><span>Homestay Pangandaran</span><span class="file">sinarnusa.html</span></div></a>
     </div>
 
     <h2>Lainnya</h2>
     <div class="grid">
-      <a class="card" href="elud.html"><strong>Elud Cake & Bakery</strong><span>Toko kue</span><span class="file">elud.html</span></a>
-      <a class="card" href="aneuknanggroe.html"><strong>Aneuk Nanggroe</strong><span>Boxing camp Lhokseumawe</span><span class="file">aneuknanggroe.html</span></a>
-      <a class="card" href="sizingguide.html"><strong>All-in Merchmaker</strong><span>Size guide</span><span class="file">sizingguide.html</span></a>
-      <a class="card" href="chatses.html"><strong>iMessage Generator</strong><span>Tool chat dummy</span><span class="file">chatses.html</span></a>
-      <a class="card" href="simasdev.html"><strong>simasdev</strong><span>WebArchitect Pro</span><span class="file">simasdev.html</span></a>
+      <a class="card" href="elud.html"><div class="card-media"><img loading="lazy" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1000" alt="Elud Cake & Bakery"></div><div class="card-body"><strong>Elud Cake & Bakery</strong><span>Toko kue</span><span class="file">elud.html</span></div></a>
+      <a class="card" href="aneuknanggroe.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/assets-random/ChatGPT%20Image%20Jul%2016%2C%202026%2C%2006_32_59%20PM.png" alt="Aneuk Nanggroe Boxing Camp"></div><div class="card-body"><strong>Aneuk Nanggroe</strong><span>Boxing camp Lhokseumawe</span><span class="file">aneuknanggroe.html</span></div></a>
+      <a class="card" href="sizingguide.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png" alt="All-in Merchmaker"></div><div class="card-body"><strong>All-in Merchmaker</strong><span>Size guide</span><span class="file">sizingguide.html</span></div></a>
+      <a class="card" href="chatses.html"><div class="card-media"><div class="no-image">⌘</div></div><div class="card-body"><strong>iMessage Generator</strong><span>Tool chat dummy</span><span class="file">chatses.html</span></div></a>
+      <a class="card" href="simasdev.html"><div class="card-media"><img loading="lazy" src="https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/logo/icon%20webarchi.jpg" alt="simasdev WebArchitect Pro"></div><div class="card-body"><strong>simasdev</strong><span>WebArchitect Pro</span><span class="file">simasdev.html</span></div></a>
     </div>
   </main>
 
