@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#a91625">
+<title>PMP Heavy Equipment — Rental Alat Berat untuk Proyek</title>
+<meta name="description" content="PT Perkasa Mandiri Perkasa menyediakan solusi rental alat berat untuk konstruksi, pertambangan, perkebunan, dan infrastruktur. Jelajahi armada dan ajukan penawaran.">
+<meta name="keywords" content="sewa excavator PC200, rental mobile crane, sewa alat berat, rental alat berat Indonesia, PMP Heavy Equipment">
+<style>
+:root{
+ --red:#bd1f2d;--red-deep:#921522;--red-light:#e34249;--ink:#101113;--ink-2:#191a1d;
+ --paper:#f3f0e9;--white:#fffdf8;--muted:#a7a5a0;--muted-dark:#696761;
+ --line:rgba(255,255,255,.16);--line-light:#d8d3c9;--yellow:#efb84b;--green:#15956d;
+ --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;--body:"DM Sans",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:94px}
+body{margin:0;background:#8f1420;color:var(--white);font:15px/1.55 var(--body);padding:0}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 18% 18%,rgba(236,61,66,.38),transparent 36%),radial-gradient(ellipse at 85% 82%,rgba(42,0,5,.38),transparent 44%),repeating-linear-gradient(116deg,transparent 0 64px,rgba(255,255,255,.018) 65px 66px,transparent 67px 132px);pointer-events:none}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+svg{display:block}
+.shell{width:min(1440px,calc(100% - 72px));margin:54px auto 38px;background:var(--ink);box-shadow:0 28px 90px rgba(29,0,4,.34);border:1px solid rgba(255,255,255,.12);overflow:hidden}
+.wrap{width:min(1240px,calc(100% - 72px));margin-inline:auto}
+.utility{height:35px;background:#090a0b;color:#bbb9b3;border-bottom:1px solid #28282a;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.utility .wrap{display:flex;align-items:center;justify-content:space-between;height:100%;gap:18px}
+.utility-left,.utility-right{display:flex;align-items:center;gap:20px}
+.utility-item{display:flex;align-items:center;gap:7px}
+.utility svg{width:13px;height:13px;color:var(--red-light);stroke:currentColor;fill:none;stroke-width:1.7}
+.nav{position:sticky;top:0;z-index:30;background:rgba(16,17,19,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;min-height:83px;gap:26px}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-mark{width:36px;height:36px;border:1px solid var(--red-light);border-radius:50%;display:grid;place-items:center;color:var(--red-light);font-family:var(--display);font-size:14px;font-weight:900;letter-spacing:-.04em;position:relative}
+.brand-mark:after{content:"";position:absolute;inset:4px;border:1px solid rgba(227,66,73,.35);border-radius:50%}
+.brand-name{font:700 17px/.95 var(--display);letter-spacing:.045em;text-transform:uppercase}
+.brand-sub{font-size:8px;color:#aaa8a2;letter-spacing:.17em;text-transform:uppercase;display:block;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,31px);font-size:10px;font-weight:700;letter-spacing:.075em;text-transform:uppercase;color:#d2d0ca}
+.nav-links a{padding:10px 0;position:relative;white-space:nowrap}
+.nav-links a:after{content:"";position:absolute;bottom:1px;left:0;width:0;height:2px;background:var(--red-light);transition:width .2s}
+.nav-links a:hover:after{width:100%}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:0 17px;border:1px solid transparent;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .18s,background .18s,color .18s,border-color .18s}
+.nav-cta,.btn-red{background:var(--red);color:white}
+.nav-cta:hover,.btn-red:hover{background:var(--red-light);transform:translateY(-2px)}
+.btn-line{background:transparent;border-color:rgba(255,255,255,.45);color:white}
+.btn-line:hover{background:white;color:var(--ink);border-color:white}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.btn-paper:hover{background:var(--yellow);transform:translateY(-2px)}
+.nav-cta svg,.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.menu-toggle{display:none;background:none;color:white;border:1px solid #454548;width:43px;height:43px;place-items:center;cursor:pointer}
+.menu-toggle svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6}
+.hero{position:relative;min-height:540px;background:#18191a;isolation:isolate;display:flex;align-items:stretch;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background-image:url("https://images.pexels.com/photos/20296265/pexels-photo-20296265.jpeg?auto=compress&cs=tinysrgb&w=2000");background-position:center 48%;background-size:cover;filter:saturate(.62) contrast(1.06)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,9,10,.91) 0%,rgba(8,9,10,.73) 34%,rgba(8,9,10,.23) 72%,rgba(8,9,10,.18) 100%),linear-gradient(0deg,rgba(8,9,10,.74),transparent 55%);pointer-events:none}
+.hero-inner{width:100%;display:flex;align-items:center;position:relative;padding:58px 6% 120px}
+.hero-copy{max-width:610px}
+.kicker{display:flex;align-items:center;gap:10px;color:#f18d8e;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:.19em}
+.kicker:before{content:"";width:28px;height:2px;background:var(--red-light)}
+.hero h1{font:800 clamp(48px,6.7vw,91px)/.91 var(--display);letter-spacing:-.025em;text-transform:uppercase;margin:19px 0 20px;max-width:680px}
+.hero h1 span{color:#ee777b;display:block}
+.hero-copy p{max-width:460px;font-size:14px;line-height:1.75;color:#d2d0c9;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.hero-meta{display:flex;align-items:center;gap:24px;margin-top:28px;color:#e2dfd8;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.075em}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta svg{width:15px;height:15px;stroke:var(--yellow);fill:none;stroke-width:1.8}
+.hero-side{position:absolute;right:5.3%;top:50%;transform:translateY(-50%);width:116px;height:116px;border:1px solid rgba(255,255,255,.42);border-radius:50%;display:grid;place-items:center;text-align:center;color:#fff;font-size:9px;text-transform:uppercase;letter-spacing:.12em;line-height:1.5}
+.hero-side:before,.hero-side:after{content:"";position:absolute;border-radius:50%;inset:7px;border:1px solid rgba(255,255,255,.16)}
+.hero-side:after{inset:-7px;border-color:transparent transparent var(--red-light) var(--red-light);transform:rotate(-24deg)}
+.hero-side strong{display:block;font:700 24px/.95 var(--display);letter-spacing:0;color:white;margin-bottom:5px}
+.hero-index{position:absolute;bottom:108px;right:6%;color:rgba(255,255,255,.76);font:500 11px var(--display);letter-spacing:.14em}
+.hero-index b{font-size:23px;color:white;margin-right:8px}
+.feature-rail{position:relative;margin:-1px 5.4% 0;display:grid;grid-template-columns:1.08fr 1.08fr 1.08fr .91fr;min-height:154px;z-index:2}
+.rail-item{background:var(--red);padding:25px 20px 23px;border-right:1px solid rgba(255,255,255,.2);display:flex;flex-direction:column;justify-content:space-between}
+.rail-item:last-of-type{border-right:0}
+.rail-top{display:flex;align-items:center;gap:12px}
+.rail-icon{width:29px;height:29px;flex:0 0 auto}
+.rail-icon svg{width:100%;height:100%;stroke:white;fill:none;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.rail-item h3{font:700 17px/.97 var(--display);text-transform:uppercase;letter-spacing:.02em;margin:0}
+.rail-item p{font-size:10px;line-height:1.55;color:#ffe7e4;margin:17px 0 0;max-width:210px}
+.rail-proof{background:var(--paper);color:var(--ink);padding:22px 23px;display:flex;flex-direction:column;justify-content:space-between}
+.rail-proof .mini-label{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted-dark);font-weight:800}
+.rail-proof .proof-number{font:800 44px/.9 var(--display);color:var(--red);text-align:right}
+.rail-proof h3{font:700 20px/.98 var(--display);text-transform:uppercase;margin:8px 0}
+.rail-proof p{font-size:10px;line-height:1.55;color:#605e58;margin:0}
+.proof-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #d0c9bf;padding-top:11px;margin-top:13px;font-size:8px;color:#77736b;text-transform:uppercase;letter-spacing:.1em}
+.section{padding:95px 0}
+.section.paper{background:var(--paper);color:var(--ink)}
+.section.dark{background:#151618;color:var(--white)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:35px}
+.section-head-copy{max-width:670px}
+.section-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:900;color:var(--red-light);display:flex;align-items:center;gap:10px}
+.section-label:before{content:"";height:2px;width:21px;background:currentColor}
+.paper .section-label{color:var(--red)}
+.section h2{font:800 clamp(35px,4.7vw,58px)/.95 var(--display);letter-spacing:-.015em;text-transform:uppercase;margin:15px 0 0}
+.section-head>p{max-width:360px;font-size:12px;line-height:1.8;color:#b7b5af;margin:0}
+.paper .section-head>p{color:#6d6a64}
+.fleet-tools{display:grid;grid-template-columns:minmax(200px,1fr) 220px 210px;gap:10px;margin-bottom:22px}
+.field-control{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 14px;background:#202124;border:1px solid #414144;color:#d9d7d1}
+.field-control svg{width:16px;height:16px;flex:0 0 auto;stroke:#bcb8b1;fill:none;stroke-width:1.7}
+.field-control input,.field-control select{width:100%;min-width:0;background:transparent;border:0;outline:0;color:inherit;font-size:11px}
+.field-control select option{background:#17181a;color:#fff}
+.fleet-result{display:flex;justify-content:space-between;align-items:center;gap:15px;color:#a7a5a0;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 15px}
+.fleet-result strong{color:#fff}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.fleet-card{background:#1d1e20;border:1px solid #36373a;min-width:0;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.fleet-card:hover{transform:translateY(-4px);border-color:#a62b35}
+.fleet-image{height:195px;position:relative;overflow:hidden;background:#292a2b}
+.fleet-image img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.77);transition:transform .45s}
+.fleet-card:hover .fleet-image img{transform:scale(1.04)}
+.fleet-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(0deg,rgba(9,9,9,.65),transparent);pointer-events:none}
+.demand{position:absolute;top:13px;left:13px;z-index:1;background:var(--paper);color:var(--ink);padding:7px 9px;font-size:8px;text-transform:uppercase;letter-spacing:.1em;font-weight:900}
+.unit-no{position:absolute;right:13px;bottom:10px;z-index:1;font:700 24px var(--display);color:rgba(255,255,255,.86)}
+.fleet-content{padding:19px 18px 17px;display:flex;flex:1;flex-direction:column}
+.unit-type{font-size:8px;color:#ef777b;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
+.fleet-content h3{font:700 25px/1 var(--display);text-transform:uppercase;margin:8px 0 10px;letter-spacing:.005em}
+.fleet-content p{font-size:11px;line-height:1.65;color:#b4b2ac;margin:0 0 16px;min-height:37px}
+.spec-list{display:flex;flex-wrap:wrap;gap:6px;padding-top:14px;border-top:1px solid #393a3c}
+.spec-chip{border:1px solid #414144;color:#e4e1d9;padding:5px 8px;font-size:9px}
+.card-actions{display:flex;gap:8px;margin-top:auto;padding-top:17px}
+.card-actions .btn{flex:1;padding:0 8px;min-height:40px;font-size:8px;letter-spacing:.07em}
+.card-actions .btn-line{border-color:#454548}
+.no-results{grid-column:1/-1;padding:50px 20px;text-align:center;border:1px dashed #4c4b48;color:#b7b5af;font-size:13px}
+.fleet-note{margin-top:20px;color:#8d8b85;font-size:10px;line-height:1.7}
+.mission-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:start}
+.mission-copy{max-width:700px}
+.mission-copy p{color:#c1bfb8;font-size:13px;line-height:1.9;max-width:650px;margin:24px 0}
+.mission-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #3b3b3d;border-left:1px solid #3b3b3d}
+.mission-point{padding:19px 18px;border-right:1px solid #3b3b3d;border-bottom:1px solid #3b3b3d;min-height:105px}
+.mission-point span{display:block;color:var(--red-light);font:700 13px var(--display);margin-bottom:11px}
+.mission-point h3{font:700 20px/.98 var(--display);text-transform:uppercase;margin:0 0 8px}
+.mission-point p{font-size:10px;color:#b1afa9;line-height:1.65;margin:0}
+.side-statement{position:relative;padding:28px 27px;background:var(--red);min-height:290px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.side-statement:after{content:"PMP";position:absolute;right:-16px;bottom:-43px;font:900 142px/.8 var(--display);letter-spacing:-.07em;color:rgba(255,255,255,.075);pointer-events:none}
+.side-statement .section-label{color:#ffe2df;position:relative;z-index:1}
+.side-statement blockquote{position:relative;z-index:1;font:700 clamp(29px,3.3vw,42px)/.98 var(--display);text-transform:uppercase;letter-spacing:-.015em;margin:34px 0}
+.side-statement .statement-caption{font-size:10px;color:#ffe5e2;line-height:1.65;max-width:240px;position:relative;z-index:1}
+.sector-row{display:grid;grid-template-columns:.72fr 1.28fr;border-top:1px solid #cfc8bd;border-bottom:1px solid #cfc8bd}
+.sector-intro{padding:28px 28px 28px 0}
+.sector-intro p{font-size:12px;color:#66635e;line-height:1.8;max-width:300px}
+.sector-list{display:grid;grid-template-columns:1fr 1fr}
+.sector{display:flex;align-items:center;gap:14px;padding:21px;border-left:1px solid #cfc8bd;border-bottom:1px solid #cfc8bd;min-height:90px}
+.sector:nth-last-child(-n+2){border-bottom:0}
+.sector-num{font:700 19px var(--display);color:var(--red)}
+.sector strong{display:block;font:700 21px/1 var(--display);text-transform:uppercase}
+.sector small{display:block;color:#77736b;font-size:9px;margin-top:6px}
+.rfq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}
+.rfq-copy h2{font-size:clamp(38px,4.5vw,57px)}
+.rfq-copy>p{font-size:12px;color:#c1bfb8;line-height:1.9;max-width:380px;margin:22px 0 27px}
+.contact-details{display:grid;gap:0;border-top:1px solid #3a3a3c}
+.contact-line{display:grid;grid-template-columns:31px 1fr;gap:13px;padding:16px 0;border-bottom:1px solid #3a3a3c}
+.contact-line svg{width:22px;height:22px;stroke:var(--red-light);fill:none;stroke-width:1.6}
+.contact-line strong{display:block;font-size:11px}
+.contact-line span{display:block;color:#b0aea7;font-size:10px;line-height:1.6;margin-top:3px}
+.rfq-form{background:var(--paper);color:var(--ink);padding:27px}
+.form-top{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;border-bottom:1px solid #d3cdc3;padding-bottom:18px;margin-bottom:20px}
+.form-top h3{font:800 27px/1 var(--display);text-transform:uppercase;margin:0}
+.form-top span{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:#7c766e;font-weight:800}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-field{display:grid;gap:6px;min-width:0}
+.form-field.full{grid-column:1/-1}
+.form-field label{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.form-field input,.form-field select,.form-field textarea{width:100%;min-width:0;background:var(--white);border:1px solid #d5cfc5;color:#1a1a1a;min-height:44px;padding:11px 12px;border-radius:0;font-size:11px}
+.form-field textarea{min-height:83px;resize:vertical}
+.form-field select option{color:#1a1a1a}
+.form-submit{width:100%;margin-top:16px;min-height:50px}
+.form-note{font-size:9px;color:#77736b;line-height:1.65;margin:12px 0 0}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;z-index:99;pointer-events:none;background:#17181a;border:1px solid #57575a;color:white;padding:14px 18px;max-width:min(580px,calc(100% - 28px));font-size:12px;box-shadow:0 10px 40px #0005;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.footer{background:#08090a;padding:35px 0 20px;border-top:1px solid #252628}
+.footer-main{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;padding-bottom:28px}
+.footer-desc{font-size:10px;color:#a5a39d;max-width:370px;line-height:1.8;margin:16px 0 0}
+.footer-right{display:flex;justify-content:flex-end;gap:24px;flex-wrap:wrap;font-size:9px;color:#d0cec8;text-transform:uppercase;letter-spacing:.1em}
+.footer-right a:hover{color:#ef777b}
+.footer-bottom{border-top:1px solid #29292b;padding-top:15px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#777670;font-size:9px}
+.footer-bottom b{color:#b7b4ac;font-weight:600}
+.whatsapp-float{position:fixed;right:26px;bottom:23px;z-index:25;background:var(--red);border:1px solid rgba(255,255,255,.23);box-shadow:0 10px 28px rgba(0,0,0,.32);display:flex;align-items:center;gap:9px;padding:13px 17px;color:white;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+.whatsapp-float svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7}
+.dialog{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}
+.dialog.open{display:flex}
+.dialog-card{width:min(780px,100%);max-height:90vh;overflow:auto;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;position:relative}
+.dialog-image{min-height:390px;background:#252628;position:relative}
+.dialog-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dialog-info{padding:30px}
+.dialog-close{position:absolute;right:12px;top:12px;z-index:3;width:36px;height:36px;background:var(--ink);color:white;border:0;cursor:pointer;font-size:20px}
+.dialog-info .section-label{color:var(--red)}
+.dialog-info h2{font:800 38px/.95 var(--display);text-transform:uppercase;margin:14px 0}
+.dialog-info p{font-size:12px;color:#625f59;line-height:1.8}
+.dialog-specs{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #d4cec4;margin-top:20px}
+.dialog-spec{padding:12px 8px 12px 0;border-bottom:1px solid #d4cec4}
+.dialog-spec small{display:block;color:#77736c;font-size:8px;text-transform:uppercase;letter-spacing:.1em}
+.dialog-spec strong{display:block;font-size:11px;margin-top:4px}
+.dialog-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.dialog-actions .btn{font-size:9px}
+@media(max-width:1100px){
+ .shell{width:calc(100% - 36px);margin:22px auto}
+ .wrap{width:calc(100% - 48px)}
+ .nav-links{gap:13px;font-size:9px}
+ .nav-cta{padding:0 12px}
+ .hero{min-height:510px}
+ .feature-rail{margin-inline:24px;grid-template-columns:repeat(3,1fr)}
+ .rail-proof{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .5fr 1fr;gap:16px;align-items:center;min-height:108px}
+ .rail-proof .proof-number{grid-column:2;grid-row:1;align-self:center}
+ .rail-proof h3{grid-column:1;grid-row:2;margin:0}
+ .rail-proof p{grid-column:3;grid-row:1/3}
+ .proof-foot{display:none}
+ .fleet-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero-side{right:4%;width:94px;height:94px}
+}
+@media(max-width:760px){
+ body{background:#101113}
+ .shell{width:100%;margin:0;border:0;box-shadow:none}
+ .wrap{width:calc(100% - 36px)}
+ .utility .wrap{width:calc(100% - 28px)}
+ .utility-right{display:none}
+ .utility-left{gap:12px}
+ .nav-inner{min-height:70px;gap:12px}
+ .brand-name{font-size:15px}
+ .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#101113;padding:12px 18px 18px;border-bottom:1px solid #454548;flex-direction:column;align-items:stretch;gap:0}
+ .nav-links.open{display:flex}
+ .nav-links a{padding:13px 2px;border-bottom:1px solid #2e2e30}
+ .nav-links a:last-child{border-bottom:0}
+ .nav-cta{margin-left:auto;min-height:40px;font-size:8px}
+ .menu-toggle{display:grid;flex:0 0 auto}
+ .hero{min-height:560px}
+ .hero-inner{padding:55px 24px 133px;align-items:flex-start}
+ .hero-copy{max-width:560px}
+ .hero h1{font-size:clamp(51px,10.7vw,78px)}
+ .hero-copy p{font-size:13px;max-width:440px}
+ .hero-side{top:auto;bottom:125px;right:22px;transform:none;width:78px;height:78px;font-size:7px}
+ .hero-side strong{font-size:19px}
+ .hero-index{bottom:105px;right:25px}
+ .feature-rail{margin-inline:0;grid-template-columns:1fr 1fr}
+ .rail-item{padding:19px 16px;min-height:138px}
+ .rail-item h3{font-size:16px}
+ .rail-item p{font-size:9px;margin-top:13px}
+ .rail-proof{grid-column:1/-1;grid-template-columns:1fr 90px;min-height:130px;padding:20px}
+ .rail-proof .mini-label{grid-column:1}
+ .rail-proof .proof-number{grid-column:2;grid-row:1/3;font-size:42px}
+ .rail-proof h3{grid-column:1;grid-row:2;font-size:22px;margin-top:8px}
+ .rail-proof p{grid-column:1/-1;grid-row:3;margin-top:9px}
+ .section{padding:66px 0}
+ .section-head{display:block;margin-bottom:25px}
+ .section-head>p{margin-top:15px;max-width:500px}
+ .fleet-tools{grid-template-columns:1fr 1fr}
+ .field-control:first-child{grid-column:1/-1}
+ .fleet-grid{grid-template-columns:1fr}
+ .fleet-image{height:215px}
+ .fleet-content h3{font-size:27px}
+ .fleet-content p{min-height:0}
+ .mission-grid,.rfq-grid{grid-template-columns:1fr;gap:30px}
+ .mission-list{margin-top:28px}
+ .side-statement{min-height:240px}
+ .side-statement blockquote{max-width:440px}
+ .sector-row{grid-template-columns:1fr}
+ .sector-intro{padding:25px 0}
+ .sector-list{border-top:1px solid #cfc8bd}
+ .sector{padding:16px 12px;min-height:80px}
+ .sector strong{font-size:18px}
+ .rfq-form{padding:20px}
+ .footer-main{grid-template-columns:1fr}
+ .footer-right{justify-content:flex-start}
+ .dialog-card{grid-template-columns:1fr;max-width:540px}
+ .dialog-image{min-height:190px;height:190px}
+ .dialog-info{padding:23px}
+ .dialog-info h2{font-size:33px}
+ .whatsapp-float{right:13px;bottom:13px;padding:12px 14px}
+}
+@media(max-width:430px){
+ .wrap{width:calc(100% - 28px)}
+ .brand-mark{width:32px;height:32px;font-size:12px}
+ .brand{gap:8px}
+ .brand-name{font-size:13px}
+ .brand-sub{font-size:7px;letter-spacing:.12em}
+ .nav-cta{font-size:7px;padding:0 9px;letter-spacing:.02em}
+ .menu-toggle{width:37px;height:40px}
+ .hero{min-height:560px}
+ .hero-inner{padding:46px 18px 148px}
+ .hero h1{font-size:50px}
+ .hero-actions .btn{min-height:43px;padding-inline:12px;font-size:9px}
+ .hero-meta{gap:13px;flex-direction:column;align-items:flex-start;margin-top:22px}
+ .hero-side{bottom:110px;right:17px;width:68px;height:68px}
+ .hero-index{bottom:91px}
+ .feature-rail{grid-template-columns:1fr}
+ .rail-item{min-height:118px}
+ .rail-top{gap:10px}
+ .rail-item p{max-width:none}
+ .fleet-tools{grid-template-columns:1fr}
+ .field-control:first-child{grid-column:auto}
+ .fleet-result{align-items:flex-start;flex-direction:column;gap:4px}
+ .mission-list{grid-template-columns:1fr}
+ .mission-point{min-height:0;padding:15px}
+ .sector-list{grid-template-columns:1fr}
+ .sector{border-left:0;border-bottom:1px solid #cfc8bd!important;min-height:68px}
+ .sector:last-child{border-bottom:0!important}
+ .form-grid{grid-template-columns:1fr}
+ .form-field.full{grid-column:auto}
+ .form-top h3{font-size:23px}
+ .footer-bottom{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="shell" id="home">
+ <div class="utility"><div class="wrap">
+  <div class="utility-left">
+   <span class="utility-item"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>Solusi rental alat berat</span>
+   <span class="utility-item"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Konstruksi · Infrastruktur · Industri</span>
+  </div>
+  <div class="utility-right"><span>PT Perkasa Mandiri Perkasa</span><span>Beranda / Rental Armada</span></div>
+ </div></div>
+ <header class="nav">
+  <div class="wrap nav-inner">
+   <a class="brand" href="#home" aria-label="PMP Heavy Equipment, beranda">
+    <span class="brand-mark">PMP</span><span><span class="brand-name">PMP Heavy Equipment</span><span class="brand-sub">PT Perkasa Mandiri Perkasa</span></span>
+   </a>
+   <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+    <a href="#home">Beranda</a><a href="#armada">Katalog Armada</a><a href="#layanan">Solusi</a><a href="#tentang">Tentang PMP</a><a href="#kontak">Kontak</a>
+   </nav>
+   <a class="nav-cta" href="#kontak">Minta Penawaran <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+   <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka navigasi" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+  </div>
+ </header>
+ <main>
+  <section class="hero" aria-labelledby="heroTitle">
+   <div class="hero-inner">
+    <div class="hero-copy">
+     <div class="kicker">Rental equipment · Project support</div>
+     <h1 id="heroTitle">Mesin tepat.<span>Proyek terus bergerak.</span></h1>
+     <p>Solusi penyewaan alat berat untuk konstruksi, pertambangan, perkebunan, dan infrastruktur. Mulai dari kebutuhan unit, spesifikasi, hingga durasi kerja—semua dibicarakan langsung dengan tim PMP.</p>
+     <div class="hero-actions">
+      <a class="btn btn-red" href="#armada">Jelajahi armada <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a class="btn btn-line" href="#kontak">Diskusikan proyek <svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+     </div>
+     <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>9 kategori unit</span>
+      <span><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>Penawaran sesuai kebutuhan</span>
+     </div>
+    </div>
+    <div class="hero-side" aria-label="Sembilan kategori unit"><div><strong>09</strong>Kategori<br>armada PMP</div></div>
+    <div class="hero-index"><b>01</b> / 04 &nbsp; Rental solutions</div>
+   </div>
+  </section>
+  <div class="feature-rail" aria-label="Keunggulan layanan">
+   <article class="rail-item">
+    <div class="rail-top"><div class="rail-icon"><svg viewBox="0 0 32 32"><rect x="2.5" y="9" width="16" height="12" rx="1"/><path d="M18.5 13h5l5 5v3h-10zM7 21v3m17-3v3M5 24h4m13 0h4M5 5h8M5 7h5"/></svg></div><h3>Pilihan<br>Unit Beragam</h3></div>
+    <p>Excavator, alat pemindah material, pemadat jalan, hingga crane untuk kebutuhan proyek berbeda.</p>
+   </article>
+   <article class="rail-item">
+    <div class="rail-top"><div class="rail-icon"><svg viewBox="0 0 32 32"><path d="M3 27h26M6 27V12h12v15M18 17h8l3 4v6M10 16h4m-4 4h4m7 1h5M8 8l4-4 4 4M12 4v8"/></svg></div><h3>Kebutuhan<br>Proyek Spesifik</h3></div>
+    <p>Pemilihan unit dibahas berdasarkan jenis pekerjaan, lokasi, kapasitas, dan durasi sewa.</p>
+   </article>
+   <article class="rail-item">
+    <div class="rail-top"><div class="rail-icon"><svg viewBox="0 0 32 32"><path d="M4 27h24M7 27V8h18v19M11 12h3m4 0h3m-10 5h3m4 0h3m-10 5h3m4 0h3M12 4h8"/></svg></div><h3>Dukungan<br>Operasional</h3></div>
+    <p>Detail operator, perawatan, dan kebutuhan dukungan lapangan diklarifikasi saat penawaran.</p>
+   </article>
+   <aside class="rail-proof">
+    <span class="mini-label">Pilihan untuk berbagai kebutuhan</span>
+    <span class="proof-number">09</span>
+    <h3>Jenis unit.<br>Satu pintu konsultasi.</h3>
+    <p>Bandingkan spesifikasi dan fungsi armada sebelum menentukan kebutuhan untuk proyek Anda.</p>
+    <div class="proof-foot"><span>Fleet selection</span><span>01 — 09</span></div>
+   </aside>
+  </div>
+  <section class="section dark" id="armada">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="section-head-copy"><div class="section-label">Daftar armada</div><h2>Unit yang bekerja<br>sesuai kebutuhan.</h2></div>
+     <p>Jelajahi sembilan kategori unit berdasarkan fungsi pekerjaan dan tingkat demand. Klik detail untuk melihat spesifikasi utama dan menyiapkan permintaan penawaran.</p>
+    </div>
+    <div class="fleet-tools">
+     <label class="field-control"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="fleetSearch" type="search" placeholder="Cari nama unit atau fungsi pekerjaan..." aria-label="Cari unit armada"></label>
+     <label class="field-control"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></svg><select id="fleetCategory" aria-label="Filter berdasarkan kategori"><option value="">Semua fungsi pekerjaan</option><option value="galian">Galian & pengerukan</option><option value="lahan">Pembukaan lahan</option><option value="angkut">Pengangkutan material</option><option value="jalan">Pekerjaan jalan</option><option value="angkat">Pengangkatan material</option></select></label>
+     <label class="field-control"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-7"/></svg><select id="fleetDemand" aria-label="Filter berdasarkan tingkat demand"><option value="">Semua tingkat demand</option><option value="Sangat Tinggi">Sangat Tinggi</option><option value="Tinggi">Tinggi</option><option value="Sedang–Tinggi">Sedang–Tinggi</option><option value="Sedang">Sedang</option></select></label>
+    </div>
+    <div class="fleet-result"><span id="fleetCount"><strong>09 unit</strong> ditampilkan</span><span>Spesifikasi awal · Ketersediaan dikonfirmasi saat penawaran</span></div>
+    <div class="fleet-grid" id="fleetGrid" aria-live="polite"></div>
+    <p class="fleet-note">Data teknis ditampilkan sebagai informasi awal sesuai brief. Konfirmasi tipe aktual, ketersediaan unit, operator, dan detail harga bersama tim PMP sebelum pemesanan.</p>
+   </div>
+  </section>
+  <section class="section paper" id="layanan">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="section-head-copy"><div class="section-label">Bidang pekerjaan</div><h2>Setiap pekerjaan<br>punya tuntutan berbeda.</h2></div>
+     <p>Spesifikasi alat baru berguna ketika sesuai dengan konteks lapangan. Tentukan jenis pekerjaan terlebih dahulu, lalu cocokkan unit dan kebutuhan operasionalnya.</p>
+    </div>
+    <div class="sector-row">
+     <div class="sector-intro"><div class="section-label">Sektor industri</div><p>PMP melayani kebutuhan rental alat berat untuk proyek dan operasional di beberapa sektor utama.</p><a class="btn btn-red" href="#kontak">Bahas kebutuhan <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+     <div class="sector-list">
+      <div class="sector"><span class="sector-num">01</span><div><strong>Konstruksi</strong><small>Galian, pondasi, pemindahan material</small></div></div>
+      <div class="sector"><span class="sector-num">02</span><div><strong>Infrastruktur</strong><small>Jalan, pengurukan, pengangkatan</small></div></div>
+      <div class="sector"><span class="sector-num">03</span><div><strong>Pertambangan</strong><small>Material handling & earthmoving</small></div></div>
+      <div class="sector"><span class="sector-num">04</span><div><strong>Perkebunan</strong><small>Pembukaan lahan & pekerjaan area</small></div></div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section dark" id="tentang">
+   <div class="wrap mission-grid">
+    <div class="mission-copy">
+     <div class="section-label">Tentang PMP</div>
+     <h2>Fokus pada<br>kebutuhan lapangan.</h2>
+     <p>PT Perkasa Mandiri Perkasa (PMP Heavy Equipment) adalah konsep perusahaan rental alat berat untuk mendukung kebutuhan kontraktor, tim proyek, dan operasional industri. Katalog ini membantu calon penyewa membandingkan jenis unit, spesifikasi utama, dan aplikasi pekerjaan sebelum mengajukan penawaran.</p>
+     <div class="mission-list">
+      <article class="mission-point"><span>01 / ARMADA</span><h3>Pemilihan unit</h3><p>Mulai dari galian hingga pemadatan dan pengangkatan.</p></article>
+      <article class="mission-point"><span>02 / TEKNIS</span><h3>Spesifikasi jelas</h3><p>Data utama tersedia sebagai dasar diskusi kebutuhan.</p></article>
+      <article class="mission-point"><span>03 / RENCANA</span><h3>Durasi sewa</h3><p>Bahas kebutuhan sewa harian atau bulanan sesuai proyek.</p></article>
+      <article class="mission-point"><span>04 / KONTAK</span><h3>Penawaran langsung</h3><p>Kirim detail unit, lokasi, serta cakupan pekerjaan.</p></article>
+     </div>
+    </div>
+    <aside class="side-statement">
+     <div class="section-label">Pendekatan kerja</div>
+     <blockquote>Yang penting bukan sekadar alatnya. Yang penting alat itu tepat untuk pekerjaan.</blockquote>
+     <p class="statement-caption">Konsultasikan jenis pekerjaan, kondisi lokasi, target durasi, dan kebutuhan dukungan sebelum penawaran disusun.</p>
+    </aside>
+   </div>
+  </section>
+  <section class="section dark" id="kontak" style="padding-top:0">
+   <div class="wrap rfq-grid">
+    <div class="rfq-copy">
+     <div class="section-label">Request for quotation</div>
+     <h2>Mulai dari<br>kebutuhan proyek.</h2>
+     <p>Isi informasi dasar proyek supaya tim dapat memahami unit yang dibutuhkan. Nomor WhatsApp resmi perlu diatur sebelum formulir ini dipakai untuk mengirim pesan.</p>
+     <div class="contact-details">
+      <div class="contact-line"><svg viewBox="0 0 24 24"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.7 19.7 0 0 1 1.1 3.8 2 2 0 0 1 3.1 1.6h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.9L6.5 9.7a16 16 0 0 0 6 6l1.5-1.5a2 2 0 0 1 1.9-.6l3 .5a2 2 0 0 1 2.1 2.4Z" transform="translate(1 0) scale(.92)"/></svg><div><strong>Kontak tim PMP</strong><span>Gunakan formulir penawaran untuk menyiapkan detail kebutuhan sewa.</span></div></div>
+      <div class="contact-line"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><div><strong>Lokasi proyek</strong><span>Alamat kantor dan pool belum tersedia pada brief. Lokasi proyek dapat diisi pada formulir.</span></div></div>
+     </div>
+    </div>
+    <form class="rfq-form" id="rfqForm">
+     <div class="form-top"><h3>Detail permintaan</h3><span>Form RFQ / 01</span></div>
+     <div class="form-grid">
+      <div class="form-field"><label for="rfqName">Nama lengkap *</label><input id="rfqName" name="nama" autocomplete="name" placeholder="Nama Anda" required></div>
+      <div class="form-field"><label for="rfqCompany">Perusahaan *</label><input id="rfqCompany" name="perusahaan" autocomplete="organization" placeholder="Nama perusahaan" required></div>
+      <div class="form-field"><label for="rfqPhone">No. HP / WhatsApp *</label><input id="rfqPhone" name="telepon" autocomplete="tel" type="tel" placeholder="Nomor yang bisa dihubungi" required></div>
+      <div class="form-field"><label for="rfqUnit">Unit yang diminati *</label><select id="rfqUnit" name="unit" required><option value="">Pilih unit</option></select></div>
+      <div class="form-field"><label for="rfqDuration">Durasi sewa *</label><select id="rfqDuration" name="durasi" required><option value="">Pilih durasi</option><option>Harian</option><option>Mingguan</option><option>Bulanan</option><option>Jangka panjang / tahunan</option><option>Belum ditentukan</option></select></div>
+      <div class="form-field"><label for="rfqLocation">Lokasi proyek *</label><input id="rfqLocation" name="lokasi" placeholder="Kota / kabupaten, provinsi" required></div>
+      <div class="form-field full"><label for="rfqNotes">Catatan kebutuhan</label><textarea id="rfqNotes" name="catatan" placeholder="Jenis pekerjaan, target mulai, kapasitas, atau detail tambahan."></textarea></div>
+     </div>
+     <button class="btn btn-red form-submit" type="submit">Siapkan permintaan via WhatsApp <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+     <p class="form-note">Form ini menyiapkan pesan WhatsApp dengan detail di atas. Ubah nilai WA_NUMBER pada script sebelum website digunakan secara publik.</p>
+    </form>
+   </div>
+  </section>
+ </main>
+ <footer class="footer">
+  <div class="wrap">
+   <div class="footer-main">
+    <div><a class="brand" href="#home"><span class="brand-mark">PMP</span><span><span class="brand-name">PMP Heavy Equipment</span><span class="brand-sub">PT Perkasa Mandiri Perkasa</span></span></a><p class="footer-desc">Katalog digital rental alat berat untuk kebutuhan konstruksi, pertambangan, perkebunan, dan infrastruktur. Ketersediaan unit serta detail operasional dikonfirmasi saat penawaran.</p></div>
+    <div class="footer-right"><a href="#armada">Katalog armada</a><a href="#layanan">Sektor pekerjaan</a><a href="#tentang">Tentang PMP</a><a href="#kontak">Permintaan penawaran</a></div>
+   </div>
+   <div class="footer-bottom"><span>© <b id="year">2026</b> PMP Heavy Equipment. Konsep website perusahaan.</span><span>PT Perkasa Mandiri Perkasa <b>·</b> Informasi armada untuk konsultasi awal</span></div>
+  </div>
+ </footer>
+</div>
+<a href="#kontak" class="whatsapp-float" id="waFloat"><svg viewBox="0 0 24 24"><path d="M20.4 11.8a8.4 8.4 0 0 1-12.4 7.4L3 20l.9-4.8a8.4 8.4 0 1 1 16.5-3.4Z"/><path d="M8.8 8.2c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.3 0 .6.6 1 1.3 1.7 2.3 2.3.3.2.4.2.6 0l.7-.8c.2-.2.3-.2.6-.1l1.6.8c.2.1.3.2.3.4 0 .3-.2 1.1-.6 1.4-.4.4-1 .6-1.6.5-1-.1-2.3-.6-3.7-1.8-1.5-1.2-2.4-2.7-2.7-3.6-.3-.9.1-1.9.6-2.6Z"/></svg> Tanya via WhatsApp</a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="dialog" id="unitDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+ <div class="dialog-card">
+  <button class="dialog-close" id="dialogClose" type="button" aria-label="Tutup detail unit">×</button>
+  <div class="dialog-image"><img id="dialogImage" alt=""></div>
+  <div class="dialog-info"><div class="section-label" id="dialogDemand">Detail armada</div><h2 id="dialogTitle">Nama unit</h2><p id="dialogDescription"></p><div class="dialog-specs" id="dialogSpecs"></div><p><strong>Aplikasi pekerjaan</strong><br><span id="dialogWork"></span></p><div class="dialog-actions"><button type="button" class="btn btn-red" id="dialogQuote">Pilih untuk penawaran</button><button type="button" class="btn" style="border:1px solid #beb7ad;background:transparent;color:#111" id="dialogWhatsApp">Tanya via WhatsApp</button></div></div>
+ </div>
+</div>
+<script>
+const WA_NUMBER = '6280000000000'; // Ganti dengan nomor resmi PMP (format internasional tanpa tanda +).
+const equipment = [
+ {no:'01',name:'Excavator PC200 (20 ton)',demand:'Sangat Tinggi',category:'galian',type:'Excavator',desc:'Unit untuk pekerjaan konstruksi menengah hingga besar.',spec:[['Kapasitas bucket','0,9 m³'],['Tenaga mesin','148 HP']],work:'Galian tanah, pondasi, dan galian basement.',image:'https://images.pexels.com/photos/20296265/pexels-photo-20296265.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'02',name:'Mini Excavator (PC30–PC75)',demand:'Sangat Tinggi',category:'galian',type:'Excavator kompak',desc:'Pilihan untuk pekerjaan kecil dan area dengan ruang gerak terbatas.',spec:[['Kapasitas bucket','0,09–0,3 m³'],['Keunggulan','Bodi kompak']],work:'Pekerjaan galian di area perumahan dan lokasi terbatas.',image:'https://images.pexels.com/photos/33870733/pexels-photo-33870733.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'03',name:'Bulldozer (D65 / D85)',demand:'Tinggi',category:'lahan',type:'Dozer',desc:'Peralatan pendorong material untuk pembukaan dan perataan lahan.',spec:[['Blade type','Straight-Tilt Dozer'],['Kelas pekerjaan','Heavy duty']],work:'Land clearing, cut and fill, dan pendorongan material berat.',image:'https://images.pexels.com/photos/34891691/pexels-photo-34891691.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'04',name:'Dump Truck',demand:'Tinggi',category:'angkut',type:'Material transport',desc:'Untuk memindahkan material dan hasil galian antar titik kerja.',spec:[['Kapasitas muatan','24 ton'],['Kapasitas bak','20 m³']],work:'Transportasi tanah, pasir, batu, dan material proyek.',image:'https://images.pexels.com/photos/37837081/pexels-photo-37837081.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'05',name:'Wheel Loader',demand:'Tinggi',category:'angkut',type:'Loading equipment',desc:'Mendukung pemuatan material ke kendaraan angkut dan area stok.',spec:[['Kapasitas bucket','3,0 m³'],['Penggunaan','Loading']],work:'Memuat material di batching plant, stockyard, dan area kerja.',image:'https://images.pexels.com/photos/33870733/pexels-photo-33870733.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'06',name:'Vibro Roller',demand:'Tinggi',category:'jalan',type:'Compaction equipment',desc:'Alat pemadat untuk persiapan fondasi dan permukaan jalan.',spec:[['Berat operasional','10–12 ton'],['Fungsi utama','Pemadatan']],work:'Pemadatan fondasi jalan, pengurukan lahan, dan persiapan pengaspalan.',image:'https://images.pexels.com/photos/38735193/pexels-photo-38735193.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'07',name:'Mobile Crane (25–50 ton)',demand:'Sedang–Tinggi',category:'angkat',type:'Lifting equipment',desc:'Membantu pengangkatan material pada pekerjaan struktur dan infrastruktur.',spec:[['Kapasitas angkat','25–50 ton'],['Mobilitas','Unit mobile']],work:'Lifting material berat, erection girder, dan kolom baja.',image:'https://images.pexels.com/photos/20609453/pexels-photo-20609453.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'08',name:'Motor Grader',demand:'Sedang–Tinggi',category:'jalan',type:'Road finishing',desc:'Untuk membentuk permukaan jalan dan perataan yang presisi.',spec:[['Panjang blade','3,7 meter'],['Fungsi','Finishing']],work:'Perataan akhir jalan raya dan pembentukan kemiringan lereng.',image:'https://images.pexels.com/photos/38714394/pexels-photo-38714394.jpeg?auto=compress&cs=tinysrgb&w=1100'},
+ {no:'09',name:'Excavator Long Arm',demand:'Sedang',category:'galian',type:'Long-reach excavator',desc:'Konfigurasi lengan panjang untuk pekerjaan pengerukan dan galian dalam.',spec:[['Jangkauan boom/arm','Hingga 15+ meter'],['Konfigurasi','Long arm']],work:'Normalisasi sungai, pengerukan kanal dan rawa, serta pembersihan tebing curam.',image:'https://images.pexels.com/photos/20296265/pexels-photo-20296265.jpeg?auto=compress&cs=tinysrgb&w=1100'}
+];
+const $ = (selector) => document.querySelector(selector);
+const grid = $('#fleetGrid');
+const searchInput = $('#fleetSearch');
+const categoryInput = $('#fleetCategory');
+const demandInput = $('#fleetDemand');
+const formUnit = $('#rfqUnit');
+let activeEquipment = null;
+let previousFocus = null;
+let toastTimer = null;
+
+function esc(value){
+ return String(value).replace(/[&<>"']/g, function(char){
+  return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]);
+ });
+}
+function showToast(message){
+ const toast = $('#toast');
+ toast.textContent = message;
+ toast.classList.add('show');
+ clearTimeout(toastTimer);
+ toastTimer = setTimeout(function(){toast.classList.remove('show')},4400);
+}
+function whatsappUrl(message){
+ return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message);
+}
+function openWhatsApp(message){
+ if(WA_NUMBER === '6280000000000' || !/^\d{8,15}$/.test(WA_NUMBER)){
+  showToast('Nomor WhatsApp demo belum diganti. Atur WA_NUMBER di script dengan nomor resmi PMP terlebih dahulu.');
+  return;
+ }
+ window.open(whatsappUrl(message),'_blank','noopener,noreferrer');
+}
+function fleetCard(unit){
+ const chips = unit.spec.map(function(item){return '<span class="spec-chip">'+esc(item[0])+': '+esc(item[1])+'</span>'}).join('');
+ return '<article class="fleet-card"><div class="fleet-image"><img loading="lazy" decoding="async" src="'+esc(unit.image)+'" alt="'+esc(unit.name)+'" onerror="this.style.display=\'none\'"><span class="demand">'+esc(unit.demand)+'</span><span class="unit-no">'+esc(unit.no)+'</span></div><div class="fleet-content"><div class="unit-type">'+esc(unit.type)+' / Rental alat berat</div><h3>'+esc(unit.name)+'</h3><p>'+esc(unit.desc)+'</p><div class="spec-list">'+chips+'</div><div class="card-actions"><button type="button" class="btn btn-line" data-detail="'+esc(unit.no)+'">Lihat detail</button><button type="button" class="btn btn-red" data-quote="'+esc(unit.no)+'">Minta penawaran</button></div></div></article>';
+}
+function renderFleet(){
+ const term = searchInput.value.trim().toLowerCase();
+ const cat = categoryInput.value;
+ const demand = demandInput.value;
+ const filtered = equipment.filter(function(unit){
+  const searchable = [unit.name,unit.desc,unit.work,unit.type].join(' ').toLowerCase();
+  return searchable.includes(term) && (!cat || unit.category === cat) && (!demand || unit.demand === demand);
+ });
+ $('#fleetCount').innerHTML = '<strong>'+String(filtered.length).padStart(2,'0')+' unit</strong> ditampilkan';
+ grid.innerHTML = filtered.length ? filtered.map(fleetCard).join('') : '<div class="no-results">Belum ada unit yang cocok dengan filter tersebut. Coba kata kunci atau kategori lain.</div>';
+}
+function detailUnit(unit){
+ activeEquipment = unit;
+ previousFocus = document.activeElement;
+ $('#dialogImage').src = unit.image;
+ $('#dialogImage').alt = unit.name;
+ $('#dialogDemand').textContent = 'Demand: ' + unit.demand;
+ $('#dialogTitle').textContent = unit.name;
+ $('#dialogDescription').textContent = unit.desc;
+ $('#dialogWork').textContent = unit.work;
+ $('#dialogSpecs').innerHTML = unit.spec.map(function(item){return '<div class="dialog-spec"><small>'+esc(item[0])+'</small><strong>'+esc(item[1])+'</strong></div>'}).join('');
+ $('#unitDialog').classList.add('open');
+ document.body.style.overflow = 'hidden';
+ $('#dialogClose').focus();
+}
+function closeDialog(){
+ $('#unitDialog').classList.remove('open');
+ document.body.style.overflow = '';
+ if(previousFocus && previousFocus.focus) previousFocus.focus();
+}
+function selectForQuote(unit){
+ formUnit.value = unit.name;
+ closeDialog();
+ $('#kontak').scrollIntoView({behavior:'smooth'});
+ setTimeout(function(){formUnit.focus({preventScroll:true})},400);
+}
+equipment.forEach(function(unit){
+ const option = document.createElement('option');
+ option.value = unit.name;
+ option.textContent = unit.name;
+ formUnit.appendChild(option);
+});
+searchInput.addEventListener('input',renderFleet);
+categoryInput.addEventListener('change',renderFleet);
+demandInput.addEventListener('change',renderFleet);
+grid.addEventListener('click',function(event){
+ const detail = event.target.closest('[data-detail]');
+ const quote = event.target.closest('[data-quote]');
+ if(detail){
+  const unit = equipment.find(function(item){return item.no === detail.dataset.detail});
+  if(unit) detailUnit(unit);
+ }
+ if(quote){
+  const unit = equipment.find(function(item){return item.no === quote.dataset.quote});
+  if(unit) selectForQuote(unit);
+ }
+});
+$('#dialogClose').addEventListener('click',closeDialog);
+$('#unitDialog').addEventListener('click',function(event){if(event.target === $('#unitDialog')) closeDialog()});
+document.addEventListener('keydown',function(event){
+ if(event.key === 'Escape' && $('#unitDialog').classList.contains('open')) closeDialog();
+});
+$('#dialogQuote').addEventListener('click',function(){if(activeEquipment) selectForQuote(activeEquipment)});
+$('#dialogWhatsApp').addEventListener('click',function(){
+ if(activeEquipment) openWhatsApp('Halo PT PMP, saya ingin bertanya ketersediaan sewa '+activeEquipment.name+' untuk proyek di lokasi [Isi Lokasi].');
+});
+$('#rfqForm').addEventListener('submit',function(event){
+ event.preventDefault();
+ if(!this.reportValidity()) return;
+ const data = new FormData(this);
+ const message = 'Halo PT PMP, saya ingin meminta penawaran sewa alat berat.\n\nNama: '+data.get('nama')+'\nPerusahaan: '+data.get('perusahaan')+'\nNo. HP/WA: '+data.get('telepon')+'\nUnit: '+data.get('unit')+'\nDurasi sewa: '+data.get('durasi')+'\nLokasi proyek: '+data.get('lokasi')+'\nCatatan kebutuhan: '+(data.get('catatan') || '-');
+ openWhatsApp(message);
+});
+$('#waFloat').addEventListener('click',function(event){
+ event.preventDefault();
+ $('#kontak').scrollIntoView({behavior:'smooth'});
+});
+$('#menuToggle').addEventListener('click',function(){
+ const nav = $('#navLinks');
+ const isOpen = nav.classList.toggle('open');
+ this.setAttribute('aria-expanded',String(isOpen));
+ this.setAttribute('aria-label',isOpen?'Tutup navigasi':'Buka navigasi');
+});
+$('#navLinks').querySelectorAll('a').forEach(function(link){
+ link.addEventListener('click',function(){
+  $('#navLinks').classList.remove('open');
+  $('#menuToggle').setAttribute('aria-expanded','false');
+ });
+});
+$('#year').textContent = new Date().getFullYear();
+renderFleet();
+</script>
+</body>
+</html>
