@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invoice | All-in Merchmaker</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/naqr1mob/image/upload/v1791795920/Retro_ALL-IN_Group_3D_Logo.png">
+<style>
+  :root{--ink:#202124;--muted:#6b7280;--line:#e5e7eb;--accent:#d9f36a;--paper:#fff;--soft:#f7f8f4}
+  *{box-sizing:border-box} body{margin:0;background:#eceee8;color:var(--ink);font:14px/1.45 Arial,Helvetica,sans-serif}
+  .toolbar{max-width:980px;margin:22px auto 12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0 14px}
+  .toolbar p{margin:0;color:#4b5563;font-size:13px}.actions{display:flex;gap:8px;flex-wrap:wrap}
+  button{border:0;border-radius:8px;padding:11px 15px;font-weight:700;cursor:pointer;background:#202124;color:white}button.secondary{background:#fff;color:#202124;border:1px solid #d1d5db}
+  .sheet{width:min(900px,calc(100% - 28px));margin:0 auto 32px;background:var(--paper);padding:48px 54px;box-shadow:0 12px 40px #20212414;min-height:1100px}
+  .top{display:flex;justify-content:space-between;gap:25px;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:25px}
+  .brand{display:flex;gap:16px;align-items:center}.logo{width:94px;height:94px;object-fit:contain}.brand h1{font-size:25px;line-height:1.05;letter-spacing:-1px;margin:0 0 7px}.brand .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#60665b;font-weight:700}
+  .invoice-title{text-align:right;min-width:205px}.invoice-title h2{font-size:34px;letter-spacing:2px;margin:0 0 8px}.invoice-title .number{font-weight:700;font-size:14px}.invoice-title input{max-width:190px;text-align:right;font-weight:700}
+  .meta{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;padding:26px 0}.section-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#6b7280;margin-bottom:9px}
+  .editable{outline:none;border:1px dashed transparent;border-radius:4px;padding:2px 4px;min-width:20px;display:inline-block}.editable:hover,.editable:focus{border-color:#a3b34c;background:#fbffe9}.block-edit{display:block;white-space:pre-wrap;min-height:24px}
+  .client-name{font-size:18px;font-weight:700;margin-bottom:5px}.muted{color:var(--muted)}.details{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}.detail{font-size:12px}.detail b{display:block;color:#6b7280;font-size:10px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+  table{width:100%;border-collapse:collapse;margin-top:8px}thead{background:var(--ink);color:white}th{font-size:10px;text-transform:uppercase;letter-spacing:.8px;text-align:left;padding:12px 10px}td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}th:first-child,td:first-child{padding-left:13px}.num{text-align:right;white-space:nowrap}.item-name{font-weight:700}.item-desc{font-size:11px;color:var(--muted);margin-top:3px}.qty,.price{width:100%;min-width:65px;text-align:right;border:0;background:transparent;font:inherit;outline:none}.qty:focus,.price:focus{background:#fbffe9}.remove{background:transparent;color:#9ca3af;padding:2px 6px;font-size:16px}
+  .under-table{display:flex;justify-content:space-between;align-items:flex-start;gap:25px;margin-top:18px}.add-row{background:#f1f4e6;color:#303a12;border:1px solid #e0e7c7;padding:9px 12px;font-size:12px}.totals{width:285px;max-width:100%}.total-line{display:flex;justify-content:space-between;padding:7px 0;color:#4b5563}.total-line.grand{border-top:2px solid var(--ink);margin-top:5px;padding-top:13px;color:var(--ink);font-size:18px;font-weight:800}.total-line input{width:85px;text-align:right;border:0;background:transparent;font:inherit;outline:none}.total-line input:focus{background:#fbffe9}
+  .production{margin-top:32px;background:var(--soft);padding:19px 20px;border-left:4px solid var(--accent)}.production h3{font-size:12px;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px}.production p{margin:0;color:#4b5563;font-size:12px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.timeline div{border-top:1px solid #d8dccf;padding-top:8px}.timeline b{display:block;font-size:10px;text-transform:uppercase;color:#6b7280;margin-bottom:4px}.timeline span{font-size:12px;font-weight:700}
+  .bottom{display:grid;grid-template-columns:1fr 220px;gap:25px;margin-top:32px}.notes h3{font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px}.notes p{font-size:11px;color:#6b7280;margin:0 0 15px}.payment{font-size:12px;white-space:pre-wrap}.stamp-area{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:150px}.stamp{width:112px;height:112px;object-fit:contain;opacity:.82;filter:grayscale(1);mix-blend-mode:multiply}.signature{border-top:1px solid #9ca3af;width:190px;margin-top:10px;padding-top:7px;font-size:11px;color:#6b7280}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding-top:13px;display:flex;justify-content:space-between;gap:15px;font-size:10px;color:#9ca3af}
+  input.plain{border:0;border-bottom:1px dashed #c8cdd0;background:transparent;font:inherit;color:inherit;outline:none;padding:2px 3px;width:100%}.plain:focus{background:#fbffe9;border-bottom-color:#a3b34c}
+  @media(max-width:650px){.sheet{padding:25px 20px}.top{flex-direction:column}.invoice-title{text-align:left}.invoice-title input{text-align:left}.meta,.bottom{grid-template-columns:1fr}.details{grid-template-columns:1fr 1fr}.under-table{flex-direction:column}.totals{width:100%}.timeline{grid-template-columns:1fr}.logo{width:72px;height:72px}.brand h1{font-size:21px}table{font-size:12px}th,td{padding:9px 5px}}
+  @media print{@page{size:A4;margin:0}body{background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}.toolbar{display:none}.sheet{width:210mm;min-height:297mm;margin:0;padding:15mm 16mm;box-shadow:none}.editable{border-color:transparent!important;background:transparent!important}.remove{display:none}.add-row{display:none}input{color:#202124!important}.sheet{page-break-after:avoid}}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <p>Invoice editable · Klik teks untuk mengubahnya, lalu pilih <b>Cetak / Simpan PDF</b>.</p>
+  <div class="actions"><button class="secondary" onclick="newInvoice()">Generate Nomor Nota</button><button class="secondary" onclick="addItem()">+ Tambah Item</button><button onclick="window.print()">Cetak / Simpan PDF</button></div>
+</div>
+<main class="sheet" id="invoice">
+  <section class="top">
+    <div class="brand">
+      <img class="logo" src="https://res.cloudinary.com/naqr1mob/image/upload/v1791795920/Retro_ALL-IN_Group_3D_Logo.png" alt="Logo All-in" />
+      <div><h1>ALL-IN<br>MERCHMAKER</h1><div class="tag">Campus merch · Made for your team</div><div class="muted" style="font-size:11px;margin-top:8px">Vendor merchandise kampus dan kebutuhan komunitas</div></div>
+    </div>
+    <div class="invoice-title"><h2>INVOICE</h2><div class="section-label">Nomor Nota</div><input class="plain" id="invoiceNo" aria-label="Nomor nota" value="" /></div>
+  </section>
+  <section class="meta">
+    <div>
+      <div class="section-label">Ditagihkan kepada</div>
+      <div class="editable block-edit client-name" contenteditable="true">Nama pelanggan / organisasi</div>
+      <div class="editable block-edit muted" contenteditable="true">Nama kampus / fakultas / organisasi</div>
+      <div class="editable block-edit muted" contenteditable="true">Alamat / kota</div>
+      <div class="editable block-edit muted" contenteditable="true">Nomor WhatsApp / email</div>
+    </div>
+    <div class="details">
+      <div class="detail"><b>Nomor Perusahaan</b><input class="plain" id="companyNo" value="ALL-IN/________" /></div>
+      <div class="detail"><b>Tanggal Nota</b><input class="plain" id="invoiceDate" /></div>
+      <div class="detail"><b>Marketing</b><input class="plain" id="marketing" placeholder="Nama tim marketing" /></div>
+      <div class="detail"><b>Status Pembayaran</b><input class="plain" id="paymentStatus" value="DP / Belum Lunas" /></div>
+      <div class="detail" style="grid-column:1/-1"><b>Kontak / Nomor WhatsApp All-in</b><input class="plain" id="companyContact" placeholder="Nomor kontak perusahaan" /></div>
+    </div>
+  </section>
+  <div class="section-label">Rincian Pesanan</div>
+  <table id="itemsTable">
+    <thead><tr><th style="width:48%">Produk / Deskripsi</th><th style="width:12%;text-align:right">Qty</th><th style="width:18%;text-align:right">Harga / Unit</th><th style="width:18%;text-align:right">Jumlah</th><th style="width:4%"></th></tr></thead>
+    <tbody id="itemsBody"></tbody>
+  </table>
+  <div class="under-table">
+    <div style="flex:1"><button class="add-row" onclick="addItem()">+ Tambah produk / layanan</button><div class="muted" style="font-size:10px;margin-top:10px;max-width:300px">Contoh produk: PDH, kaos, jaket, ID card, lanyard, tote bag, merchandise event, dan kebutuhan custom lainnya.</div></div>
+    <div class="totals">
+      <div class="total-line"><span>Subtotal</span><strong id="subtotal">Rp0</strong></div>
+      <div class="total-line"><span>Diskon (Rp)</span><input id="discount" type="number" min="0" value="0" oninput="calculate()" /></div>
+      <div class="total-line"><span>Biaya tambahan (Rp)</span><input id="extra" type="number" min="0" value="0" oninput="calculate()" /></div>
+      <div class="total-line grand"><span>Total</span><span id="grandTotal">Rp0</span></div>
+      <div class="total-line" style="font-size:12px"><span>DP / pembayaran</span><input id="paid" type="number" min="0" value="0" oninput="calculate()" /></div>
+      <div class="total-line" style="font-weight:700;color:#202124"><span>Sisa pembayaran</span><strong id="remaining">Rp0</strong></div>
+    </div>
+  </div>
+  <section class="production">
+    <h3>Timeline Produksi</h3>
+    <p class="editable block-edit" contenteditable="true">Timeline dihitung setelah desain, jumlah, spesifikasi, dan pembayaran awal disetujui. Estimasi dapat berubah mengikuti antrean produksi dan persetujuan sampel.</p>
+    <div class="timeline">
+      <div><b>Konfirmasi desain</b><span class="editable block-edit" contenteditable="true">Tanggal / estimasi</span></div>
+      <div><b>Mulai produksi</b><span class="editable block-edit" contenteditable="true">Tanggal / estimasi</span></div>
+      <div><b>Estimasi selesai</b><span class="editable block-edit" contenteditable="true">Tanggal / estimasi</span></div>
+    </div>
+  </section>
+  <section class="bottom">
+    <div class="notes">
+      <h3>Catatan & Ketentuan</h3>
+      <p class="editable block-edit" contenteditable="true">• Mohon periksa kembali nama, ukuran, jumlah, warna, dan spesifikasi sebelum produksi dimulai.
+• Produksi berjalan setelah desain final dan pembayaran awal disetujui.
+• Perubahan setelah produksi dimulai dapat memengaruhi biaya dan timeline.
+• Simpan invoice ini sebagai bukti pemesanan.</p>
+      <h3>Informasi Pembayaran</h3>
+      <div class="editable block-edit payment" contenteditable="true">Bank / e-wallet: ____________________
+Nomor rekening: ____________________
+Atas nama: ____________________</div>
+    </div>
+    <div class="stamp-area">
+      <img class="stamp" src="https://res.cloudinary.com/naqr1mob/image/upload/v1791795920/Retro_ALL-IN_Group_3D_Logo.png" alt="Logo stempel All-in" />
+      <div class="signature">All-in Merchmaker<br><span class="muted">Marketing / Admin</span></div>
+    </div>
+  </section>
+  <footer><span>ALL-IN MERCHMAKER · Custom merchandise partner</span><span class="editable" contenteditable="true">Terima kasih telah mempercayai All-in.</span></footer>
+</main>
+<script>
+const rupiah = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0);
+function randomInvoice(){const d=new Date();const date=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('');const rand=Math.random().toString(36).slice(2,7).toUpperCase();return `INV-${date}-${rand}`}
+function newInvoice(){document.getElementById('invoiceNo').value=randomInvoice()}
+function addItem(name='Nama produk / layanan',desc='Spesifikasi, bahan, warna, ukuran, atau catatan',qty=1,price=0){const tr=document.createElement('tr');tr.innerHTML=`<td><div class="editable item-name" contenteditable="true">${name}</div><div class="editable item-desc" contenteditable="true">${desc}</div></td><td><input class="qty" type="number" min="0" value="${qty}" oninput="calculate()" aria-label="Jumlah"></td><td><input class="price" type="number" min="0" value="${price}" oninput="calculate()" aria-label="Harga per unit"></td><td class="num line-total">Rp0</td><td><button class="remove" onclick="this.closest('tr').remove();calculate()" title="Hapus item">×</button></td>`;document.getElementById('itemsBody').appendChild(tr);calculate()}
+function calculate(){let subtotal=0;document.querySelectorAll('#itemsBody tr').forEach(tr=>{const qty=Number(tr.querySelector('.qty').value)||0;const price=Number(tr.querySelector('.price').value)||0;const total=qty*price;subtotal+=total;tr.querySelector('.line-total').textContent=rupiah(total)});const discount=Number(document.getElementById('discount').value)||0;const extra=Number(document.getElementById('extra').value)||0;const total=Math.max(0,subtotal-discount+extra);const paid=Number(document.getElementById('paid').value)||0;document.getElementById('subtotal').textContent=rupiah(subtotal);document.getElementById('grandTotal').textContent=rupiah(total);document.getElementById('remaining').textContent=rupiah(Math.max(0,total-paid))}
+const now=new Date();document.getElementById('invoiceDate').value=now.toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});newInvoice();
+addItem('PDH / Kemeja organisasi','Bahan, bordir, warna, ukuran, dll.',0,0);addItem('Kaos / Apparel','Bahan, sablon, ukuran, dll.',0,0);addItem('ID Card & Lanyard','Jenis cetak, bahan, model tali, dll.',0,0);
+</script>
+</body>
+</html>
