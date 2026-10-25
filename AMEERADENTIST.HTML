@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f3">
+  <meta name="description" content="Ameera Dental Clinic — perawatan gigi modern dengan suasana nyaman. Healthy Smile, Brighter Tomorrow.">
+  <title>Ameera Dental Clinic — Healthy Smile, Brighter Tomorrow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f8f3;
+      --white: #fff;
+      --ink: #243b35;
+      --muted: #687872;
+      --sage: #b9cbb7;
+      --sage-deep: #426d5a;
+      --sage-dark: #29483d;
+      --line: #e1e7de;
+      --wood: #d9c6ad;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", sans-serif;
+      --display: "Manrope", sans-serif;
+      --radius: 22px;
+      --shadow: 0 22px 70px rgba(43, 70, 57, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body, button, input, select, textarea { font-family: var(--sans); }
+    img, video { max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #8cae8a; outline-offset: 4px; }
+    .shell { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--sage-deep); font-size: 11px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: currentColor; }
+    .section { padding: 108px 0; }
+    .section-heading { max-width: 670px; margin-bottom: 44px; }
+    .section-heading h2 { margin: 0; font: 500 clamp(34px, 4.5vw, 58px)/1.12 var(--display); letter-spacing: -.055em; }
+    .section-heading p { max-width: 540px; margin: 18px 0 0; color: var(--muted); font-size: 16px; }
+    .accent-word { color: var(--sage-deep); font-family: var(--serif); font-style: italic; font-weight: 400; }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 14px 21px; border: 1px solid transparent; border-radius: 999px; font-size: 13px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #fff; background: var(--sage-dark); }
+    .button-primary:hover { background: var(--sage-deep); }
+    .button-outline { border-color: #cdd8cd; background: rgba(255,255,255,.55); }
+    .button-outline:hover { border-color: var(--sage-deep); background: #fff; }
+    .arrow { font-size: 18px; line-height: 1; }
+    /* Header */
+    .site-header { position: sticky; z-index: 30; top: 0; border-bottom: 1px solid rgba(220, 228, 218, .8); background: rgba(247,248,243,.92); backdrop-filter: blur(16px); }
+    .nav-wrap { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #d6e1d4; border-radius: 50%; color: var(--sage-deep); background: #edf2e9; }
+    .brand-mark svg { width: 25px; height: 25px; }
+    .brand-name { display: block; font: 800 15px/1.2 var(--display); letter-spacing: -.045em; }
+    .brand-sub { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.3vw, 32px); }
+    .nav-links a { color: #4f6259; font-size: 12px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage-deep); }
+    .nav-cta { min-height: 44px; padding: 11px 17px; font-size: 12px; }
+    .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); cursor: pointer; }
+    /* Hero */
+    .hero { padding: 34px 0 74px; }
+    .hero-frame { position: relative; min-height: 650px; overflow: hidden; border-radius: 28px; isolation: isolate; background: #d9e0d7; }
+    .hero-media, .hero-media video, .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-media video, .hero-media img { object-fit: cover; object-position: center 44%; }
+    .hero-media img { opacity: 0; transition: opacity .9s ease; }
+    .hero-media img.is-visible { opacity: 1; }
+    .hero-media video { transition: opacity .9s ease; }
+    .hero-media video.is-hidden { opacity: 0; }
+    .hero-frame::after { position: absolute; z-index: 1; inset: 0; content: ""; background: linear-gradient(90deg, rgba(20,45,36,.78) 0%, rgba(24,49,40,.53) 38%, rgba(24,49,40,.05) 82%), linear-gradient(0deg, rgba(21,42,34,.18), transparent 50%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 2; width: min(680px, 68%); padding: clamp(36px, 6.5vw, 84px); color: white; }
+    .hero .eyebrow { color: #dce8d8; }
+    .hero h1 { max-width: 700px; margin: 0; font: 500 clamp(42px, 6vw, 76px)/1.04 var(--display); letter-spacing: -.065em; }
+    .hero h1 em { font-family: var(--serif); font-weight: 400; }
+    .hero-copy { max-width: 460px; margin: 23px 0 30px; color: rgba(255,255,255,.86); font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .button-primary { background: #e1eadb; color: var(--sage-dark); }
+    .hero .button-primary:hover { background: #fff; }
+    .hero .button-outline { border-color: rgba(255,255,255,.55); color: #fff; background: rgba(255,255,255,.08); }
+    .hero .button-outline:hover { background: rgba(255,255,255,.17); }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 48px; color: rgba(255,255,255,.85); font-size: 11px; letter-spacing: .04em; }
+    .hero-note span:first-child { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; font-size: 17px; }
+    .hero-note strong { display: block; color: #fff; font-size: 12px; font-weight: 600; }
+    .hero-note small { display: block; margin-top: 2px; font-size: 10px; }
+    .hero-index { position: absolute; z-index: 2; right: 28px; bottom: 25px; color: rgba(255,255,255,.8); font-size: 10px; letter-spacing: .16em; }
+    /* Trust strip */
+    .trust-strip { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); align-items: center; gap: 24px; padding: 28px 0 8px; }
+    .trust-intro { color: var(--muted); font-size: 12px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; }
+    .trust-icon { flex: 0 0 40px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: #e9efe5; color: var(--sage-deep); }
+    .trust-icon svg { width: 19px; height: 19px; }
+    .trust-item strong { display: block; font: 700 12px/1.4 var(--display); }
+    .trust-item span:last-child { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    /* Intro */
+    .intro-grid { display: grid; grid-template-columns: .92fr 1fr; align-items: center; gap: clamp(42px, 8vw, 112px); }
+    .intro-visual { position: relative; min-height: 510px; }
+    .intro-photo { position: absolute; inset: 0 42px 36px 0; overflow: hidden; border-radius: 180px 180px 18px 18px; background: #e4e9df; }
+    .intro-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .photo-note { position: absolute; right: 0; bottom: 0; width: 195px; padding: 22px; border: 1px solid #e3e8de; border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
+    .photo-note strong { display: block; font: 500 22px/1.25 var(--display); letter-spacing: -.04em; }
+    .photo-note span { display: block; margin-top: 7px; color: var(--muted); font-size: 11px; }
+    .intro-copy h2 { margin: 0; font: 500 clamp(35px, 4.2vw, 54px)/1.12 var(--display); letter-spacing: -.055em; }
+    .intro-copy > p:not(.eyebrow) { margin: 22px 0 0; color: var(--muted); font-size: 15px; }
+    .value-list { display: grid; gap: 18px; margin: 30px 0 32px; }
+    .value-row { display: grid; grid-template-columns: 32px 1fr; gap: 13px; align-items: start; }
+    .value-check { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 50%; background: #e8efe5; color: var(--sage-deep); font-size: 14px; }
+    .value-row strong { display: block; font-size: 13px; }
+    .value-row p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    /* Services */
+    .services { background: #eef2e9; }
+    .services-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 42px; }
+    .services-top .section-heading { margin: 0; }
+    .service-list { border-top: 1px solid #d7e0d4; }
+    .service-row { display: grid; grid-template-columns: 72px minmax(190px, .9fr) 1.2fr 42px; align-items: center; gap: 24px; padding: 25px 4px; border-bottom: 1px solid #d7e0d4; transition: padding .25s ease, background .25s ease; }
+    .service-row:hover { padding-inline: 15px; background: rgba(255,255,255,.48); }
+    .service-num { color: #7b9380; font: 500 12px var(--display); }
+    .service-row h3 { margin: 0; font: 600 clamp(17px, 2vw, 23px)/1.3 var(--display); letter-spacing: -.04em; }
+    .service-row p { margin: 0; color: var(--muted); font-size: 12px; }
+    .service-arrow { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #cdd9ca; border-radius: 50%; font-size: 17px; transition: color .2s, background .2s; }
+    .service-row:hover .service-arrow { background: var(--sage-dark); color: #fff; }
+    .service-footnote { margin: 22px 0 0; color: var(--muted); font-size: 11px; }
+    /* Experience */
+    .experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .experience-card { position: relative; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; overflow: hidden; border-radius: var(--radius); background: #fff; }
+    .experience-card.dark { background: var(--sage-dark); color: #fff; }
+    .experience-card.wood { background: #e8dfd1; }
+    .experience-card .big-number { position: absolute; right: 20px; bottom: -38px; color: rgba(87,120,93,.10); font: 800 180px/.9 var(--display); letter-spacing: -.12em; }
+    .experience-card.dark .big-number { color: rgba(255,255,255,.07); }
+    .experience-card .card-symbol { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(94,124,98,.3); border-radius: 50%; color: var(--sage-deep); }
+    .experience-card.dark .card-symbol { color: #e3ecdf; border-color: rgba(255,255,255,.3); }
+    .card-symbol svg { width: 22px; height: 22px; }
+    .experience-card h3 { position: relative; z-index: 1; max-width: 390px; margin: 30px 0 10px; font: 500 clamp(26px, 3vw, 38px)/1.14 var(--display); letter-spacing: -.05em; }
+    .experience-card p { position: relative; z-index: 1; max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; }
+    .experience-card.dark p { color: rgba(255,255,255,.72); }
+    /* Process */
+    .process { background: #fff; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .process-step { padding: 27px 22px 0 0; }
+    .process-step + .process-step { padding-left: 22px; border-left: 1px solid var(--line); }
+    .process-step .step-number { color: var(--sage-deep); font: 500 12px var(--display); }
+    .process-step h3 { margin: 25px 0 9px; font: 600 18px/1.3 var(--display); letter-spacing: -.04em; }
+    .process-step p { margin: 0; color: var(--muted); font-size: 12px; }
+    /* Booking */
+    .booking-section { padding: 100px 0; }
+    .booking-panel { display: grid; grid-template-columns: .9fr 1.1fr; overflow: hidden; border-radius: 28px; background: #e9efe5; }
+    .booking-info { padding: clamp(32px, 5vw, 64px); }
+    .booking-info h2 { margin: 0; font: 500 clamp(35px, 4.4vw, 54px)/1.1 var(--display); letter-spacing: -.06em; }
+    .booking-info > p:not(.eyebrow) { margin: 19px 0 30px; color: var(--muted); font-size: 14px; }
+    .contact-detail { display: flex; gap: 13px; margin-top: 20px; align-items: flex-start; }
+    .contact-detail .detail-icon { width: 38px; height: 38px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: #d9e5d5; color: var(--sage-deep); }
+    .detail-icon svg { width: 18px; height: 18px; }
+    .contact-detail strong { display: block; font-size: 12px; }
+    .contact-detail span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .booking-form-wrap { padding: clamp(28px, 4.5vw, 55px); background: #fff; }
+    .booking-form-wrap h3 { margin: 0 0 7px; font: 700 21px var(--display); letter-spacing: -.04em; }
+    .booking-form-wrap > p { margin: 0 0 26px; color: var(--muted); font-size: 12px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 14px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #53675c; font-size: 11px; font-weight: 700; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 48px; padding: 12px 13px; border: 1px solid #dfe6dc; border-radius: 10px; outline: none; background: #fbfcf9; color: var(--ink); font-size: 12px; }
+    .field textarea { min-height: 86px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #90ad8e; box-shadow: 0 0 0 3px rgba(144,173,142,.15); }
+    .form-submit { width: 100%; margin-top: 20px; border: 0; }
+    .form-note { margin: 12px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .form-status { margin-top: 12px; color: var(--sage-deep); font-size: 12px; }
+    /* FAQ */
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; }
+    .faq-grid .section-heading { position: sticky; top: 120px; align-self: start; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 0; cursor: pointer; list-style: none; font: 600 14px/1.5 var(--display); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; flex-shrink: 0; color: var(--sage-deep); font-size: 23px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: -4px 30px 22px 0; color: var(--muted); font-size: 13px; }
+    /* Footer */
+    .site-footer { padding: 35px 0 26px; background: #263f35; color: #fff; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.16); }
+    .footer-brand .brand-mark { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.2); color: #e0eadb; }
+    .footer-brand .brand-sub { color: rgba(255,255,255,.6); }
+    .footer-brand .brand-name { color: #fff; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 22px; color: rgba(255,255,255,.75); font-size: 11px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 22px; color: rgba(255,255,255,.57); font-size: 10px; }
+    .floating-cta { position: fixed; z-index: 25; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 10px; padding: 13px 18px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; color: #fff; background: #2f7657; box-shadow: 0 8px 30px rgba(33,79,56,.26); font-size: 12px; font-weight: 700; transition: transform .2s, background .2s; }
+    .floating-cta:hover { transform: translateY(-3px); background: #255e44; }
+    .floating-cta svg { width: 18px; height: 18px; }
+    .reveal { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .js-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+      .js-ready .reveal.in-view { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 920px) {
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta) { font-size: 11px; }
+      .hero-frame { min-height: 590px; }
+      .hero-content { width: 78%; }
+      .trust-strip { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+      .intro-grid { gap: 42px; }
+      .intro-visual { min-height: 430px; }
+      .service-row { grid-template-columns: 42px minmax(160px, .9fr) 1.2fr 38px; gap: 16px; }
+      .faq-grid { gap: 40px; }
+    }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 32px, 560px); }
+      .section { padding: 76px 0; }
+      .nav-wrap { min-height: 72px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 13px; }
+      .brand-sub { font-size: 8px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 20px; border-bottom: 1px solid var(--line); background: var(--paper); box-shadow: 0 20px 30px rgba(43,70,57,.06); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 13px 4px; border-bottom: 1px solid var(--line); font-size: 13px !important; }
+      .nav-links .nav-cta { margin-top: 12px; border-bottom: 0; }
+      .hero { padding: 16px 0 40px; }
+      .hero-frame { min-height: 690px; border-radius: 20px; }
+      .hero-media video, .hero-media img { object-position: 59% center; }
+      .hero-frame::after { background: linear-gradient(0deg, rgba(20,45,36,.88) 0%, rgba(24,49,40,.57) 53%, rgba(24,49,40,.05) 100%); }
+      .hero-content { position: absolute; bottom: 0; width: 100%; padding: 28px 25px 34px; }
+      .hero h1 { font-size: clamp(42px, 12vw, 62px); }
+      .hero-copy { margin: 16px 0 22px; font-size: 13px; }
+      .hero-actions { align-items: stretch; }
+      .hero-actions .button { min-height: 47px; padding: 12px 16px; font-size: 11px; }
+      .hero-note { margin-top: 28px; }
+      .hero-index { right: 18px; top: 18px; bottom: auto; }
+      .trust-strip { gap: 18px 12px; padding-top: 24px; }
+      .trust-intro { grid-column: 1 / -1; }
+      .trust-item { gap: 9px; }
+      .trust-icon { width: 34px; height: 34px; flex-basis: 34px; }
+      .trust-item strong { font-size: 11px; }
+      .trust-item span:last-child { font-size: 9px; }
+      .section-heading { margin-bottom: 32px; }
+      .section-heading h2 { font-size: clamp(33px, 9vw, 46px); }
+      .section-heading p { font-size: 14px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 38px; }
+      .intro-visual { min-height: 410px; width: 100%; max-width: 450px; }
+      .intro-photo { inset: 0 34px 28px 0; }
+      .photo-note { width: 165px; padding: 17px; }
+      .photo-note strong { font-size: 19px; }
+      .intro-copy h2 { font-size: 40px; }
+      .intro-copy > p:not(.eyebrow) { font-size: 14px; }
+      .services-top { display: block; }
+      .services-top .button { margin-top: 0; }
+      .service-row { grid-template-columns: 28px 1fr 34px; gap: 11px; padding: 20px 0; }
+      .service-row p { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .service-row h3 { font-size: 17px; }
+      .service-num { grid-row: 1 / span 2; align-self: start; padding-top: 3px; font-size: 10px; }
+      .service-arrow { grid-column: 3; grid-row: 1 / span 2; width: 32px; height: 32px; }
+      .experience-grid { grid-template-columns: 1fr; gap: 12px; }
+      .experience-card { min-height: 255px; padding: 25px; }
+      .experience-card h3 { font-size: 31px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step { padding: 22px 16px 26px 0; }
+      .process-step + .process-step { padding-left: 16px; }
+      .process-step:nth-child(3) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+      .process-step:nth-child(4) { border-top: 1px solid var(--line); }
+      .process-step h3 { margin-top: 17px; font-size: 16px; }
+      .booking-section { padding: 72px 0; }
+      .booking-panel { grid-template-columns: 1fr; border-radius: 21px; }
+      .booking-info { padding: 32px 25px; }
+      .booking-info h2 { font-size: 42px; }
+      .booking-form-wrap { padding: 30px 23px; }
+      .form-grid { grid-template-columns: 1fr; gap: 14px; }
+      .field.full { grid-column: auto; }
+      .faq-grid { grid-template-columns: 1fr; gap: 18px; }
+      .faq-grid .section-heading { position: static; }
+      summary { padding: 19px 0; font-size: 13px; }
+      .footer-top { align-items: flex-start; flex-direction: column; }
+      .footer-nav { gap: 14px 20px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+      .floating-cta { right: 14px; bottom: 14px; padding: 12px 15px; }
+    }
+    @media (max-width: 380px) {
+      .shell { width: calc(100% - 26px); }
+      .hero-frame { min-height: 720px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .trust-item { align-items: flex-start; }
+      .trust-icon { width: 30px; height: 30px; flex-basis: 30px; }
+      .intro-visual { min-height: 350px; }
+      .photo-note { width: 145px; padding: 14px; }
+      .photo-note strong { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#beranda" aria-label="Ameera Dental Clinic, beranda">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M9.3 5.8c2.7-1.3 4.5.7 6.7.7s4-2 6.7-.7c3.1 1.5 3.5 5.5 2.3 9.2-.9 2.7-2.1 8.4-4.5 10.1-2.5 1.7-2.5-5.7-4.5-5.7s-2 7.4-4.5 5.7C9.1 23.4 7.9 17.7 7 15 5.8 11.3 6.2 7.3 9.3 5.8Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 11.5c2.8-1.2 7.2-1.2 10 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span><span class="brand-name">AMEERA DENTAL</span><span class="brand-sub">Healthy smile, brighter tomorrow</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="primaryNav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links" id="primaryNav" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#proses">Alur perawatan</a>
+        <a href="#faq">FAQ</a>
+        <a class="button button-primary nav-cta" href="#booking">Buat janji temu <span class="arrow">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="beranda">
+    <section class="hero shell" aria-labelledby="heroTitle">
+      <div class="hero-frame">
+        <div class="hero-media" aria-label="Suasana perawatan gigi di klinik modern">
+          <video id="heroVideo" autoplay muted playsinline preload="auto" poster="https://res.cloudinary.com/naqr1mob/image/upload/v1792925373/Gentle_Dental_Care_in_a_Modern_Clinic.png" aria-label="Video perawatan gigi di klinik">
+            <source src="https://res.cloudinary.com/naqr1mob/video/upload/v1792925229/Dentist_examining_patient_in_clinic_20261025174635.mp4" type="video/mp4">
+          </video>
+          <img id="heroEndImage" src="https://res.cloudinary.com/naqr1mob/image/upload/v1792925373/Gentle_Dental_Care_in_a_Modern_Clinic.png" alt="Perawatan gigi yang lembut di klinik modern" fetchpriority="high">
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Perawatan gigi dengan sentuhan personal</p>
+          <h1 id="heroTitle">Senyum Sehat,<br>Percaya Diri Lebih <em>Cerah.</em></h1>
+          <p class="hero-copy">Perawatan gigi modern dalam suasana yang nyaman dan menenangkan. Karena setiap senyum layak mendapatkan perhatian terbaik.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#booking">Buat Janji Temu <span class="arrow">↗</span></a>
+            <a class="button button-outline" href="#layanan">Jelajahi Layanan <span class="arrow">↓</span></a>
+          </div>
+          <div class="hero-note">
+            <span aria-hidden="true">✳</span>
+            <span><strong>Healthy Smile, Brighter Tomorrow</strong><small>Perawatan yang mengutamakan kenyamananmu</small></span>
+          </div>
+        </div>
+        <span class="hero-index">AMEERA DENTAL CLINIC · 01 / SMILE CARE</span>
+      </div>
+
+      <div class="trust-strip" aria-label="Fokus perawatan Ameera">
+        <div class="trust-intro">Perhatian pada hal-hal kecil, untuk pengalaman perawatan yang lebih baik.</div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 19 6v5c0 4.5-3 7.5-7 10-4-2.5-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span><strong>Higienis & teliti</strong><span>Perhatian pada kebersihan</span></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="M8.5 12h7"/></svg></span>
+          <span><strong>Nyaman untukmu</strong><span>Suasana hangat dan ramah</span></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17c4-1 5-7 8-7s4 6 8 7"/><path d="M6 20h12M7 5h10M9 2v3m6-3v3"/></svg></span>
+          <span><strong>Perawatan personal</strong><span>Sesuai kebutuhan gigimu</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tentang">
+      <div class="shell intro-grid">
+        <div class="intro-visual reveal">
+          <div class="intro-photo">
+            <img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792925373/Gentle_Dental_Care_in_a_Modern_Clinic.png" alt="Dokter gigi memberikan perawatan dengan lembut" loading="lazy">
+          </div>
+          <div class="photo-note">
+            <strong>Senyum yang sehat dimulai dari rasa nyaman.</strong>
+            <span>Perawatan gigi, dengan perhatian di setiap langkah.</span>
+          </div>
+        </div>
+        <div class="intro-copy reveal">
+          <p class="eyebrow">Kenali Ameera</p>
+          <h2>Merawat gigi, tanpa melupakan <span class="accent-word">kenyamanan.</span></h2>
+          <p>Ameera Dental Clinic hadir untuk membantu kamu menjaga kesehatan gigi dan membangun senyum yang membuatmu lebih percaya diri. Kami mengutamakan kebersihan, komunikasi yang jelas, dan pengalaman perawatan yang terasa lebih tenang.</p>
+          <div class="value-list">
+            <div class="value-row"><span class="value-check">✓</span><span><strong>Standar kebersihan yang diperhatikan</strong><p>Menempatkan kebersihan dan keselamatan sebagai bagian penting dari perawatan.</p></span></div>
+            <div class="value-row"><span class="value-check">✓</span><span><strong>Penjelasan yang mudah dipahami</strong><p>Membantu pasien memahami kondisi gigi dan pilihan perawatannya.</p></span></div>
+            <div class="value-row"><span class="value-check">✓</span><span><strong>Rencana sesuai kebutuhan</strong><p>Perawatan dibicarakan bersama berdasarkan hasil pemeriksaan.</p></span></div>
+          </div>
+          <a class="button button-outline" href="#booking">Konsultasikan kebutuhanmu <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="layanan">
+      <div class="shell">
+        <div class="services-top">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Layanan kami</p>
+            <h2>Perawatan tepat untuk setiap <span class="accent-word">senyum.</span></h2>
+            <p>Dari pemeriksaan rutin hingga perawatan estetika, temukan layanan yang bisa kamu diskusikan bersama dokter gigi.</p>
+          </div>
+          <a class="button button-outline" href="#booking">Tanya layanan <span class="arrow">↗</span></a>
+        </div>
+        <div class="service-list">
+          <a class="service-row reveal" href="#booking" data-service="Pemeriksaan Gigi Umum">
+            <span class="service-num">01 /</span><h3>Pemeriksaan Gigi Umum</h3><p>Pemeriksaan kondisi gigi dan mulut untuk membantu menjaga kesehatan secara berkala.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Scaling & Perawatan Gigi">
+            <span class="service-num">02 /</span><h3>Scaling & Perawatan Gigi</h3><p>Pembersihan karang gigi dan perawatan kebersihan mulut sesuai hasil pemeriksaan.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Cosmetic Dentistry">
+            <span class="service-num">03 /</span><h3>Cosmetic Dentistry</h3><p>Pilihan perawatan estetika untuk membantu meningkatkan tampilan senyum secara natural.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Pemutihan Gigi">
+            <span class="service-num">04 /</span><h3>Pemutihan Gigi</h3><p>Konsultasikan pilihan whitening yang sesuai dengan kondisi dan kebutuhan gigimu.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Orthodontics — Behel / Aligner">
+            <span class="service-num">05 /</span><h3>Orthodontics — Behel / Aligner</h3><p>Konsultasi perawatan untuk membantu memperbaiki susunan gigi dan gigitan.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Perawatan Saluran Akar">
+            <span class="service-num">06 /</span><h3>Perawatan Saluran Akar</h3><p>Evaluasi dan penanganan gigi yang mengalami masalah pada jaringan pulpa.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="service-row reveal" href="#booking" data-service="Dental Check-up">
+            <span class="service-num">07 /</span><h3>Dental Check-up</h3><p>Pemeriksaan berkala untuk mengetahui kondisi gigi dan mendiskusikan langkah berikutnya.</p><span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <p class="service-footnote">Ketersediaan tindakan ditentukan setelah konsultasi dan pemeriksaan oleh dokter gigi.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="experienceTitle">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Pengalaman di Ameera</p>
+          <h2 id="experienceTitle">Klinik yang mengutamakan manusia, bukan hanya <span class="accent-word">prosedur.</span></h2>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-card dark reveal">
+            <span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 19 6v5c0 4.5-3 7.5-7 10-4-2.5-7-5.5-7-10V6l7-3Z"/><path d="M9 12h6M12 9v6"/></svg></span>
+            <div><h3>Kebersihan adalah bagian dari rasa aman.</h3><p>Perhatian pada kebersihan alat dan lingkungan menjadi bagian penting dalam pengalaman perawatan.</p></div>
+            <span class="big-number" aria-hidden="true">A</span>
+          </article>
+          <article class="experience-card wood reveal">
+            <span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.2-7-10.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 2.5C19 16.8 12 21 12 21Z"/><path d="M8 12.5c1.5 1 2.5 1 4 0s2.5-1 4 0"/></svg></span>
+            <div><h3>Ruang nyaman untuk langkah yang lebih tenang.</h3><p>Kami ingin pasien merasa didengarkan, mendapat penjelasan yang jelas, dan nyaman bertanya.</p></div>
+            <span class="big-number" aria-hidden="true">B</span>
+          </article>
+          <article class="experience-card reveal">
+            <span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19c3-1 4-5 8-5s5 4 8 5"/><path d="M7 10a5 5 0 1 1 10 0c0 3-2 5-5 5s-5-2-5-5Z"/></svg></span>
+            <div><h3>Hasil natural, sesuai kondisi dan kebutuhan.</h3><p>Setiap pilihan perawatan sebaiknya dibicarakan bersama dokter berdasarkan kondisi gigi.</p></div>
+            <span class="big-number" aria-hidden="true">C</span>
+          </article>
+          <article class="experience-card reveal">
+            <span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v12H8l-4 3V5Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+            <div><h3>Paham pilihanmu, sebelum memulai.</h3><p>Kami percaya komunikasi yang transparan membantu pasien mengambil keputusan dengan lebih yakin.</p></div>
+            <span class="big-number" aria-hidden="true">D</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="proses">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Alur perawatan</p>
+          <h2>Langkah sederhana menuju senyum yang <span class="accent-word">lebih sehat.</span></h2>
+          <p>Kamu akan mengetahui apa yang perlu dilakukan dan bisa bertanya di setiap tahap.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step reveal"><span class="step-number">LANGKAH 01</span><h3>Konsultasi</h3><p>Ceritakan keluhan, pertanyaan, dan tujuan perawatan yang kamu inginkan.</p></article>
+          <article class="process-step reveal"><span class="step-number">LANGKAH 02</span><h3>Pemeriksaan</h3><p>Dokter mengevaluasi kondisi gigi dan mulut untuk memahami kebutuhanmu.</p></article>
+          <article class="process-step reveal"><span class="step-number">LANGKAH 03</span><h3>Rencana perawatan</h3><p>Diskusikan pilihan tindakan, tahapan, dan informasi yang perlu kamu ketahui.</p></article>
+          <article class="process-step reveal"><span class="step-number">LANGKAH 04</span><h3>Tindak lanjut</h3><p>Ikuti arahan perawatan lanjutan dan jadwal kontrol jika direkomendasikan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="shell">
+        <div class="booking-panel">
+          <div class="booking-info">
+            <p class="eyebrow">Mari mulai dari konsultasi</p>
+            <h2>Waktunya memberi perhatian pada <span class="accent-word">senyummu.</span></h2>
+            <p>Punya pertanyaan tentang kondisi gigi atau ingin mengetahui layanan yang sesuai? Kirim permintaan janji temu, lalu tim Ameera dapat mengonfirmasi jadwalnya.</p>
+            <div class="contact-detail">
+              <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+              <span><strong>Lokasi klinik</strong><span>Alamat klinik akan ditambahkan di sini.</span></span>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <span><strong>Jam operasional</strong><span>Silakan konfirmasi jadwal praktik dengan klinik.</span></span>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 2a15 15 0 0 0 5 5l2-3 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2Z"/></svg></span>
+              <span><strong>Kontak klinik</strong><span>Nomor WhatsApp akan ditambahkan di sini.</span></span>
+            </div>
+          </div>
+          <div class="booking-form-wrap">
+            <h3>Ajukan janji temu</h3>
+            <p>Isi informasi di bawah ini untuk menyiapkan permintaan konsultasi.</p>
+            <form id="bookingForm">
+              <div class="form-grid">
+                <div class="field"><label for="fullName">Nama lengkap</label><input id="fullName" name="name" autocomplete="name" placeholder="Nama kamu" required></div>
+                <div class="field"><label for="phone">Nomor WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="08xxxxxxxxxx" required></div>
+                <div class="field"><label for="service">Layanan yang diminati</label><select id="service" name="service" required><option value="" disabled selected>Pilih layanan</option><option>Pemeriksaan Gigi Umum</option><option>Scaling & Perawatan Gigi</option><option>Cosmetic Dentistry</option><option>Pemutihan Gigi</option><option>Orthodontics — Behel / Aligner</option><option>Perawatan Saluran Akar</option><option>Dental Check-up</option><option>Belum yakin / Konsultasi dulu</option></select></div>
+                <div class="field"><label for="preferredDate">Tanggal yang diinginkan</label><input id="preferredDate" name="date" type="date"></div>
+                <div class="field full"><label for="notes">Catatan (opsional)</label><textarea id="notes" name="notes" placeholder="Ceritakan singkat kebutuhan atau pertanyaanmu"></textarea></div>
+              </div>
+              <button class="button button-primary form-submit" type="submit">Siapkan permintaan <span class="arrow">↗</span></button>
+              <p class="form-note">Form ini akan menyiapkan pesan permintaan konsultasi. Jadwal belum terkonfirmasi sampai pihak klinik menghubungi kamu.</p>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="shell faq-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Pertanyaan umum</p>
+          <h2>Hal yang mungkin ingin kamu <span class="accent-word">tanyakan.</span></h2>
+          <p>Belum yakin harus mulai dari mana? Ini beberapa hal yang bisa membantu sebelum membuat janji.</p>
+          <a class="button button-outline" href="#booking">Tanyakan langsung <span class="arrow">↗</span></a>
+        </div>
+        <div class="faq-list reveal">
+          <details><summary>Bagaimana cara menentukan perawatan yang saya butuhkan?</summary><p>Mulailah dengan konsultasi dan pemeriksaan. Dokter gigi akan mengevaluasi kondisi gigi dan mulut serta membahas pilihan perawatan yang sesuai.</p></details>
+          <details><summary>Apakah saya perlu membuat janji terlebih dahulu?</summary><p>Mengajukan janji terlebih dahulu membantu klinik mengetahui kebutuhanmu dan mengonfirmasi ketersediaan jadwal. Permintaan janji belum berarti jadwal sudah disetujui.</p></details>
+          <details><summary>Apakah scaling atau pemutihan gigi cocok untuk semua orang?</summary><p>Tidak selalu. Kesesuaian tindakan bergantung pada kondisi gigi dan gusi. Konsultasikan dengan dokter gigi sebelum memilih perawatan.</p></details>
+          <details><summary>Bisakah saya berkonsultasi tentang behel atau aligner?</summary><p>Bisa mengajukan konsultasi mengenai orthodontics. Dokter gigi akan memeriksa susunan gigi dan membahas pilihan yang tersedia berdasarkan kebutuhanmu.</p></details>
+          <details><summary>Berapa biaya perawatan gigi?</summary><p>Biaya dapat berbeda sesuai jenis tindakan dan kondisi pasien. Hubungi klinik untuk menanyakan informasi biaya terbaru sebelum melakukan perawatan.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-top">
+        <a class="brand footer-brand" href="#beranda" aria-label="Kembali ke beranda Ameera Dental">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M9.3 5.8c2.7-1.3 4.5.7 6.7.7s4-2 6.7-.7c3.1 1.5 3.5 5.5 2.3 9.2-.9 2.7-2.1 8.4-4.5 10.1-2.5 1.7-2.5-5.7-4.5-5.7s-2 7.4-4.5 5.7C9.1 23.4 7.9 17.7 7 15 5.8 11.3 6.2 7.3 9.3 5.8Z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span><span class="brand-name">AMEERA DENTAL</span><span class="brand-sub">Healthy smile, brighter tomorrow</span></span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigasi footer"><a href="#tentang">Tentang kami</a><a href="#layanan">Layanan</a><a href="#proses">Alur perawatan</a><a href="#booking">Janji temu</a><a href="#faq">FAQ</a></nav>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Ameera Dental Clinic. All rights reserved.</span><span>Healthy Smile, Brighter Tomorrow.</span></div>
+    </div>
+  </footer>
+
+  <a class="floating-cta" href="#booking" aria-label="Buat janji temu dengan Ameera Dental Clinic">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-11.1 6.6L4 19l.9-4.4A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9 9.2c.4 1.5 1.4 2.5 2.9 3"/></svg>
+    Buat janji temu
+  </a>
+
+  <script>
+    (function () {
+      const video = document.getElementById('heroVideo');
+      const endImage = document.getElementById('heroEndImage');
+      const menuToggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('primaryNav');
+      const bookingForm = document.getElementById('bookingForm');
+      const formStatus = document.getElementById('formStatus');
+
+      // Preload the exact image requested for the final frame of the hero video.
+      const finalFrameUrl = 'https://res.cloudinary.com/naqr1mob/image/upload/v1792925373/Gentle_Dental_Care_in_a_Modern_Clinic.png';
+      const preloadedFrame = new Image();
+      preloadedFrame.src = finalFrameUrl;
+
+      function showFinalFrame() {
+        endImage.classList.add('is-visible');
+        video.classList.add('is-hidden');
+        video.setAttribute('aria-hidden', 'true');
+      }
+
+      video.addEventListener('ended', showFinalFrame);
+      video.addEventListener('error', function () {
+        // Keep the requested image visible if the video cannot be played.
+        showFinalFrame();
+      });
+      endImage.addEventListener('error', function () {
+        endImage.alt = 'Ameera Dental Clinic';
+      });
+
+      // Some browsers may decline autoplay; controls remain unnecessary for the intended hero.
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(function () {
+          // Keep the poster/final image available without interrupting the visitor.
+          showFinalFrame();
+        });
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        menuToggle.setAttribute('aria-label', expanded ? 'Buka menu navigasi' : 'Tutup menu navigasi');
+        nav.classList.toggle('is-open', !expanded);
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('is-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Buka menu navigasi');
+        });
+      });
+
+      // Until the clinic's real WhatsApp number is supplied, prepare the request locally
+      // rather than sending a message to a fabricated number.
+      bookingForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const data = new FormData(bookingForm);
+        const lines = [
+          'Permintaan Janji Temu — Ameera Dental Clinic',
+          'Nama: ' + (data.get('name') || '-'),
+          'WhatsApp: ' + (data.get('phone') || '-'),
+          'Layanan: ' + (data.get('service') || '-'),
+          'Tanggal pilihan: ' + (data.get('date') || 'Fleksibel'),
+          'Catatan: ' + (data.get('notes') || '-')
+        ];
+        const text = lines.join('\n');
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'permintaan-janji-temu-ameera.txt';
+        document.body.appendChild(link);
+        link.click();
+        URL.revokeObjectURL(link.href);
+        link.remove();
+        formStatus.textContent = 'Permintaan disiapkan sebagai file teks. Tambahkan nomor WhatsApp resmi klinik agar formulir dapat diarahkan langsung ke WhatsApp.';
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-ready');
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>
