@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5f1">
+  <title>Form Kebutuhan Website Klinik Kecantikan</title>
+  <meta name="description" content="Form singkat untuk membantu kami memahami kebutuhan website klinik kecantikan Anda.">
+  <style>
+    :root{--ink:#302b2a;--muted:#817875;--line:#e9e1dc;--paper:#fffdfb;--bg:#f8f5f1;--accent:#9b746f;--accent-dark:#795550;--soft:#f4ebe7}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    .page{width:min(100% - 32px,760px);margin:0 auto;padding:42px 0 56px}
+    .topline{display:flex;align-items:center;gap:10px;color:var(--accent-dark);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px}
+    .topline:before{content:"";width:28px;height:1px;background:var(--accent)}
+    header{margin-bottom:30px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,49px);font-weight:400;letter-spacing:-.035em;line-height:1.08;margin:0 0 16px;max-width:650px}
+    .intro{color:var(--muted);font-size:15px;max-width:570px;margin:0}
+    .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:12px}
+    .meta span{display:inline-flex;align-items:center;gap:7px}
+    .meta span:before{content:"";width:5px;height:5px;border-radius:50%;background:#b58e87}
+    form{display:grid;gap:15px}
+    .section{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:24px 25px}
+    .section-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+    .number{flex:0 0 31px;height:31px;border:1px solid #d9c5be;border-radius:50%;display:grid;place-items:center;color:var(--accent-dark);font-family:Georgia,serif;font-size:15px}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:23px;font-weight:400;line-height:1.2;margin:1px 0 5px}
+    .section-head p{margin:0;color:var(--muted);font-size:13px}
+    .question{padding:0;margin:0 0 23px;border:0;min-width:0}
+    .question:last-child{margin-bottom:0}
+    .question legend,.field-label{display:block;font-size:14px;font-weight:650;margin-bottom:11px;line-height:1.5}
+    .required{color:var(--accent);font-size:12px;font-weight:500}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .option{position:relative;display:flex;align-items:flex-start;gap:10px;padding:12px 13px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:border-color .18s,background .18s;font-size:13px;color:#514947;min-height:46px}
+    .option:hover{border-color:#c5a39b;background:#fffaf8}
+    .option:has(input:checked){border-color:var(--accent);background:var(--soft);color:#493632}
+    .option input{appearance:none;flex:0 0 15px;width:15px;height:15px;border:1px solid #c9bcb6;border-radius:50%;margin:2px 0 0;display:grid;place-content:center}
+    .option input[type=checkbox]{border-radius:4px}
+    .option input:before{content:"";width:7px;height:7px;border-radius:50%;transform:scale(0);background:white}
+    .option input[type=checkbox]:before{width:8px;height:5px;border-radius:0;border-left:2px solid white;border-bottom:2px solid white;background:transparent;transform:rotate(-45deg) scale(0);margin-top:-2px}
+    .option input:checked{background:var(--accent);border-color:var(--accent)}
+    .option input:checked:before{transform:scale(1)}
+    .option input[type=checkbox]:checked:before{transform:rotate(-45deg) scale(1)}
+    .essay{width:100%;min-height:104px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:13px 14px;font:inherit;font-size:13px;color:var(--ink);background:#fff;outline:none;transition:border-color .18s}
+    .essay:focus,.text-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #9b746f18}
+    .essay::placeholder,.text-input::placeholder{color:#b0a5a0}
+    .text-input{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 13px;font:inherit;font-size:13px;outline:none}
+    .subnote{font-size:11px;color:var(--muted);margin-top:7px}
+    .submit-wrap{padding:6px 2px 0}
+    .submit{width:100%;border:0;border-radius:10px;padding:16px 20px;background:var(--accent-dark);color:white;font:inherit;font-size:14px;font-weight:650;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s,transform .2s}
+    .submit:hover{background:#654540;transform:translateY(-1px)}
+    .submit:focus-visible{outline:3px solid #cba9a1;outline-offset:3px}
+    .privacy{text-align:center;font-size:11px;color:var(--muted);margin:12px 0 0}
+    footer{text-align:center;color:#a19690;font-size:11px;margin-top:30px}
+    @media(max-width:560px){.page{width:min(100% - 22px,760px);padding-top:28px}.section{padding:20px 17px}.options{grid-template-columns:1fr}.option{min-height:43px}.meta{gap:10px}h2{font-size:21px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">Website Discovery Form</div>
+    <header>
+      <h1>Ceritakan website klinik impian Anda.</h1>
+      <p class="intro">Bantu kami mengenal klinik, layanan, dan tujuan bisnis Anda. Isi form singkat ini agar website yang dirancang benar-benar sesuai dengan kebutuhan Anda.</p>
+      <div class="meta"><span>± 3–5 menit</span><span>10 pertanyaan</span><span>Jawaban dikirim via WhatsApp</span></div>
+    </header>
+
+    <form id="briefForm">
+      <section class="section">
+        <div class="section-head"><div class="number">01</div><div><h2>Informasi & arah website</h2><p>Pilih jawaban yang paling sesuai dengan kebutuhan klinik Anda.</p></div></div>
+
+        <fieldset class="question">
+          <legend>1. Apa nama klinik kecantikan Anda? <span class="required">Wajib</span></legend>
+          <input class="text-input" name="namaKlinik" placeholder="Contoh: Alya Beauty Clinic" required>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>2. Apa tujuan utama website ini? <span class="required">Wajib</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="tujuan" value="Mendapatkan booking dan reservasi" required><span>Mendapatkan booking / reservasi</span></label>
+            <label class="option"><input type="radio" name="tujuan" value="Memperkenalkan klinik dan membangun kepercayaan"><span>Memperkenalkan klinik</span></label>
+            <label class="option"><input type="radio" name="tujuan" value="Menampilkan layanan dan harga"><span>Menampilkan layanan & harga</span></label>
+            <label class="option"><input type="radio" name="tujuan" value="Mendukung promosi dan iklan digital"><span>Mendukung promosi / iklan</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>3. Siapa target pelanggan utama klinik? <span class="required">Wajib</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="target" value="Remaja dan dewasa muda" required><span>Remaja & dewasa muda</span></label>
+            <label class="option"><input type="radio" name="target" value="Wanita usia 25–40 tahun"><span>Wanita usia 25–40 tahun</span></label>
+            <label class="option"><input type="radio" name="target" value="Wanita usia 40 tahun ke atas"><span>Wanita usia 40 tahun ke atas</span></label>
+            <label class="option"><input type="radio" name="target" value="Semua kalangan"><span>Semua kalangan</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>4. Gaya visual seperti apa yang Anda inginkan? <span class="required">Wajib</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="gaya" value="Clean, minimalis, dan modern" required><span>Clean, minimalis, modern</span></label>
+            <label class="option"><input type="radio" name="gaya" value="Luxury dan premium"><span>Luxury & premium</span></label>
+            <label class="option"><input type="radio" name="gaya" value="Natural, soft, dan menenangkan"><span>Natural, soft, menenangkan</span></label>
+            <label class="option"><input type="radio" name="gaya" value="Feminim, elegan, dan hangat"><span>Feminin, elegan, hangat</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>5. Fitur apa yang paling dibutuhkan? <span class="required">Pilih minimal 1</span></legend>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="fitur" value="Tombol WhatsApp langsung"><span>Tombol WhatsApp langsung</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Booking atau reservasi online"><span>Booking / reservasi online</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Daftar layanan dan harga"><span>Daftar layanan & harga</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Galeri hasil treatment"><span>Galeri hasil treatment</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Testimoni pelanggan"><span>Testimoni pelanggan</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Promo dan paket treatment"><span>Promo & paket treatment</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Lokasi Google Maps"><span>Lokasi Google Maps</span></label>
+            <label class="option"><input type="checkbox" name="fitur" value="Artikel atau edukasi skincare"><span>Artikel / edukasi skincare</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>6. Apakah klinik sudah memiliki materi untuk website? <span class="required">Wajib</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="materi" value="Logo, foto, dan informasi sudah siap" required><span>Logo, foto & informasi siap</span></label>
+            <label class="option"><input type="radio" name="materi" value="Sebagian materi sudah tersedia"><span>Sebagian sudah tersedia</span></label>
+            <label class="option"><input type="radio" name="materi" value="Belum ada, perlu arahan"><span>Belum ada, perlu arahan</span></label>
+            <label class="option"><input type="radio" name="materi" value="Perlu bantuan menyiapkan foto dan konten"><span>Perlu bantuan foto / konten</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>7. Kapan website diharapkan siap? <span class="required">Wajib</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="timeline" value="Secepatnya" required><span>Secepatnya</span></label>
+            <label class="option"><input type="radio" name="timeline" value="Dalam 1–2 minggu"><span>Dalam 1–2 minggu</span></label>
+            <label class="option"><input type="radio" name="timeline" value="Dalam 1 bulan"><span>Dalam 1 bulan</span></label>
+            <label class="option"><input type="radio" name="timeline" value="Masih fleksibel"><span>Masih fleksibel</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><div class="number">02</div><div><h2>Ceritakan lebih detail</h2><p>Tiga jawaban singkat ini akan membantu kami memahami kebutuhan spesifik Anda.</p></div></div>
+        <div class="question">
+          <label class="field-label" for="layanan">8. Layanan unggulan apa yang ingin ditonjolkan? <span class="required">Wajib</span></label>
+          <textarea class="essay" id="layanan" name="layanan" placeholder="Contoh: facial, laser treatment, acne treatment, skin booster, atau layanan lainnya..." required></textarea>
+        </div>
+        <div class="question">
+          <label class="field-label" for="referensi">9. Adakah website atau gaya desain yang Anda sukai? Apa yang Anda suka dari referensi tersebut?</label>
+          <textarea class="essay" id="referensi" name="referensi" placeholder="Boleh cantumkan link website, warna favorit, suasana, atau elemen yang ingin ditiru. Jika belum ada, tulis 'belum ada referensi'."></textarea>
+        </div>
+        <div class="question">
+          <label class="field-label" for="catatan">10. Apa hal penting lain yang perlu kami ketahui tentang klinik atau website impian Anda? <span class="required">Wajib</span></label>
+          <textarea class="essay" id="catatan" name="catatan" placeholder="Misalnya lokasi klinik, keunggulan dibanding kompetitor, pesan brand, atau ekspektasi khusus..." required></textarea>
+        </div>
+      </section>
+
+      <div class="submit-wrap">
+        <button class="submit" type="submit">Kirim jawaban melalui WhatsApp <span aria-hidden="true">↗</span></button>
+        <p class="privacy">Jawaban Anda akan disusun menjadi pesan WhatsApp. Anda bisa meninjau dan mengirimnya dari aplikasi WhatsApp.</p>
+      </div>
+    </form>
+    <footer>Website Discovery · Beauty Clinic</footer>
+  </main>
+
+  <script>
+    const form = document.getElementById('briefForm');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const features = [...form.querySelectorAll('input[name="fitur"]:checked')].map(el => el.value);
+      if (features.length === 0) {
+        alert('Pilih minimal satu fitur yang dibutuhkan.');
+        form.querySelector('input[name="fitur"]').focus();
+        return;
+      }
+
+      const data = new FormData(form);
+      const get = (name) => (data.get(name) || '').toString().trim();
+      const message = [
+        'Halo, saya ingin menyampaikan kebutuhan website klinik kecantikan.',
+        '',
+        'FORM KEBUTUHAN WEBSITE KLINIK KECANTIKAN',
+        '1. Nama klinik: ' + get('namaKlinik'),
+        '2. Tujuan website: ' + get('tujuan'),
+        '3. Target pelanggan: ' + get('target'),
+        '4. Gaya visual: ' + get('gaya'),
+        '5. Fitur yang dibutuhkan: ' + features.join(', '),
+        '6. Materi yang tersedia: ' + get('materi'),
+        '7. Target waktu: ' + get('timeline'),
+        '',
+        '8. Layanan unggulan:',
+        get('layanan'),
+        '',
+        '9. Referensi / inspirasi desain:',
+        get('referensi') || 'Belum diisi',
+        '',
+        '10. Catatan tambahan:',
+        get('catatan'),
+        '',
+        'Mohon dibantu untuk menindaklanjuti kebutuhan website ini. Terima kasih.'
+      ].join('\n');
+
+      const whatsappUrl = 'https://wa.me/6288210464992?text=' + encodeURIComponent(message);
+      window.location.href = whatsappUrl;
+    });
+  </script>
+</body>
+</html>
