@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5f0">
+<title>Website Project Brief — Client Form</title>
+<style>
+:root{--bg:#f7f5f0;--paper:#fffefa;--ink:#292c28;--muted:#777b72;--line:#e6e4dc;--accent:#61745e;--accent-dark:#40533e;--soft:#edf1e9;--gold:#b49a6c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.55}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr)}
+.sidebar{background:#f0eee7;border-right:1px solid var(--line);padding:27px 17px;display:flex;flex-direction:column;gap:24px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{padding:0 10px 20px;border-bottom:1px solid #deddd4}.brand-mark{width:32px;height:32px;display:grid;place-items:center;border:1px solid #b9c2b2;color:var(--accent-dark);border-radius:50%;font-family:Georgia,serif;font-size:17px;margin-bottom:13px}.brand small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}.brand strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400;margin-top:3px}
+.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:#92958b;padding:0 10px 8px;font-weight:700}.nav{display:grid;gap:4px}.nav button{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;color:#666b61;text-align:left;padding:11px 12px;border-radius:9px;font-size:13px;transition:.18s}.nav button:hover{background:#e7e9df;color:var(--ink)}.nav button.active{background:var(--paper);color:var(--accent-dark);font-weight:650;box-shadow:0 1px 3px #292c2808}.nav .ico{width:20px;text-align:center;font-size:15px}.nav .done{margin-left:auto;color:var(--accent);font-size:12px}.side-bottom{margin-top:auto;padding:14px 10px 0;border-top:1px solid #deddd4;color:var(--muted);font-size:11px}.save-status{display:flex;align-items:center;gap:7px;margin-bottom:7px;color:var(--accent-dark);font-weight:600}.dot{width:7px;height:7px;border-radius:50%;background:#7d9a72}
+main{min-width:0}.topbar{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,54px);background:#f7f5f0d9}.topbar-left{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}.topbar-left b{color:var(--ink);font-weight:600}.top-actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:var(--paper);padding:9px 13px;border-radius:8px;color:var(--ink);font-size:12px;font-weight:600}.btn:hover{border-color:#b7c2b0}.btn.primary{background:var(--accent-dark);color:white;border-color:var(--accent-dark)}.btn.primary:hover{background:#344632}.content{width:min(850px,100%);margin:0 auto;padding:38px clamp(18px,4vw,48px) 70px}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.17em;color:var(--accent);font-weight:750;margin-bottom:10px}.intro-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,4.2vw,46px);font-weight:400;line-height:1.12;letter-spacing:-.035em;margin:0 0 12px}.intro-text{color:var(--muted);font-size:14px;max-width:590px;margin:0}.progress-row{display:flex;align-items:center;gap:12px;margin:25px 0 30px}.progress-track{height:4px;background:#e5e3da;border-radius:5px;overflow:hidden;flex:1}.progress-fill{height:100%;width:0;background:var(--accent);transition:width .25s}.progress-label{font-size:11px;color:var(--muted);white-space:nowrap}
+.panel{display:none;animation:enter .22s ease}.panel.active{display:block}@keyframes enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.panel-heading{display:flex;gap:14px;align-items:flex-start;margin-bottom:23px}.step-number{flex:0 0 35px;height:35px;border:1px solid #cdd5c8;border-radius:50%;display:grid;place-items:center;color:var(--accent-dark);font-family:Georgia,serif;font-size:16px}.panel-heading h2{font-family:Georgia,serif;font-size:27px;line-height:1.2;font-weight:400;margin:0 0 5px}.panel-heading p{font-size:12px;color:var(--muted);margin:0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:23px;margin-bottom:14px}.field{margin-bottom:22px}.field:last-child{margin-bottom:0}.field label,.field legend{display:block;font-size:13px;font-weight:650;margin-bottom:9px}.field fieldset{border:0;padding:0;margin:0}.hint{font-size:11px;color:var(--muted);font-weight:400;margin-top:4px}.required{color:var(--accent);font-size:10px;font-weight:600}.input,textarea,select{width:100%;border:1px solid #dfdfd6;border-radius:8px;background:#fff;padding:11px 12px;color:var(--ink);outline:none;transition:border .15s,box-shadow .15s}.input{height:43px}textarea{min-height:100px;resize:vertical}textarea:focus,.input:focus,select:focus{border-color:#91a18a;box-shadow:0 0 0 3px #61745e16}input::placeholder,textarea::placeholder{color:#a6a89e}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{position:relative;display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);padding:12px;border-radius:9px;cursor:pointer;color:#55594f;font-size:12px;transition:.15s;min-height:46px}.choice:hover{border-color:#bdc9b7}.choice:has(input:checked){background:var(--soft);border-color:#9eaf96;color:#364633}.choice input{accent-color:var(--accent-dark);margin:3px 0 0;flex:0 0 auto}.choice span{line-height:1.45}.inline-add{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 10px}.inline-add h3{font-size:13px;margin:0}.small-btn{background:transparent;border:1px solid #cbd2c5;color:var(--accent-dark);padding:8px 11px;border-radius:7px;font-size:11px;font-weight:650}.small-btn:hover{background:var(--soft)}.repeat-card{border:1px solid var(--line);background:#fff;border-radius:10px;padding:17px;margin-top:10px}.repeat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.repeat-top b{font-size:12px}.remove-btn{border:0;background:transparent;color:#9a6b61;font-size:11px;padding:4px}.repeat-card .field{margin-bottom:13px}.repeat-card textarea{min-height:72px}.repeat-card .field:last-child{margin-bottom:0}.helper-box{padding:13px 15px;background:#f2f3ec;border-radius:9px;color:#5d6657;font-size:12px;margin-top:14px}.checkline{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--muted)}.checkline input{accent-color:var(--accent-dark);margin-top:4px}
+.bottom-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.bottom-nav .left{font-size:11px;color:var(--muted)}.bottom-nav .right{display:flex;gap:8px}.review-list{display:grid;gap:9px}.review-item{background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px}.review-item b{font-size:11px;color:var(--muted);display:block;margin-bottom:5px}.review-item p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.mobile-brand{display:none}
+@media(max-width:760px){.app{display:block}.sidebar{position:sticky;z-index:10;top:0;height:auto;padding:11px 14px;border-right:0;border-bottom:1px solid var(--line);gap:10px}.brand{padding:0;border:0;display:flex;align-items:center;gap:9px}.brand-mark{margin:0;width:29px;height:29px;font-size:15px}.brand strong{font-size:17px}.brand small{font-size:8px}.sidebar .nav-label,.side-bottom{display:none}.nav{display:flex;overflow-x:auto;gap:5px;padding:2px 0 4px;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav button{width:auto;white-space:nowrap;flex:0 0 auto;padding:8px 10px;font-size:11px;gap:6px}.nav .ico{font-size:12px;width:auto}.nav .done{display:none}.topbar{height:48px;padding:0 17px}.content{padding-top:27px}.card{padding:17px}.grid2,.choices{grid-template-columns:1fr}.panel-heading h2{font-size:24px}.intro-title{font-size:35px}.top-actions .btn{padding:8px 10px}.topbar-left{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">B</div><div><small>Website project</small><strong>Client Brief</strong></div></div>
+  <div><div class="nav-label">Isi form Anda</div><nav class="nav" id="navigation" aria-label="Navigasi form">
+    <button type="button" data-panel="0" class="active"><span class="ico">◷</span> Mulai</button>
+    <button type="button" data-panel="1"><span class="ico">▦</span> Halaman</button>
+    <button type="button" data-panel="2"><span class="ico">✳</span> Services</button>
+    <button type="button" data-panel="3"><span class="ico">◇</span> Products</button>
+    <button type="button" data-panel="4"><span class="ico">⌖</span> Konten & lokasi</button>
+    <button type="button" data-panel="5"><span class="ico">☷</span> Brand & detail</button>
+    <button type="button" data-panel="6"><span class="ico">✓</span> Review</button>
+  </nav></div>
+  <div class="side-bottom"><div class="save-status"><span class="dot"></span> Tersimpan di perangkat</div>Anda bisa berpindah bagian dan melanjutkan kapan saja di browser yang sama.</div>
+</aside>
+<main>
+  <div class="topbar"><div class="topbar-left"><span>Project brief</span><span> / </span><b id="topSection">Mulai</b></div><div class="top-actions"><button type="button" class="btn" id="saveBtn">Simpan</button></div></div>
+  <div class="content">
+    <div class="eyebrow">Website planning · Client questionnaire</div>
+    <h1 class="intro-title">Mari susun website<br>yang sesuai kebutuhan Anda.</h1>
+    <p class="intro-text">Isi bertahap, tidak perlu terburu-buru. Pilih halaman yang dibutuhkan, jelaskan layanan dan produk, lalu tambahkan detail yang ingin ditampilkan. Jawaban dapat ditinjau sebelum dikirim.</p>
+    <div class="progress-row"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Bagian 1 dari 7</div></div>
+
+    <form id="clientForm">
+    <section class="panel active" data-title="Mulai">
+      <div class="panel-heading"><div class="step-number">01</div><div><h2>Informasi dasar</h2><p>Kenalkan bisnis dan tujuan utama website Anda.</p></div></div>
+      <div class="card">
+        <div class="field"><label for="businessName">Nama bisnis / brand <span class="required">WAJIB</span></label><input class="input" id="businessName" name="businessName" placeholder="Nama bisnis yang akan tampil di website" required></div>
+        <div class="grid2">
+          <div class="field"><label for="contactName">Nama PIC</label><input class="input" id="contactName" name="contactName" placeholder="Nama kontak utama"></div>
+          <div class="field"><label for="contactWhatsApp">Nomor WhatsApp bisnis</label><input class="input" id="contactWhatsApp" name="contactWhatsApp" placeholder="08xx xxxx xxxx"></div>
+        </div>
+        <div class="field"><label>Jenis bisnis</label><div class="choices">
+          <label class="choice"><input type="radio" name="businessType" value="Service / jasa"><span>Service / jasa</span></label>
+          <label class="choice"><input type="radio" name="businessType" value="Produk / retail"><span>Produk / retail</span></label>
+          <label class="choice"><input type="radio" name="businessType" value="Jasa dan produk"><span>Jasa dan produk</span></label>
+          <label class="choice"><input type="radio" name="businessType" value="Lainnya"><span>Lainnya</span></label>
+        </div></div>
+        <div class="field"><label for="businessSummary">Ceritakan singkat tentang bisnis Anda</label><textarea id="businessSummary" name="businessSummary" placeholder="Apa yang ditawarkan, siapa pelanggan Anda, dan apa yang membedakan bisnis Anda?"></textarea></div>
+        <div class="field"><label>Tujuan utama website</label><div class="choices">
+          <label class="choice"><input type="checkbox" name="goals" value="Membangun citra profesional"><span>Membangun citra profesional</span></label>
+          <label class="choice"><input type="checkbox" name="goals" value="Mendapatkan leads / pertanyaan"><span>Mendapatkan leads / pertanyaan</span></label>
+          <label class="choice"><input type="checkbox" name="goals" value="Menampilkan katalog layanan / produk"><span>Menampilkan katalog layanan / produk</span></label>
+          <label class="choice"><input type="checkbox" name="goals" value="Mendorong penjualan / pemesanan"><span>Mendorong penjualan / pemesanan</span></label>
+          <label class="choice"><input type="checkbox" name="goals" value="Menampilkan lokasi cabang"><span>Menampilkan lokasi cabang</span></label>
+          <label class="choice"><input type="checkbox" name="goals" value="Mendukung iklan digital"><span>Mendukung iklan digital</span></label>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Halaman">
+      <div class="panel-heading"><div class="step-number">02</div><div><h2>Halaman website</h2><p>Pilih halaman yang sudah dibahas atau ingin dimasukkan ke website.</p></div></div>
+      <div class="card">
+        <div class="field"><label>Halaman yang dibutuhkan <span class="required">PILIH SEMUA YANG SESUAI</span></label><div class="choices">
+          <label class="choice"><input type="checkbox" name="pages" value="Home"><span><b>Home</b><br>Halaman utama dan pengenalan singkat</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Services"><span><b>Services</b><br>Daftar layanan dan detailnya</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Products"><span><b>Products</b><br>Katalog produk</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Locations"><span><b>Locations</b><br>Alamat cabang dan peta</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="About Us"><span><b>About Us</b><br>Profil dan cerita bisnis</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Gallery"><span><b>Gallery</b><br>Foto, portofolio, atau hasil kerja</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Testimonials"><span><b>Testimonials</b><br>Ulasan pelanggan</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="FAQ"><span><b>FAQ</b><br>Pertanyaan yang sering diajukan</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Blog / Articles"><span><b>Blog / Articles</b><br>Artikel dan informasi</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Contact Us"><span><b>Contact Us</b><br>Kontak dan ajakan menghubungi</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Booking / Appointment"><span><b>Booking / Appointment</b><br>Reservasi atau jadwal</span></label>
+          <label class="choice"><input type="checkbox" name="pages" value="Pricing"><span><b>Pricing</b><br>Daftar harga / paket</span></label>
+        </div><p class="hint">Menu navigasi bisa diatur agar pengunjung mudah berpindah halaman dan kembali ke Home.</p></div>
+        <div class="field"><label for="customPages">Halaman lain yang ingin ditambahkan</label><textarea id="customPages" name="customPages" placeholder="Tulis nama halaman lain, satu per baris jika lebih dari satu."></textarea></div>
+        <div class="field"><label for="navNotes">Catatan menu / navigasi</label><textarea id="navNotes" name="navNotes" placeholder="Contoh: menu Services memiliki submenu, tombol WhatsApp selalu terlihat, atau menu tertentu ingin ditonjolkan."></textarea></div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Services">
+      <div class="panel-heading"><div class="step-number">03</div><div><h2>Daftar layanan</h2><p>Tambahkan layanan satu per satu. Anda bisa mengisi beberapa layanan sekarang atau melengkapinya nanti.</p></div></div>
+      <div class="card">
+        <div class="field"><label for="serviceIntro">Pengantar halaman Services</label><textarea id="serviceIntro" name="serviceIntro" placeholder="Kalimat singkat yang menjelaskan layanan secara keseluruhan."></textarea></div>
+        <div class="inline-add"><h3>Detail layanan</h3><button type="button" class="small-btn" id="addService">＋ Tambah layanan</button></div>
+        <div id="servicesList"></div>
+        <div class="helper-box">Untuk tiap layanan, isi nama dan deskripsi yang menjelaskan apa yang pelanggan dapatkan. Harga, durasi, dan tombol konsultasi bersifat opsional.</div>
+        <div class="field" style="margin-top:20px"><label for="serviceGeneral">Catatan umum layanan</label><textarea id="serviceGeneral" name="serviceGeneral" placeholder="Misalnya kategori layanan, layanan unggulan, paket bundling, atau layanan yang tidak ingin ditampilkan."></textarea></div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Products">
+      <div class="panel-heading"><div class="step-number">04</div><div><h2>Produk yang ditampilkan</h2><p>Jika website memiliki katalog produk, isi detail produk yang perlu tampil.</p></div></div>
+      <div class="card">
+        <div class="field"><label for="productIntro">Pengantar halaman Products</label><textarea id="productIntro" name="productIntro" placeholder="Apa yang ingin pelanggan ketahui tentang produk Anda?"></textarea></div>
+        <div class="inline-add"><h3>Detail produk</h3><button type="button" class="small-btn" id="addProduct">＋ Tambah produk</button></div>
+        <div id="productsList"></div>
+        <div class="field" style="margin-top:20px"><label>Bagaimana pelanggan membeli produk?</label><div class="choices">
+          <label class="choice"><input type="radio" name="purchaseMethod" value="Tanya melalui WhatsApp"><span>Tanya / pesan melalui WhatsApp</span></label>
+          <label class="choice"><input type="radio" name="purchaseMethod" value="Checkout di website"><span>Checkout langsung di website</span></label>
+          <label class="choice"><input type="radio" name="purchaseMethod" value="Link ke marketplace"><span>Link ke marketplace</span></label>
+          <label class="choice"><input type="radio" name="purchaseMethod" value="Hanya katalog informasi"><span>Hanya katalog informasi</span></label>
+        </div></div>
+        <div class="field"><label for="productNotes">Catatan produk</label><textarea id="productNotes" name="productNotes" placeholder="Misalnya kategori, varian, ukuran, bahan, cara pemesanan, atau informasi penting lainnya."></textarea></div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Konten & lokasi">
+      <div class="panel-heading"><div class="step-number">05</div><div><h2>Hero, alamat & kontak</h2><p>Detail ini membantu pengunjung langsung memahami bisnis dan tahu cara menghubungi Anda.</p></div></div>
+      <div class="card">
+        <div class="field"><label for="heroHeadline">Headline / kata-kata utama di Hero <span class="required">PENTING</span></label><input class="input" id="heroHeadline" name="heroHeadline" placeholder="Kalimat utama yang ingin dilihat pengunjung pertama kali"></div>
+        <div class="field"><label for="heroSubheadline">Kalimat pendukung Hero</label><textarea id="heroSubheadline" name="heroSubheadline" placeholder="Jelaskan manfaat utama bisnis Anda dalam 1–3 kalimat."></textarea></div>
+        <div class="field"><label for="heroCta">Teks tombol utama</label><input class="input" id="heroCta" name="heroCta" placeholder="Contoh: Konsultasi Sekarang / Lihat Layanan"></div>
+        <div class="field"><label>Visual utama Hero yang diinginkan</label><div class="choices">
+          <label class="choice"><input type="radio" name="heroVisual" value="Foto produk / layanan"><span>Foto produk / layanan</span></label>
+          <label class="choice"><input type="radio" name="heroVisual" value="Video"><span>Video</span></label>
+          <label class="choice"><input type="radio" name="heroVisual" value="Kolase beberapa foto"><span>Kolase beberapa foto</span></label>
+          <label class="choice"><input type="radio" name="heroVisual" value="Belum yakin, minta rekomendasi"><span>Belum yakin, minta rekomendasi</span></label>
+        </div></div>
+        <div class="field"><label for="address">Alamat lengkap bisnis</label><textarea id="address" name="address" placeholder="Nama jalan, nomor, area, kota, provinsi, kode pos jika ada."></textarea></div>
+        <div class="grid2">
+          <div class="field"><label for="mapsLink">Link Google Maps</label><input class="input" id="mapsLink" name="mapsLink" placeholder="Tempel link lokasi Google Maps"></div>
+          <div class="field"><label for="openingHours">Jam operasional</label><input class="input" id="openingHours" name="openingHours" placeholder="Contoh: Senin–Sabtu, 09.00–18.00"></div>
+        </div>
+        <div class="field"><label for="branches">Apakah ada cabang lain?</label><textarea id="branches" name="branches" placeholder="Nama cabang, alamat, nomor kontak, dan link Maps masing-masing jika ada."></textarea></div>
+        <div class="grid2">
+          <div class="field"><label for="email">Email bisnis</label><input class="input" id="email" name="email" type="email" placeholder="email@bisnis.com"></div>
+          <div class="field"><label for="socials">Instagram / media sosial</label><input class="input" id="socials" name="socials" placeholder="@username atau link akun"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Brand & detail">
+      <div class="panel-heading"><div class="step-number">06</div><div><h2>Brand, referensi & kebutuhan tambahan</h2><p>Lengkapi arah desain dan informasi praktis agar proses pembuatan website lebih lancar.</p></div></div>
+      <div class="card">
+        <div class="field"><label>Gaya visual yang disukai</label><div class="choices">
+          <label class="choice"><input type="checkbox" name="style" value="Minimalis dan clean"><span>Minimalis & clean</span></label>
+          <label class="choice"><input type="checkbox" name="style" value="Elegan dan premium"><span>Elegan & premium</span></label>
+          <label class="choice"><input type="checkbox" name="style" value="Modern dan berani"><span>Modern & berani</span></label>
+          <label class="choice"><input type="checkbox" name="style" value="Natural dan hangat"><span>Natural & hangat</span></label>
+          <label class="choice"><input type="checkbox" name="style" value="Corporate dan profesional"><span>Corporate & profesional</span></label>
+          <label class="choice"><input type="checkbox" name="style" value="Fun dan penuh warna"><span>Fun & penuh warna</span></label>
+        </div></div>
+        <div class="grid2">
+          <div class="field"><label for="brandColors">Warna brand / warna pilihan</label><input class="input" id="brandColors" name="brandColors" placeholder="Contoh: olive, cream, putih"></div>
+          <div class="field"><label for="domain">Domain yang diinginkan</label><input class="input" id="domain" name="domain" placeholder="Contoh: namabisnis.com"></div>
+        </div>
+        <div class="field"><label for="references">Referensi website</label><textarea id="references" name="references" placeholder="Link website yang disukai dan bagian apa yang ingin dijadikan inspirasi."></textarea></div>
+        <div class="field"><label>Materi yang sudah tersedia</label><div class="choices">
+          <label class="choice"><input type="checkbox" name="assets" value="Logo"><span>Logo</span></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Foto produk / layanan"><span>Foto produk / layanan</span></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Video"><span>Video</span></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Deskripsi dan teks"><span>Deskripsi / teks</span></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Testimoni"><span>Testimoni</span></label>
+          <label class="choice"><input type="checkbox" name="assets" value="Belum tersedia"><span>Belum tersedia</span></label>
+        </div></div>
+        <div class="grid2">
+          <div class="field"><label for="timeline">Target website selesai</label><select id="timeline" name="timeline"><option value="">Pilih jika sudah ada target</option><option>Secepatnya</option><option>1–2 minggu</option><option>Dalam 1 bulan</option><option>Fleksibel / diskusi dulu</option></select></div>
+          <div class="field"><label for="competitors">Website kompetitor (opsional)</label><input class="input" id="competitors" name="competitors" placeholder="Link kompetitor atau bisnis sejenis"></div>
+        </div>
+        <div class="field"><label for="otherNotes">Hal lain yang perlu diketahui</label><textarea id="otherNotes" name="otherNotes" placeholder="Fitur khusus, integrasi, animasi, kebutuhan teknis, atau hal yang belum ditanyakan."></textarea></div>
+      </div>
+    </section>
+
+    <section class="panel" data-title="Review">
+      <div class="panel-heading"><div class="step-number">07</div><div><h2>Periksa jawaban Anda</h2><p>Pastikan informasi sudah sesuai. Anda bisa kembali ke bagian mana pun untuk mengedit sebelum mengirim.</p></div></div>
+      <div class="card"><div class="review-list" id="reviewList"></div></div>
+      <div class="card">
+        <div class="field"><label for="finalNotes">Catatan terakhir untuk tim website</label><textarea id="finalNotes" name="finalNotes" placeholder="Opsional — tulis hal yang ingin dipastikan saat diskusi berikutnya."></textarea></div>
+        <label class="checkline"><input type="checkbox" id="confirmReview" required><span>Saya sudah meninjau jawaban di atas dan memahami bahwa jawaban ini menjadi brief awal untuk perencanaan website.</span></label>
+      </div>
+      <div class="helper-box">Saat menekan “Kirim via WhatsApp”, ringkasan akan disiapkan dalam WhatsApp. Anda dapat memilih kontak tujuan dan meninjau pesan sebelum mengirimnya.</div>
+    </section>
+    <div class="bottom-nav"><div class="left" id="bottomHint">Tidak harus diisi sekaligus.</div><div class="right"><button type="button" class="btn" id="prevBtn" hidden>← Sebelumnya</button><button type="button" class="btn primary" id="nextBtn">Lanjut →</button><button type="submit" class="btn primary" id="submitBtn" hidden>Kirim via WhatsApp ↗</button></div></div>
+    </form>
+  </div>
+</main>
+</div>
+<script>
+(function(){
+ const form=document.getElementById('clientForm');
+ const panels=[...document.querySelectorAll('.panel')];
+ const nav=[...document.querySelectorAll('#navigation button')];
+ let current=0, serviceCount=0, productCount=0, restoring=false;
+ const storageKey='clientWebsiteBriefEnv58';
+ const titles=panels.map(p=>p.dataset.title);
+ function val(name){const els=[...form.querySelectorAll('[name="'+name+'"]')];if(!els.length)return '';if(els[0].type==='checkbox'||els[0].type==='radio')return els.filter(e=>e.checked).map(e=>e.value).join(', ');return els[0].value.trim();}
+ function save(){if(restoring)return;const data={values:{},checks:{},services:readRepeats('service'),products:readRepeats('product'),current};[...form.elements].forEach(el=>{if(!el.name)return;if(el.type==='checkbox'||el.type==='radio'){if(!data.checks[el.name])data.checks[el.name]=[];if(el.checked)data.checks[el.name].push(el.value)}else data.values[el.name]=el.value});try{localStorage.setItem(storageKey,JSON.stringify(data));document.querySelector('.save-status').innerHTML='<span class="dot"></span> Tersimpan di perangkat';}catch(e){}}
+ function readRepeats(type){return [...document.querySelectorAll('[data-repeat="'+type+'"]')].map(card=>Object.fromEntries([...card.querySelectorAll('[data-key]')].map(el=>[el.dataset.key,el.value])))}
+ function addRepeat(type,data={}){const list=document.getElementById(type==='service'?'servicesList':'productsList');const n=type==='service'?++serviceCount:++productCount;const card=document.createElement('div');card.className='repeat-card';card.dataset.repeat=type;const isService=type==='service';const fields=isService?[['name','Nama layanan','Contoh: Konsultasi / perawatan'],['description','Deskripsi layanan','Jelaskan manfaat, proses, atau apa yang termasuk dalam layanan.','textarea'],['price','Harga / kisaran harga','Opsional'],['duration','Durasi / detail','Opsional']]:[['name','Nama produk','Nama produk'],['description','Deskripsi produk','Manfaat, spesifikasi, atau informasi produk.','textarea'],['price','Harga produk','Opsional'],['variant','Varian / detail','Opsional: ukuran, warna, tipe, SKU']];
+ const top=document.createElement('div');top.className='repeat-top';const b=document.createElement('b');b.textContent=(isService?'Layanan ':'Produk ')+n;const rm=document.createElement('button');rm.type='button';rm.className='remove-btn';rm.textContent='Hapus';rm.addEventListener('click',()=>{card.remove();renumber(type);save()});top.append(b,rm);card.append(top);
+ fields.forEach(([key,label,placeholder,kind])=>{const wrap=document.createElement('div');wrap.className='field';const lab=document.createElement('label');lab.textContent=label;const input=document.createElement(kind==='textarea'?'textarea':'input');if(kind!=='textarea'){input.type='text';input.className='input'}input.placeholder=placeholder;input.value=data[key]||'';input.dataset.key=key;input.addEventListener('input',()=>{save();if(current===6)renderReview()});wrap.append(lab,input);card.append(wrap)});list.append(card);save();return card}
+ function renumber(type){const list=document.querySelectorAll('[data-repeat="'+type+'"]');list.forEach((el,i)=>el.querySelector('.repeat-top b').textContent=(type==='service'?'Layanan ':'Produk ')+(i+1))}
+ function show(index){current=Math.max(0,Math.min(panels.length-1,index));panels.forEach((p,i)=>p.classList.toggle('active',i===current));nav.forEach((b,i)=>{b.classList.toggle('active',i===current);b.setAttribute('aria-current',i===current?'step':'false');const old=b.querySelector('.done');if(old)old.remove();if(i<current){const d=document.createElement('span');d.className='done';d.textContent='✓';b.append(d)}});document.getElementById('topSection').textContent=titles[current];document.getElementById('progressFill').style.width=((current+1)/panels.length*100)+'%';document.getElementById('progressLabel').textContent='Bagian '+(current+1)+' dari '+panels.length;document.getElementById('prevBtn').hidden=current===0;document.getElementById('nextBtn').hidden=current===panels.length-1;document.getElementById('submitBtn').hidden=current!==panels.length-1;document.getElementById('bottomHint').textContent=current===panels.length-1?'Brief siap ditinjau dan dikirim.':'Tidak harus diisi sekaligus.';if(current===6)renderReview();save();window.scrollTo({top:0,behavior:'smooth'})}
+ function renderReview(){const target=document.getElementById('reviewList');if(!target)return;target.innerHTML='';const rows=[['Nama bisnis',val('businessName')],['Jenis bisnis',val('businessType')],['Tujuan website',val('goals')],['Halaman dipilih',val('pages')],['Halaman tambahan',val('customPages')],['Layanan',readRepeats('service').map(x=>[x.name,x.description,x.price,x.duration].filter(Boolean).join(' — ')).filter(Boolean).join('\n')],['Produk',readRepeats('product').map(x=>[x.name,x.description,x.price,x.variant].filter(Boolean).join(' — ')).filter(Boolean).join('\n')],['Hero headline',val('heroHeadline')],['Alamat',val('address')],['Google Maps',val('mapsLink')],['Gaya visual',val('style')],['Referensi',val('references')],['Catatan tambahan',val('otherNotes')]];rows.forEach(([label,value])=>{const item=document.createElement('div');item.className='review-item';const b=document.createElement('b');b.textContent=label;const p=document.createElement('p');p.textContent=value||'Belum diisi';item.append(b,p);target.append(item)})}
+ function restore(){try{const raw=localStorage.getItem(storageKey);if(!raw)return;const data=JSON.parse(raw);restoring=true;Object.entries(data.values||{}).forEach(([name,value])=>{[...form.querySelectorAll('[name="'+name+'"]')].forEach(el=>{if(el.type!=='checkbox'&&el.type!=='radio')el.value=value})});Object.entries(data.checks||{}).forEach(([name,values])=>{[...form.querySelectorAll('[name="'+name+'"]')].forEach(el=>el.checked=values.includes(el.value))});(data.services||[]).forEach(x=>addRepeat('service',x));(data.products||[]).forEach(x=>addRepeat('product',x));restoring=false;if(Number.isInteger(data.current))current=data.current;}catch(e){restoring=false}}
+ function message(){const lines=['WEBSITE PROJECT BRIEF','Nama bisnis: '+(val('businessName')||'-'),'PIC: '+(val('contactName')||'-'),'WhatsApp bisnis: '+(val('contactWhatsApp')||'-'),'Jenis bisnis: '+(val('businessType')||'-'),'','TUJUAN WEBSITE',val('goals')||'-','','HALAMAN WEBSITE',val('pages')||'-','Halaman tambahan: '+(val('customPages')||'-'),'Catatan navigasi: '+(val('navNotes')||'-'),'','SERVICES',val('serviceIntro')||'-'];const sv=readRepeats('service');lines.push(...(sv.length?sv.map((x,i)=>'\n'+(i+1)+'. '+(x.name||'Layanan')+'\nDeskripsi: '+(x.description||'-')+'\nHarga: '+(x.price||'-')+'\nDurasi/detail: '+(x.duration||'-')):['Belum diisi']));lines.push('','PRODUCTS',val('productIntro')||'-');const pr=readRepeats('product');lines.push(...(pr.length?pr.map((x,i)=>'\n'+(i+1)+'. '+(x.name||'Produk')+'\nDeskripsi: '+(x.description||'-')+'\nHarga: '+(x.price||'-')+'\nVarian/detail: '+(x.variant||'-')):['Belum diisi']));const fields=[['Cara pemesanan',val('purchaseMethod')],['Catatan produk',val('productNotes')],['Hero headline',val('heroHeadline')],['Hero subheadline',val('heroSubheadline')],['Tombol Hero',val('heroCta')],['Visual Hero',val('heroVisual')],['Alamat lengkap',val('address')],['Google Maps',val('mapsLink')],['Jam operasional',val('openingHours')],['Cabang lain',val('branches')],['Email',val('email')],['Media sosial',val('socials')],['Gaya visual',val('style')],['Warna brand',val('brandColors')],['Domain',val('domain')],['Referensi website',val('references')],['Materi tersedia',val('assets')],['Target selesai',val('timeline')],['Kompetitor',val('competitors')],['Catatan umum layanan',val('serviceGeneral')],['Catatan tambahan',val('otherNotes')],['Catatan terakhir',val('finalNotes')]];lines.push('');fields.forEach(([k,v])=>{if(v)lines.push(k+': '+v)});return lines.join('\n')}
+ nav.forEach(btn=>btn.addEventListener('click',()=>show(Number(btn.dataset.panel))));document.getElementById('prevBtn').addEventListener('click',()=>show(current-1));document.getElementById('nextBtn').addEventListener('click',()=>show(current+1));document.getElementById('addService').addEventListener('click',()=>addRepeat('service'));document.getElementById('addProduct').addEventListener('click',()=>addRepeat('product'));document.getElementById('saveBtn').addEventListener('click',()=>{save();const b=document.getElementById('saveBtn');b.textContent='Tersimpan ✓';setTimeout(()=>b.textContent='Simpan',1200)});
+ form.addEventListener('input',()=>{save();if(current===6)renderReview()});form.addEventListener('change',()=>{save();if(current===6)renderReview()});
+ form.addEventListener('submit',e=>{e.preventDefault();if(!document.getElementById('confirmReview').checked){alert('Centang konfirmasi setelah meninjau jawaban.');return}save();const url='https://wa.me/?text='+encodeURIComponent(message());window.open(url,'_blank','noopener,noreferrer')});
+ restore();show(current);if(!document.querySelector('[data-repeat="service"]'))addRepeat('service');if(!document.querySelector('[data-repeat="product"]'))addRepeat('product');
+})();
+</script>
+</body>
+</html>
