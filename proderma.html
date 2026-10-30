@@ -102,17 +102,17 @@
 <section class="philosophy">
  <div class="wrap philosophy-grid">
   <div class="philosophy-visual reveal"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=85" alt="Suasana perawatan wajah di ruang klinik" loading="lazy"></div>
-  <div class="philosophy-copy reveal"><span class="eyebrow">Cara kami merawat · 03</span><h2 class="serif">Setiap keluhan layak <em>didengarkan.</em></h2><p>Kami ingin Sahabat Proderma merasa nyaman untuk menyampaikan apa yang dirasakan, bertanya tanpa sungkan, dan memahami pilihan perawatan yang tersedia. Karena keputusan perawatan sebaiknya dibuat dengan informasi yang jelas dan komunikasi dua arah.</p><div class="quote">“Didengarkan, dipahami, dan dihargai — dari konsultasi pertama hingga perjalanan perawatan.”</div></div>
+  <div class="philosophy-copy reveal"><span class="eyebrow">Cara kami merawat · 04</span><h2 class="serif">Setiap keluhan layak <em>didengarkan.</em></h2><p>Kami ingin Sahabat Proderma merasa nyaman untuk menyampaikan apa yang dirasakan, bertanya tanpa sungkan, dan memahami pilihan perawatan yang tersedia. Karena keputusan perawatan sebaiknya dibuat dengan informasi yang jelas dan komunikasi dua arah.</p><div class="quote">“Didengarkan, dipahami, dan dihargai — dari konsultasi pertama hingga perjalanan perawatan.”</div></div>
  </div>
 </section>
 <section class="video-section wrap" id="cerita">
- <div class="video-head reveal"><div><span class="eyebrow">Lebih dekat dengan Proderma · 04</span><h2 class="serif">Mendengar adalah bagian dari merawat.</h2></div><p>Kenali pendekatan Proderma melalui cerita dan pesan yang kami bagikan kepada Sahabat Proderma.</p></div>
+ <div class="video-head reveal"><div><span class="eyebrow">Lebih dekat dengan Proderma · 05</span><h2 class="serif">Mendengar adalah bagian dari merawat.</h2></div><p>Kenali pendekatan Proderma melalui cerita dan pesan yang kami bagikan kepada Sahabat Proderma.</p></div>
  <div class="video-frame reveal"><iframe src="https://www.instagram.com/p/DbpKXGgJ5__/embed" title="Video Instagram Proderma Graha Center" loading="lazy" allowtransparency="true" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
  <div class="video-caption"><span>Video dari Instagram @prodermagc</span><a href="https://www.instagram.com/p/DbpKXGgJ5__/" target="_blank" rel="noopener">Tonton di Instagram ↗</a></div>
 </section>
 <section class="visit" id="lokasi">
  <div class="wrap visit-grid">
-  <div class="visit-copy reveal"><span class="eyebrow">Kunjungi klinik · 05</span><h2 class="serif">Kami siap <em>menyambutmu.</em></h2><p>Temukan Proderma Graha Center di kawasan The Central 88, Sunter. Hubungi tim kami untuk menanyakan jadwal dan merencanakan kunjungan.</p>
+  <div class="visit-copy reveal"><span class="eyebrow">Kunjungi klinik · 06</span><h2 class="serif">Kami siap <em>menyambutmu.</em></h2><p>Temukan Proderma Graha Center di kawasan The Central 88, Sunter. Hubungi tim kami untuk menanyakan jadwal dan merencanakan kunjungan.</p>
    <div class="visit-details">
     <div class="detail"><span>Alamat</span><span>Jln. Trembesi Blok D3, Komplek Ruko The Central 88 No. F-812, Sunter, Jakarta Utara 14410</span></div>
     <div class="detail"><span>Telepon</span><a href="tel:02126055370">021-26055370</a></div>
@@ -148,6 +148,7 @@
  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});reveal.forEach(el=>observer.observe(el));}else{reveal.forEach(el=>el.classList.add('in'));}
  const heroVideo=document.getElementById('heroVideo'),heroStill=document.getElementById('heroStill');
  if(heroVideo&&heroStill){
+  const nextHeroFrame=new Image();nextHeroFrame.src='https://res.cloudinary.com/naqr1mob/image/upload/v1793335220/Luxury_Clinic_Reception_Celebration.png';
   heroVideo.addEventListener('ended',()=>{
    heroVideo.pause();heroVideo.style.opacity='0';heroStill.classList.add('show');
    window.setTimeout(()=>{heroStill.src='https://res.cloudinary.com/naqr1mob/image/upload/v1793335220/Luxury_Clinic_Reception_Celebration.png';},3000);
