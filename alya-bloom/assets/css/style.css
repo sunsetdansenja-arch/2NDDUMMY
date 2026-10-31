@@ -20,3 +20,109 @@
 @media(max-width:1050px){.treatment-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.treatment-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.treatment-card{padding:16px;min-height:245px}.treatment-card-top{margin-bottom:19px}}
 @media(max-width:420px){.treatment-grid{grid-template-columns:1fr}.treatment-card{min-height:0}}
+
+
+/* Rounded editorial CTA system — three related button shapes */
+.btn,.nav-cta,.whatsapp-float,.treatment-cta{
+  border-radius:999px;
+  text-decoration:none;
+  font-family:var(--body);
+  letter-spacing:.01em;
+}
+.btn,.nav-cta{
+  min-height:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--forest);
+  font-size:12px;
+  font-weight:600;
+  transform:none;
+  overflow:visible;
+}
+.btn:hover,.nav-cta:hover{transform:translateY(-2px);background:transparent;border-color:transparent}
+.btn-label,.btn-arrow{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+.btn-arrow{font-family:var(--body);font-size:1.45em;font-weight:400;line-height:1;transition:transform .25s ease}
+.btn:hover .btn-arrow,.nav-cta:hover .btn-arrow,.whatsapp-float:hover .btn-arrow,.treatment-cta:hover .btn-arrow{transform:translate(3px,-3px)}
+
+/* A — one continuous filled pill inside a fine outer ring */
+.btn-a,.nav-cta.btn-a{
+  display:inline-flex;align-items:center;justify-content:center;gap:13px;
+  padding:6px 19px;
+  border:1px solid var(--forest);
+  background:var(--forest);
+  color:var(--chalk);
+  box-shadow:inset 0 0 0 4px var(--chalk);
+}
+.btn-a .btn-label,.nav-cta.btn-a .btn-label{padding:9px 0 9px 2px}
+.btn-a .btn-arrow,.nav-cta.btn-a .btn-arrow{padding:0 1px 0 0}
+.btn-a:hover,.nav-cta.btn-a:hover{background:var(--berry);color:#fff;border-color:var(--berry)}
+
+/* B — filled label with a separate arrow zone */
+.btn-b,.nav-cta.btn-b{
+  display:inline-flex;align-items:center;justify-content:center;gap:15px;
+  padding:5px 16px 5px 5px;
+  border:1px solid var(--forest);
+  background:transparent;color:var(--forest);
+}
+.btn-b .btn-label,.nav-cta.btn-b .btn-label{
+  min-height:43px;padding:0 20px;border-radius:999px;background:var(--forest);color:var(--chalk)
+}
+.btn-b .btn-arrow,.nav-cta.btn-b .btn-arrow{padding:0 1px}
+.btn-b:hover,.nav-cta.btn-b:hover{background:var(--pistachio);color:var(--forest);border-color:var(--forest)}
+.btn-b:hover .btn-label,.nav-cta.btn-b:hover .btn-label{background:var(--berry)}
+
+/* C — filled text capsule and a distinct circular arrow */
+.btn-c,.nav-cta.btn-c{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:5px;
+  border:1px solid var(--forest);
+  background:transparent;color:var(--forest);
+}
+.btn-c .btn-label,.nav-cta.btn-c .btn-label{
+  min-height:43px;padding:0 20px;border-radius:999px;background:var(--forest);color:var(--chalk)
+}
+.btn-c .btn-arrow,.nav-cta.btn-c .btn-arrow{
+  width:43px;height:43px;border-radius:50%;background:var(--forest);color:var(--chalk);font-size:20px
+}
+.btn-c:hover,.nav-cta.btn-c:hover{background:var(--pistachio);border-color:var(--forest);color:var(--forest)}
+.btn-c:hover .btn-label,.nav-cta.btn-c:hover .btn-label,.btn-c:hover .btn-arrow,.nav-cta.btn-c:hover .btn-arrow{background:var(--berry);color:#fff}
+
+/* Light buttons remain legible on dark sections */
+.btn-light.btn-a{background:var(--pink);border-color:var(--pink);color:var(--forest);box-shadow:inset 0 0 0 4px var(--forest)}
+.btn-light.btn-b,.btn-light.btn-c{border-color:var(--pink);color:var(--chalk)}
+.btn-light.btn-b .btn-label,.btn-light.btn-c .btn-label,.btn-light.btn-c .btn-arrow{background:var(--pink);color:var(--forest)}
+.btn-ghost.btn-b,.btn-ghost.btn-c{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-ghost.btn-b .btn-label,.btn-ghost.btn-c .btn-label{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.btn-ghost.btn-c .btn-arrow{background:var(--pink);color:var(--forest);border:0}
+.btn-light.btn-a:hover,.btn-light.btn-b:hover,.btn-light.btn-c:hover{background:var(--pink2);color:var(--forest)}
+
+/* Treatment catalogue uses all three shapes in a repeating rhythm */
+.treatment-cta{
+  min-height:0;padding:5px 6px;gap:7px;border:1px solid var(--forest);
+  background:transparent;color:var(--forest);font-size:10px;font-weight:600;
+}
+.treatment-cta .btn-label{min-height:34px;padding:0 12px;border-radius:999px;background:var(--forest);color:var(--chalk)}
+.treatment-cta .btn-arrow{width:34px;height:34px;border-radius:50%;background:var(--forest);color:var(--chalk);font-size:17px}
+.treatment-card:nth-child(3n+1) .treatment-cta{background:var(--forest);color:var(--chalk);box-shadow:inset 0 0 0 4px #fff;padding:8px 13px}
+.treatment-card:nth-child(3n+1) .treatment-cta .btn-label{background:transparent;color:inherit;min-height:25px;padding:0}
+.treatment-card:nth-child(3n+1) .treatment-cta .btn-arrow{background:transparent;color:inherit;width:auto;height:auto}
+.treatment-card:nth-child(3n+2) .treatment-cta{padding:5px 13px 5px 5px;justify-content:space-between}
+.treatment-card:nth-child(3n+2) .treatment-cta .btn-label{padding:0 15px}
+.treatment-cta:hover{background:var(--pistachio);color:var(--forest)}
+.treatment-cta:hover .btn-label,.treatment-cta:hover .btn-arrow{background:var(--berry);color:#fff}
+.whatsapp-float.btn-c{
+  display:inline-flex;align-items:center;gap:6px;padding:5px;border:1px solid var(--berry);
+  background:transparent;color:var(--forest);box-shadow:0 8px 28px #26382f30;
+}
+.whatsapp-float.btn-c .btn-label{min-height:39px;padding:0 16px;background:var(--berry);color:#fff;border-radius:999px}
+.whatsapp-float.btn-c .btn-arrow{width:39px;height:39px;border-radius:50%;background:var(--berry);color:#fff}
+.whatsapp-float.btn-c:hover{background:var(--pink2)}
+@media(max-width:850px){
+  .nav-cta.btn-a{display:none}
+}
+@media(max-width:520px){
+  .hero-actions .btn{flex:1}
+  .hero-actions .btn-label{white-space:normal;text-align:center}
+  .whatsapp-float.btn-c{right:14px;bottom:14px}
+}
