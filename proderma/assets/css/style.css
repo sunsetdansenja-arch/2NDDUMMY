@@ -140,3 +140,55 @@
 @media(max-width:520px){
  .hero-side{display:none}
 }
+
+
+/* Unified Proderma CTA system — gold glass pill */
+:root{
+ --cta-gold:#c5ad83;
+ --cta-gold-light:#e5d2aa;
+ --cta-glass:rgba(197,173,131,.13);
+ --cta-glass-strong:rgba(197,173,131,.22);
+}
+.btn,.nav-cta,.float-wa{
+ position:relative;
+ isolation:isolate;
+ border-radius:999px;
+ border:1px solid rgba(229,210,170,.88);
+ background:linear-gradient(135deg,rgba(229,210,170,.22),rgba(197,173,131,.08) 55%,rgba(229,210,170,.16));
+ color:var(--cta-gold-light);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(0,0,0,.16),0 0 0 4px rgba(197,173,131,.07),0 7px 24px rgba(0,0,0,.16);
+ backdrop-filter:blur(14px);
+ -webkit-backdrop-filter:blur(14px);
+ transition:background .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease,transform .28s ease;
+}
+.btn:before,.nav-cta:before,.float-wa:before{
+ content:"";
+ position:absolute;
+ inset:3px;
+ z-index:-1;
+ border:1px solid rgba(229,210,170,.22);
+ border-radius:inherit;
+ pointer-events:none;
+}
+.btn:hover,.nav-cta:hover,.float-wa:hover{
+ background:linear-gradient(135deg,rgba(229,210,170,.34),rgba(197,173,131,.2));
+ border-color:var(--cta-gold-light);
+ color:#fff5df;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 0 0 5px rgba(197,173,131,.1),0 10px 30px rgba(0,0,0,.24),0 0 24px rgba(197,173,131,.14);
+ transform:translateY(-2px);
+}
+.btn{padding:16px 25px;min-height:52px;gap:20px;font-size:9px;letter-spacing:.14em}
+.btn-outline{background:rgba(255,255,255,.035);border-color:rgba(229,210,170,.52);color:rgba(248,245,240,.88);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 4px rgba(197,173,131,.045)}
+.btn-outline:hover{background:rgba(197,173,131,.15);border-color:var(--cta-gold-light);color:#fff5df}
+.nav-cta{padding:14px 23px;font-size:9px;letter-spacing:.13em;color:var(--cta-gold-light)}
+.float-wa{padding:15px 21px;color:var(--cta-gold-light);font-size:9px}
+@media(max-width:850px){
+ .nav-cta{padding:12px 18px}
+}
+@media(max-width:520px){
+ .btn{min-height:48px;padding:14px 18px}
+ .float-wa{width:49px;height:49px;padding:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .btn,.nav-cta,.float-wa{transition:none}
+}
