@@ -269,3 +269,24 @@ main img:not(.hero-still){
 @media(max-width:520px){
  :root{--shape-squircle:22px;--shape-squircle-lg:28px}
 }
+
+
+/* Advanced technology showcase */
+.technology{background:#111;color:var(--ivory);padding:clamp(100px,14vw,185px) 0}
+.technology-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(55px,9vw,145px);align-items:center}
+.technology-visual{position:relative;width:100%;max-width:650px}
+.technology-visual img{display:block;width:100%;aspect-ratio:1.18;object-fit:cover;filter:brightness(.88) saturate(.82);border-radius:var(--shape-squircle-lg)}
+.technology-image-note{position:absolute;left:24px;bottom:22px;padding:11px 15px;border:1px solid rgba(229,210,170,.48);border-radius:999px;background:rgba(15,14,12,.46);backdrop-filter:blur(12px);color:#ead8b4;font:600 8px/1 var(--sans);letter-spacing:.18em}
+.technology-copy .eyebrow{color:var(--gold)}
+.technology-copy h2{font-size:clamp(52px,6.4vw,88px);line-height:.88;margin:25px 0 30px;letter-spacing:-.035em}
+.technology-copy h2 em{color:var(--gold)}
+.technology-copy>p{max-width:580px;font-size:11px;line-height:2.05;color:rgba(248,245,240,.68);margin-bottom:34px}
+.technology-list{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;border-top:1px solid var(--line)}
+.technology-list>div{display:grid;grid-template-columns:27px 1fr;column-gap:12px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line)}
+.technology-list>div>span{font:500 8px/1 var(--sans);letter-spacing:.12em;color:var(--gold)}
+.technology-list strong{font:500 22px/1.1 var(--serif);color:var(--ivory)}
+.technology-list small{grid-column:2;font:400 8px/1.5 var(--sans);letter-spacing:.06em;color:rgba(248,245,240,.48);margin-top:5px}
+.technology-link{display:inline-flex;align-items:center;gap:28px;margin-top:29px;padding:13px 0;border-bottom:1px solid rgba(197,173,131,.6);color:#e5d2aa;text-decoration:none;text-transform:uppercase;font:600 8px/1 var(--sans);letter-spacing:.16em;transition:gap .25s ease,color .25s ease}
+.technology-link:hover{gap:36px;color:#fff1d3}
+@media(max-width:850px){.technology-grid{grid-template-columns:1fr;gap:52px}.technology-visual{max-width:100%}.technology-visual img{aspect-ratio:1.5}.technology-copy h2{font-size:clamp(54px,9vw,78px)}}
+@media(max-width:520px){.technology{padding:90px 0}.technology-grid{gap:38px}.technology-visual img{aspect-ratio:1.08}.technology-image-note{left:14px;bottom:14px;font-size:7px}.technology-list{column-gap:18px}.technology-list strong{font-size:20px}.technology-list small{font-size:7px}}
