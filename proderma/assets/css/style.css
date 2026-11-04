@@ -105,3 +105,38 @@
  .hero-bottom p{max-width:420px}
  .hero-actions{justify-content:flex-end}
 }
+
+
+/* Hero location signature: horizontal footer placement, clear of the headline */
+.hero-side{
+ position:absolute;
+ right:var(--g);
+ bottom:42px;
+ top:auto;
+ writing-mode:horizontal-tb;
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ gap:12px;
+ max-width:45%;
+ text-align:right;
+ font-size:8px;
+ line-height:1.5;
+ letter-spacing:.2em;
+ color:rgba(248,245,240,.62);
+}
+.hero-side:before{
+ content:"";
+ display:block;
+ flex:0 0 30px;
+ width:30px;
+ height:1px;
+ background:var(--gold);
+}
+@media(max-width:850px){
+ .hero-side{bottom:36px;max-width:48%;font-size:7px;letter-spacing:.16em}
+ .hero-side:before{flex-basis:22px;width:22px}
+}
+@media(max-width:520px){
+ .hero-side{display:none}
+}
