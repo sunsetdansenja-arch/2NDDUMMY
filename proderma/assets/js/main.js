@@ -11,7 +11,8 @@ const baTag=document.getElementById('baTreatmentTag'),baTitle=document.getElemen
 const baPrev=document.getElementById('baPrev'),baNext=document.getElementById('baNext'),baCount=document.getElementById('baGalleryCount');
 const galleryItems=[
  {title:'Bebas Jerawat',before:'https://res.cloudinary.com/naqr1mob/image/upload/v1793335190/Clinical_Acne_Skin_Portrait.png',after:'https://res.cloudinary.com/naqr1mob/image/upload/v1793335117/Clearer_Skin_at_the_Dermatology_Clinic.png',description:'Dokumentasi perbandingan kondisi kulit sebelum dan sesudah treatment.'},
- {title:'Flek Removal',before:'https://res.cloudinary.com/naqr1mob/image/upload/v1793609642/Detailed_Facial_Skin_Texture_Close-Up.png',after:'https://res.cloudinary.com/naqr1mob/image/upload/v1793609624/Dermatological_Close-Up_Portrait.png',description:'Dokumentasi perbandingan kondisi kulit sebelum dan sesudah treatment flek removal.'}
+ {title:'Flek Removal',before:'https://res.cloudinary.com/naqr1mob/image/upload/v1793609642/Detailed_Facial_Skin_Texture_Close-Up.png',after:'https://res.cloudinary.com/naqr1mob/image/upload/v1793609624/Dermatological_Close-Up_Portrait.png',description:'Dokumentasi perbandingan kondisi kulit sebelum dan sesudah treatment flek removal.'},
+ {title:'Filler Area Dagu & Hidung',before:'https://res.cloudinary.com/naqr1mob/image/upload/v1793610057/Clinical_Side-Profile_Portrait.png',after:'https://res.cloudinary.com/naqr1mob/image/upload/v1793609921/Clinical_Side_Profile_with_Skin_Texture.png',description:'Dokumentasi perbandingan sebelum dan sesudah filler area dagu dan hidung.'}
 ];
 let galleryIndex=0;
 const showGalleryItem=(index)=>{
