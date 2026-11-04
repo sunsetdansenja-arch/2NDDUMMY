@@ -1,6 +1,8 @@
 
 (()=>{const header=document.getElementById('header'),progress=document.getElementById('progress'),menu=document.getElementById('menu'),nav=document.getElementById('navlinks');
-const onScroll=()=>{const y=window.scrollY,max=document.documentElement.scrollHeight-innerHeight;header.classList.toggle('sticky',y>50);progress.style.width=(max>0?y/max*100:0)+'%'};window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+const homeCta=document.getElementById('homeConsultCta');let scrollStopTimer;
+const onScroll=()=>{const y=window.scrollY,max=document.documentElement.scrollHeight-innerHeight;header.classList.toggle('sticky',y>50);progress.style.width=(max>0?y/max*100:0)+'%';if(homeCta){homeCta.classList.add('is-scrolling');window.clearTimeout(scrollStopTimer);scrollStopTimer=window.setTimeout(()=>homeCta.classList.remove('is-scrolling'),260)}};
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Tutup navigasi':'Buka navigasi');menu.textContent=open?'×':'☰';document.body.classList.toggle('lock',open)});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';document.body.classList.remove('lock')}));
 const nodes=document.querySelectorAll('.reveal');if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});nodes.forEach(n=>io.observe(n))}else nodes.forEach(n=>n.classList.add('visible'));
