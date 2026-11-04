@@ -229,3 +229,43 @@
 @keyframes consult-liquid{0%,100%{transform:translateX(-65%) rotate(-8deg)}50%{transform:translateX(65%) rotate(-8deg)}}
 @media(max-width:520px){.home-consult-cta{bottom:18px;min-width:0;width:max-content;max-width:calc(100% - 40px);padding:16px 25px;font-size:9px;gap:15px}}
 @media(prefers-reduced-motion:reduce){.home-consult-cta:after{animation:none}.home-consult-cta,.home-consult-arrow{transition:none}}
+
+
+/* Softer geometry system: arch portraits + squircle media and UI surfaces */
+:root{--shape-squircle:30px;--shape-squircle-lg:38px}
+@supports (corner-shape:squircle){
+ .shape-squircle,.ba-visual,.video-frame,.map,.social-card,.doctor-caption,.map-tag,.ba-label,.ba-treatment-tag,.ba-switcher button{corner-shape:squircle}
+}
+main img:not(.hero-still){
+ border-radius:var(--shape-squircle);
+}
+.doctor-image img,.philosophy-image img{
+ border-radius:50% 50% 28px 28px / 24% 24% 18px 18px;
+}
+.doctor-image:after{
+ border-radius:50% 50% 28px 28px / 24% 24% 18px 18px;
+}
+.ba-visual{
+ border-radius:var(--shape-squircle-lg);
+}
+.video-frame,.map{
+ border-radius:var(--shape-squircle-lg);
+ overflow:hidden;
+}
+.video-frame iframe,.map iframe{border-radius:inherit}
+.doctor-caption,.map-tag{
+ border-radius:0 18px 18px 18px;
+}
+.ba-label,.ba-treatment-tag{
+ border-radius:999px;
+}
+.ba-switcher button{
+ border-radius:999px;
+}
+.social-card{
+ border-radius:var(--shape-squircle);
+ overflow:hidden;
+}
+@media(max-width:520px){
+ :root{--shape-squircle:22px;--shape-squircle-lg:28px}
+}
