@@ -21,8 +21,7 @@ const showGalleryItem=(index)=>{
  baBefore.alt='Kondisi sebelum treatment '+item.title;baAfter.alt='Kondisi setelah treatment '+item.title;
  baTag.textContent='Treatment · '+item.title;baTitle.textContent=item.title;baDescription.textContent=item.description;
  if(baCount)baCount.textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(galleryItems.length).padStart(2,'0');
- if(baPrev)baPrev.disabled=galleryIndex===0;
- if(baNext)baNext.disabled=galleryIndex===galleryItems.length-1;
+
  if(range&&visual){range.value='50';visual.style.setProperty('--split','50%')}
 };
 if(range&&visual){const set=()=>visual.style.setProperty('--split',range.value+'%');range.addEventListener('input',set);set()}
