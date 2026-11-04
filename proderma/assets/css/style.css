@@ -84,3 +84,24 @@
  .hero-actions{justify-content:flex-start;margin-top:22px}
  .hero:after{background:linear-gradient(270deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.78) 58%,rgba(0,0,0,.22) 100%),linear-gradient(0deg,rgba(0,0,0,.68),transparent 55%)}
 }
+
+
+/* Hero typography composition: keep the left 35–42% visually clear; media remains untouched */
+@media(min-width:851px){
+ .hero-content{width:min(58%,780px);margin-left:auto;margin-right:var(--g);padding-top:110px}
+ .hero-content>.eyebrow{justify-content:flex-end}
+ .hero h1{text-align:right;font-size:clamp(66px,8.2vw,118px);line-height:.84;margin:34px 0 28px;max-width:none}
+ .hero h1 span:nth-child(2){margin-left:0}
+ .hero-bottom{max-width:none;display:flex;flex-direction:column;align-items:flex-end;gap:24px}
+ .hero-bottom p{max-width:460px;text-align:right}
+ .hero-actions{justify-content:flex-end}
+}
+@media(min-width:701px) and (max-width:850px){
+ .hero-content{width:65%;margin-left:auto;margin-right:var(--g)}
+ .hero-content>.eyebrow{justify-content:flex-end}
+ .hero h1{text-align:right;font-size:clamp(64px,9vw,90px)}
+ .hero h1 span:nth-child(2){margin-left:0}
+ .hero-bottom{align-items:flex-end;text-align:right}
+ .hero-bottom p{max-width:420px}
+ .hero-actions{justify-content:flex-end}
+}
