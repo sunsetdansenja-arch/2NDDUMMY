@@ -40,3 +40,9 @@
 .social-card strong{font:400 clamp(22px,3vw,34px)/1.1 var(--serif)}
 .social-card small{color:var(--muted);font-size:10px}
 @media(max-width:700px){.social-connect-head{display:block}.social-connect-head p{margin-top:22px}.social-grid{grid-template-columns:1fr}.social-card,.social-card:first-child{padding:22px 0;border-right:0;border-bottom:1px solid var(--line);min-height:unset}.social-card:last-child{border-bottom:0}}
+
+.ba-gallery-nav{display:flex;align-items:center;justify-content:center;gap:18px;padding-top:24px}
+.ba-gallery-nav button{width:42px;height:42px;border:1px solid rgba(0,0,0,.28);background:transparent;color:var(--black);font:400 22px/1 var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.ba-gallery-nav button:hover:not(:disabled){background:var(--black);border-color:var(--black);color:var(--gold)}
+.ba-gallery-nav button:disabled{opacity:.3;cursor:not-allowed}
+.ba-gallery-nav span{min-width:54px;text-align:center;font-size:9px;letter-spacing:.12em;color:#716b61}
