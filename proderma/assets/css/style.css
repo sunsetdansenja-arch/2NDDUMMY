@@ -46,3 +46,23 @@
 .ba-gallery-nav button:hover:not(:disabled){background:var(--black);border-color:var(--black);color:var(--gold)}
 .ba-gallery-nav button:disabled{opacity:.3;cursor:not-allowed}
 .ba-gallery-nav span{min-width:54px;text-align:center;font-size:9px;letter-spacing:.12em;color:#716b61}
+
+
+/* Before/after gallery side navigation */
+.ba-gallery-stage{position:relative;width:100%;isolation:isolate}
+.ba-gallery-stage .ba-visual{width:100%}
+.ba-side-arrow{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:58px;height:58px;border:1px solid rgba(255,255,255,.9);border-radius:50%;display:grid;place-items:center;background:rgba(24,27,25,.88);color:#fff;font:400 42px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 5px 22px rgba(0,0,0,.28);transition:background .2s,transform .2s,box-shadow .2s}
+.ba-side-arrow:hover{background:#a98b55;box-shadow:0 7px 24px rgba(0,0,0,.34);transform:translateY(-50%) scale(1.07)}
+.ba-side-prev{left:18px}
+.ba-side-next{right:18px}
+.ba-gallery-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding-top:18px;flex-wrap:wrap}
+.ba-gallery-nav span{font-size:10px;letter-spacing:.08em;color:#716b61}
+.ba-gallery-nav #baGalleryCount{font-size:11px;font-weight:700;letter-spacing:.14em;color:#a18450}
+.ba-gallery-hint{padding:7px 12px;border:1px solid rgba(161,132,80,.35);border-radius:30px;background:rgba(161,132,80,.08)}
+@media(max-width:600px){
+ .ba-side-arrow{width:42px;height:42px;font-size:32px}
+ .ba-side-prev{left:8px}
+ .ba-side-next{right:8px}
+ .ba-gallery-nav{gap:8px}
+ .ba-gallery-hint{font-size:9px}
+}
