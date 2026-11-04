@@ -135,3 +135,15 @@
   .whatsapp-float.btn-c{right:14px;bottom:14px}
 }
 
+/* Homepage hero refinement: smaller headline and tighter left text column */
+.hero-content{max-width:var(--max)}
+.hero h1{
+  max-width:760px;
+  font-size:clamp(48px,6.4vw,84px);
+  line-height:.98;
+}
+.hero p{max-width:460px}
+@media(max-width:520px){
+  .hero h1{max-width:100%;font-size:clamp(43px,10.5vw,58px);line-height:.98}
+  .hero p{max-width:390px}
+}
