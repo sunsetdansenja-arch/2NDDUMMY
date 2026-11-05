@@ -325,3 +325,22 @@ main img:not(.hero-still){
 .service-category-list .service-row:hover{padding-inline:12px}
 @media(max-width:850px){.service-category-head{grid-template-columns:1fr;gap:12px}.service-category-head p{max-width:560px}}
 @media(max-width:520px){.service-categories{gap:48px}.service-category-head h3{font-size:38px}.service-category-list .service-row{grid-template-columns:30px 1fr 28px;gap:10px;padding:20px 0}.service-row-copy h4{font-size:25px}.service-row-copy p{font-size:9px}.service-category-list .service-row:hover{padding-inline:6px}}
+
+/* Proderma warm taupe theme — replaces dark black surfaces while preserving text contrast */
+:root{--proderma-taupe:#74675B;--proderma-taupe-deep:#5D5148;--proderma-taupe-overlay:rgba(74,64,56,.88)}
+.header.sticky{background:rgba(116,103,91,.96)}
+.hero{background:var(--proderma-taupe)}
+.hero:after{background:linear-gradient(270deg,rgba(74,64,56,.5115) 0%,rgba(74,64,56,.396) 42%,rgba(74,64,56,.044) 100%),linear-gradient(0deg,rgba(74,64,56,.3575),transparent 50%)}
+.strip,.doctor,.visit,.social-connect{background:var(--proderma-taupe);color:var(--ivory)}
+.doctor-caption,.ba-label{background:var(--proderma-taupe-overlay)}
+.philosophy,.technology,.technology-hero,.video-frame{background:var(--proderma-taupe)}
+.technology-overlay{background:linear-gradient(90deg,rgba(74,64,56,.68),rgba(74,64,56,.08) 78%),linear-gradient(0deg,rgba(74,64,56,.62),transparent 48%,rgba(74,64,56,.14))}
+.map-tag{background:var(--gold);color:#080808}
+.ba-line:after,.service-row:hover .service-arrow,.ba-switcher button:hover,.ba-switcher button[aria-pressed="true"],.ba-gallery-nav button:hover:not(:disabled){background:var(--proderma-taupe-deep);border-color:var(--proderma-taupe-deep);color:var(--gold)}
+@media(max-width:700px){
+ .hero:after{background:linear-gradient(270deg,rgba(74,64,56,.517) 0%,rgba(74,64,56,.429) 58%,rgba(74,64,56,.121) 100%),linear-gradient(0deg,rgba(74,64,56,.374),transparent 55%)}
+}
+@media(max-width:520px){
+ .technology-overlay{background:linear-gradient(90deg,rgba(74,64,56,.58),rgba(74,64,56,.12)),linear-gradient(0deg,rgba(74,64,56,.66),transparent 58%)}
+}
+
