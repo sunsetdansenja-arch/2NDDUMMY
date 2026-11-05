@@ -69,7 +69,7 @@
 
 
 /* Home hero: reserve the left side for the model and align copy to the right */
-.hero:after{background:linear-gradient(270deg,rgba(0,0,0,.5115) 0%,rgba(0,0,0,.396) 42%,rgba(0,0,0,.08) 100%),linear-gradient(0deg,rgba(0,0,0,.65),transparent 50%)}
+.hero:after{background:linear-gradient(270deg,rgba(0,0,0,.5115) 0%,rgba(0,0,0,.396) 42%,rgba(0,0,0,.044) 100%),linear-gradient(0deg,rgba(0,0,0,.3575),transparent 50%)}
 .hero-media,.hero-still{object-position:38% 42%}
 .hero-content{width:min(900px,calc(100% - 2 * var(--g)));margin-left:auto;margin-right:var(--g)}
 .hero h1{margin-left:0;margin-right:0}
