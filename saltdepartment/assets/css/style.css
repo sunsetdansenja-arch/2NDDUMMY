@@ -385,3 +385,10 @@ html[lang="id"] .header-tray .language-toggle{letter-spacing:0}
 @media(prefers-reduced-motion:reduce){
  .header-tray .language-toggle.is-spinning{animation:none!important}
 }
+
+/* Both header controls flip left-to-right around the vertical axis. */
+.header-tray .outline-menu.is-spinning{
+ animation:languageCoinFlip .68s cubic-bezier(.25,.72,.25,1) both;
+ transform-style:preserve-3d;
+ backface-visibility:hidden;
+}
