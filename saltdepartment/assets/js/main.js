@@ -111,5 +111,29 @@ function initStore(){
  window.renderStoreProducts=render;
  populateBrands();render();[search,brand,size,min,max].forEach(el=>el.addEventListener("input",render));document.getElementById("resetFilters")?.addEventListener("click",()=>{[search,brand,size,min,max].forEach(el=>el.value="");render()});
 }
-function initMenu(){const languageButton=document.getElementById("languageToggle");languageButton?.addEventListener("click",()=>setLanguage(currentLanguage==="en"?"id":"en"));applyLanguage();const b=document.querySelector(".menu-toggle"),n=document.querySelector(".main-nav");if(b&&n)b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",String(o));});if(n)n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b?.setAttribute("aria-expanded","false")}));}
+function spinControl(button){
+ if(!button)return;
+ button.classList.remove("is-spinning");
+ // Restart the CSS animation on every deliberate press.
+ void button.offsetWidth;
+ button.classList.add("is-spinning");
+ button.addEventListener("animationend",()=>button.classList.remove("is-spinning"),{once:true});
+}
+function initMenu(){
+ const languageButton=document.getElementById("languageToggle");
+ const b=document.querySelector(".menu-toggle"),n=document.querySelector(".main-nav");
+ applyLanguage();
+ languageButton?.addEventListener("click",()=>{
+  setLanguage(currentLanguage==="en"?"id":"en");
+  spinControl(languageButton);
+ });
+ if(b&&n)b.addEventListener("click",()=>{
+  const o=n.classList.toggle("open");
+  b.setAttribute("aria-expanded",String(o));
+  spinControl(b);
+ });
+ if(n)n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  n.classList.remove("open");b?.setAttribute("aria-expanded","false")
+ }));
+}
 initIntro();initStore();initMenu();
