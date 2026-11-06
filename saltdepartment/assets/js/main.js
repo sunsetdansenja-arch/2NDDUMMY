@@ -1,3 +1,7 @@
+// Always start a fresh page view at the top; avoid browser scroll restoration.
+if("scrollRestoration" in history)history.scrollRestoration="manual";
+window.scrollTo(0,0);
+window.addEventListener("pageshow",()=>{if(window.scrollY!==0)window.scrollTo(0,0)});
 const STORE_KEY="saltdepartment.products.v1";
 const seed=[
 {id:"SD-001",brand:"Quiksilver",size:"L",price:185000,condition:"Good",title:"Quiksilver Tribal Boardshort",status:"available",image:"",createdAt:"2026-11-06"},
