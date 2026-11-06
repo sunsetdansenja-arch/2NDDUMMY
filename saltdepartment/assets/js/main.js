@@ -9,58 +9,27 @@ const writeProducts=items=>localStorage.setItem(STORE_KEY,JSON.stringify(items))
 const money=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function initIntro(){
- const pre=document.getElementById("preloader");
- const sequence=document.getElementById("introSequence");
- const introLogo=document.getElementById("introWordmark");
- const headerLogo=document.getElementById("headerWordmark");
- const headerLink=document.getElementById("headerBrand");
- const video=document.querySelector(".site-background-video");
- if(!pre||!sequence||!introLogo||!headerLogo||!headerLink)return;
+ const pre=document.getElementById("preloader"),sequence=document.getElementById("introSequence"),introLogo=document.getElementById("introWordmark"),headerLogo=document.getElementById("headerWordmark"),video=document.querySelector(".site-background-video");
+ if(!pre||!sequence||!introLogo||!headerLogo)return;
  const waitForImage=src=>new Promise(resolve=>{const image=new Image();image.onload=resolve;image.onerror=resolve;image.src=src});
- const waitForVideo=()=>new Promise(resolve=>{
-   if(!video||video.readyState>=2){resolve();return}
-   const done=()=>resolve();
-   video.addEventListener("loadeddata",done,{once:true});
-   video.addEventListener("error",done,{once:true});
-   setTimeout(done,6500);
- });
- let finished=false;
- const reveal=()=>{
-   if(finished)return;
-   finished=true;
-   document.body.classList.remove("is-loading");
-   pre.classList.add("done");
-   setTimeout(()=>pre.remove(),500);
-   sequence.classList.add("active");
-   introLogo.classList.add("centered");
-   setTimeout(()=>{
-     const target=headerLogo.getBoundingClientRect();
-     const targetX=target.left+target.width/2;
-     const targetY=target.top+target.height/2;
-     const startWidth=Math.min(window.innerWidth*.78,480);
-     const startHeight=Math.min(window.innerHeight*.34,220);
-     const motion=introLogo.animate([
-       {left:"50%",top:"50%",width:startWidth+"px",height:startHeight+"px",transform:"translate(-50%,-50%)",opacity:1},
-       {left:targetX+"px",top:targetY+"px",width:target.width+"px",height:target.height+"px",transform:"translate(-50%,-50%)",opacity:1}
-     ],{duration:1050,easing:"cubic-bezier(.22,.75,.18,1)",fill:"forwards"});
-     motion.onfinish=()=>{
-       introLogo.style.opacity="0";
-       headerLogo.style.opacity="1";
-       sequence.remove();
-     };
-     motion.oncancel=()=>{
-       introLogo.style.opacity="0";
-       headerLogo.style.opacity="1";
-       sequence.remove();
-     };
-   },850);
+ const waitForVideo=()=>new Promise(resolve=>{if(!video||video.readyState>=2){resolve();return}const done=()=>resolve();video.addEventListener("loadeddata",done,{once:true});video.addEventListener("error",done,{once:true});setTimeout(done,6500)});
+ let ready=false,transitionStarted=false;
+ const revealIntro=()=>{if(ready)return;ready=true;document.body.classList.remove("is-loading");pre.classList.add("done");setTimeout(()=>pre.remove(),500);sequence.classList.add("active");introLogo.classList.add("centered");introLogo.style.opacity="1"};
+ const dockLogo=()=>{
+  if(!ready||transitionStarted)return;transitionStarted=true;
+  const target=headerLogo.getBoundingClientRect(),targetX=target.left+target.width/2,targetY=target.top+target.height/2;
+  const startWidth=Math.min(window.innerWidth*.78,480),startHeight=Math.min(window.innerHeight*.34,220);
+  const finish=()=>{introLogo.style.opacity="0";headerLogo.style.opacity="1";document.body.classList.add("site-entered");sequence.remove()};
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){finish();return}
+  const motion=introLogo.animate([
+   {left:"50%",top:"50%",width:startWidth+"px",height:startHeight+"px",transform:"translate(-50%,-50%)",opacity:1},
+   {left:targetX+"px",top:targetY+"px",width:target.width+"px",height:target.height+"px",transform:"translate(-50%,-50%)",opacity:1}
+  ],{duration:1100,easing:"cubic-bezier(.22,.75,.18,1)",fill:"forwards"});
+  motion.onfinish=finish;motion.oncancel=finish;
  };
- Promise.all([
-   waitForImage("assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp"),
-   waitForImage("assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"),
-   waitForVideo()
- ]).then(reveal);
- setTimeout(reveal,9000);
+ Promise.all([waitForImage("assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp"),waitForImage("assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"),waitForVideo()]).then(revealIntro);
+ setTimeout(revealIntro,9000);
+ window.addEventListener("scroll",()=>{if(window.scrollY>24)dockLogo()},{passive:true});
 }
 function initStore(){
  const grid=document.getElementById("productGrid");if(!grid)return;
