@@ -8,6 +8,28 @@ const resetPageToIntro=()=>{
 resetPageToIntro();
 window.addEventListener("pageshow",resetPageToIntro);
 window.addEventListener("load",resetPageToIntro,{once:true});
+
+/* Storefront language system — default English, toggle to Indonesian. */
+const LANGUAGE_KEY="saltdepartment.language.v1";
+const translations={
+ en:{navShop:"SHOP ALL",navAbout:"THE DEPARTMENT",navManage:"MANAGE ↗",heroEyebrow:"CURATED PRELOVED BOARDSHORTS / DROP 001",heroTitle:"FOUND<br>BY THE<br><em>TIDE.</em>",heroSub:"Good boardshorts deserve another session.",heroCta:"ENTER THE DEPARTMENT",scrollDiscover:"SCROLL TO DISCOVER ↓",rotationEyebrow:"01 / THE ROTATION",shopTitle:"SHOP THE<br><em>FINDS.</em>",piecesInRotation:"PIECES IN ROTATION",search:"SEARCH",searchPlaceholder:"Brand or product name",brand:"BRAND",allBrands:"ALL BRANDS",size:"SIZE",priceRange:"PRICE RANGE (IDR)",from:"FROM",to:"TO",resetFilters:"RESET FILTERS ↺",emptyState:"NO PIECES MATCH. TRY ANOTHER SEARCH.",manifestoLabel:"02 / THE DEPARTMENT",manifestoEyebrow:"PRE-OWNED. RE-SELECTED.",manifestoTitle:"GOOD GEAR.<br>ANOTHER <em>RUN.</em>",manifestoCopy:"One-off preloved boardshorts, individually checked and documented. Every piece has its own story, condition and fit — no duplicates promised.",manifestoSide:"FOUND, NOT MADE.<br>WORN, NOT WASTED.",oneOff:"ONE-OFF PIECE",preloved:"PRELOVED",conditions:{Excellent:"Excellent", "Very Good":"Very Good",Good:"Good",Fair:"Fair"},searchBrands:"Brand or product name"},
+ id:{navShop:"LIHAT SEMUA",navAbout:"TENTANG KAMI",navManage:"KELOLA ↗",heroEyebrow:"BOARDSHORT PRELOVED PILIHAN / DROP 001",heroTitle:"DITEMUKAN<br>OLEH<br><em>OMBAK.</em>",heroSub:"Boardshort berkualitas layak menemani sesi berikutnya.",heroCta:"MASUK KE DEPARTEMEN",scrollDiscover:"GULIR UNTUK MENJELAJAH ↓",rotationEyebrow:"01 / KOLEKSI PILIHAN",shopTitle:"TEMUKAN<br><em>PILIHAN.</em>",piecesInRotation:"PRODUK TERSEDIA",search:"CARI",searchPlaceholder:"Nama brand atau produk",brand:"MEREK",allBrands:"SEMUA MEREK",size:"UKURAN",priceRange:"RENTANG HARGA (IDR)",from:"DARI",to:"HINGGA",resetFilters:"ATUR ULANG FILTER ↺",emptyState:"PRODUK TIDAK DITEMUKAN. COBA PENCARIAN LAIN.",manifestoLabel:"02 / TENTANG KAMI",manifestoEyebrow:"PRELOVED. DIPILIH KEMBALI.",manifestoTitle:"PERLENGKAPAN TERPILIH.<br>SIAP UNTUK <em>BERAKSI.</em>",manifestoCopy:"Boardshort preloved pilihan yang diperiksa dan didokumentasikan satu per satu. Setiap produk punya cerita, kondisi, dan ukuran tersendiri — tanpa menjanjikan stok duplikat.",manifestoSide:"DITEMUKAN, BUKAN DIPRODUKSI.<br>PERNAH DIPAKAI, BUKAN TERBUANG.",oneOff:"PRODUK UNIK",preloved:"PRELOVED",conditions:{Excellent:"Sangat Baik","Very Good":"Baik Sekali",Good:"Baik",Fair:"Cukup"},searchBrands:"Nama merek atau produk"}
+};
+let currentLanguage=localStorage.getItem(LANGUAGE_KEY)==="id"?"id":"en";
+function t(key){return translations[currentLanguage][key]??translations.en[key]??key}
+function applyLanguage(){
+ document.documentElement.lang=currentLanguage;
+ document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+ document.querySelectorAll("[data-i18n-html]").forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));
+ document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>el.placeholder=t(el.dataset.i18nPlaceholder));
+ const toggle=document.getElementById("languageToggle");
+ if(toggle){toggle.textContent=currentLanguage.toUpperCase();toggle.setAttribute("aria-pressed",String(currentLanguage==="id"));toggle.setAttribute("aria-label",currentLanguage==="en"?"Switch language to Indonesian":"Ganti bahasa ke Inggris")}
+ document.title=currentLanguage==="en"?"SALT DEPARTMENT — Preloved Boardshorts":"SALT DEPARTMENT — Boardshort Preloved";
+ document.querySelectorAll("#brandFilter option[value='']").forEach(o=>o.textContent=t("allBrands"));
+ if(typeof window.renderStoreProducts==="function")window.renderStoreProducts();
+}
+function setLanguage(lang){currentLanguage=lang==="id"?"id":"en";localStorage.setItem(LANGUAGE_KEY,currentLanguage);applyLanguage()}
+
 const STORE_KEY="saltdepartment.products.v1";
 const seed=[
 {id:"SD-001",brand:"Quiksilver",size:"L",price:185000,condition:"Good",title:"Quiksilver Tribal Boardshort",status:"available",image:"",createdAt:"2026-11-06"},
@@ -83,10 +105,11 @@ function initStore(){
  const grid=document.getElementById("productGrid");if(!grid)return;
  const search=document.getElementById("searchInput"),brand=document.getElementById("brandFilter"),size=document.getElementById("sizeFilter"),min=document.getElementById("minPrice"),max=document.getElementById("maxPrice"),count=document.getElementById("resultCount"),empty=document.getElementById("emptyState");
  let products=readProducts();
- const populateBrands=()=>{const val=brand.value;brand.innerHTML='<option value="">ALL BRANDS</option>'+[...new Set(products.map(p=>p.brand).filter(Boolean))].sort().map(b=>'<option>'+safe(b)+'</option>').join("");brand.value=val};
+ const populateBrands=()=>{const val=brand.value;brand.innerHTML='<option value="">'+safe(t("allBrands"))+'</option>'+[...new Set(products.map(p=>p.brand).filter(Boolean))].sort().map(b=>'<option>'+safe(b)+'</option>').join("");brand.value=val};
  const render=()=>{const q=search.value.trim().toLowerCase();const shown=products.filter(p=>p.status!=="sold"&&(!q||[p.title,p.brand,p.id].join(" ").toLowerCase().includes(q))&&(!brand.value||p.brand===brand.value)&&(!size.value||p.size===size.value)&&(!min.value||Number(p.price)>=Number(min.value))&&(!max.value||Number(p.price)<=Number(max.value)));
- count.textContent=shown.length;empty.hidden=shown.length!==0;grid.innerHTML=shown.map(p=>'<article class="product-card"><div class="product-image">'+(p.image?'<img loading="lazy" src="'+safe(p.image)+'" alt="'+safe(p.title)+'">':'<div class="image-placeholder">SALT<br>DEPT.</div>')+'<span class="product-tag">'+safe(p.condition||"PRELOVED")+'</span></div><div class="product-info"><div class="product-topline"><span>'+safe(p.brand)+'</span><span>'+safe(p.size)+'</span></div><h3>'+safe(p.title)+'</h3><div class="product-price">'+money(p.price)+'</div><div class="product-condition">ONE-OFF PIECE · '+safe(p.id)+'</div></div></article>').join("");};
+ count.textContent=shown.length;empty.hidden=shown.length!==0;grid.innerHTML=shown.map(p=>'<article class="product-card"><div class="product-image">'+(p.image?'<img loading="lazy" src="'+safe(p.image)+'" alt="'+safe(p.title)+'">':'<div class="image-placeholder">SALT<br>DEPT.</div>')+'<span class="product-tag">'+safe(translations[currentLanguage].conditions[p.condition]||p.condition||t("preloved"))+'</span></div><div class="product-info"><div class="product-topline"><span>'+safe(p.brand)+'</span><span>'+safe(p.size)+'</span></div><h3>'+safe(p.title)+'</h3><div class="product-price">'+money(p.price)+'</div><div class="product-condition">'+safe(t("oneOff"))+' · '+safe(p.id)+'</div></div></article>').join("");};
+ window.renderStoreProducts=render;
  populateBrands();render();[search,brand,size,min,max].forEach(el=>el.addEventListener("input",render));document.getElementById("resetFilters")?.addEventListener("click",()=>{[search,brand,size,min,max].forEach(el=>el.value="");render()});
 }
-function initMenu(){const b=document.querySelector(".menu-toggle"),n=document.querySelector(".main-nav");if(b&&n)b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",String(o));});if(n)n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b?.setAttribute("aria-expanded","false")}));}
+function initMenu(){const languageButton=document.getElementById("languageToggle");languageButton?.addEventListener("click",()=>setLanguage(currentLanguage==="en"?"id":"en"));applyLanguage();const b=document.querySelector(".menu-toggle"),n=document.querySelector(".main-nav");if(b&&n)b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",String(o));});if(n)n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b?.setAttribute("aria-expanded","false")}));}
 initIntro();initStore();initMenu();
