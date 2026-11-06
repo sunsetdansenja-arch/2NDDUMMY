@@ -30,6 +30,7 @@ function initIntro(){
  const updateScrollState=()=>{
   if(!ready)return;
   const progress=clamp(window.scrollY/transitionDistance);
+  document.body.classList.toggle("logo-morphing",progress>0&&progress<.999);
   if(!introLogo.dataset.startRect){const r=introLogo.getBoundingClientRect();introLogo.dataset.startRect=JSON.stringify({left:r.left,top:r.top,width:r.width,height:r.height})}
   const origin=JSON.parse(introLogo.dataset.startRect),target=headerLogo.getBoundingClientRect();
   const mix=(a,b,t)=>a+(b-a)*t;
