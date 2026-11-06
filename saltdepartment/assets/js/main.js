@@ -21,11 +21,34 @@ const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"
 function initIntro(){
  const pre=document.getElementById("preloader"),sequence=document.getElementById("introSequence"),introLogo=document.getElementById("introWordmark"),headerLogo=document.getElementById("headerWordmark"),video=document.querySelector(".site-background-video");
  if(!pre||!sequence||!introLogo||!headerLogo)return;
- const waitForImage=src=>new Promise(resolve=>{const image=new Image();image.onload=resolve;image.onerror=resolve;image.src=src});
- const waitForVideo=()=>new Promise(resolve=>{if(!video||video.readyState>=2){resolve();return}const done=()=>resolve();video.addEventListener("loadeddata",done,{once:true});video.addEventListener("error",done,{once:true});setTimeout(done,6500)});
+ const waitForImage=src=>new Promise(resolve=>{
+  const image=new Image();
+  const done=()=>resolve();
+  image.onload=done;image.onerror=done;image.src=src;
+  if(image.complete)done();
+ });
+ const waitForVideo=()=>new Promise(resolve=>{
+  if(!video||video.readyState>=2){resolve();return}
+  video.addEventListener("loadeddata",resolve,{once:true});
+  video.addEventListener("error",resolve,{once:true});
+ });
+ const waitForFonts=()=>document.fonts?.ready||Promise.resolve();
  let ready=false,raf=0;
  const transitionDistance=180;
- const revealIntro=()=>{if(ready)return;ready=true;document.body.classList.remove("is-loading");pre.classList.add("done");setTimeout(()=>pre.remove(),500);sequence.classList.add("active");introLogo.classList.add("centered");introLogo.style.opacity="1";updateScrollState()};
+ const revealIntro=()=>{
+  if(ready)return;
+  ready=true;
+  // Prepare the intro behind the preloader before allowing any storefront UI to paint.
+  sequence.classList.add("active");
+  introLogo.classList.add("centered");
+  introLogo.style.opacity="1";
+  updateScrollState();
+  requestAnimationFrame(()=>{
+   document.body.classList.remove("is-loading");
+   pre.classList.add("done");
+   setTimeout(()=>pre.remove(),500);
+  });
+ };
  const clamp=n=>Math.max(0,Math.min(1,n));
  const updateScrollState=()=>{
   if(!ready)return;
@@ -47,8 +70,12 @@ function initIntro(){
   document.body.classList.toggle("site-entered",progress>=.999);
  };
  const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;updateScrollState()})};
- Promise.all([waitForImage("assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp"),waitForImage("assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"),waitForVideo()]).then(revealIntro);
- setTimeout(revealIntro,9000);
+ Promise.all([
+  waitForImage("assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp"),
+  waitForImage("assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"),
+  waitForVideo(),
+  waitForFonts()
+ ]).then(revealIntro);
  window.addEventListener("scroll",onScroll,{passive:true});
  window.addEventListener("resize",()=>{introLogo.dataset.startRect="";if(ready){introLogo.style.left="50%";introLogo.style.top="50%";introLogo.style.width="min(86vw,760px)";introLogo.style.height="min(58vh,420px)";updateScrollState()}},{passive:true});
 }
