@@ -165,3 +165,41 @@ body.site-entered .center-brand img{opacity:1}
   text-align:center;
  }
 }
+
+/* SALT DEPT intro atmosphere: ocean mist, chrome breathing and gentle float */
+.intro-sequence{overflow:hidden}
+.ocean-mist{
+ position:fixed;inset:18% 4% 18%;z-index:0;pointer-events:none;
+ background:
+  radial-gradient(ellipse at 22% 48%,rgba(218,231,232,.13),transparent 42%),
+  radial-gradient(ellipse at 78% 54%,rgba(198,215,217,.11),transparent 45%),
+  radial-gradient(ellipse at 50% 72%,rgba(230,236,235,.08),transparent 38%);
+ filter:blur(28px);opacity:.5;
+ animation:oceanMistDrift 13s ease-in-out infinite alternate;
+}
+@keyframes oceanMistDrift{
+ 0%{transform:translate3d(-2%,1%,0) scale(.96);opacity:.34}
+ 100%{transform:translate3d(2%,-2%,0) scale(1.06);opacity:.62}
+}
+.intro-wordmark{
+ translate:0 0;
+ animation:logoFloat 5.8s ease-in-out infinite,logoBreathing 5s ease-in-out infinite;
+}
+@keyframes logoFloat{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@keyframes logoBreathing{
+ 0%,100%{filter:grayscale(1) drop-shadow(0 0 5px rgba(225,238,239,.12)) drop-shadow(0 0 15px rgba(225,238,239,.06))}
+ 50%{filter:grayscale(1) drop-shadow(0 0 10px rgba(235,245,246,.3)) drop-shadow(0 0 28px rgba(220,236,238,.16))}
+}
+body.logo-morphing .intro-wordmark{
+ animation:chromeSweepFlash .9s ease-out both;
+}
+@keyframes chromeSweepFlash{
+ 0%{filter:grayscale(1) brightness(1) drop-shadow(0 0 0 rgba(255,255,255,0))}
+ 38%{filter:grayscale(1) brightness(1.55) drop-shadow(0 0 18px rgba(255,255,255,.8))}
+ 100%{filter:grayscale(1) brightness(1.08) drop-shadow(0 0 4px rgba(255,255,255,.16))}
+}
+body.site-entered .ocean-mist{opacity:0;visibility:hidden}
+@media(prefers-reduced-motion:reduce){
+ .ocean-mist,.intro-wordmark{animation:none!important}
+ body.logo-morphing .intro-wordmark{animation:none!important}
+}
