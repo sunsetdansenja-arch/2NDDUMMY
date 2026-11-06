@@ -65,3 +65,50 @@ body.site-entered .center-brand img{opacity:1}
  .center-brand{width:min(190px,48vw);height:38px}
  .outline-menu{width:38px;height:38px}
 }
+
+/* Full-width pill dock with a soft content mask below its lower edge */
+.header-tray{
+ left:5vw;
+ right:5vw;
+ width:90vw;
+ height:64px;
+ padding:6px 10px;
+ border-radius:999px;
+ justify-content:center;
+ gap:0;
+}
+.header-tray::after{
+ content:"";
+ position:absolute;
+ left:-1px;
+ right:-1px;
+ top:calc(100% - 1px);
+ height:20px;
+ pointer-events:none;
+ background:linear-gradient(to bottom,rgba(22,24,24,.22),rgba(22,24,24,.08) 42%,transparent);
+ backdrop-filter:blur(7px);
+ -webkit-backdrop-filter:blur(7px);
+ -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.72) 42%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.72) 42%,transparent 100%);
+}
+.center-brand{
+ position:absolute;
+ left:50%;
+ top:50%;
+ transform:translate(-50%,-50%);
+ width:min(220px,48vw);
+ height:42px;
+}
+.outline-menu{
+ position:absolute;
+ right:7px;
+ top:50%;
+ transform:translateY(-50%);
+}
+.intro-labels{align-items:center;text-align:center}
+@media(max-width:760px){
+ .header-tray{left:5vw;right:5vw;width:90vw;height:58px;padding:5px 8px;border-radius:999px}
+ .center-brand{width:min(190px,48vw);height:38px}
+ .outline-menu{right:6px;width:38px;height:38px}
+ .header-tray::after{height:18px}
+}
