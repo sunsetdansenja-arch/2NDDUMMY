@@ -112,3 +112,22 @@ body.site-entered .center-brand img{opacity:1}
  .outline-menu{right:6px;width:38px;height:38px}
  .header-tray::after{height:18px}
 }
+
+/* Harmonize the menu control with the full-width capsule tray */
+.header-tray .outline-menu{
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ padding:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+@media(max-width:760px){
+ .header-tray .outline-menu{width:38px;height:38px;border-radius:50%}
+}
+/* Give the first content panel breathing room beneath the dock/mask */
+.hero-store{padding-top:clamp(170px,19vh,220px)}
+@media(max-width:760px){
+ .hero-store{padding-top:calc(170px + env(safe-area-inset-top))}
+}
