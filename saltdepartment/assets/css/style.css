@@ -275,3 +275,21 @@ body:not(.is-loading) .intro-sequence.active{visibility:visible}
 }
 .header-tray .language-toggle:active{background:rgba(255,255,255,.18)}
 @media(max-width:760px){.header-tray .language-toggle{left:6px;width:38px;height:38px;font-size:9px}}
+
+/* Header controls must receive taps above the fixed header's pointer-event layer. */
+.header-tray .language-toggle,
+.header-tray .outline-menu{pointer-events:auto!important;touch-action:manipulation}
+.header-tray .language-toggle{rotate:0deg}
+.header-tray .outline-menu{rotate:0deg}
+.header-tray .language-toggle.is-spinning,
+.header-tray .outline-menu.is-spinning{
+ animation:headerControlSpin .58s cubic-bezier(.2,.72,.28,1) both;
+}
+@keyframes headerControlSpin{
+ from{rotate:0deg}
+ to{rotate:1800deg}
+}
+@media(prefers-reduced-motion:reduce){
+ .header-tray .language-toggle.is-spinning,
+ .header-tray .outline-menu.is-spinning{animation:none!important}
+}
