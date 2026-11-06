@@ -293,3 +293,48 @@ body:not(.is-loading) .intro-sequence.active{visibility:visible}
  .header-tray .language-toggle.is-spinning,
  .header-tray .outline-menu.is-spinning{animation:none!important}
 }
+
+
+/* Language change: soft text morph followed by a section-by-section reveal. */
+.language-text{transition:opacity .13s ease,filter .13s ease,transform .13s ease}
+body.language-changing .language-text{opacity:0!important;filter:blur(5px);transform:translateY(5px)}
+body.language-revealing [data-i18n],
+body.language-revealing [data-i18n-html],
+body.language-revealing [data-i18n-placeholder]{
+ animation:languageTextReveal .38s cubic-bezier(.2,.7,.2,1) both;
+ animation-delay:var(--language-delay,0ms)
+}
+body.language-revealing .hero-content [data-i18n],
+body.language-revealing .hero-content [data-i18n-html]{--language-delay:30ms}
+body.language-revealing .hero-meta [data-i18n]{--language-delay:70ms}
+body.language-revealing .shop-shell [data-i18n],
+body.language-revealing .shop-shell [data-i18n-html],
+body.language-revealing .shop-shell [data-i18n-placeholder]{--language-delay:130ms}
+body.language-revealing .manifesto-shell [data-i18n],
+body.language-revealing .manifesto-shell [data-i18n-html]{--language-delay:210ms}
+body.language-revealing .site-footer{animation:languageTextReveal .38s 280ms cubic-bezier(.2,.7,.2,1) both}
+body.language-revealing .product-card{animation:languageTextReveal .38s calc(150ms + (var(--card-index,0) * 45ms)) cubic-bezier(.2,.7,.2,1) both}
+@keyframes languageTextReveal{
+ from{opacity:0;filter:blur(5px);transform:translateY(7px)}
+ to{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+
+/* Coin-flip controls rotate on the horizontal X axis without leaving their pivot. */
+.header-tray .language-toggle.is-spinning,
+.header-tray .outline-menu.is-spinning{
+ animation:headerControlCoinFlip .68s cubic-bezier(.25,.72,.25,1) both;
+ transform-style:preserve-3d
+}
+@keyframes headerControlCoinFlip{
+ from{transform:translateY(-50%) rotateX(0deg)}
+ to{transform:translateY(-50%) rotateX(1800deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ body.language-revealing [data-i18n],
+ body.language-revealing [data-i18n-html],
+ body.language-revealing [data-i18n-placeholder],
+ body.language-revealing .site-footer,
+ body.language-revealing .product-card,
+ .header-tray .language-toggle.is-spinning,
+ .header-tray .outline-menu.is-spinning{animation:none!important}
+}
