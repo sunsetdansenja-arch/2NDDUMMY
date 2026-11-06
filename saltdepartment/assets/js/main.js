@@ -28,7 +28,29 @@ function applyLanguage(){
  document.querySelectorAll("#brandFilter option[value='']").forEach(o=>o.textContent=t("allBrands"));
  if(typeof window.renderStoreProducts==="function")window.renderStoreProducts();
 }
-function setLanguage(lang){currentLanguage=lang==="id"?"id":"en";localStorage.setItem(LANGUAGE_KEY,currentLanguage);applyLanguage()}
+function setLanguage(lang){
+ const nextLanguage=lang==="id"?"id":"en";
+ if(nextLanguage===currentLanguage)return;
+ const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const translated=document.querySelectorAll("[data-i18n],[data-i18n-html],[data-i18n-placeholder]");
+ if(reduceMotion){currentLanguage=nextLanguage;localStorage.setItem(LANGUAGE_KEY,currentLanguage);applyLanguage();return}
+ document.body.classList.remove("language-revealing");
+ document.body.classList.add("language-changing");
+ translated.forEach(el=>el.classList.add("language-text"));
+ window.setTimeout(()=>{
+  currentLanguage=nextLanguage;
+  localStorage.setItem(LANGUAGE_KEY,currentLanguage);
+  applyLanguage();
+  document.body.classList.remove("language-changing");
+  document.body.classList.add("language-revealing");
+  window.requestAnimationFrame(()=>{
+   window.requestAnimationFrame(()=>{
+    document.body.classList.remove("language-revealing");
+    translated.forEach(el=>el.classList.remove("language-text"));
+   });
+  });
+ },130);
+}
 
 const STORE_KEY="saltdepartment.products.v1";
 const seed=[
