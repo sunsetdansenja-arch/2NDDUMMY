@@ -15,24 +15,24 @@ body:not(.site-entered) .site-header{pointer-events:none}
 body:not(.site-entered) .center-brand,
 body:not(.site-entered) .outline-menu,
 body:not(.site-entered) .main-nav{opacity:0;visibility:hidden}
-body:not(.site-entered) main,
-body:not(.site-entered) .site-footer{visibility:hidden}
+body:not(.site-revealed) main,
+body:not(.site-revealed) .site-footer{visibility:hidden}
 body.site-entered .site-header{pointer-events:none}
 body.site-entered .center-brand,
 body.site-entered .outline-menu{pointer-events:auto}
 body.site-entered .main-nav{pointer-events:auto}
-body.site-entered main,
-body.site-entered .site-footer{visibility:visible}
+body.site-revealed main,
+body.site-revealed .site-footer{visibility:visible}
 body:not(.site-entered) .intro-sequence{visibility:visible}
 body:not(.site-entered) .intro-wordmark{opacity:1}
 body.site-entered .intro-sequence{visibility:hidden}
-body.site-entered .hero-content{animation:storeReveal .85s cubic-bezier(.2,.7,.2,1) both}
-body.site-entered .hero-meta{animation:storeReveal .85s .18s both}
-body.site-entered .shop-shell{animation:storeReveal .85s .12s both}
-body.site-entered .manifesto-shell{animation:storeReveal .85s .18s both}
-body.site-entered .site-footer{animation:storeReveal .85s .24s both}
+body.site-revealed .hero-content{animation:storeReveal .85s cubic-bezier(.2,.7,.2,1) both}
+body.site-revealed .hero-meta{animation:storeReveal .85s .18s both}
+body.site-revealed .shop-shell{animation:storeReveal .85s .12s both}
+body.site-revealed .manifesto-shell{animation:storeReveal .85s .18s both}
+body.site-revealed .site-footer{animation:storeReveal .85s .24s both}
 @keyframes storeReveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){body.site-entered .hero-content,body.site-entered .hero-meta,body.site-entered .shop-shell,body.site-entered .manifesto-shell,body.site-entered .site-footer{animation:none}}
+@media(prefers-reduced-motion:reduce){body.site-revealed .hero-content,body.site-revealed .hero-meta,body.site-revealed .shop-shell,body.site-revealed .manifesto-shell,body.site-revealed .site-footer{animation:none}}
 
 /* Top-of-page display state: oversized centered wordmark only */
 body:not(.site-entered) .intro-wordmark{width:min(86vw,760px);height:min(58vh,420px)}
