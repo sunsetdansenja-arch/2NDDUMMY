@@ -45,3 +45,23 @@ body.site-entered .center-brand{width:min(220px,38vw);height:48px;transition:wid
 .outline-menu span{width:4px;height:4px;border-radius:50%;background:#fff;transform:none!important;opacity:1!important;transition:background .2s}
 body.site-entered .outline-menu{opacity:1;visibility:visible}
 .outline-menu[aria-expanded=true] span{background:#c8cecc}
+
+/* Intro prompts frame the oversized wordmark */
+.intro-labels{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:calc(18vh + env(safe-area-inset-top)) 20px calc(16vh + env(safe-area-inset-bottom));font:10px var(--mono);letter-spacing:.28em;color:rgba(255,255,255,.88);transition:opacity .12s linear;pointer-events:none}
+.intro-welcome{font-size:11px;letter-spacing:.34em}
+.intro-scroll{display:flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.22em}
+.intro-scroll b{font:16px var(--body);font-weight:400}
+.header-tray{position:absolute;right:5vw;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px;padding:7px 8px 7px 15px;border:1px solid rgba(245,247,246,.62);border-radius:19px;background:rgba(40,43,43,.28);backdrop-filter:blur(18px) saturate(.75);-webkit-backdrop-filter:blur(18px) saturate(.75);box-shadow:0 8px 28px rgba(0,0,0,.18);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.center-brand{position:relative;left:auto;top:auto;transform:none;width:min(270px,38vw);height:48px;flex:none}
+.outline-menu{position:relative;right:auto;top:auto;transform:none;width:44px;height:44px;flex:none;border-radius:13px;background:rgba(255,255,255,.035)}
+body.site-entered .header-tray{opacity:1;visibility:visible}
+body.site-entered .site-header{opacity:1;visibility:visible}
+body.site-entered .center-brand,body.site-entered .outline-menu{opacity:1;visibility:visible}
+body.site-entered .center-brand img{opacity:1}
+@media(max-width:760px){
+ .intro-labels{padding:calc(17vh + env(safe-area-inset-top)) 16px calc(15vh + env(safe-area-inset-bottom))}
+ .intro-welcome{font-size:10px}
+ .header-tray{right:5vw;gap:8px;padding:5px 6px 5px 11px;border-radius:16px}
+ .center-brand{width:min(190px,48vw);height:38px}
+ .outline-menu{width:38px;height:38px}
+}
