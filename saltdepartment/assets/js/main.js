@@ -43,12 +43,10 @@ function setLanguage(lang){
   applyLanguage();
   document.body.classList.remove("language-changing");
   document.body.classList.add("language-revealing");
-  window.requestAnimationFrame(()=>{
-   window.requestAnimationFrame(()=>{
-    document.body.classList.remove("language-revealing");
-    translated.forEach(el=>el.classList.remove("language-text"));
-   });
-  });
+  window.setTimeout(()=>{
+   document.body.classList.remove("language-revealing");
+   translated.forEach(el=>el.classList.remove("language-text"));
+  },750);
  },130);
 }
 
