@@ -131,3 +131,11 @@ body.site-entered .center-brand img{opacity:1}
 @media(max-width:760px){
  .hero-store{padding-top:calc(170px + env(safe-area-inset-top))}
 }
+
+/* Keep the first hero eyebrow clearly below the dock tray after the morph. */
+@media(max-width:760px){
+ .hero-store{
+  align-items:flex-start;
+  padding-top:calc(170px + env(safe-area-inset-top));
+ }
+}
