@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080808"><meta name="description" content="SALT DEPARTMENT — curated preloved boardshorts. One-off surfwear pieces, checked and ready for another session.">
@@ -18,29 +18,29 @@
 <video class="site-background-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/brand/Ocean_wave_crashing_with_lightning_3cdf0754.webm" type="video/webm"></video>
 <div class="site-background-shade" aria-hidden="true"></div>
 <header class="site-header" id="siteHeader">
-<div class="header-tray"><a class="center-brand" id="headerBrand" href="#top" aria-label="SALT DEPARTMENT home"><img id="headerWordmark" src="assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp" alt="SALT DEPARTMENT"></a>
+<div class="header-tray"><button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language to Indonesian" aria-pressed="false">EN</button><a class="center-brand" id="headerBrand" href="#top" aria-label="SALT DEPARTMENT home"><img id="headerWordmark" src="assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp" alt="SALT DEPARTMENT"></a>
 <button class="menu-toggle outline-menu" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button></div>
-<nav class="main-nav"><a href="#shop">SHOP ALL</a><a href="#about">THE DEPARTMENT</a><a href="admin.html">MANAGE ↗</a></nav>
+<nav class="main-nav"><a href="#shop" data-i18n="navShop">SHOP ALL</a><a href="#about" data-i18n="navAbout">THE DEPARTMENT</a><a href="admin.html" data-i18n="navManage">MANAGE ↗</a></nav>
 </header>
 <main id="top">
 <section class="hero-store">
-<div class="glass-panel hero-content"><p class="eyebrow">CURATED PRELOVED BOARDshorts / DROP 001</p><h1>FOUND<br>BY THE<br><em>TIDE.</em></h1><p class="hero-sub">Good boardshorts deserve another session.</p><a class="hero-cta" href="#shop">ENTER THE DEPARTMENT <span>↘</span></a></div>
-<div class="hero-meta"><span>ONE PIECE. ONE OWNER.</span><span>SCROLL TO DISCOVER ↓</span><span>01 / 03</span></div>
+<div class="glass-panel hero-content"><p class="eyebrow" data-i18n="heroEyebrow">CURATED PRELOVED BOARDSHORTS / DROP 001</p><h1 data-i18n-html="heroTitle">FOUND<br>BY THE<br><em>TIDE.</em></h1><p class="hero-sub" data-i18n="heroSub">Good boardshorts deserve another session.</p><a class="hero-cta" href="#shop"><span data-i18n="heroCta">ENTER THE DEPARTMENT</span> <span>↘</span></a></div>
+<div class="hero-meta"><span>ONE PIECE. ONE OWNER.</span><span data-i18n="scrollDiscover">SCROLL TO DISCOVER ↓</span><span>01 / 03</span></div>
 </section>
 <section class="shop section-pad" id="shop">
 <div class="glass-panel shop-shell">
-<div class="shop-head"><div><p class="eyebrow">01 / THE ROTATION</p><h2>SHOP THE<br><em>FINDS.</em></h2></div><div class="stock-count"><b id="resultCount">0</b><span>PIECES IN ROTATION</span></div></div>
+<div class="shop-head"><div><p class="eyebrow" data-i18n="rotationEyebrow">01 / THE ROTATION</p><h2 data-i18n-html="shopTitle">SHOP THE<br><em>FINDS.</em></h2></div><div class="stock-count"><b id="resultCount">0</b><span data-i18n="piecesInRotation">PIECES IN ROTATION</span></div></div>
 <div class="filter-panel">
-<label>SEARCH<input id="searchInput" type="search" placeholder="Brand or product name"></label>
-<label>BRAND<select id="brandFilter"><option value="">ALL BRANDS</option></select></label>
-<label>SIZE<select id="sizeFilter"><option value="">ALL SIZES</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select></label>
-<div class="price-filter"><span>PRICE RANGE (IDR)</span><div><input id="minPrice" type="number" min="0" placeholder="FROM"><i>—</i><input id="maxPrice" type="number" min="0" placeholder="TO"></div></div>
-<button class="filter-reset" id="resetFilters">RESET FILTERS ↺</button>
+<label><span data-i18n="search">SEARCH</span><input id="searchInput" type="search" placeholder="Brand or product name" data-i18n-placeholder="searchPlaceholder"></label>
+<label><span data-i18n="brand">BRAND</span><select id="brandFilter"><option value="" data-i18n="allBrands">ALL BRANDS</option></select></label>
+<label><span data-i18n="size">SIZE</span><select id="sizeFilter"><option value="">ALL SIZES</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select></label>
+<div class="price-filter"><span data-i18n="priceRange">PRICE RANGE (IDR)</span><div><input id="minPrice" type="number" min="0" placeholder="FROM" data-i18n-placeholder="from"><i>—</i><input id="maxPrice" type="number" min="0" placeholder="TO" data-i18n-placeholder="to"></div></div>
+<button class="filter-reset" id="resetFilters" data-i18n="resetFilters">RESET FILTERS ↺</button>
 </div>
-<div class="product-grid" id="productGrid" aria-live="polite"></div><p class="empty-state" id="emptyState" hidden>NO PIECES MATCH. TRY ANOTHER SEARCH.</p>
+<div class="product-grid" id="productGrid" aria-live="polite"></div><p class="empty-state" id="emptyState" hidden data-i18n="emptyState">NO PIECES MATCH. TRY ANOTHER SEARCH.</p>
 </div>
 </section>
-<section class="manifesto section-pad" id="about"><div class="glass-panel manifesto-shell"><div class="manifesto-label">02 / THE DEPARTMENT</div><div class="manifesto-content"><p class="eyebrow">PRE-OWNED. RE-SELECTED.</p><h2>GOOD GEAR.<br>ANOTHER <em>RUN.</em></h2><p>One-off preloved boardshorts, individually checked and documented. Every piece has its own story, condition and fit — no duplicates promised.</p></div><div class="manifesto-side">FOUND, NOT MADE.<br>WORN, NOT WASTED.</div></div></section>
+<section class="manifesto section-pad" id="about"><div class="glass-panel manifesto-shell"><div class="manifesto-label" data-i18n="manifestoLabel">02 / THE DEPARTMENT</div><div class="manifesto-content"><p class="eyebrow" data-i18n="manifestoEyebrow">PRE-OWNED. RE-SELECTED.</p><h2 data-i18n-html="manifestoTitle">GOOD GEAR.<br>ANOTHER <em>RUN.</em></h2><p data-i18n="manifestoCopy">One-off preloved boardshorts, individually checked and documented. Every piece has its own story, condition and fit — no duplicates promised.</p></div><div class="manifesto-side" data-i18n-html="manifestoSide">FOUND, NOT MADE.<br>WORN, NOT WASTED.</div></div></section>
 </main>
 <footer class="site-footer"><span>SALT DEPARTMENT / ASIA</span><span>INDEPENDENTLY CURATED</span><span>© 2026</span></footer>
 <script src="assets/js/main.js"></script>
