@@ -31,7 +31,7 @@ function initIntro(){
   introLogo.style.transform="translate(-50%,-50%)";
   introLogo.style.opacity=String(1-clamp((progress-.88)/.12));
   headerLogo.style.opacity=String(progress);
-  document.body.classList.toggle("site-revealed",window.scrollY>24);
+  document.body.classList.toggle("site-revealed",progress>=.999);
   document.body.classList.toggle("site-entered",progress>=.999);
  };
  const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;updateScrollState()})};
