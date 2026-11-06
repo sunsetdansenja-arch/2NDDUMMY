@@ -9,17 +9,58 @@ const writeProducts=items=>localStorage.setItem(STORE_KEY,JSON.stringify(items))
 const money=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function initIntro(){
- const pre=document.getElementById("preloader"),seq=document.getElementById("introSequence"),tent=seq?.querySelector(".intro-tentacle"),word=seq?.querySelector(".intro-wordmark");
- if(!pre||!seq)return;
- const assetUrls=["assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp","assets/brand/Chrome%20Tentacle%20Eye%20Emblem.webp","assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"];
- let done=false;const finish=()=>{if(done)return;done=true;pre.classList.add("done");document.body.classList.remove("is-loading");setTimeout(()=>pre.remove(),500);};
- Promise.all(assetUrls.map(src=>new Promise(resolve=>{const im=new Image();im.onload=resolve;im.onerror=resolve;im.src=src}))).then(()=>{
- setTimeout(()=>{finish();seq.classList.add("active");tent.classList.add("show");
- setTimeout(()=>{tent.classList.remove("show");tent.classList.add("flip");word.classList.add("show");
- setTimeout(()=>{word.classList.add("to-header");setTimeout(()=>{seq.remove()},900)},1000)},1000);
- },250);
+ const pre=document.getElementById("preloader");
+ const sequence=document.getElementById("introSequence");
+ const introLogo=document.getElementById("introWordmark");
+ const headerLogo=document.getElementById("headerWordmark");
+ const headerLink=document.getElementById("headerBrand");
+ const video=document.querySelector(".site-background-video");
+ if(!pre||!sequence||!introLogo||!headerLogo||!headerLink)return;
+ const waitForImage=src=>new Promise(resolve=>{const image=new Image();image.onload=resolve;image.onerror=resolve;image.src=src});
+ const waitForVideo=()=>new Promise(resolve=>{
+   if(!video||video.readyState>=2){resolve();return}
+   const done=()=>resolve();
+   video.addEventListener("loadeddata",done,{once:true});
+   video.addEventListener("error",done,{once:true});
+   setTimeout(done,6500);
  });
- setTimeout(finish,12000);
+ let finished=false;
+ const reveal=()=>{
+   if(finished)return;
+   finished=true;
+   document.body.classList.remove("is-loading");
+   pre.classList.add("done");
+   setTimeout(()=>pre.remove(),500);
+   sequence.classList.add("active");
+   introLogo.classList.add("centered");
+   setTimeout(()=>{
+     const target=headerLogo.getBoundingClientRect();
+     const targetX=target.left+target.width/2;
+     const targetY=target.top+target.height/2;
+     const startWidth=Math.min(window.innerWidth*.78,480);
+     const startHeight=Math.min(window.innerHeight*.34,220);
+     const motion=introLogo.animate([
+       {left:"50%",top:"50%",width:startWidth+"px",height:startHeight+"px",transform:"translate(-50%,-50%)",opacity:1},
+       {left:targetX+"px",top:targetY+"px",width:target.width+"px",height:target.height+"px",transform:"translate(-50%,-50%)",opacity:1}
+     ],{duration:1050,easing:"cubic-bezier(.22,.75,.18,1)",fill:"forwards"});
+     motion.onfinish=()=>{
+       introLogo.style.opacity="0";
+       headerLogo.style.opacity="1";
+       sequence.remove();
+     };
+     motion.oncancel=()=>{
+       introLogo.style.opacity="0";
+       headerLogo.style.opacity="1";
+       sequence.remove();
+     };
+   },850);
+ };
+ Promise.all([
+   waitForImage("assets/brand/Distressed%20Chrome%20S_D%20Lettering.webp"),
+   waitForImage("assets/brand/Rugged%20Chrome%20SALT%20DEPT%20Text.webp"),
+   waitForVideo()
+ ]).then(reveal);
+ setTimeout(reveal,9000);
 }
 function initStore(){
  const grid=document.getElementById("productGrid");if(!grid)return;
