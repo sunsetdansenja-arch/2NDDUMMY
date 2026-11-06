@@ -338,3 +338,50 @@ body.language-revealing .product-card{animation:languageTextReveal .38s calc(150
  .header-tray .language-toggle.is-spinning,
  .header-tray .outline-menu.is-spinning{animation:none!important}
 }
+
+
+/* Indonesian copy fit: preserve the same composition without oversized text overflow. */
+html[lang="id"] .hero-content{min-width:0;overflow:hidden}
+html[lang="id"] .hero .hero h1,
+html[lang="id"] .hero-content h1{
+ font-size:clamp(48px,13.2vw,104px);
+ line-height:.86;
+ letter-spacing:-.095em;
+ overflow-wrap:normal;
+}
+html[lang="id"] .hero-content .eyebrow{
+ max-width:100%;
+ font-size:clamp(8px,2.15vw,10px);
+ letter-spacing:.09em;
+ line-height:1.55;
+ overflow-wrap:anywhere;
+}
+html[lang="id"] .hero-sub{max-width:34ch;line-height:1.55}
+html[lang="id"] .hero-cta{max-width:100%;gap:14px;letter-spacing:.055em;font-size:9px}
+html[lang="id"] .shop-head{gap:12px;align-items:flex-end}
+html[lang="id"] .shop-head h2{font-size:clamp(48px,12.8vw,86px);letter-spacing:-.09em}
+html[lang="id"] .stock-count{max-width:112px;line-height:1.5}
+html[lang="id"] .filter-panel label,
+html[lang="id"] .price-filter{letter-spacing:.045em}
+html[lang="id"] .filter-reset{font-size:8px;letter-spacing:.045em;white-space:normal;line-height:1.35;padding:8px 10px}
+html[lang="id"] .manifesto-shell{min-width:0}
+html[lang="id"] .manifesto-content{min-width:0}
+html[lang="id"] .manifesto h2{font-size:clamp(43px,11.5vw,78px);line-height:.88;letter-spacing:-.095em;overflow-wrap:anywhere}
+html[lang="id"] .manifesto-content>p:last-child{line-height:1.7;overflow-wrap:anywhere}
+html[lang="id"] .manifesto-side{overflow-wrap:anywhere}
+html[lang="id"] .main-nav a{font-size:9px;letter-spacing:.065em;overflow-wrap:anywhere}
+html[lang="id"] .header-tray .language-toggle{letter-spacing:0}
+
+/* Horizontal coin flip: rotate around the vertical axis, like a coin turning left-to-right. */
+.header-tray .language-toggle.is-spinning{
+ animation:languageCoinFlip .68s cubic-bezier(.25,.72,.25,1) both;
+ transform-style:preserve-3d;
+ backface-visibility:hidden;
+}
+@keyframes languageCoinFlip{
+ from{transform:translateY(-50%) rotateY(0deg)}
+ to{transform:translateY(-50%) rotateY(1800deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ .header-tray .language-toggle.is-spinning{animation:none!important}
+}
