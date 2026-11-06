@@ -9,3 +9,27 @@ main{position:relative;z-index:1}.hero-store{min-height:100svh;padding:150px 7vw
 .manifesto{padding-top:35px;padding-bottom:75px}.manifesto-shell{padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1fr 2fr 1fr;gap:25px}.manifesto-label,.manifesto-side{font:9px/1.7 var(--mono);letter-spacing:.1em}.manifesto-content{max-width:760px}.manifesto-content>p:last-child{max-width:440px;font-size:14px;line-height:1.8;color:#e0e2e1;margin-top:30px}.manifesto-side{align-self:end;justify-self:end;text-align:right}.site-footer{position:relative;z-index:1;min-height:90px;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;font:8px var(--mono);letter-spacing:.1em;color:#f4f5f4;border-top:1px solid rgba(255,255,255,.3);background:rgba(35,38,38,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 @media(max-width:760px){.site-header{height:70px;padding:0 5vw}.center-brand{width:min(220px,54vw);height:48px}.outline-menu{width:42px;height:42px;right:5vw}.main-nav{right:5vw}.hero-store{min-height:100svh;padding:115px 5vw 70px}.hero-content{width:100%;padding:28px 24px;border-radius:18px}.hero h1{font-size:clamp(72px,18vw,130px)}.hero-meta{left:5vw;right:5vw;font-size:7px}.hero-meta span:nth-child(2){display:none}.section-pad{padding:32px 5vw}.shop{padding-top:24px}.shop-shell{padding:20px 15px;border-radius:17px}.shop-head{margin-bottom:24px}.shop-head h2{font-size:clamp(60px,15vw,90px)}.stock-count b{font-size:35px}.filter-panel{grid-template-columns:1fr 1fr;gap:12px;padding:14px 0}.filter-panel label:first-child,.price-filter{grid-column:span 2}.filter-reset{grid-column:span 2}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 9px}.product-info h3{font-size:13px}.product-image{aspect-ratio:.72}.manifesto{padding:20px 5vw 45px}.manifesto-shell{grid-template-columns:1fr;gap:30px;padding:24px 20px;border-radius:17px}.manifesto h2{font-size:clamp(62px,15vw,95px)}.manifesto-side{justify-self:start;text-align:left}.site-footer{padding:24px 5vw;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:7px}.site-footer span:last-child{text-align:right}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Intro hold state: logo only over the fixed WEBM background */
+body:not(.site-entered) .site-header{pointer-events:none}
+body:not(.site-entered) .center-brand,
+body:not(.site-entered) .outline-menu,
+body:not(.site-entered) .main-nav{opacity:0;visibility:hidden}
+body:not(.site-entered) main,
+body:not(.site-entered) .site-footer{visibility:hidden}
+body.site-entered .site-header{pointer-events:none}
+body.site-entered .center-brand,
+body.site-entered .outline-menu{pointer-events:auto}
+body.site-entered .main-nav{pointer-events:auto}
+body.site-entered main,
+body.site-entered .site-footer{visibility:visible}
+body:not(.site-entered) .intro-sequence{visibility:visible}
+body:not(.site-entered) .intro-wordmark{opacity:1}
+body.site-entered .intro-sequence{visibility:hidden}
+body.site-entered .hero-content{animation:storeReveal .85s cubic-bezier(.2,.7,.2,1) both}
+body.site-entered .hero-meta{animation:storeReveal .85s .18s both}
+body.site-entered .shop-shell{animation:storeReveal .85s .12s both}
+body.site-entered .manifesto-shell{animation:storeReveal .85s .18s both}
+body.site-entered .site-footer{animation:storeReveal .85s .24s both}
+@keyframes storeReveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){body.site-entered .hero-content,body.site-entered .hero-meta,body.site-entered .shop-shell,body.site-entered .manifesto-shell,body.site-entered .site-footer{animation:none}}
