@@ -1,32 +1,27 @@
-# SALT DEPARTMENT — Initial Brand System
+# SALT DEPARTMENT — Store & Brand Direction
 
-## Direction
-Clean brutalism, black and white, high contrast, hard edges, editorial typography, restrained utility labels. Avoid gradients, glossy effects and decorative clutter.
+## Brand assets (no SVG)
+Use supplied WEBP artwork only:
+- `assets/brand/Distressed Chrome S_D Lettering.webp` — loading mark and compact header identity.
+- `assets/brand/Chrome Tentacle Eye Emblem.webp` — decorative illustration only.
+- `assets/brand/Rugged Chrome SALT DEPT Text.webp` — intro wordmark and footer.
+- `assets/brand/Ocean_wave_crashing_with_lightning_3cdf0754.webm` — muted loop background video.
 
-## Logo system
-- `assets/brand/salt-department-wordmark.svg` — primary horizontal full wordmark.
-- `assets/brand/salt-department-stacked.svg` — stacked full logo for square/portrait placements.
-- `assets/brand/sd-monogram.svg` — short mark / favicon / avatar.
+Do not use SVG logo files. The clean wordmark artwork is the primary visual signature; tentacle/eye art is not the logo.
 
-## Decorative asset
-The chrome tentacle/eye artwork is an atmospheric decorative graphic only. It is not part of the logo, monogram or official brand signature.
+## Store
+- Mobile-first, single-page public storefront.
+- Filters: keyword, brand, size, min/max price.
+- Items are individual one-off preloved boardshorts with SKU, condition and stock status.
+- Sold items are hidden from public listing.
 
-## Existing supplied artwork
-- `Chrome Tentacle Eye Emblem.webp`
-- `Distressed Chrome S_D Lettering.webp`
-- `Rugged Chrome SALT DEPT Text.webp`
+## Admin prototype
+Open `admin.html` to add/edit/delete products and export/import JSON.
+This current implementation stores data in browser localStorage only. It is not a secure multi-user CMS and does not persist products to GitHub or a server. Production use requires authentication and a database/storage backend.
 
-These remain source artwork. Use sparingly as editorial/decorative accents; do not substitute them for the clean logo system.
-
-## Core palette
-- Paper: #F2F0EB
-- Ink: #111111
-- Secondary gray: #777777
-
-## Typography
-- Display: Archivo Black
-- Body: Space Grotesk
-- Utility labels: DM Mono
-
-## Usage
-Keep clear space around logo. Use the SD monogram when the full name cannot be read comfortably. Do not redraw or stretch logo proportions.
+## Intro sequence
+1. Black loading screen with distressed S/D artwork and “WAVE INCOMING...”.
+2. Preload the three WEBP artworks.
+3. Tentacle artwork for one second.
+4. Horizontal 3D flip transition to SALT DEPT wordmark for one second.
+5. Wordmark exits upward as the sticky compact header is revealed.
