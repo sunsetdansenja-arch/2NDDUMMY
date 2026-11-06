@@ -143,6 +143,25 @@ body.site-entered .center-brand img{opacity:1}
 /* More breathing room between the dock tray and the first hero content */
 @media(max-width:760px){
  .hero-store{
-  padding-top:calc(875px + env(safe-area-inset-top));
+  padding-top:calc(437.5px + env(safe-area-inset-top));
+ }
+}
+
+/* Desktop is intentionally unavailable: storefront experience is mobile-first. */
+@media(min-width:761px){
+ body>*{display:none!important}
+ body::before{
+  content:"PLEASE ACCESS VIA MOBILE";
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#080909;
+  color:#f3f3f1;
+  font:12px var(--mono);
+  letter-spacing:.2em;
+  text-align:center;
  }
 }
