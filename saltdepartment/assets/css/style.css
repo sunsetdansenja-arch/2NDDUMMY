@@ -143,6 +143,6 @@ body.site-entered .center-brand img{opacity:1}
 /* More breathing room between the dock tray and the first hero content */
 @media(max-width:760px){
  .hero-store{
-  padding-top:calc(2000px + env(safe-area-inset-top));
+  padding-top:calc(875px + env(safe-area-inset-top));
  }
 }
