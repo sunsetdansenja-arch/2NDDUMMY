@@ -251,3 +251,13 @@ body.site-entered .ocean-mist{opacity:0;visibility:hidden}
 body.logo-morphing .waterdrop-layer{opacity:0;visibility:hidden;animation:none}
 body.site-entered .waterdrop-layer{opacity:0;visibility:hidden;animation:none}
 @media(prefers-reduced-motion:reduce){.waterdrop-layer{animation:none!important;opacity:0!important}.intro-wordmark{animation:none!important}}
+
+/* Hard loading gate: only the preloader may render before critical assets are ready. */
+body.is-loading .intro-sequence,
+body.is-loading .site-background-video,
+body.is-loading .site-background-shade,
+body.is-loading .site-header,
+body.is-loading main,
+body.is-loading .site-footer{visibility:hidden!important;opacity:0!important}
+body.is-loading .preloader{visibility:visible!important;opacity:1!important}
+body:not(.is-loading) .intro-sequence.active{visibility:visible}
