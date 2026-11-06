@@ -33,3 +33,14 @@ body.site-entered .manifesto-shell{animation:storeReveal .85s .18s both}
 body.site-entered .site-footer{animation:storeReveal .85s .24s both}
 @keyframes storeReveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){body.site-entered .hero-content,body.site-entered .hero-meta,body.site-entered .shop-shell,body.site-entered .manifesto-shell,body.site-entered .site-footer{animation:none}}
+
+/* Top-of-page display state: oversized centered wordmark only */
+body:not(.site-entered) .intro-wordmark{width:min(86vw,760px);height:min(58vh,420px)}
+body:not(.site-entered) .site-header{opacity:0;visibility:hidden}
+body.site-entered .site-header{opacity:1;visibility:visible;transition:opacity .35s ease}
+body.site-entered .center-brand{width:min(220px,38vw);height:48px;transition:width .55s cubic-bezier(.22,.75,.18,1),height .55s cubic-bezier(.22,.75,.18,1)}
+/* Three-dot menu appears only after the logo docks into the header */
+.outline-menu{opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;border-radius:50%;padding:0;gap:3px}
+.outline-menu span{width:4px;height:4px;border-radius:50%;background:#fff;transform:none!important;opacity:1!important;transition:background .2s}
+body.site-entered .outline-menu{opacity:1;visibility:visible}
+.outline-menu[aria-expanded=true] span{background:#c8cecc}
