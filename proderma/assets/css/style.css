@@ -428,3 +428,17 @@ main img:not(.hero-still){
  .reviews-more-card{padding:21px;gap:15px}
  .reviews-more-card strong{font-size:19px}
 }
+
+
+/* Footer refresh — light warm taupe, coordinated with the approved site palette */
+.footer{
+ background:#EAE3DA;
+ color:#5D5148;
+ border-top:1px solid rgba(116,103,91,.2);
+}
+.footer-top{border-bottom:1px solid rgba(116,103,91,.22)}
+.footer-brand p{color:#76695F}
+.footer-col h3{color:#8A7054}
+.footer-col a,.footer-col p{color:#6F6258}
+.footer-col a:hover{color:#A17E50}
+.footer-bottom{color:#85786E}
