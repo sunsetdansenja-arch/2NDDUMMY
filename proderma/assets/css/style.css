@@ -344,3 +344,26 @@ main img:not(.hero-still){
  .technology-overlay{background:linear-gradient(90deg,rgba(74,64,56,.58),rgba(74,64,56,.12)),linear-gradient(0deg,rgba(74,64,56,.66),transparent 58%)}
 }
 
+
+
+/* Home patient reviews — retain the approved existing Proderma palette */
+.testimonials{padding:clamp(80px,10vw,140px) 0;background:var(--ivory);color:var(--black)}
+.testimonials-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:38px}
+.testimonials-head h2{font-size:clamp(44px,6vw,78px);line-height:.95;margin:20px 0 0}
+.testimonials-head h2 em{color:var(--gold)}
+.testimonials-head p{max-width:360px;color:var(--muted);font-size:13px;line-height:1.9;margin:0}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.review-card{display:flex;flex-direction:column;min-height:235px;padding:24px;background:var(--white);border:1px solid var(--darkline);border-radius:22px}
+.review-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.review-name{font:500 14px/1.35 var(--sans);color:var(--black)}
+.review-age{font-size:11px;color:var(--muted);margin-top:4px}
+.review-stars{color:var(--gold);font-size:16px;letter-spacing:2px;white-space:nowrap}
+.review-quote{font-size:13px;line-height:1.85;color:var(--muted);margin:0}
+.review-source{margin-top:auto;padding-top:18px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.reviews-action{display:flex;justify-content:space-between;align-items:center;gap:22px;margin-top:26px;padding-top:22px;border-top:1px solid var(--darkline)}
+.reviews-action p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}
+.reviews-action .btn{white-space:nowrap}
+.header .logo img,.footer-logo{max-height:54px;width:auto;max-width:210px;object-fit:contain}
+.footer-logo{max-height:64px}
+@media(max-width:850px){.review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.testimonials-head{display:block}.testimonials-head p{margin-top:18px;max-width:560px}}
+@media(max-width:520px){.review-grid{grid-template-columns:1fr}.review-card{min-height:unset;padding:21px}.reviews-action{align-items:flex-start;flex-direction:column}.testimonials-head h2{font-size:clamp(44px,11vw,64px)}}
