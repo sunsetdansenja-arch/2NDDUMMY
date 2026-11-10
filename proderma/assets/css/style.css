@@ -442,3 +442,19 @@ main img:not(.hero-still){
 .footer-col a,.footer-col p{color:#6F6258}
 .footer-col a:hover{color:#A17E50}
 .footer-bottom{color:#85786E}
+
+
+/* Logo size increase — keep original transparent PNG, no background or filter */
+.header .brand{width:230px;min-height:76px;padding:0;background:transparent;border:0;box-shadow:none}
+.header .brand img{width:100%;max-height:72px;object-fit:contain;filter:none!important;background:transparent}
+.footer-brand .footer-logo{width:215px;max-height:88px;object-fit:contain;filter:none!important;background:transparent}
+@media(max-width:850px){
+ .header .brand{width:195px;min-height:66px}
+ .header .brand img{max-height:62px}
+ .footer-brand .footer-logo{width:195px;max-height:78px}
+}
+@media(max-width:520px){
+ .header .brand{width:170px;min-height:58px}
+ .header .brand img{max-height:54px}
+ .footer-brand .footer-logo{width:180px;max-height:72px}
+}
