@@ -1,7 +1,7 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const fields={size:$("sizeInput"),brand:$("brandInput"),waist:$("waistInput"),outseam:$("outseamInput"),lo:$("loInput")};
-const preview={size:$("previewSize"),brand:$("previewBrand"),waist:$("previewWaist"),outseam:$("previewOutseam"),lo:$("previewLo")};
+const fields={size:$("sizeInput"),waist:$("waistInput"),outseam:$("outseamInput"),price:$("priceInput")};
+const preview={size:$("previewSize"),waist:$("previewWaist"),outseam:$("previewOutseam"),price:$("previewPrice")};
 const borderToggle=$("borderToggle"),printRoot=$("printRoot"),printMode=$("printMode"),blankQuantity=$("blankQuantity");
 const statusEl=$("printerStatus"),connectButton=$("connectPrinterButton");
 const OPTIONAL_SERVICES=["000018f0-0000-1000-8000-00805f9b34fb","0000e025-0000-1000-8000-00805f9b34fb","00001101-0000-1000-8000-00805f9b34fb"];
@@ -84,20 +84,13 @@ connectButton.addEventListener("click",async()=>{
 function renderLabelCanvas(blank){
  const width=576,height=187,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
  const ctx=canvas.getContext("2d",{alpha:false});ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.strokeStyle="#000";
- const labelLeft=0,labelRight=width,top=0,bottom=height,margin=4,left=labelLeft+(labelRight-labelLeft)*.4,right=labelRight;
- if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(labelLeft,top,labelRight-labelLeft,bottom-top);ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke()}
- const boxX=labelLeft+margin,boxW=left-boxX;
- ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 17px Arial";ctx.fillText("SIZE",boxX+boxW/2,top+29);
- if(!blank){ctx.font="900 56px Arial";ctx.fillText(clean(fields.size.value)||"—",boxX+boxW/2,top+97)}
- const rowH=(bottom-top)/4,labels=["BRAND","WAIST","OUTSEAM","LO"];
- const values=[clean(fields.brand.value)||"—",(clean(fields.waist.value)||"—")+'″',(clean(fields.outseam.value)||"—")+" cm",(clean(fields.lo.value)||"—")+" cm"];
- ctx.textBaseline="middle";
- for(let i=0;i<4;i++){
-  const y=top+rowH*i;
-  if(i>0){ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke()}
-  const cy=y+rowH/2;ctx.textAlign="left";ctx.font="bold 11px Arial";ctx.fillText(labels[i],left+7,cy);
-  if(!blank){ctx.textAlign="right";ctx.font="bold 13px Arial";ctx.fillText(values[i],right-7,cy)}
- }
+ const top=0,bottom=height,midX=width/2,splitY=Math.round(height*.62);
+ if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(0,0,width,height);ctx.beginPath();ctx.moveTo(midX,top);ctx.lineTo(midX,splitY);ctx.moveTo(0,splitY);ctx.lineTo(width,splitY);ctx.stroke()}
+ const featured=[{label:"SIZE",value:clean(fields.size.value)||"—",x:width*.25},{label:"PRICE",value:clean(fields.price.value)||"—",x:width*.75}];
+ ctx.textAlign="center";ctx.textBaseline="middle";
+ featured.forEach((item,index)=>{ctx.font="bold 14px Arial";ctx.fillText(item.label,item.x,25);if(!blank){ctx.font=index===0?"900 48px Arial":"900 34px Arial";ctx.fillText(item.value,item.x,75)}})
+ const details=[{label:"HALF WAIST",value:(clean(fields.waist.value)||"—")+'″',x:width*.25},{label:"LENGTH",value:(clean(fields.outseam.value)||"—")+" cm",x:width*.75}];
+ details.forEach(item=>{ctx.textAlign="center";ctx.font="bold 11px Arial";ctx.fillText(item.label,item.x-48,splitY+(bottom-splitY)/2);if(!blank){ctx.textAlign="right";ctx.font="bold 14px Arial";ctx.fillText(item.value,item.x+52,splitY+(bottom-splitY)/2)}})
  return ctx.getImageData(0,0,width,height);
 }
 function rasterCommand(imageData){
@@ -146,17 +139,10 @@ $("browserPrintButton").addEventListener("click",()=>{
 });
 function makeBrowserLabel(blank){
  const wrapper=document.createElement("div");wrapper.className="print-label"+(blank?" blank-print-label":"");
- const grid=document.createElement("div");grid.className="label-grid";
- const sizeBox=document.createElement("div");sizeBox.className="size-box";
- const caption=document.createElement("span");caption.className="size-caption";caption.textContent="SIZE";
- sizeBox.append(caption);
- if(blank){}
- else{const size=document.createElement("strong");size.textContent=clean(fields.size.value)||"—";sizeBox.append(size)}
- const details=document.createElement("div");details.className="detail-list";
- const rows=[["BRAND",clean(fields.brand.value)||"—"],["WAIST",(clean(fields.waist.value)||"—")+"″"],["OUTSEAM",(clean(fields.outseam.value)||"—")+" cm"],["LO",(clean(fields.lo.value)||"—")+" cm"]];
- rows.forEach(([label,value])=>{const row=document.createElement("div");row.className="detail-row";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(!blank)val.textContent=value;row.append(name,val);details.append(row)});
- grid.append(sizeBox,details);
- if(!borderToggle.checked){grid.style.border="0";sizeBox.style.borderRight="0";details.querySelectorAll(".detail-row").forEach((row,i)=>{if(i!==3)row.style.borderBottom="1px solid #000"})}
+ const grid=document.createElement("div");grid.className="label-grid label-layout";
+ [["SIZE",clean(fields.size.value)||"—"],["PRICE",clean(fields.price.value)||"—"]].forEach(([label,value],index)=>{const cell=document.createElement("div");cell.className="featured-cell"+(index===1?" price-cell":"");const title=document.createElement("span");title.textContent=label;const val=document.createElement("strong");if(!blank)val.textContent=value;cell.append(title,val);grid.append(cell)});
+ [["HALF WAIST",(clean(fields.waist.value)||"—")+'″'],["LENGTH",(clean(fields.outseam.value)||"—")+" cm"]].forEach(([label,value])=>{const cell=document.createElement("div");cell.className="detail-cell";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(!blank)val.textContent=value;cell.append(name,val);grid.append(cell)});
+ if(!borderToggle.checked){grid.style.border="0";grid.querySelectorAll(".featured-cell").forEach(cell=>cell.style.borderBottom="0");grid.querySelectorAll(".featured-cell:first-child,.detail-cell:first-of-type").forEach(cell=>cell.style.borderRight="0")}
  wrapper.append(grid);return wrapper;
 }
 updatePreview();
