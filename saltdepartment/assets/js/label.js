@@ -82,9 +82,9 @@ connectButton.addEventListener("click",async()=>{
 });
 
 function renderLabelCanvas(blank){
- const width=576,height=374,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
+ const width=576,height=187,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
  const ctx=canvas.getContext("2d",{alpha:false});ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.strokeStyle="#000";
- const labelLeft=width*.25,labelRight=width*.75,top=height*.25,bottom=height*.75,margin=4,left=labelLeft+(labelRight-labelLeft)*.4,right=labelRight;
+ const labelLeft=0,labelRight=width,top=0,bottom=height,margin=4,left=labelLeft+(labelRight-labelLeft)*.4,right=labelRight;
  if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(labelLeft,top,labelRight-labelLeft,bottom-top);ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke()}
  const boxX=labelLeft+margin,boxW=left-boxX;
  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 17px Arial";ctx.fillText("SIZE",boxX+boxW/2,top+29);
