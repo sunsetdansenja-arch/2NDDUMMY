@@ -5,7 +5,8 @@ const preview={size:$("previewSize"),brand:$("previewBrand"),waist:$("previewWai
 const borderToggle=$("borderToggle"),printRoot=$("printRoot"),printMode=$("printMode"),blankQuantity=$("blankQuantity");
 const statusEl=$("printerStatus"),connectButton=$("connectPrinterButton");
 const OPTIONAL_SERVICES=["000018f0-0000-1000-8000-00805f9b34fb","0000e025-0000-1000-8000-00805f9b34fb","00001101-0000-1000-8000-00805f9b34fb"];
-let copies=1,cachedBluetoothDevice=null,printerCharacteristic=null,connectionPromise=null;\nconst wiredDevices=new WeakSet();
+let copies=1,cachedBluetoothDevice=null,printerCharacteristic=null,connectionPromise=null;
+const wiredDevices=new WeakSet();
 const clean=value=>String(value??"").trim();
 const isBlank=()=>printMode.value==="blank";
 function status(message,connected=false){statusEl.textContent=message;statusEl.classList.toggle("connected",connected)}
@@ -106,11 +107,17 @@ function rasterCommand(imageData){
  const out=new Uint8Array(header.length+raster.length);out.set(header);out.set(raster,header.length);return out;
 }
 async function writeBytes(characteristic,bytes){
- const chunkSize=180;
+ const useResponse=!!(characteristic.properties.write&&characteristic.writeValueWithResponse);
+ const chunkSize=useResponse?180:100;
  for(let offset=0;offset<bytes.length;offset+=chunkSize){
+  if(!cachedBluetoothDevice?.gatt?.connected)throw new Error("Koneksi printer terputus saat mengirim data.");
   const chunk=bytes.slice(offset,Math.min(offset+chunkSize,bytes.length));
-  if(characteristic.properties.writeWithoutResponse&&characteristic.writeValueWithoutResponse)await characteristic.writeValueWithoutResponse(chunk);
-  else await characteristic.writeValue(chunk);
+  if(useResponse)await characteristic.writeValueWithResponse(chunk);
+  else if(characteristic.writeValueWithoutResponse){
+   await characteristic.writeValueWithoutResponse(chunk);
+   await new Promise(resolve=>setTimeout(resolve,18));
+  }else if(characteristic.writeValue)await characteristic.writeValue(chunk);
+  else throw new Error("Printer tidak menyediakan metode penulisan Bluetooth.");
  }
 }
 async function printBluetooth(){
