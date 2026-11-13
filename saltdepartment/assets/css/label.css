@@ -22,3 +22,32 @@
  #printRoot .detail-row>span{visibility:visible!important;font-size:5pt;font-weight:800;text-align:right;overflow-wrap:anywhere}
  #printRoot .detail-row i,#printRoot .detail-row small{visibility:visible!important;font-style:normal;font-size:inherit}
 }
+
+/* Four-field label layout: SIZE and PRICE are the two dominant values. */
+.label-data-grid .field{grid-column:span 3}
+.label-layout{grid-template-columns:1fr 1fr;grid-template-rows:62% 38%;width:100%;height:100%}
+.featured-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;overflow:hidden;border-bottom:2px solid #090b0a}
+.featured-cell:first-child{border-right:2px solid #090b0a}
+.featured-cell>span{font:700 clamp(10px,1.5vw,15px)/1 Arial,sans-serif;letter-spacing:.04em}
+.featured-cell strong{font:900 clamp(36px,6.5vw,72px)/.92 Arial,sans-serif;letter-spacing:-.07em;white-space:nowrap;max-width:95%;overflow:hidden}
+.price-cell strong{font-size:clamp(25px,4.7vw,52px);letter-spacing:-.045em}
+.detail-cell{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:0 6%;min-width:0;overflow:hidden}
+.detail-cell:first-of-type{border-right:2px solid #090b0a}
+.detail-cell b{font:800 clamp(8px,1.25vw,12px)/1 Arial,sans-serif;white-space:nowrap}
+.detail-cell>span{font:800 clamp(11px,1.7vw,16px)/1 Arial,sans-serif;white-space:nowrap}
+.detail-cell i{font-style:normal}.detail-cell small{font-size:.75em}
+.label-paper.blank-preview .featured-cell strong,.label-paper.blank-preview .detail-cell>span{display:none}
+@media(max-width:900px){.featured-cell strong{font-size:clamp(38px,7vw,76px)}.price-cell strong{font-size:clamp(25px,4.8vw,54px)}}
+@media(max-width:650px){.label-data-grid .field{grid-column:span 3}.featured-cell strong{font-size:clamp(34px,9vw,66px)}.price-cell strong{font-size:clamp(22px,6vw,44px)}.detail-cell b{font-size:clamp(8px,2vw,11px)}.detail-cell>span{font-size:clamp(10px,2.7vw,14px)}}
+@media print{
+ #printRoot .label-layout{grid-template-columns:1fr 1fr;grid-template-rows:62% 38%;width:80mm;height:26mm}
+ #printRoot .featured-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;border-bottom:1.2px solid #000;overflow:hidden}
+ #printRoot .featured-cell:first-child{border-right:1.2px solid #000}
+ #printRoot .featured-cell>span{font:700 6pt/1 Arial,Helvetica,sans-serif}
+ #printRoot .featured-cell strong{font:900 25pt/.92 Arial,Helvetica,sans-serif;letter-spacing:-.07em;white-space:nowrap}
+ #printRoot .price-cell strong{font-size:18pt;letter-spacing:-.04em}
+ #printRoot .detail-cell{display:flex;align-items:center;justify-content:space-between;padding:0 1.5mm;gap:.5mm;overflow:hidden}
+ #printRoot .detail-cell:first-of-type{border-right:1.2px solid #000}
+ #printRoot .detail-cell b{font:800 5pt/1 Arial,Helvetica,sans-serif;white-space:nowrap}
+ #printRoot .detail-cell>span{font:800 7pt/1 Arial,Helvetica,sans-serif;white-space:nowrap}
+}
