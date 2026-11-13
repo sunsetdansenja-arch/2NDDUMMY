@@ -25,7 +25,7 @@
   <main class="workspace">
     <header class="page-heading">
       <div><p class="eyebrow">SALT DEPARTMENT / WORKSPACE</p><h1>LABEL <em>PRINTER.</em></h1><p class="subheading">Boardshort item label · Thermal 80 mm</p></div>
-      <div class="printer-chip"><span class="printer-icon">▤</span><span>THERMAL PRINTER<br><b>80 MM / PORTRAIT</b></span></div>
+      <div class="printer-chip"><span class="printer-icon">▤</span><span>MP80 / RPP20N<br><b>BLUETOOTH · 80 MM</b><small id="printerStatus" class="printer-status">DISCONNECTED</small></span><button type="button" id="connectPrinterButton" class="connect-printer-button">CONNECT</button></div>
     </header>
 
     <div class="content-grid">
@@ -47,8 +47,8 @@
             <label class="field blank-quantity-field" id="blankQuantityWrap" hidden><span>BLANK LABEL QTY</span><input id="blankQuantity" type="number" min="1" max="200" step="1" value="10" inputmode="numeric"></label>
             <label class="check-field"><input id="borderToggle" type="checkbox" checked><span class="switch"></span><span>Print border</span></label>
           </div>
-          <div class="button-row"><button class="print-button" type="button" id="printButton"><span>▣</span> PRINT LABEL</button><button class="reset-button" type="reset" id="resetButton">RESET</button></div>
-          <p class="helper-note" id="printHelper">Pilih Filled untuk mencetak data produk atau Blank untuk mencetak label kosong yang bisa diisi dengan pena. Gunakan kertas thermal roll 80 mm. Di dialog print, pilih printer thermal, paper width 80 mm, margin none, dan scale 100%.</p>
+          <div class="button-row"><button class="print-button" type="button" id="printButton"><span>▣</span> PRINT VIA BLUETOOTH</button><button class="reset-button" type="button" id="browserPrintButton">BROWSER PRINT</button><button class="reset-button" type="reset" id="resetButton">RESET</button></div>
+          <p class="helper-note" id="printHelper">Connect MP80 / RPP20N terlebih dahulu. Pilih Filled atau Blank, lalu cetak langsung via Bluetooth. Browser Print tersedia sebagai alternatif. Gunakan kertas thermal roll 80 mm. Di dialog print, pilih printer thermal, paper width 80 mm, margin none, dan scale 100%.</p>
         </form>
       </section>
 
@@ -68,7 +68,7 @@
           </div>
           <p class="preview-caption" id="previewCaption">LAYOUT A — CLEAN GRID <span>•</span> NO LOGO</p>
         </div>
-        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Brand, Waist, Outseam, LO</li><li>Blank mode: kolom kosong untuk ditulis dengan pena</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
+        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Brand, Waist, Outseam, LO</li><li>Blank mode: kolom kosong untuk ditulis dengan pena</li><li>Bluetooth Direct: Web Bluetooth GATT / ESC-POS</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
       </section>
     </div>
     <footer class="workspace-footer"><span>SALT DEPARTMENT / LABEL TOOL</span><span>80 MM THERMAL READY</span></footer>
