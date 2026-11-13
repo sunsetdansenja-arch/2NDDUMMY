@@ -1,7 +1,7 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const fields={size:$("sizeInput"),waist:$("waistInput"),outseam:$("outseamInput"),price:$("priceInput")};
-const preview={size:$("previewSize"),waist:$("previewWaist"),outseam:$("previewOutseam"),price:$("previewPrice")};
+const fields={size:$("sizeInput"),price:$("priceInput"),waist:$("waistInput"),outseam:$("outseamInput"),code:$("codeInput")};
+const preview={size:$("previewSize"),price:$("previewPrice"),waist:$("previewWaist"),outseam:$("previewOutseam"),code:$("previewCode")};
 const borderToggle=$("borderToggle"),printRoot=$("printRoot"),printMode=$("printMode"),blankQuantity=$("blankQuantity");
 const statusEl=$("printerStatus"),connectButton=$("connectPrinterButton");
 const OPTIONAL_SERVICES=["000018f0-0000-1000-8000-00805f9b34fb","0000e025-0000-1000-8000-00805f9b34fb","00001101-0000-1000-8000-00805f9b34fb"];
@@ -89,8 +89,8 @@ function renderLabelCanvas(blank){
  const featured=[{label:"SIZE",value:clean(fields.size.value)||"—",x:width*.25},{label:"PRICE",value:clean(fields.price.value)||"—",x:width*.75}];
  ctx.textAlign="center";ctx.textBaseline="middle";
  featured.forEach((item,index)=>{ctx.font="bold 14px Arial";ctx.fillText(item.label,item.x,25);if(!blank){ctx.font=index===0?"900 48px Arial":"900 34px Arial";ctx.fillText(item.value,item.x,75)}})
- const details=[{label:"HALF WAIST",value:(clean(fields.waist.value)||"—")+'″',x:width*.25},{label:"LENGTH",value:(clean(fields.outseam.value)||"—")+" cm",x:width*.75}];
- details.forEach(item=>{ctx.textAlign="center";ctx.font="bold 11px Arial";ctx.fillText(item.label,item.x-48,splitY+(bottom-splitY)/2);if(!blank){ctx.textAlign="right";ctx.font="bold 14px Arial";ctx.fillText(item.value,item.x+52,splitY+(bottom-splitY)/2)}})
+ const details=[{label:"LEBAR PINGGANG",value:clean(fields.waist.value)||"—",x:width/6},{label:"PANJANG CELANA",value:clean(fields.outseam.value)||"—",x:width/2},{label:"KODE",value:clean(fields.code.value)||"—",x:width*5/6}];
+ details.forEach(item=>{ctx.textAlign="center";ctx.font="bold 8px Arial";ctx.fillText(item.label,item.x,splitY+15);if(!blank){ctx.font="bold 12px Arial";ctx.fillText(item.value,item.x,splitY+42)}})
  return ctx.getImageData(0,0,width,height);
 }
 function rasterCommand(imageData){
@@ -141,7 +141,7 @@ function makeBrowserLabel(blank){
  const wrapper=document.createElement("div");wrapper.className="print-label"+(blank?" blank-print-label":"");
  const grid=document.createElement("div");grid.className="label-grid label-layout";
  [["SIZE",clean(fields.size.value)||"—"],["PRICE",clean(fields.price.value)||"—"]].forEach(([label,value],index)=>{const cell=document.createElement("div");cell.className="featured-cell"+(index===1?" price-cell":"");const title=document.createElement("span");title.textContent=label;const val=document.createElement("strong");if(!blank)val.textContent=value;cell.append(title,val);grid.append(cell)});
- [["HALF WAIST",(clean(fields.waist.value)||"—")+'″'],["LENGTH",(clean(fields.outseam.value)||"—")+" cm"]].forEach(([label,value])=>{const cell=document.createElement("div");cell.className="detail-cell";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(!blank)val.textContent=value;cell.append(name,val);grid.append(cell)});
+ [["LEBAR PINGGANG",clean(fields.waist.value)||"—"],["PANJANG CELANA",clean(fields.outseam.value)||"—"],["KODE",clean(fields.code.value)||"—"]].forEach(([label,value])=>{const cell=document.createElement("div");cell.className="detail-cell";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(!blank)val.textContent=value;cell.append(name,val);grid.append(cell)});
  if(!borderToggle.checked){grid.style.border="0";grid.querySelectorAll(".featured-cell").forEach(cell=>cell.style.borderBottom="0");grid.querySelectorAll(".featured-cell:first-child,.detail-cell:first-of-type").forEach(cell=>cell.style.borderRight="0")}
  wrapper.append(grid);return wrapper;
 }
