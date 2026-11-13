@@ -83,10 +83,10 @@ connectButton.addEventListener("click",async()=>{
 function renderLabelCanvas(blank){
  const width=576,height=374,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
  const ctx=canvas.getContext("2d",{alpha:false});ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.strokeStyle="#000";
- const margin=8,left=width*.4,right=width-left,top=margin,bottom=height-margin;
+ const scale=.5,margin=8,left=width*.5+(width*.4-width*.5)*scale,right=width*.5+(width-width*.4)*scale,top=height*.25,bottom=height*.75;
  if(borderToggle.checked){ctx.lineWidth=4;ctx.strokeRect(margin,top,width-margin*2,bottom-top);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke()}
- const boxX=margin,boxW=left-margin;
- ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 35px Arial";ctx.fillText("SIZE",boxX+boxW/2,top+58);
+ const boxX=width*.5+(margin-width*.5)*scale,boxW=left-boxX;
+ ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 17px Arial";ctx.fillText("SIZE",boxX+boxW/2,top+29);
  if(blank){ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(boxX+28,top+235);ctx.lineTo(left-28,top+235);ctx.stroke()}
  else{ctx.font="900 112px Arial";ctx.fillText(clean(fields.size.value)||"—",boxX+boxW/2,top+195)}
  const rowH=(bottom-top)/4,labels=["BRAND","WAIST","OUTSEAM","LO"];
@@ -94,7 +94,7 @@ function renderLabelCanvas(blank){
  ctx.textBaseline="middle";
  for(let i=0;i<4;i++){
   const y=top+rowH*i;
-  if(i>0){ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(width-margin,y);ctx.stroke()}
+  if(i>0){ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke()}
   const cy=y+rowH/2;ctx.textAlign="left";ctx.font="bold 22px Arial";ctx.fillText(labels[i],left+14,cy);
   if(blank){ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left+132,cy+15);ctx.lineTo(width-margin-14,cy+15);ctx.stroke()}
   else{ctx.textAlign="right";ctx.font="bold 26px Arial";ctx.fillText(values[i],width-margin-14,cy)}
@@ -145,11 +145,11 @@ function makeBrowserLabel(blank){
  const sizeBox=document.createElement("div");sizeBox.className="size-box";
  const caption=document.createElement("span");caption.className="size-caption";caption.textContent="SIZE";
  sizeBox.append(caption);
- if(blank){const write=document.createElement("span");write.className="blank-write-area size-write-area";sizeBox.append(write)}
+ if(blank){}
  else{const size=document.createElement("strong");size.textContent=clean(fields.size.value)||"—";sizeBox.append(size)}
  const details=document.createElement("div");details.className="detail-list";
  const rows=[["BRAND",clean(fields.brand.value)||"—"],["WAIST",(clean(fields.waist.value)||"—")+"″"],["OUTSEAM",(clean(fields.outseam.value)||"—")+" cm"],["LO",(clean(fields.lo.value)||"—")+" cm"]];
- rows.forEach(([label,value])=>{const row=document.createElement("div");row.className="detail-row";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(blank)val.className="blank-write-area";else val.textContent=value;row.append(name,val);details.append(row)});
+ rows.forEach(([label,value])=>{const row=document.createElement("div");row.className="detail-row";const name=document.createElement("b");name.textContent=label;const val=document.createElement("span");if(!blank)val.textContent=value;row.append(name,val);details.append(row)});
  grid.append(sizeBox,details);
  if(!borderToggle.checked){grid.style.border="0";sizeBox.style.borderRight="0";details.querySelectorAll(".detail-row").forEach((row,i)=>{if(i!==3)row.style.borderBottom="1px solid #000"})}
  wrapper.append(grid);return wrapper;
