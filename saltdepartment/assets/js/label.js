@@ -45,22 +45,23 @@ async function connectSelectedDevice(device){
  status("CONNECTED · "+(device.name||"MP80"),true);
  return characteristic;
 }
-async function reconnectRememberedDevice(){
- if(!navigator.bluetooth)throw new Error("Web Bluetooth tidak tersedia. Gunakan Chrome/Edge desktop melalui HTTPS.");
- if(cachedBluetoothDevice?.gatt?.connected&&printerCharacteristic)return printerCharacteristic;
- if(!navigator.bluetooth.getDevices)return null;
- const devices=await navigator.bluetooth.getDevices();
- const remembered=devices.find(d=>d.name&&(/MP.?80|RPP.?20N|RPP02N|printer/i.test(d.name)))||devices[0];
- if(!remembered)return null;
- return connectSelectedDevice(remembered);
-}
 async function connectFromUserGesture(){
  if(!navigator.bluetooth)throw new Error("Web Bluetooth tidak tersedia. Buka halaman ini melalui Chrome/Edge desktop dan HTTPS.");
- const remembered=await reconnectRememberedDevice().catch(()=>null);
- if(remembered)return remembered;
- // requestDevice dipanggil dari handler klik pengguna, mengikuti pola Warung Acil.
- const device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:OPTIONAL_SERVICES});
+ if(cachedBluetoothDevice){
+  if(cachedBluetoothDevice.gatt?.connected&&printerCharacteristic)return printerCharacteristic;
+  return connectSelectedDevice(cachedBluetoothDevice);
+ }
+ // requestDevice dipanggil langsung dari handler klik, selama user activation masih aktif.
+ const chooser=navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:OPTIONAL_SERVICES});
+ const device=await chooser;
  return connectSelectedDevice(device);
+}
+// Pulihkan perangkat yang pernah diberi izin pada kunjungan sebelumnya.
+if(navigator.bluetooth?.getDevices){
+ navigator.bluetooth.getDevices().then(devices=>{
+  cachedBluetoothDevice=devices.find(d=>d.name&&(/MP.?80|RPP.?20N|RPP02N|printer/i.test(d.name)))||devices[0]||null;
+  if(cachedBluetoothDevice)status("PRINTER REMEMBERED");
+ }).catch(()=>{});
 }
 connectButton.addEventListener("click",async()=>{
  connectButton.disabled=true;connectButton.textContent="CONNECTING";
