@@ -5,7 +5,7 @@ const preview={size:$("previewSize"),brand:$("previewBrand"),waist:$("previewWai
 const borderToggle=$("borderToggle"),printRoot=$("printRoot"),printMode=$("printMode"),blankQuantity=$("blankQuantity");
 const statusEl=$("printerStatus"),connectButton=$("connectPrinterButton");
 const OPTIONAL_SERVICES=["000018f0-0000-1000-8000-00805f9b34fb","0000e025-0000-1000-8000-00805f9b34fb","00001101-0000-1000-8000-00805f9b34fb"];
-let copies=1,cachedBluetoothDevice=null,printerCharacteristic=null;
+let copies=1,cachedBluetoothDevice=null,printerCharacteristic=null,connectionPromise=null;\nconst wiredDevices=new WeakSet();
 const clean=value=>String(value??"").trim();
 const isBlank=()=>printMode.value==="blank";
 function status(message,connected=false){statusEl.textContent=message;statusEl.classList.toggle("connected",connected)}
@@ -30,28 +30,38 @@ $("resetButton").addEventListener("click",()=>{setTimeout(()=>{setCopies(1);blan
 async function connectSelectedDevice(device){
  if(!device)throw new Error("Printer Bluetooth belum dipilih.");
  cachedBluetoothDevice=device;
- device.addEventListener("gattserverdisconnected",()=>{printerCharacteristic=null;status("DISCONNECTED");});
- status("CONNECTING…");
- const server=device.gatt.connected?device.gatt:await device.gatt.connect();
- const services=await server.getPrimaryServices();
- let characteristic=null;
- for(const service of services){
-  const characteristics=await service.getCharacteristics();
-  for(const item of characteristics){if(item.properties.write||item.properties.writeWithoutResponse){characteristic=item;break}}
-  if(characteristic)break;
- }
- if(!characteristic)throw new Error("Printer terhubung, tetapi characteristic Bluetooth yang bisa ditulis tidak ditemukan. Pastikan printer mendukung BLE GATT.");
- printerCharacteristic=characteristic;
- status("CONNECTED · "+(device.name||"MP80"),true);
- return characteristic;
+ // Reuse the active GATT session and cached writable characteristic.
+ if(device.gatt?.connected&&printerCharacteristic){status("CONNECTED · "+(device.name||"MP80"),true);return printerCharacteristic}
+ if(connectionPromise)return connectionPromise;
+ connectionPromise=(async()=>{
+  if(!wiredDevices.has(device)){
+   device.addEventListener("gattserverdisconnected",()=>{
+    printerCharacteristic=null;
+    status("DISCONNECTED");
+   });
+   wiredDevices.add(device);
+  }
+  status("CONNECTING…");
+  const server=device.gatt.connected?device.gatt:await device.gatt.connect();
+  const services=await server.getPrimaryServices();
+  let characteristic=null;
+  for(const service of services){
+   const characteristics=await service.getCharacteristics();
+   for(const item of characteristics){if(item.properties.write||item.properties.writeWithoutResponse){characteristic=item;break}}
+   if(characteristic)break;
+  }
+  if(!characteristic)throw new Error("Printer terhubung, tetapi characteristic Bluetooth yang bisa ditulis tidak ditemukan. Pastikan printer mendukung BLE GATT.");
+  printerCharacteristic=characteristic;
+  status("CONNECTED · "+(device.name||"MP80"),true);
+  return characteristic;
+ })();
+ try{return await connectionPromise}finally{connectionPromise=null}
 }
 async function connectFromUserGesture(){
  if(!navigator.bluetooth)throw new Error("Web Bluetooth tidak tersedia. Buka halaman ini melalui Chrome/Edge desktop dan HTTPS.");
- if(cachedBluetoothDevice){
-  if(cachedBluetoothDevice.gatt?.connected&&printerCharacteristic)return printerCharacteristic;
-  return connectSelectedDevice(cachedBluetoothDevice);
- }
- // requestDevice dipanggil langsung dari handler klik, selama user activation masih aktif.
+ // No chooser, reconnect, or GATT scan when the current session is still alive.
+ if(cachedBluetoothDevice?.gatt?.connected&&printerCharacteristic)return printerCharacteristic;
+ if(cachedBluetoothDevice)return connectSelectedDevice(cachedBluetoothDevice);
  const chooser=navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:OPTIONAL_SERVICES});
  const device=await chooser;
  return connectSelectedDevice(device);
