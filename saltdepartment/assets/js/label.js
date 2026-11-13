@@ -83,21 +83,19 @@ connectButton.addEventListener("click",async()=>{
 function renderLabelCanvas(blank){
  const width=576,height=374,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
  const ctx=canvas.getContext("2d",{alpha:false});ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.strokeStyle="#000";
- const scale=.5,margin=8,left=width*.5+(width*.4-width*.5)*scale,right=width*.5+(width-width*.4)*scale,top=height*.25,bottom=height*.75;
- if(borderToggle.checked){ctx.lineWidth=4;ctx.strokeRect(margin,top,width-margin*2,bottom-top);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke()}
- const boxX=width*.5+(margin-width*.5)*scale,boxW=left-boxX;
+ const labelLeft=width*.25,labelRight=width*.75,top=height*.25,bottom=height*.75,margin=4,left=labelLeft+(labelRight-labelLeft)*.4,right=labelRight;
+ if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(labelLeft,top,labelRight-labelLeft,bottom-top);ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.stroke()}
+ const boxX=labelLeft+margin,boxW=left-boxX;
  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 17px Arial";ctx.fillText("SIZE",boxX+boxW/2,top+29);
- if(blank){ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(boxX+28,top+235);ctx.lineTo(left-28,top+235);ctx.stroke()}
- else{ctx.font="900 112px Arial";ctx.fillText(clean(fields.size.value)||"—",boxX+boxW/2,top+195)}
+ if(!blank){ctx.font="900 56px Arial";ctx.fillText(clean(fields.size.value)||"—",boxX+boxW/2,top+97)}
  const rowH=(bottom-top)/4,labels=["BRAND","WAIST","OUTSEAM","LO"];
  const values=[clean(fields.brand.value)||"—",(clean(fields.waist.value)||"—")+'″',(clean(fields.outseam.value)||"—")+" cm",(clean(fields.lo.value)||"—")+" cm"];
  ctx.textBaseline="middle";
  for(let i=0;i<4;i++){
   const y=top+rowH*i;
   if(i>0){ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke()}
-  const cy=y+rowH/2;ctx.textAlign="left";ctx.font="bold 22px Arial";ctx.fillText(labels[i],left+14,cy);
-  if(blank){ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left+132,cy+15);ctx.lineTo(width-margin-14,cy+15);ctx.stroke()}
-  else{ctx.textAlign="right";ctx.font="bold 26px Arial";ctx.fillText(values[i],width-margin-14,cy)}
+  const cy=y+rowH/2;ctx.textAlign="left";ctx.font="bold 11px Arial";ctx.fillText(labels[i],left+7,cy);
+  if(!blank){ctx.textAlign="right";ctx.font="bold 13px Arial";ctx.fillText(values[i],right-7,cy)}
  }
  return ctx.getImageData(0,0,width,height);
 }
