@@ -41,12 +41,14 @@
           </div>
           <div class="section-rule"></div>
           <div class="panel-heading options-heading"><div><p class="eyebrow">02 / OUTPUT</p><h2>PRINT OPTIONS</h2></div></div>
-          <div class="print-options">
-            <label class="field copies-field"><span>COPIES</span><div class="stepper"><button type="button" id="minusCopies" aria-label="Kurangi jumlah cetak">−</button><output id="copiesValue" for="minusCopies plusCopies">1</output><button type="button" id="plusCopies" aria-label="Tambah jumlah cetak">+</button></div></label>
+          <div class="print-options print-mode-options">
+            <label class="field mode-field"><span>PRINT MODE</span><select id="printMode"><option value="filled">Filled label · with data</option><option value="blank">Blank label · write by hand</option></select></label>
+            <label class="field copies-field"><span id="copiesLabel">COPIES</span><div class="stepper"><button type="button" id="minusCopies" aria-label="Kurangi jumlah cetak">−</button><output id="copiesValue" for="minusCopies plusCopies">1</output><button type="button" id="plusCopies" aria-label="Tambah jumlah cetak">+</button></div></label>
+            <label class="field blank-quantity-field" id="blankQuantityWrap" hidden><span>BLANK LABEL QTY</span><input id="blankQuantity" type="number" min="1" max="200" step="1" value="10" inputmode="numeric"></label>
             <label class="check-field"><input id="borderToggle" type="checkbox" checked><span class="switch"></span><span>Print border</span></label>
           </div>
           <div class="button-row"><button class="print-button" type="button" id="printButton"><span>▣</span> PRINT LABEL</button><button class="reset-button" type="reset" id="resetButton">RESET</button></div>
-          <p class="helper-note">Gunakan kertas thermal roll 80 mm. Di dialog print, pilih printer thermal, paper width 80 mm, margin none, dan scale 100%.</p>
+          <p class="helper-note" id="printHelper">Pilih Filled untuk mencetak data produk atau Blank untuk mencetak label kosong yang bisa diisi dengan pena. Gunakan kertas thermal roll 80 mm. Di dialog print, pilih printer thermal, paper width 80 mm, margin none, dan scale 100%.</p>
         </form>
       </section>
 
@@ -64,9 +66,9 @@
               </div>
             </div>
           </div>
-          <p class="preview-caption">LAYOUT A — CLEAN GRID <span>•</span> NO LOGO</p>
+          <p class="preview-caption" id="previewCaption">LAYOUT A — CLEAN GRID <span>•</span> NO LOGO</p>
         </div>
-        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Brand, Waist, Outseam, LO</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
+        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Brand, Waist, Outseam, LO</li><li>Blank mode: kolom kosong untuk ditulis dengan pena</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
       </section>
     </div>
     <footer class="workspace-footer"><span>SALT DEPARTMENT / LABEL TOOL</span><span>80 MM THERMAL READY</span></footer>
