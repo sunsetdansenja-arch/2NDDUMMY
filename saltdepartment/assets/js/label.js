@@ -85,7 +85,7 @@ function renderLabelCanvas(blank){
  const width=576,height=187,canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
  const ctx=canvas.getContext("2d",{alpha:false});ctx.fillStyle="#fff";ctx.fillRect(0,0,width,height);ctx.fillStyle="#000";ctx.strokeStyle="#000";
  const top=0,bottom=height,midX=width/2,splitY=Math.round(height*.62);
- if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(0,0,width,height);ctx.beginPath();ctx.moveTo(midX,top);ctx.lineTo(midX,splitY);ctx.moveTo(0,splitY);ctx.lineTo(width,splitY);ctx.stroke()}
+ if(borderToggle.checked){ctx.lineWidth=2;ctx.strokeRect(0,0,width,height);ctx.beginPath();ctx.moveTo(midX,top);ctx.lineTo(midX,splitY);ctx.moveTo(0,splitY);ctx.lineTo(width,splitY);ctx.moveTo(midX,splitY);ctx.lineTo(midX,bottom);ctx.stroke()}
  const featured=[{label:"SIZE",value:clean(fields.size.value)||"—",x:width*.25},{label:"PRICE",value:clean(fields.price.value)||"—",x:width*.75}];
  ctx.textAlign="center";ctx.textBaseline="middle";
  featured.forEach((item,index)=>{ctx.font="bold 14px Arial";ctx.fillText(item.label,item.x,25);if(!blank){ctx.font=index===0?"900 48px Arial":"900 34px Arial";ctx.fillText(item.value,item.x,75)}})
