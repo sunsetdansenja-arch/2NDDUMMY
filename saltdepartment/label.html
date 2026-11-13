@@ -32,12 +32,11 @@
       <section class="panel editor-panel" aria-labelledby="dataHeading">
         <div class="panel-heading"><div><p class="eyebrow">01 / INPUT</p><h2 id="dataHeading">LABEL DATA</h2></div><span class="step">EDIT DETAILS</span></div>
         <form id="labelForm" autocomplete="off">
-          <div class="form-grid">
-            <label class="field size-field"><span>SIZE <small>INCH</small></span><input id="sizeInput" name="size" type="text" inputmode="numeric" maxlength="5" value="32" placeholder="32"></label>
-            <label class="field brand-field"><span>BRAND</span><input id="brandInput" name="brand" type="text" maxlength="24" value="RIPCURL" placeholder="e.g. QUIKSILVER"></label>
-            <label class="field"><span>WAIST <small>INCH</small></span><input id="waistInput" name="waist" type="text" inputmode="decimal" maxlength="8" value="32" placeholder="32"></label>
-            <label class="field"><span>OUTSEAM <small>CM</small></span><input id="outseamInput" name="outseam" type="text" inputmode="decimal" maxlength="8" value="45" placeholder="45"></label>
-            <label class="field"><span>LEG OPENING / LO <small>CM</small></span><input id="loInput" name="lo" type="text" inputmode="decimal" maxlength="8" value="28" placeholder="28"></label>
+          <div class="form-grid label-data-grid">
+            <label class="field size-field"><span>SIZE</span><input id="sizeInput" name="size" type="text" inputmode="numeric" maxlength="5" value="32" placeholder="32"></label>
+            <label class="field"><span>LEBAR PINGGANG <small>HALF WAIST · INCH</small></span><input id="waistInput" name="waist" type="text" inputmode="decimal" maxlength="8" value="16" placeholder="16"></label>
+            <label class="field"><span>PANJANG CELANA <small>OUTSEAM · CM</small></span><input id="outseamInput" name="outseam" type="text" inputmode="decimal" maxlength="8" value="45" placeholder="45"></label>
+            <label class="field price-field"><span>PRICE <small>RP</small></span><input id="priceInput" name="price" type="text" inputmode="numeric" maxlength="12" placeholder="150000"></label>
           </div>
           <div class="section-rule"></div>
           <div class="panel-heading options-heading"><div><p class="eyebrow">02 / OUTPUT</p><h2>PRINT OPTIONS</h2></div></div>
@@ -56,19 +55,16 @@
         <div class="panel-heading"><div><p class="eyebrow">03 / LIVE PREVIEW</p><h2 id="previewHeading">PRINT PREVIEW</h2></div><span class="paper-chip">80 mm · PORTRAIT</span></div>
         <div class="preview-stage">
           <div class="label-paper" id="labelPreview" aria-label="Preview label thermal">
-            <div class="label-grid" id="labelGrid">
-              <div class="size-box"><span class="size-caption">SIZE</span><strong id="previewSize">32</strong></div>
-              <div class="detail-list">
-                <div class="detail-row"><b>BRAND</b><span id="previewBrand">RIPCURL</span></div>
-                <div class="detail-row"><b>WAIST</b><span><i id="previewWaist">32</i><small>″</small></span></div>
-                <div class="detail-row"><b>OUTSEAM</b><span><i id="previewOutseam">45</i><small> cm</small></span></div>
-                <div class="detail-row"><b>LO</b><span><i id="previewLo">28</i><small> cm</small></span></div>
-              </div>
+            <div class="label-grid label-layout" id="labelGrid">
+              <div class="featured-cell"><span>SIZE</span><strong id="previewSize">32</strong></div>
+              <div class="featured-cell price-cell"><span>PRICE</span><strong id="previewPrice">—</strong></div>
+              <div class="detail-cell"><b>HALF WAIST</b><span><i id="previewWaist">16</i><small>″</small></span></div>
+              <div class="detail-cell"><b>LENGTH</b><span><i id="previewOutseam">45</i><small> cm</small></span></div>
             </div>
           </div>
           <p class="preview-caption" id="previewCaption">LAYOUT A — CLEAN GRID <span>•</span> NO LOGO</p>
         </div>
-        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Brand, Waist, Outseam, LO</li><li>Blank mode: kolom kosong untuk ditulis dengan pena</li><li>Bluetooth Direct: Web Bluetooth GATT / ESC-POS</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
+        <div class="info-strip"><span class="info-mark">i</span><div><b>PRINT SPECIFICATION</b><ul><li>Lebar kertas: 80 mm (3.15″)</li><li>Orientasi: Portrait · Layout A / Clean Grid</li><li>Konten: Size, Price, Half Waist, Length</li><li>Blank mode: kolom kosong untuk ditulis dengan pena</li><li>Bluetooth Direct: Web Bluetooth GATT / ESC-POS</li><li>Label hitam-putih, tanpa logo dan tanpa tinta warna</li></ul></div></div>
       </section>
     </div>
     <footer class="workspace-footer"><span>SALT DEPARTMENT / LABEL TOOL</span><span>80 MM THERMAL READY</span></footer>
