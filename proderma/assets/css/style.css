@@ -495,3 +495,9 @@ main img:not(.hero-still){
  .doctor-hero-copy>p{font-size:13px}
  .doctor-hero-points li{font-size:12px}
 }
+
+
+/* Doctor hero copy alignment — left */
+.doctor-hero-content{justify-content:flex-start}
+.doctor-hero-copy{text-align:left}
+@media(max-width:760px){.doctor-hero-content{justify-content:flex-start}.doctor-hero-copy{text-align:left}}
