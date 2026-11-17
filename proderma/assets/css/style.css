@@ -501,3 +501,16 @@ main img:not(.hero-still){
 .doctor-hero-content{justify-content:flex-start}
 .doctor-hero-copy{text-align:left}
 @media(max-width:760px){.doctor-hero-content{justify-content:flex-start}.doctor-hero-copy{text-align:left}}
+
+
+/* Doctor hero correction — doctor on the right, subtle shade only on the left */
+.doctor-hero-image{object-position:right center}
+.doctor-hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.20) 34%,rgba(0,0,0,.04) 58%,rgba(0,0,0,0) 76%),linear-gradient(0deg,rgba(0,0,0,.12),transparent 42%)}
+.doctor-hero-content{justify-content:flex-start}
+.doctor-hero-copy{text-align:left}
+@media(max-width:760px){
+ .doctor-hero-image{object-position: right center}
+ .doctor-hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.34) 48%,rgba(0,0,0,.04) 82%,rgba(0,0,0,0) 100%),linear-gradient(0deg,rgba(0,0,0,.24),transparent 58%)}
+ .doctor-hero-content{justify-content:flex-start}
+ .doctor-hero-copy{text-align:left}
+}
