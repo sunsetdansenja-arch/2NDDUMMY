@@ -514,3 +514,10 @@ main img:not(.hero-still){
  .doctor-hero-content{justify-content:flex-start}
  .doctor-hero-copy{text-align:left}
 }
+
+
+/* Doctor hero overlay — strong dark gradient concentrated on the left */
+.doctor-hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.68) 30%,rgba(0,0,0,.34) 52%,rgba(0,0,0,.06) 72%,rgba(0,0,0,0) 86%),linear-gradient(0deg,rgba(0,0,0,.18),transparent 48%)}
+@media(max-width:760px){
+ .doctor-hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.24) 70%,rgba(0,0,0,.04) 100%),linear-gradient(0deg,rgba(0,0,0,.3),transparent 58%)}
+}
