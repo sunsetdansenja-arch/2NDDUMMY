@@ -34,4 +34,14 @@ if(baBefore&&baAfter&&baTag&&baTitle&&baDescription){
  showGalleryItem(0);
 }
 const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+
+const offerTrigger=document.getElementById('homeOfferTrigger'),offerPopup=document.getElementById('homeOfferPopup');
+if(offerTrigger&&offerPopup){
+ const closeOffer=()=>{offerPopup.classList.remove('is-open');offerPopup.setAttribute('aria-hidden','true');document.body.classList.remove('offer-open');offerTrigger.focus()};
+ const openOffer=()=>{offerPopup.classList.add('is-open');offerPopup.setAttribute('aria-hidden','false');document.body.classList.add('offer-open');const close=offerPopup.querySelector('.home-offer-close');if(close)close.focus()};
+ offerTrigger.addEventListener('click',openOffer);
+ offerPopup.querySelectorAll('[data-offer-close]').forEach(el=>el.addEventListener('click',closeOffer));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&offerPopup.classList.contains('is-open'))closeOffer()});
+}
+
 })();
