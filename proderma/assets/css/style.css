@@ -546,3 +546,32 @@ main img:not(.hero-still){
  .clinic-location-photo-grid{grid-template-columns:1fr;gap:24px}
  .clinic-location-photo-grid>img{height:300px}
 }
+
+
+/* Homepage one-day treatment offer */
+.daily-offer{background:#18251f;color:var(--ivory);padding:clamp(30px,4.5vw,58px) 0;border-top:1px solid rgba(197,173,131,.35);border-bottom:1px solid rgba(197,173,131,.35)}
+.daily-offer-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.daily-offer-kicker{display:block;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.daily-offer-copy h2{font-size:clamp(36px,5vw,62px);line-height:.92;margin:16px 0 12px}
+.daily-offer-copy h2 em{color:var(--gold)}
+.daily-offer-copy p{margin:0;color:rgba(248,245,240,.78);font-size:12px;line-height:1.8}
+.daily-offer-claim{display:inline-flex;align-items:center;justify-content:center;gap:24px;flex-shrink:0;padding:18px 24px;background:var(--gold);border:1px solid var(--gold);color:#111;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s,transform .2s}
+.daily-offer-claim:hover{background:transparent;color:var(--gold);transform:translateY(-2px)}
+/* Treatment page: stronger contrast for service cards and enquiry CTA */
+.services .service-category-list .service-row{background:#18251f;border:1px solid #263b33;border-radius:14px;padding:22px 20px;margin:8px 0;color:var(--ivory);transition:background .2s,border-color .2s,transform .2s}
+.services .service-category-list .service-row:hover{background:#22352d;border-color:var(--gold);padding:22px 20px;transform:translateY(-2px)}
+.services .service-category-list .service-row-copy h4{color:var(--ivory)}
+.services .service-category-list .service-row-copy p{color:rgba(248,245,240,.72)}
+.services .service-category-list .service-arrow{background:var(--gold);border-color:var(--gold);color:#111}
+.services .service-category-list .service-row:hover .service-arrow{background:var(--ivory);border-color:var(--ivory);color:#111}
+.services .service-note .btn{background:#18251f;border-color:#18251f;color:var(--ivory);padding:17px 24px;min-height:52px}
+.services .service-note .btn:hover{background:var(--gold);border-color:var(--gold);color:#111}
+.services .facial-category-head{display:block}
+.services .facial-category-head h3{margin:0}
+.services .facial-category-head p{max-width:560px;margin:12px 0 0;font-size:12px}
+@media(max-width:700px){
+ .daily-offer-inner{align-items:flex-start;flex-direction:column;gap:22px}
+ .daily-offer-claim{width:100%}
+ .services .service-category-list .service-row{padding:18px 14px}
+ .services .service-category-list .service-row:hover{padding:18px 14px}
+}
