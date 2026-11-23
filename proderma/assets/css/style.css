@@ -607,3 +607,5 @@ body.offer-open{overflow:hidden}
  .home-offer-trigger{width:116px}
 }
 @media(prefers-reduced-motion:reduce){.home-offer-popup,.home-offer-panel,.home-offer-trigger{transition:none}}
+
+.home-offer-trigger.is-scrolling{opacity:0;visibility:hidden;transform:translateY(16px);pointer-events:none}
