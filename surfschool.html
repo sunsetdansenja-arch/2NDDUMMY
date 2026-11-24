@@ -644,9 +644,8 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage('en');
-        });
+        // Apply English immediately before the browser paints the completed page.
+        setLanguage('en');
     </script>
 </body>
 </html>
